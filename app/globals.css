@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors - Light (Default) */
+  --background: #fafafa;
+  --foreground: #111111;
+  --brand: #991b1b;
+  --surface: rgba(240, 240, 240, 0.8);
+  --border: #e5e5e5;
+  --muted: #666666;
+  --selection-bg: #fee2e2;
+  --selection-text: #991b1b;
+
+  /* Refined Typography Scales - Tuned Down */
+  --fs-hero: clamp(2.5rem, 7vw, 5.5rem);      /* Homepage Main Title */
+  --fs-display: clamp(2rem, 5vw, 4rem);       /* Case Study Titles */
+  --fs-heading: clamp(1.125rem, 2.5vw, 1.5rem); /* Subheadings/Descriptions */
+  --fs-body: 1.125rem;                        /* Main Reading Text */
+  --fs-small: 0.9rem;                         /* Footer/Labels */
+  --fs-mono: 0.75rem;                         /* Systems Metadata */
+}
+
+/* Dark Theme Variables */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --brand: #ef4444;
+  --surface: rgba(23, 23, 23, 0.6);
+  --border: #262626;
+  --muted: #a3a3a3;
+  --selection-bg: #450a0a;
+  --selection-text: #ffffff;
+}
+
+/* System Dark Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a0a0a;
+    --foreground: #f5f5f5;
+    --brand: #ef4444;
+    --surface: rgba(23, 23, 23, 0.6);
+    --border: #262626;
+    --muted: #a3a3a3;
+    --selection-bg: #450a0a;
+    --selection-text: #ffffff;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Explicit Utilities for Tailwind 4 */
+@utility text-hero {
+  font-size: var(--fs-hero);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+@utility text-display {
+  font-size: var(--fs-display);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+@utility text-heading {
+  font-size: var(--fs-heading);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+@utility text-small {
+  font-size: var(--fs-small);
+}
+
+@utility text-mono {
+  font-size: var(--fs-mono);
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
