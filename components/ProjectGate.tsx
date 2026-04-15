@@ -79,9 +79,11 @@ export default function ProjectGate({ children, password, projectSlug }: Project
                     if (error) setError(false);
                   }}
                   placeholder="Enter Access Code"
-                  className={`w-full bg-surface border ${
-                    error ? 'border-red-500' : 'border-border group-hover:border-brand'
-                  } px-6 py-4 rounded-none text-center text-body focus:outline-none focus:border-brand transition-all`}
+                  className={`w-full bg-surface border px-6 py-4 rounded-md text-center text-body focus:outline-none transition-all shadow-sm ${
+                    error 
+                      ? 'border-error ring-1 ring-error' 
+                      : 'border-border hover:border-brand focus:border-brand'
+                  }`}
                   autoFocus
                 />
                 <button
@@ -95,7 +97,7 @@ export default function ProjectGate({ children, password, projectSlug }: Project
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-mono text-red-500 uppercase tracking-widest"
+                  className="text-mono text-error uppercase tracking-widest text-[10px]"
                 >
                   Invalid Access Code
                 </motion.p>

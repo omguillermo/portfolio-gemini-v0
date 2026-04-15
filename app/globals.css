@@ -1,47 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Light (Default) */
-  --background: #fafafa;
-  --foreground: #111111;
-  --brand: #991b1b;
-  --surface: rgba(240, 240, 240, 0.8);
-  --border: #e5e5e5;
-  --muted: #666666;
-  --selection-bg: #fee2e2;
-  --selection-text: #991b1b;
+  /* Forest Signal - Light Mode */
+  --background: #F2F7F4;
+  --foreground: #1A1F1C;
+  --brand: #1A9A5E;
+  --surface: #ffffff;
+  --border: #D1DED8;
+  --muted: #4A5450;
+  --tertiary: #8A9E98;
+  --error: #EF4444;
+  --accent: #F59E0B; /* Gold for UR rarity */
+  --selection-bg: #1A9A5E;
+  --selection-text: #ffffff;
 
-  /* Refined Typography Scales - Tuned Down */
-  --fs-hero: clamp(2.5rem, 7vw, 5.5rem);      /* Homepage Main Title */
-  --fs-display: clamp(2rem, 5vw, 4rem);       /* Case Study Titles */
-  --fs-heading: clamp(1.125rem, 2.5vw, 1.5rem); /* Subheadings/Descriptions */
-  --fs-body: 1.125rem;                        /* Main Reading Text */
-  --fs-small: 0.9rem;                         /* Footer/Labels */
-  --fs-mono: 0.75rem;                         /* Systems Metadata */
+  /* Radius Token - Brandon style */
+  --radius: 1.5rem; /* 24px */
+
+  /* Typography Scales */
+  --fs-hero: clamp(2.5rem, 7vw, 5.5rem);
+  --fs-display: clamp(2rem, 5vw, 4rem);
+  --fs-heading: clamp(1.125rem, 2.5vw, 1.5rem);
+  --fs-body: 1.125rem;
+  --fs-small: 0.9rem;
+  --fs-mono: 0.75rem;
 }
 
-/* Dark Theme Variables */
+/* Forest Signal - Dark Mode */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #f5f5f5;
-  --brand: #ef4444;
-  --surface: rgba(23, 23, 23, 0.6);
-  --border: #262626;
-  --muted: #a3a3a3;
-  --selection-bg: #450a0a;
+  --background: #081A16;
+  --foreground: #F2F7F4;
+  --brand: #1A9A5E;
+  --surface: #0D2621;
+  --border: #1A2E28;
+  --muted: #8A9E98;
+  --tertiary: #4A5450;
+  --error: #F87171;
+  --accent: #FBBF24;
+  --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
 }
 
-/* System Dark Preference */
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --background: #0a0a0a;
-    --foreground: #f5f5f5;
-    --brand: #ef4444;
-    --surface: rgba(23, 23, 23, 0.6);
-    --border: #262626;
-    --muted: #a3a3a3;
-    --selection-bg: #450a0a;
+    --background: #081A16;
+    --foreground: #F2F7F4;
+    --brand: #1A9A5E;
+    --surface: #0D2621;
+    --border: #1A2E28;
+    --muted: #8A9E98;
+    --tertiary: #4A5450;
+    --error: #F87171;
+    --accent: #FBBF24;
+    --selection-bg: #1A9A5E;
     --selection-text: #ffffff;
   }
 }
@@ -53,12 +64,20 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-muted: var(--muted);
+  --color-tertiary: var(--tertiary);
+  --color-error: var(--error);
+  --color-accent: var(--accent);
+  
+  --font-display: var(--font-plus-jakarta);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --radius-lg: var(--radius);
 }
 
 /* Explicit Utilities for Tailwind 4 */
 @utility text-hero {
+  font-family: var(--font-display);
   font-size: var(--fs-hero);
   line-height: 1.05;
   letter-spacing: -0.04em;
@@ -66,6 +85,7 @@
 }
 
 @utility text-display {
+  font-family: var(--font-display);
   font-size: var(--fs-display);
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -73,22 +93,26 @@
 }
 
 @utility text-heading {
+  font-family: var(--font-sans);
   font-size: var(--fs-heading);
   line-height: 1.4;
   letter-spacing: -0.01em;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 @utility text-body {
+  font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.6;
 }
 
 @utility text-small {
+  font-family: var(--font-sans);
   font-size: var(--fs-small);
 }
 
 @utility text-mono {
+  font-family: var(--font-mono);
   font-size: var(--fs-mono);
   letter-spacing: 0.05em;
   font-weight: 500;

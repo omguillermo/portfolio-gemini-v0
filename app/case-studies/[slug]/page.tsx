@@ -124,13 +124,13 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               </p>
               
               {/* "Before" Visual Placeholder */}
-              <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-surface border border-border flex flex-col items-center justify-center text-muted relative overflow-hidden group hover:border-brand/50 transition-colors">
+              <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-surface border border-border flex flex-col items-center justify-center text-muted relative overflow-hidden group hover:border-brand/50 transition-colors rounded-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" 
                   alt="Legacy System Mockup" 
                   className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale mix-blend-luminosity transition-opacity duration-500 group-hover:opacity-60"
                 />
-                <div className="absolute top-6 left-6 bg-brand/80 text-white px-3 py-1.5 text-mono font-mono uppercase border border-brand/50 tracking-wider z-10 backdrop-blur-sm shadow-xl">
+                <div className="absolute top-6 left-6 bg-muted/80 text-background px-3 py-1.5 text-mono font-mono uppercase border border-border/50 tracking-wider z-10 backdrop-blur-sm shadow-xl rounded-sm">
                   State: Before
                 </div>
               </div>
@@ -148,13 +148,13 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               </p>
 
               {/* "After" Visual Placeholder */}
-              <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-surface border border-border flex flex-col items-center justify-center text-muted relative overflow-hidden group hover:border-brand/50 transition-colors">
+              <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-surface border border-border flex flex-col items-center justify-center text-muted relative overflow-hidden group hover:border-brand/50 transition-colors rounded-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" 
                   alt="Redesigned System Mockup" 
                   className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale mix-blend-luminosity transition-opacity duration-500 group-hover:opacity-60"
                 />
-                <div className="absolute top-6 left-6 bg-green-900/80 text-green-100 px-3 py-1.5 text-mono font-mono uppercase border border-green-700/50 tracking-wider z-10 backdrop-blur-sm shadow-xl">
+                <div className="absolute top-6 left-6 bg-brand/80 text-background px-3 py-1.5 text-mono font-mono uppercase border border-brand/50 tracking-wider z-10 backdrop-blur-sm shadow-xl rounded-sm">
                   State: After
                 </div>
               </div>

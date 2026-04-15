@@ -19,7 +19,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 mt-24">
           <Reveal width="100%">
             <div className="space-y-8">
-              <div className="aspect-square bg-surface border border-border grayscale hover:grayscale-0 transition-all duration-500 overflow-hidden">
+              <div className="aspect-square bg-surface border border-border grayscale hover:grayscale-0 transition-all duration-500 overflow-hidden rounded-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
                   alt="Omar Guillermo"

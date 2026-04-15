@@ -2,16 +2,57 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Download, Lock } from 'lucide-react';
+import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp } from 'lucide-react';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 
-export default function Portfolio() {
-  const [systemPing, setSystemPing] = useState(false);
+type GachaRarity = 'R' | 'SR' | 'SSR' | 'UR';
 
-  const handleSystemClick = () => {
-    setSystemPing(true);
-    setTimeout(() => setSystemPing(false), 1000);
+interface GachaItem {
+  label: string;
+  rarity: GachaRarity;
+}
+
+export default function Portfolio() {
+  const [gachaResult, setGachaResult] = useState<GachaItem | null>(null);
+  const [isPulling, setIsPulling] = useState(false);
+
+  const handleGachaClick = () => {
+    if (isPulling || gachaResult) return;
+    setIsPulling(true);
+    
+    const results: GachaItem[] = [
+      { label: "R: RECTANGLE ENTHUSIAST", rarity: 'R' },
+      { label: "SR: PIXEL PERFECT", rarity: 'SR' },
+      { label: "SR: GRID WARRIOR", rarity: 'SR' },
+      { label: "SSR: SYSTEM ARCHITECT", rarity: 'SSR' },
+      { label: "SSR: AUTO-LAYOUT MASTER", rarity: 'SSR' },
+      { label: "UR: LEGENDARY SYSTEMS DESIGNER", rarity: 'UR' }
+    ];
+
+    setTimeout(() => {
+      const randomResult = results[Math.floor(Math.random() * results.length)];
+      setGachaResult(randomResult);
+      setIsPulling(false);
+    }, 1000);
+  };
+
+  const resetGacha = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setGachaResult(null);
+  };
+
+  const getGachaIcon = () => {
+    if (isPulling) return null;
+    if (!gachaResult) return <Clover className="w-3 h-3 text-brand" />;
+    
+    switch (gachaResult.rarity) {
+      case 'UR': return <Trophy className="w-3 h-3 text-accent" />;
+      case 'SSR':
+      case 'SR': return <Star className="w-3 h-3 text-brand" />;
+      case 'R': return <ThumbsUp className="w-3 h-3 text-muted" />;
+      default: return <Clover className="w-3 h-3" />;
+    }
   };
 
   return (
@@ -25,11 +66,12 @@ export default function Portfolio() {
           <Reveal width="100%">
             <h1 className="text-hero font-bold tracking-tighter mb-8 leading-tight">
               Senior Product Designer <br className="hidden md:block" />
-              & Systems Architect.
+              & Design System Builder.
             </h1>
             <p className="text-heading text-muted max-w-3xl leading-relaxed font-light tracking-wide">
-              Translating complex ecosystem constraints into scalable, rock-solid interfaces. 
-              Focused on component-level problem solving, edge-cases, and unbreakable grid systems.
+              Translating complex B2B and eCommerce workflows into scalable, rock-solid interfaces. 
+              Focused on component-level problem solving, edge-cases, and AI-powered workflows. 
+              Always seeking the useful among the new.
             </p>
           </Reveal>
         </header>
@@ -39,7 +81,7 @@ export default function Portfolio() {
         <section className="mb-32">
           <Reveal width="100%">
             <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-12 border-b border-border pb-4">
-              01 / System Interventions
+              01 / Highlighted Projects
             </h2>
           </Reveal>
           
@@ -47,137 +89,140 @@ export default function Portfolio() {
             
             {/* Project Card 1 */}
             <Reveal width="100%" delay={0.1} overflow="visible">
-              <Link href="/case-studies/global-checkout">
+              <Link href="/case-studies/global-checkout" className="group block h-full">
                 <motion.div 
-                  whileHover={{ y: -4, borderColor: 'var(--brand)' }}
-                  transition={{ duration: 0.2 }}
-                  className="group cursor-pointer bg-surface border border-border p-8 flex flex-col justify-between h-full min-h-[400px] transition-colors"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
                 >
-                <div>
-                  <div className="flex justify-between items-start mb-12">
-                    <h3 className="text-heading font-semibold tracking-tight">Global Checkout Flow</h3>
-                    <ArrowUpRight className="text-muted group-hover:text-foreground transition-colors" />
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
+                    <img 
+                      src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" 
+                      alt="Global Checkout Flow"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                    />
                   </div>
-                  
-                  {/* Front-and-center Stat Blocks */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Impact</p>
-                      <p className="text-body font-medium">+14.2% Conversion</p>
+                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-end">
+                        <h3 className="text-heading font-bold tracking-tight">Global Checkout Flow</h3>
+                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <p className="text-body text-muted leading-relaxed">
+                        Re-architecting the payment rendering engine to support 42 localized gateways.
+                      </p>
                     </div>
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Constraint</p>
-                      <p className="text-body font-medium">&lt; 1.2s Load Time</p>
+                    <div className="flex gap-4 pt-4 border-t border-border/50">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">+14.2% Conv.</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Lead Designer</span>
                     </div>
                   </div>
-                </div>
-
-                <p className="text-body text-muted leading-relaxed group-hover:text-foreground/80 transition-colors">
-                  Re-architecting the payment rendering engine to support 42 localized gateways without compromising the core component library.
-                </p>
                 </motion.div>
               </Link>
             </Reveal>
 
             {/* Project Card 2 */}
             <Reveal width="100%" delay={0.2} overflow="visible">
-              <Link href="/case-studies/data-engine">
+              <Link href="/case-studies/data-engine" className="group block h-full">
                 <motion.div 
-                  whileHover={{ y: -4, borderColor: 'var(--brand)' }}
-                  transition={{ duration: 0.2 }}
-                  className="group cursor-pointer bg-surface border border-border p-8 flex flex-col justify-between h-full min-h-[400px] transition-colors"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
                 >
-                <div>
-                  <div className="flex justify-between items-start mb-12">
-                    <h3 className="text-heading font-semibold tracking-tight">Data Visualization Engine</h3>
-                    <ArrowUpRight className="text-muted group-hover:text-foreground transition-colors" />
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
+                    <img 
+                      src="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=2070&auto=format&fit=crop" 
+                      alt="Data Visualization Engine"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                    />
                   </div>
-                  
-                  {/* Front-and-center Stat Blocks */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Scale</p>
-                      <p className="text-body font-medium">10M+ Data Points</p>
+                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-end">
+                        <h3 className="text-heading font-bold tracking-tight">Data Engine</h3>
+                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <p className="text-body text-muted leading-relaxed">
+                        Establishing a robust token system for real-time financial dashboards.
+                      </p>
                     </div>
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Accessibility</p>
-                      <p className="text-body font-medium">WCAG 2.1 AAA</p>
+                    <div className="flex gap-4 pt-4 border-t border-border/50">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">WCAG 2.1 AAA</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Architect</span>
                     </div>
                   </div>
-                </div>
-
-                <p className="text-body text-muted leading-relaxed group-hover:text-foreground/80 transition-colors">
-                  Establishing a robust, accessible token system for real-time financial dashboards navigating extreme data density.
-                </p>
                 </motion.div>
               </Link>
             </Reveal>
 
             {/* Project Card 3 - PROTECTED */}
             <Reveal width="100%" delay={0.3} overflow="visible">
-              <Link href="/case-studies/neo-banking">
+              <Link href="/case-studies/neo-banking" className="group block h-full">
                 <motion.div 
-                  whileHover={{ y: -4, borderColor: 'var(--brand)' }}
-                  transition={{ duration: 0.2 }}
-                  className="group cursor-pointer bg-surface border border-border p-8 flex flex-col justify-between h-full min-h-[400px] transition-colors"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
                 >
-                <div>
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-heading font-semibold tracking-tight">Neo-Banking Core</h3>
-                      <Lock className="w-4 h-4 text-brand" />
-                    </div>
-                    <ArrowUpRight className="text-muted group-hover:text-foreground transition-colors" />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Impact</p>
-                      <p className="text-body font-medium">$2B+ Transacted</p>
-                    </div>
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Constraint</p>
-                      <p className="text-body font-medium">Zero Latency UI</p>
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
+                    <div className="relative z-10 flex flex-col items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-brand">
+                        <Lock className="w-5 h-5" />
+                      </div>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Private Project</span>
                     </div>
                   </div>
-                </div>
-
-                <p className="text-body text-muted leading-relaxed group-hover:text-foreground/80 transition-colors">
-                  Designing the foundational ledger interface for a high-growth fintech startup, focusing on real-time data accuracy and user trust.
-                </p>
+                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-end">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-heading font-bold tracking-tight">Neo-Banking</h3>
+                          <Lock className="w-4 h-4 text-brand" />
+                        </div>
+                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <p className="text-body text-muted leading-relaxed">
+                        Designing the foundational ledger interface for a high-growth fintech startup.
+                      </p>
+                    </div>
+                    <div className="flex gap-4 pt-4 border-t border-border/50">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">$2B+ Transacted</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Senior Designer</span>
+                    </div>
+                  </div>
                 </motion.div>
               </Link>
             </Reveal>
 
             {/* Project Card 4 */}
             <Reveal width="100%" delay={0.4} overflow="visible">
-              <Link href="/case-studies/smart-grid">
+              <Link href="/case-studies/smart-grid" className="group block h-full">
                 <motion.div 
-                  whileHover={{ y: -4, borderColor: 'var(--brand)' }}
-                  transition={{ duration: 0.2 }}
-                  className="group cursor-pointer bg-surface border border-border p-8 flex flex-col justify-between h-full min-h-[400px] transition-colors"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
                 >
-                <div>
-                  <div className="flex justify-between items-start mb-12">
-                    <h3 className="text-heading font-semibold tracking-tight">Smart Grid Monitor</h3>
-                    <ArrowUpRight className="text-muted group-hover:text-foreground transition-colors" />
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
+                    <img 
+                      src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop" 
+                      alt="Smart Grid Monitor"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                    />
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Impact</p>
-                      <p className="text-body font-medium">-18% Waste</p>
+                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-end">
+                        <h3 className="text-heading font-bold tracking-tight">Smart Grid</h3>
+                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <p className="text-body text-muted leading-relaxed">
+                        Visualizing energy distribution across municipal infrastructure.
+                      </p>
                     </div>
-                    <div className="border-l-2 border-brand/50 pl-4">
-                      <p className="text-mono text-muted font-mono uppercase mb-1">Constraint</p>
-                      <p className="text-body font-medium">Multi-device Sync</p>
+                    <div className="flex gap-4 pt-4 border-t border-border/50">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">-18% Waste</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Infrastructure</span>
                     </div>
                   </div>
-                </div>
-
-                <p className="text-body text-muted leading-relaxed group-hover:text-foreground/80 transition-colors">
-                  Visualizing energy distribution across municipal infrastructure with a responsive, high-performance monitoring dashboard.
-                </p>
                 </motion.div>
               </Link>
             </Reveal>
@@ -192,9 +237,14 @@ export default function Portfolio() {
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8">
                 02 / Background
               </h2>
-              <p className="text-body text-foreground/80 leading-relaxed max-w-md">
-                With 15 years of deep UI/UX experience, my practice revolves around consistency, organization, and treating design as a highly technical discipline. I build systems that scale across organizations and withstand the friction of edge cases.
-              </p>
+              <div className="space-y-6 text-body text-foreground/80 leading-relaxed max-w-md">
+                <p>
+                  With 14+ years of design experience, my practice revolves around consistency, organization, and treating design as a highly technical discipline. I started in graphic design and advertising, which gave me a rich foundation that has allowed my style to grow and adapt.
+                </p>
+                <p>
+                  Today, my career is defined by peripheral vision: noticing what’s coming next and adapting early. Whether I&apos;m building design systems that scale, or partnering with AI to ship features faster, I build interfaces that withstand any sneaky edge-case.
+                </p>
+              </div>
             </div>
           </Reveal>
 
@@ -206,19 +256,19 @@ export default function Portfolio() {
               <ul className="space-y-4">
                 <li>
                   <a href="#" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
-                    <Download className="w-5 h-5 text-muted group-hover:text-foreground transition-colors" />
+                    <span className="text-muted group-hover:text-brand transition-colors">↗</span>
                     Download Resume.pdf
                   </a>
                 </li>
                 <li>
                   <a href="mailto:hello@example.com" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
-                    <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-foreground transition-colors" />
+                    <span className="text-muted group-hover:text-brand transition-colors">↗</span>
                     Email Contact
                   </a>
                 </li>
                 <li>
                   <a href="#" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
-                    <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-foreground transition-colors" />
+                    <span className="text-muted group-hover:text-brand transition-colors">↗</span>
                     LinkedIn
                   </a>
                 </li>
@@ -227,34 +277,65 @@ export default function Portfolio() {
           </Reveal>
         </section>
 
-        {/* Footer & Easter Egg */}
+        {/* Footer & Gacha Easter Egg */}
         <footer className="mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-small text-muted">
-            Designed in Figma, built with Next.js & Tailwind using AI.
+            Designed in Figma, built with Next.js & Gemini.
           </p>
           
-          {/* System Status Easter Egg */}
-          <button 
-            onClick={handleSystemClick}
-            className="flex items-center gap-2 text-small text-muted hover:text-foreground transition-colors focus:outline-none"
-            title="System Status"
-          >
-            <AnimatePresence>
-              {systemPing && (
+          {/* Gacha Easter Egg */}
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={handleGachaClick}
+              disabled={isPulling || !!gachaResult}
+              className={`flex items-center gap-3 text-small text-muted hover:text-foreground transition-colors focus:outline-none group relative h-8 px-4 border border-border rounded-full transition-all ${!gachaResult && !isPulling ? 'hover:border-brand/50' : 'cursor-default'}`}
+              title={gachaResult ? "Current Title" : "Feeling lucky?"}
+            >
+              <div className="relative">
+                <AnimatePresence mode="wait">
+                  {isPulling ? (
+                    <motion.div 
+                      key="pulling"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: [1.5, 1], opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 bg-brand/40 rounded-full blur-md"
+                    />
+                  ) : null}
+                </AnimatePresence>
                 <motion.div 
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: [1.5, 1], opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute w-2 h-2 bg-green-400 rounded-full blur-sm"
-                />
-              )}
-            </AnimatePresence>
-            <motion.div 
-              animate={systemPing ? { scale: [1, 1.5, 1], backgroundColor: ["#22c55e", "#4ade80", "#22c55e"] } : {}}
-              className="w-2 h-2 bg-green-500 rounded-full"
-            />
-            <span className="font-mono uppercase tracking-wider text-mono">All Systems Nominal</span>
-          </button>
+                  animate={isPulling ? { rotate: 360, scale: [1, 1.2, 1] } : {}}
+                  transition={{ repeat: isPulling ? Infinity : 0, duration: 0.5 }}
+                  className={`flex items-center justify-center ${isPulling ? 'w-2 h-2 rounded-full border border-brand bg-brand' : ''}`}
+                >
+                  {!isPulling && getGachaIcon()}
+                </motion.div>
+              </div>
+              <div className="flex flex-col items-start overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.span 
+                    key={isPulling ? "pulling" : (gachaResult?.label || "lucky")}
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    exit={{ y: -20 }}
+                    className="font-mono uppercase tracking-wider text-[10px]"
+                  >
+                    {isPulling ? "PULLING..." : (gachaResult?.label || "Feeling lucky?")}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+            </button>
+            
+            {gachaResult && !isPulling && (
+              <button 
+                onClick={resetGacha}
+                className="p-2 text-muted hover:text-brand transition-colors rounded-full hover:bg-surface"
+                title="Pull Again"
+              >
+                <RotateCcw className="w-3 h-3" />
+              </button>
+            )}
+          </div>
         </footer>
 
       </main>

@@ -11,7 +11,7 @@ export default function Cursor() {
   const mouseY = useMotionValue(0);
 
   // Smooth out the movement with springs
-  const springConfig = { damping: 20, stiffness: 250, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
@@ -45,26 +45,19 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white/30 pointer-events-none z-[9999] flex items-center justify-center mix-blend-difference"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] flex items-center justify-center mix-blend-difference"
       style={{
         x: smoothX,
         y: smoothY,
         translateX: '-50%',
         translateY: '-50%',
+        backgroundColor: 'white', // Inverts whatever is underneath
       }}
       animate={{
-        scale: isHovered ? 2 : 1,
-        backgroundColor: isHovered ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0)',
+        scale: isHovered ? 2.5 : 1,
         opacity: isVisible ? 1 : 0,
       }}
       transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.8 }}
-    >
-      <motion.div 
-        className="w-1 h-1 bg-white rounded-full"
-        animate={{
-          opacity: isHovered ? 0 : 1
-        }}
-      />
-    </motion.div>
+    />
   );
 }
