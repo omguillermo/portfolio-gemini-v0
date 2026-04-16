@@ -89,32 +89,39 @@ export default function Portfolio() {
             
             {/* Project Card 1 */}
             <Reveal width="100%" delay={0.1} overflow="visible">
-              <Link href="/case-studies/global-checkout" className="group block h-full">
+              <Link href="/case-studies/stoki-ai" className="group block h-full">
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
-                      src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Global Checkout Flow"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                      src="/projects/stockapp-ai/stockapp-cover-stoki-temp.png" 
+                      alt="Stoki AI Assistant"
+                      className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop";
+                      }}
                     />
+                    <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-md p-2 rounded-full border border-border/50 text-brand">
+                      <Lock className="w-4 h-4" />
+                    </div>
                   </div>
                   <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Global Checkout Flow</h3>
+                        <h3 className="text-heading font-bold tracking-tight">Stoki AI Assistant</h3>
                         <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                      <p className="text-body text-muted leading-relaxed">
-                        Re-architecting the payment rendering engine to support 42 localized gateways.
+                      <p className="text-body text-muted leading-relaxed line-clamp-2">
+                        Redesigning an intrusive AI assistant into a non-blocking, persistent workflow tool.
                       </p>
                     </div>
                     <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">+14.2% Conv.</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Lead Designer</span>
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">$871K facilitated</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Founding Designer</span>
                     </div>
                   </div>
                 </motion.div>
@@ -123,69 +130,35 @@ export default function Portfolio() {
 
             {/* Project Card 2 */}
             <Reveal width="100%" delay={0.2} overflow="visible">
-              <Link href="/case-studies/data-engine" className="group block h-full">
+              <Link href="/case-studies/godaddy-shipping" className="group block h-full">
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
-                      src="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Data Visualization Engine"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                      src="/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png" 
+                      alt="Buy Shipping Labels"
+                      className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop";
+                      }}
                     />
                   </div>
                   <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Data Engine</h3>
+                        <h3 className="text-heading font-bold tracking-tight">Buy Shipping Labels</h3>
                         <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                      <p className="text-body text-muted leading-relaxed">
-                        Establishing a robust token system for real-time financial dashboards.
+                      <p className="text-body text-muted leading-relaxed line-clamp-2">
+                        Streamlining label generation within the existing GoDaddy merchant dashboard.
                       </p>
                     </div>
                     <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">WCAG 2.1 AAA</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Architect</span>
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-            </Reveal>
-
-            {/* Project Card 3 - PROTECTED */}
-            <Reveal width="100%" delay={0.3} overflow="visible">
-              <Link href="/case-studies/neo-banking" className="group block h-full">
-                <motion.div 
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
-                >
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
-                    <div className="relative z-10 flex flex-col items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-brand">
-                        <Lock className="w-5 h-5" />
-                      </div>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Private Project</span>
-                    </div>
-                  </div>
-                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <div className="flex items-center gap-3">
-                          <h3 className="text-heading font-bold tracking-tight">Neo-Banking</h3>
-                          <Lock className="w-4 h-4 text-brand" />
-                        </div>
-                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </div>
-                      <p className="text-body text-muted leading-relaxed">
-                        Designing the foundational ledger interface for a high-growth fintech startup.
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">$2B+ Transacted</span>
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">7.5K Labels</span>
                       <span className="text-mono font-mono text-muted uppercase tracking-widest">Senior Designer</span>
                     </div>
                   </div>
@@ -193,34 +166,38 @@ export default function Portfolio() {
               </Link>
             </Reveal>
 
-            {/* Project Card 4 */}
-            <Reveal width="100%" delay={0.4} overflow="visible">
-              <Link href="/case-studies/smart-grid" className="group block h-full">
+            {/* Project Card 3 */}
+            <Reveal width="100%" delay={0.3} overflow="visible">
+              <Link href="/case-studies/questionpro-signup" className="group block h-full">
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 shadow-sm group-hover:shadow-xl group-hover:border-brand/20 transition-all"
+                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
-                      src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Smart Grid Monitor"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                      src="/projects/questionpro-signup/qp-signup-cover-temp.png" 
+                      alt="Sign Up Experience"
+                      className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=2070&auto=format&fit=crop";
+                      }}
                     />
                   </div>
                   <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Smart Grid</h3>
+                        <h3 className="text-heading font-bold tracking-tight">Sign Up Experience</h3>
                         <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
-                      <p className="text-body text-muted leading-relaxed">
-                        Visualizing energy distribution across municipal infrastructure.
+                      <p className="text-body text-muted leading-relaxed line-clamp-2">
+                        Redesigning the registration flow to increase clarity and guide users to the correct product.
                       </p>
                     </div>
                     <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">-18% Waste</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Infrastructure</span>
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest">0.31% Bounce</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Senior Designer</span>
                     </div>
                   </div>
                 </motion.div>

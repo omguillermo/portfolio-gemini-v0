@@ -6,6 +6,7 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 export default function Cursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash on mobile
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -16,6 +17,13 @@ export default function Cursor() {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Check if it's a touch device
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+    };
+    
+    checkMobile();
+
     const moveMouse = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -34,14 +42,18 @@ export default function Cursor() {
       setIsHovered(!!isInteractive);
     };
 
-    window.addEventListener('mousemove', moveMouse);
-    window.addEventListener('mouseover', handleMouseOver);
+    if (!isMobile) {
+      window.addEventListener('mousemove', moveMouse);
+      window.addEventListener('mouseover', handleMouseOver);
+    }
 
     return () => {
       window.removeEventListener('mousemove', moveMouse);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [mouseX, mouseY, isVisible, isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <motion.div

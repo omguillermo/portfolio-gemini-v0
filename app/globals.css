@@ -10,20 +10,20 @@
   --muted: #4A5450;
   --tertiary: #8A9E98;
   --error: #EF4444;
-  --accent: #F59E0B; /* Gold for UR rarity */
+  --accent: #F59E0B;
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
 
-  /* Radius Token - Brandon style */
+  /* Radius Token */
   --radius: 1.5rem; /* 24px */
 
-  /* Typography Scales */
-  --fs-hero: clamp(2.5rem, 7vw, 5.5rem);
-  --fs-display: clamp(2rem, 5vw, 4rem);
-  --fs-heading: clamp(1.125rem, 2.5vw, 1.5rem);
-  --fs-body: 1.125rem;
-  --fs-small: 0.9rem;
-  --fs-mono: 0.75rem;
+  /* Refined Typography Scales - More Professional & Restrained */
+  --fs-hero: clamp(2.25rem, 6vw, 4.5rem);      /* Homepage Main Title */
+  --fs-display: clamp(1.75rem, 5vw, 3.5rem);   /* Case Study Titles */
+  --fs-heading: clamp(1rem, 2vw, 1.25rem);     /* Subheadings/Descriptions */
+  --fs-body: 1rem;                             /* Main Reading Text (16px) */
+  --fs-small: 0.875rem;                        /* Footer/Labels (14px) */
+  --fs-mono: 0.75rem;                          /* Systems Metadata (12px) */
 }
 
 /* Forest Signal - Dark Mode */
@@ -79,7 +79,7 @@
 @utility text-hero {
   font-family: var(--font-display);
   font-size: var(--fs-hero);
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   font-weight: 800;
 }
@@ -95,9 +95,9 @@
 @utility text-heading {
   font-family: var(--font-sans);
   font-size: var(--fs-heading);
-  line-height: 1.4;
+  line-height: 1.5;
   letter-spacing: -0.01em;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @utility text-body {
