@@ -6,7 +6,8 @@ import Reveal from '@/components/Reveal';
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
+    <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
+
       <main className="max-w-4xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
         
         <Reveal width="100%">

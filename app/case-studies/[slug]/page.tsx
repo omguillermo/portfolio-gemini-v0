@@ -104,7 +104,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   }
 
   const content = (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
+    <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
       <nav className="max-w-4xl mx-auto px-6 pt-32 pb-12 md:px-12">
         <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-muted hover:text-foreground transition-colors">
           <ArrowLeft className="w-4 h-4" />

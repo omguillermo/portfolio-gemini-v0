@@ -56,7 +56,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
+    <div className="min-h-screen text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
       {/* Optional: Subtle Brand Glow */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_0%_0%,var(--brand),transparent_50%)] opacity-[0.03] pointer-events-none" />
       
@@ -94,12 +94,17 @@ export default function Portfolio() {
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                   className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
                       src="/projects/stockapp-ai/stockapp-cover-stoki-temp.png" 
                       alt="Stoki AI Assistant"
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      style={{ 
+                        imageRendering: '-webkit-optimize-contrast',
+                        backfaceVisibility: 'hidden'
+                      }}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop";
@@ -135,12 +140,17 @@ export default function Portfolio() {
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                   className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
                       src="/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png" 
                       alt="Buy Shipping Labels"
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      style={{ 
+                        imageRendering: '-webkit-optimize-contrast',
+                        backfaceVisibility: 'hidden'
+                      }}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop";
@@ -173,12 +183,17 @@ export default function Portfolio() {
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                   className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
                       src="/projects/questionpro-signup/qp-signup-cover-temp.png" 
                       alt="Sign Up Experience"
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                      style={{ 
+                        imageRendering: '-webkit-optimize-contrast',
+                        backfaceVisibility: 'hidden'
+                      }}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=2070&auto=format&fit=crop";
