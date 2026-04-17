@@ -232,9 +232,9 @@ export default function Portfolio() {
               </h2>
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
+                  <a href="/Omar Guillermo Resume 2026 - Custom.docx" download className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
                     <span className="text-muted group-hover:text-brand transition-colors">↗</span>
-                    Download Resume.pdf
+                    Download Resume
                   </a>
                 </li>
                 <li>
@@ -244,7 +244,7 @@ export default function Portfolio() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
+                  <a href="https://www.linkedin.com/in/omar-guillermo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
                     <span className="text-muted group-hover:text-brand transition-colors">↗</span>
                     LinkedIn
                   </a>
