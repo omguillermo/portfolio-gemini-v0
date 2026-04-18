@@ -253,7 +253,7 @@ export default function Portfolio() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:hello@example.com" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
+                  <a href="mailto:omguillermo90@gmail.com" className="flex items-center gap-2 text-body text-foreground/80 hover:text-foreground transition-colors w-fit group">
                     <span className="text-muted group-hover:text-brand transition-colors">↗</span>
                     Email Contact
                   </a>
