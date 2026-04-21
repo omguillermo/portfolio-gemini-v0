@@ -2,13 +2,19 @@
 
 import React, { use } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2, FlaskConical, Trophy } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import ProjectGate from '@/components/ProjectGate';
 
 interface VisualHighlight {
   image_url: string;
   caption: string;
+}
+
+interface Iteration {
+  approach: string;
+  why_it_failed: string;
+  image_url?: string;
 }
 
 interface ProjectData {
@@ -19,9 +25,11 @@ interface ProjectData {
   impact: string;
   constraint: string;
   problem: string;
+  iterations: Iteration[];
   system_solution: string;
   edge_cases_handled: string[];
   visual_highlights: VisualHighlight[];
+  retrospective: string;
   prototype_link?: string;
   password?: string;
 }
@@ -35,6 +43,18 @@ const projectsData: Record<string, ProjectData> = {
     impact: "Increased sales team satisfaction and facilitated over $871K in B2B orders by 900+ active users.",
     constraint: "The AI assistant needed to remain highly visible and accessible from any page, while allowing non-blocking interaction so users could view underlying content.",
     problem: "The initial AI chat interface blocked users from interacting with the underlying page content. During beta testing, users found the widget highly intrusive because it obscured critical inventory items at the bottom of the screen, rendering the last items completely inaccessible.",
+    iterations: [
+      {
+        approach: "Standard Side-Panel Sidebar",
+        why_it_failed: "Reducing the main content width to accommodate a persistent sidebar made the complex data tables unreadable. It solved the blocking issue but created a massive data-density failure.",
+        image_url: "" 
+      },
+      {
+        approach: "Floating Action Button (FAB) with Bottom Sheet",
+        why_it_failed: "The FAB covered the very inventory items users needed to reference while chatting. The bottom sheet also lacked the necessary width to display AI-generated data comparisons effectively.",
+        image_url: ""
+      }
+    ],
     system_solution: "I redesigned the entry point into a subtle, non-blocking folder tab anchored at the bottom center of the screen. When activated, the chat opens as a draggable floating window with dynamic width (640px to 1080px) that properly displays complex agent responses, like data tables, without taking over the screen.",
     edge_cases_handled: [
       "Designed Human-in-the-Loop safeguards: when executing natural language bulk inventory updates, the system presents a 'before and after' diff proposal that the user must explicitly confirm or reject.",
@@ -46,6 +66,7 @@ const projectsData: Record<string, ProjectData> = {
          "caption": "The new persistent folder tab with hover state showing quick actions."
       }
     ],
+    retrospective: "This project taught me that for AI-driven tools, 'visibility' doesn't have to mean 'size.' By making the UI smaller but more responsive to context, we increased engagement without frustrating the user's primary workflow.",
     password: 'DESIGN_SYSTEMS'
   },
   'godaddy-shipping': {
@@ -56,6 +77,12 @@ const projectsData: Record<string, ProjectData> = {
     impact: "7,521 labels purchased by 6,722 active merchants in the first 3 months.",
     constraint: "Must keep users inside the GoDaddy ecosystem without external redirects.",
     problem: "Merchants were wasting time searching for rates externally. A previous integration (Shippo) failed with only an 11.3% adoption rate because of trust issues and complexity.",
+    iterations: [
+      {
+        approach: "Single-page Linear Wizard",
+        why_it_failed: "The vertical scroll became unmanageable when multiple packages were involved. Users lost context of their order total while configuring dimensions.",
+      }
+    ],
     system_solution: "Engineered a seamless multi-step integration using the ShipEngine API. I streamlined the complex setup process to avoid information overload and implemented a 2-column layout to handle extreme data density during checkout.",
     edge_cases_handled: [
       "Designed cooldown logic for the promo modal: if a user clicks 'Maybe Later', the prompt hides for a set period to prevent annoyance on every order.",
@@ -67,6 +94,7 @@ const projectsData: Record<string, ProjectData> = {
          "caption": "Order Details Page with the new Buy Shipping Label entry point."
       }
     ],
+    retrospective: "The success of this integration was driven by trust. By exposing live API validation states early, we reduced merchant anxiety and significantly increased the 'Buy' conversion rate.",
     prototype_link: "https://www.figma.com/proto/jS9lpzXQorkkrfDoTYYFeO/Create-a-Shipping-Label"
   },
   'questionpro-signup': {
@@ -77,6 +105,12 @@ const projectsData: Record<string, ProjectData> = {
     impact: "Reduced bounce rate from 1.51% to 0.31% and generated significantly better-qualified sales leads.",
     constraint: "Had to accommodate multiple distinct software products within a single entry point without overwhelming the user.",
     problem: "The original Sign Up process was a long, bland form that didn’t fit on a single screen. It featured an outdated UI, an unnecessary captcha, and the form looked identical regardless of which specific QuestionPro product the user was signing up for.",
+    iterations: [
+      {
+        approach: "3-Step Personalized Flow",
+        why_it_failed: "A/B testing showed that asking users 'What do you want to build?' upfront actually increased friction. Users wanted to see the form immediately to feel 'safe' that the process wouldn't take long.",
+      }
+    ],
     system_solution: "After an initial 3-step A/B test failed, I pivoted to a strategy of extreme clarity over personalization. I designed a single-screen, 2-column layout that clearly separated the informative content from the actual form, highlighting exactly what the user was signing up for.",
     edge_cases_handled: [
       "Designed localized variations of the 2-column layout to seamlessly accommodate different regional requirements and copy lengths.",
@@ -87,7 +121,8 @@ const projectsData: Record<string, ProjectData> = {
          "image_url": "/projects/questionpro-signup/qp-signup-cover-temp.png",
          "caption": "The new single-screen, 2-column layout providing extreme clarity on the product."
       }
-    ]
+    ],
+    retrospective: "This project proved that 'Personalization' isn't always the answer. Sometimes, raw data clarity and a reduced time-to-value are more powerful drivers for conversion than a fancy tailored onboarding."
   }
 };
 
@@ -124,19 +159,19 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border">
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2">Role</p>
+                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Role</p>
                 <p className="text-small font-medium tracking-tight">{project.role}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2">Timeline</p>
+                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Timeline</p>
                 <p className="text-small font-medium tracking-tight">{project.timeline}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2">Impact</p>
-                <p className="text-small font-medium tracking-tight">{project.impact}</p>
+                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Impact</p>
+                <p className="text-small font-medium tracking-tight text-brand font-bold">{project.impact}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2">Constraint</p>
+                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Constraint</p>
                 <p className="text-small font-medium tracking-tight">{project.constraint}</p>
               </div>
             </div>
@@ -144,10 +179,10 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         </Reveal>
 
         <article className="space-y-32">
-          {/* Problem Section */}
+          {/* 1. Problem Section */}
           <Reveal width="100%">
             <section>
-              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
                 <span className="w-8 h-px bg-brand"></span>
                 The System Failure
               </h2>
@@ -157,10 +192,38 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
             </section>
           </Reveal>
 
-          {/* Solution Section */}
+          {/* 2. Design Iteration Section (FAANG "Messy Middle") */}
+          <Reveal width="100%">
+            <section className="space-y-16">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
+                <FlaskConical className="w-4 h-4 text-brand" />
+                Design Iteration & Trade-offs
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {project.iterations.map((iteration, index) => (
+                  <div key={index} className="space-y-6">
+                    <div className="space-y-2">
+                      <p className="text-mono text-brand font-mono text-[10px] uppercase">Approach [{index + 1}]</p>
+                      <h3 className="text-heading font-bold">{iteration.approach}</h3>
+                    </div>
+                    <p className="text-body text-muted leading-relaxed">
+                      {iteration.why_it_failed}
+                    </p>
+                    {iteration.image_url && (
+                      <div className="w-full aspect-video bg-surface border border-border rounded-xl overflow-hidden grayscale opacity-50">
+                         <img src={iteration.image_url} alt={iteration.approach} className="w-full h-full object-cover" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          </Reveal>
+
+          {/* 3. Solution Section */}
           <Reveal width="100%">
             <section>
-              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
                 <span className="w-8 h-px bg-brand"></span>
                 The Component Intervention
               </h2>
@@ -193,10 +256,10 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
             </section>
           </Reveal>
 
-          {/* Edge Cases Section */}
+          {/* 4. Edge Cases Section */}
           <Reveal width="100%">
             <section className="bg-surface border border-border rounded-2xl p-8 md:p-12">
-              <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4">
+              <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
                 <CheckCircle2 className="w-4 h-4" />
                 Edge-Cases & Systems Logic
               </h2>
@@ -213,10 +276,23 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
             </section>
           </Reveal>
 
+          {/* 5. Retrospective Section */}
+          <Reveal width="100%">
+            <section className="border-t border-border pt-16">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
+                <Trophy className="w-4 h-4 text-brand" />
+                Results & Retrospective
+              </h2>
+              <p className="text-body text-foreground/90 leading-relaxed max-w-2xl italic">
+                &quot;{project.retrospective}&quot;
+              </p>
+            </section>
+          </Reveal>
+
           {/* Prototype Link */}
           {project.prototype_link && (
             <Reveal width="100%">
-              <section className="flex flex-col items-center py-16 border-t border-border">
+              <section className="flex flex-col items-center py-16">
                 <h3 className="text-heading font-bold mb-8">Ready to explore the logic?</h3>
                 <a 
                   href={project.prototype_link}
@@ -238,7 +314,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 ← INDEX
               </Link>
               <div className="flex gap-8">
-                <span className="text-mono text-tertiary uppercase">Next Project: Coming Soon</span>
+                <span className="text-mono text-tertiary uppercase text-[10px]">Next Project: Coming Soon</span>
               </div>
             </footer>
           </Reveal>

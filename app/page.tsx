@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp } from 'lucide-react';
+import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp, X, Sparkles, Coins } from 'lucide-react';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 
@@ -16,10 +16,12 @@ interface GachaItem {
 export default function Portfolio() {
   const [gachaResult, setGachaResult] = useState<GachaItem | null>(null);
   const [isPulling, setIsPulling] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGachaClick = () => {
-    if (isPulling || gachaResult) return;
+    if (isPulling) return;
     setIsPulling(true);
+    setGachaResult(null); // Clear previous result to show "Pulling" state
     
     const results: GachaItem[] = [
       { label: "R: RECTANGLE ENTHUSIAST", rarity: 'R' },
@@ -34,24 +36,22 @@ export default function Portfolio() {
       const randomResult = results[Math.floor(Math.random() * results.length)];
       setGachaResult(randomResult);
       setIsPulling(false);
-    }, 1000);
+    }, 1500);
   };
 
   const resetGacha = (e: React.MouseEvent) => {
+    // Reset gacha state to allow new pulls
     e.stopPropagation();
     setGachaResult(null);
   };
 
-  const getGachaIcon = () => {
-    if (isPulling) return null;
-    if (!gachaResult) return <Clover className="w-3 h-3 text-brand" />;
-    
-    switch (gachaResult.rarity) {
-      case 'UR': return <Trophy className="w-3 h-3 text-accent" />;
+  const getGachaIcon = (rarity?: GachaRarity) => {
+    switch (rarity) {
+      case 'UR': return <Trophy className="w-12 h-12 text-accent drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" />;
       case 'SSR':
-      case 'SR': return <Star className="w-3 h-3 text-brand" />;
-      case 'R': return <ThumbsUp className="w-3 h-3 text-muted" />;
-      default: return <Clover className="w-3 h-3" />;
+      case 'SR': return <Star className="w-12 h-12 text-brand drop-shadow-[0_0_10px_rgba(26,154,94,0.3)]" />;
+      case 'R': return <ThumbsUp className="w-12 h-12 text-muted" />;
+      default: return <Clover className="w-12 h-12 text-brand" />;
     }
   };
 
@@ -75,7 +75,6 @@ export default function Portfolio() {
             </p>
           </Reveal>
         </header>
-
 
         {/* Feature-Based Case Studies */}
         <section className="mb-32">
@@ -275,60 +274,139 @@ export default function Portfolio() {
             Designed in Figma, built with Next.js & Gemini.
           </p>
           
-          {/* Gacha Easter Egg */}
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={handleGachaClick}
-              disabled={isPulling || !!gachaResult}
-              className={`flex items-center gap-3 text-small text-muted hover:text-foreground transition-colors focus:outline-none group relative h-8 px-4 border border-border rounded-full transition-all ${!gachaResult && !isPulling ? 'hover:border-brand/50' : 'cursor-default'}`}
-              title={gachaResult ? "Current Title" : "Feeling lucky?"}
-            >
-              <div className="relative">
-                <AnimatePresence mode="wait">
-                  {isPulling ? (
-                    <motion.div 
-                      key="pulling"
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: [1.5, 1], opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-brand/40 rounded-full blur-md"
-                    />
-                  ) : null}
-                </AnimatePresence>
-                <motion.div 
-                  animate={isPulling ? { rotate: 360, scale: [1, 1.2, 1] } : {}}
-                  transition={{ repeat: isPulling ? Infinity : 0, duration: 0.5 }}
-                  className={`flex items-center justify-center ${isPulling ? 'w-2 h-2 rounded-full border border-brand bg-brand' : ''}`}
-                >
-                  {!isPulling && getGachaIcon()}
-                </motion.div>
-              </div>
-              <div className="flex flex-col items-start overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.span 
-                    key={isPulling ? "pulling" : (gachaResult?.label || "lucky")}
-                    initial={{ y: 20 }}
-                    animate={{ y: 0 }}
-                    exit={{ y: -20 }}
-                    className="font-mono uppercase tracking-wider text-[10px]"
-                  >
-                    {isPulling ? "PULLING..." : (gachaResult?.label || "Feeling lucky?")}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
-            </button>
-            
-            {gachaResult && !isPulling && (
-              <button 
-                onClick={resetGacha}
-                className="p-2 text-muted hover:text-brand transition-colors rounded-full hover:bg-surface"
-                title="Pull Again"
-              >
-                <RotateCcw className="w-3 h-3" />
-              </button>
-            )}
-          </div>
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-3 text-small text-muted hover:text-foreground transition-colors focus:outline-none group relative h-8 px-4 border border-border rounded-full hover:border-brand/50 transition-all"
+            title="Feeling lucky?"
+          >
+            <Clover className="w-3 h-3 text-brand" />
+            <span className="font-mono uppercase tracking-wider text-[10px]">Feeling lucky?</span>
+          </button>
         </footer>
+
+        {/* Gacha Modal Overlay */}
+        <AnimatePresence>
+          {isModalOpen && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-xl flex items-center justify-center p-6"
+              onClick={() => !isPulling && setIsModalOpen(false)}
+            >
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                className="bg-surface border border-border rounded-3xl p-8 md:p-12 max-w-lg w-full shadow-2xl relative overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-6 right-6 text-muted hover:text-foreground transition-colors"
+                  disabled={isPulling}
+                >
+                  <X className="w-6 h-6" />
+                </button>
+
+                <div className="flex flex-col items-center text-center space-y-8">
+                  {/* Visual Result Placeholder */}
+                  <div className="w-48 h-48 rounded-2xl bg-background border border-border/50 flex items-center justify-center relative group">
+                    <AnimatePresence mode="wait">
+                      {isPulling ? (
+                        <motion.div 
+                          key="pulling"
+                          initial={{ rotate: 0 }}
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                          className="text-brand"
+                        >
+                          <Sparkles className="w-12 h-12" />
+                        </motion.div>
+                      ) : (
+                        <motion.div 
+                          key="result"
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ type: "spring", damping: 15 }}
+                        >
+                          {getGachaIcon(gachaResult?.rarity)}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Result Text */}
+                  <div className="space-y-2 h-16">
+                    <AnimatePresence mode="wait">
+                      {gachaResult ? (
+                        <motion.div
+                          key="result-text"
+                          initial={{ y: 10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                        >
+                          <p className={`text-mono font-mono text-[10px] uppercase tracking-[0.2em] mb-1 ${
+                            gachaResult.rarity === 'UR' ? 'text-accent' : 'text-brand'
+                          }`}>
+                            {gachaResult.rarity} Rarity Acquired
+                          </p>
+                          <h2 className="text-heading font-bold tracking-tight">
+                            {gachaResult.label}
+                          </h2>
+                        </motion.div>
+                      ) : (
+                        <p className="text-muted font-light italic">
+                          {isPulling ? "Analyzing system nodes..." : "Test your luck in the design engine."}
+                        </p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="grid grid-cols-2 gap-4 w-full pt-4">
+                    <button 
+                      onClick={handleGachaClick}
+                      disabled={isPulling || !!gachaResult}
+                      className="flex flex-col items-center gap-1 bg-brand text-white py-4 rounded-2xl hover:bg-brand/90 transition-all shadow-lg shadow-brand/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span className="font-bold">1x Pull</span>
+                      <span className="text-[10px] opacity-80 uppercase tracking-widest font-mono">
+                        {gachaResult ? "$4.99" : "Free"}
+                      </span>
+                    </button>
+                    
+                    <div className="relative group">
+                      <button 
+                        disabled
+                        className="flex flex-col items-center gap-1 bg-surface border border-border w-full py-4 rounded-2xl cursor-not-allowed opacity-60"
+                      >
+                        <span className="font-bold text-muted">10x Pull</span>
+                        <div className="flex items-center gap-1 text-[10px] text-muted font-mono uppercase tracking-widest">
+                          <Coins className="w-3 h-3" />
+                          $49.99
+                        </div>
+                      </button>
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-foreground text-background text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-mono">
+                        JUST KIDDING!
+                      </div>
+                    </div>
+                  </div>
+
+                  {gachaResult && !isPulling && (
+                    <button 
+                      onClick={resetGacha}
+                      className="text-muted hover:text-foreground text-[10px] font-mono uppercase tracking-widest flex items-center gap-2 transition-colors pt-4"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      Clear Result
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </main>
     </div>
