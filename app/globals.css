@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  /* Forest Signal - Light Mode */
-  --background: #F2F7F4;
+  /* Forest Signal - Light Mode - Desaturated */
+  --background: #F7F9F8;
   --foreground: #1A1F1C;
   --brand: #1A9A5E;
   --surface: #ffffff;

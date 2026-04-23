@@ -1,8 +1,9 @@
 'use client';
 
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, FlaskConical, Trophy } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2, FlaskConical, Trophy, X, Maximize2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/Reveal';
 import ProjectGate from '@/components/ProjectGate';
 
@@ -129,6 +130,7 @@ const projectsData: Record<string, ProjectData> = {
 export default function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const project = projectsData[slug as keyof typeof projectsData];
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   if (!project) {
     return (
@@ -178,12 +180,11 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           </header>
         </Reveal>
 
-        <article className="space-y-32">
+        <article className="space-y-24">
           {/* 1. Problem Section */}
           <Reveal width="100%">
             <section>
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                <span className="w-8 h-px bg-brand"></span>
                 The System Failure
               </h2>
               <p className="text-body text-foreground/90 leading-relaxed max-w-2xl">
@@ -196,12 +197,11 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="space-y-16">
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                <FlaskConical className="w-4 h-4 text-brand" />
                 Design Iteration & Trade-offs
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="space-y-24">
                 {project.iterations.map((iteration, index) => (
-                  <div key={index} className="space-y-6">
+                  <div key={index} className="space-y-8 max-w-2xl">
                     <div className="space-y-2">
                       <p className="text-mono text-brand font-mono text-[10px] uppercase">Approach [{index + 1}]</p>
                       <h3 className="text-heading font-bold">{iteration.approach}</h3>
@@ -210,8 +210,17 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                       {iteration.why_it_failed}
                     </p>
                     {iteration.image_url && (
-                      <div className="w-full aspect-video bg-surface border border-border rounded-xl overflow-hidden grayscale opacity-50">
+                      <div 
+                        className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden cursor-zoom-in relative group"
+                        onClick={() => setActiveImage(iteration.image_url!)}
+                      >
                          <img src={iteration.image_url} alt={iteration.approach} className="w-full h-full object-cover" />
+                         <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+                              <Maximize2 className="w-4 h-4" />
+                              Click to Expand
+                            </div>
+                         </div>
                       </div>
                     )}
                   </div>
@@ -224,7 +233,6 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section>
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                <span className="w-8 h-px bg-brand"></span>
                 The Component Intervention
               </h2>
               <p className="text-body text-foreground/90 leading-relaxed max-w-2xl mb-16">
@@ -235,19 +243,28 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               <div className="space-y-16">
                 {project.visual_highlights.map((highlight, index) => (
                   <div key={index} className="space-y-4">
-                    <div className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden shadow-sm relative group">
+                    <div 
+                      className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden relative cursor-zoom-in group"
+                      onClick={() => setActiveImage(highlight.image_url)}
+                    >
                       <img 
                         src={highlight.image_url} 
                         alt={highlight.caption}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2000&auto=format&fit=crop";
                           target.className = "w-full h-full object-cover opacity-20 grayscale";
                         }}
                       />
+                      <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                         <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+                            <Maximize2 className="w-4 h-4" />
+                            Click to Expand
+                         </div>
+                      </div>
                     </div>
-                    <p className="text-small text-muted italic pl-4 border-l border-border/50">
+                    <p className="text-small text-muted italic">
                       {highlight.caption}
                     </p>
                   </div>
@@ -260,7 +277,6 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="bg-surface border border-border rounded-2xl p-8 md:p-12">
               <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                <CheckCircle2 className="w-4 h-4" />
                 Edge-Cases & Systems Logic
               </h2>
               <ul className="space-y-6">
@@ -280,7 +296,6 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="border-t border-border pt-16">
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                <Trophy className="w-4 h-4 text-brand" />
                 Results & Retrospective
               </h2>
               <p className="text-body text-foreground/90 leading-relaxed max-w-2xl italic">
@@ -320,6 +335,38 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           </Reveal>
         </article>
       </main>
+
+      {/* High-Res Lightbox Modal */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] bg-background/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+            onClick={() => setActiveImage(null)}
+          >
+            <button 
+              className="absolute top-8 right-8 text-foreground/60 hover:text-foreground transition-colors"
+              onClick={() => setActiveImage(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="relative max-w-7xl w-full h-full flex items-center justify-center"
+            >
+              <img 
+                src={activeImage} 
+                alt="High resolution project preview" 
+                className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 

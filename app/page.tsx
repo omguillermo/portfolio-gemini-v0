@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp, X, Sparkles, Coins } from 'lucide-react';
+import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp, X, Sparkles, Coins, Egg } from 'lucide-react';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 
@@ -19,9 +19,8 @@ export default function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGachaClick = () => {
-    if (isPulling) return;
+    if (isPulling || gachaResult) return;
     setIsPulling(true);
-    setGachaResult(null); // Clear previous result to show "Pulling" state
     
     const results: GachaItem[] = [
       { label: "R: RECTANGLE ENTHUSIAST", rarity: 'R' },
@@ -64,14 +63,12 @@ export default function Portfolio() {
         {/* Hero Section */}
         <header className="mb-32">
           <Reveal width="100%">
-            <h1 className="text-hero font-bold tracking-tighter mb-8 leading-tight">
+            <h1 className="text-hero font-bold mb-8 leading-tight">
               Senior Product Designer <br className="hidden md:block" />
               & Design System Builder.
             </h1>
             <p className="text-heading text-muted max-w-3xl leading-relaxed font-light tracking-wide">
-              Translating complex B2B and eCommerce workflows into scalable, rock-solid interfaces. 
-              Focused on component-level problem solving, edge-cases, and AI-powered workflows. 
-              Always seeking the useful among the new.
+              I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
             </p>
           </Reveal>
         </header>
@@ -277,10 +274,10 @@ export default function Portfolio() {
           <button 
             onClick={() => setIsModalOpen(true)}
             className="flex items-center gap-3 text-small text-muted hover:text-foreground transition-colors focus:outline-none group relative h-8 px-4 border border-border rounded-full hover:border-brand/50 transition-all"
-            title="Feeling lucky?"
+            title="Oh, an easter egg!"
           >
-            <Clover className="w-3 h-3 text-brand" />
-            <span className="font-mono uppercase tracking-wider text-[10px]">Feeling lucky?</span>
+            <Egg className="w-3 h-3 text-brand" />
+            <span className="font-mono uppercase tracking-wider text-[10px]">Oh, an easter egg!</span>
           </button>
         </footer>
 
@@ -310,9 +307,17 @@ export default function Portfolio() {
                   <X className="w-6 h-6" />
                 </button>
 
-                <div className="flex flex-col items-center text-center space-y-8">
+                <div className="flex flex-col items-center text-center space-y-6">
+                  {/* Intro Story */}
+                  <div className="space-y-2">
+                    <h2 className="text-heading font-bold tracking-tight">Welcome to The Design Gacha!</h2>
+                    <p className="text-small text-muted leading-relaxed max-w-sm mx-auto">
+                      Have you ever played a gacha game? I sometimes do. The unknown is part of the thrill. Ready to see what kind of designer you are?
+                    </p>
+                  </div>
+
                   {/* Visual Result Placeholder */}
-                  <div className="w-48 h-48 rounded-2xl bg-background border border-border/50 flex items-center justify-center relative group">
+                  <div className="w-40 h-40 rounded-2xl bg-background border border-border/50 flex items-center justify-center relative group">
                     <AnimatePresence mode="wait">
                       {isPulling ? (
                         <motion.div 
@@ -322,7 +327,7 @@ export default function Portfolio() {
                           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
                           className="text-brand"
                         >
-                          <Sparkles className="w-12 h-12" />
+                          <Sparkles className="w-10 h-10" />
                         </motion.div>
                       ) : (
                         <motion.div 
@@ -338,9 +343,9 @@ export default function Portfolio() {
                   </div>
 
                   {/* Result Text */}
-                  <div className="space-y-2 h-16">
+                  <div className="space-y-2">
                     <AnimatePresence mode="wait">
-                      {gachaResult ? (
+                      {gachaResult && (
                         <motion.div
                           key="result-text"
                           initial={{ y: 10, opacity: 0 }}
@@ -355,40 +360,44 @@ export default function Portfolio() {
                             {gachaResult.label}
                           </h2>
                         </motion.div>
-                      ) : (
-                        <p className="text-muted font-light italic">
-                          {isPulling ? "Analyzing system nodes..." : "Test your luck in the design engine."}
-                        </p>
                       )}
                     </AnimatePresence>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="grid grid-cols-2 gap-4 w-full pt-4">
-                    <button 
-                      onClick={handleGachaClick}
-                      disabled={isPulling || !!gachaResult}
-                      className="flex flex-col items-center gap-1 bg-brand text-white py-4 rounded-2xl hover:bg-brand/90 transition-all shadow-lg shadow-brand/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <span className="font-bold">1x Pull</span>
-                      <span className="text-[10px] opacity-80 uppercase tracking-widest font-mono">
-                        {gachaResult ? "$4.99" : "Free"}
-                      </span>
-                    </button>
+                  <div className="grid grid-cols-2 gap-4 w-full">
+                    <div className="relative group">
+                      <button 
+                        onClick={handleGachaClick}
+                        disabled={isPulling}
+                        className={`flex flex-col items-center gap-1 bg-brand text-white w-full py-3 rounded-2xl hover:bg-brand/90 transition-all shadow-lg shadow-brand/20 disabled:opacity-50 ${
+                          gachaResult ? 'cursor-not-allowed' : 'cursor-pointer'
+                        }`}
+                      >
+                        <span className="font-bold text-small">1x Pull</span>
+                        <span className="text-[11px] opacity-80 uppercase tracking-widest font-mono">
+                          {gachaResult ? "$4.99" : "Free"}
+                        </span>
+                      </button>
+                      {gachaResult && !isPulling && (
+                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-foreground text-background text-[10px] px-3 py-1.5 rounded-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-mono text-center leading-tight">
+                          Just kidding, this portfolio <br /> doesn&apos;t have micro-transactions.
+                        </div>
+                      )}
+                    </div>
                     
                     <div className="relative group">
                       <button 
                         disabled
-                        className="flex flex-col items-center gap-1 bg-surface border border-border w-full py-4 rounded-2xl cursor-not-allowed opacity-60"
+                        className="flex flex-col items-center gap-1 bg-surface border border-border w-full py-3 rounded-2xl cursor-not-allowed opacity-60"
                       >
-                        <span className="font-bold text-muted">10x Pull</span>
-                        <div className="flex items-center gap-1 text-[10px] text-muted font-mono uppercase tracking-widest">
-                          <Coins className="w-3 h-3" />
+                        <span className="font-bold text-muted text-small">10x Pull</span>
+                        <div className="text-[11px] text-muted font-mono uppercase tracking-widest">
                           $49.99
                         </div>
                       </button>
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-foreground text-background text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-mono">
-                        JUST KIDDING!
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-foreground text-background text-[10px] px-3 py-1.5 rounded-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-mono text-center leading-tight">
+                        Just kidding, this portfolio <br /> doesn&apos;t have micro-transactions.
                       </div>
                     </div>
                   </div>
@@ -396,7 +405,7 @@ export default function Portfolio() {
                   {gachaResult && !isPulling && (
                     <button 
                       onClick={resetGacha}
-                      className="text-muted hover:text-foreground text-[10px] font-mono uppercase tracking-widest flex items-center gap-2 transition-colors pt-4"
+                      className="text-muted hover:text-foreground text-[10px] font-mono uppercase tracking-widest flex items-center gap-2 transition-colors"
                     >
                       <RotateCcw className="w-3 h-3" />
                       Clear Result
