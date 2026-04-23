@@ -27,7 +27,7 @@ export default function Navbar() {
             href="/" 
             className="flex items-center gap-3 pointer-events-auto group"
           >
-            <div className="w-8 h-8 text-foreground group-hover:scale-110 transition-transform duration-300">
+            <div className="w-10 h-10 text-foreground transition-colors duration-300">
               <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                 <path 
                   d="M120 220C180 220 220 180 220 120C220 116.601 219.872 113.267 219.619 110H120L174.885 164.885C166.615 194.962 148.321 210 120 210C80 210 60 180 60 120C60 60 80 30 120 30C155.277 30 174.998 53.3333 179.163 100H218.423C210.472 51.276 173.055 20 120 20C60 20 20 60 20 120C20 180 60 220 120 220Z" 

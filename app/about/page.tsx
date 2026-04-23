@@ -1,10 +1,14 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/Reveal';
+import TooltipFollower from '@/components/TooltipFollower';
 
 export default function About() {
+  const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
       <main className="max-w-4xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
@@ -19,13 +23,60 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 mt-12">
           <Reveal width="100%">
             <div className="space-y-8">
-              <div className="aspect-square bg-surface border border-border grayscale hover:grayscale-0 transition-all duration-500 overflow-hidden rounded-2xl shadow-sm">
-                <img 
+              {/* Photo Easter Egg Container */}
+              <div 
+                ref={containerRef}
+                className="relative aspect-square bg-surface border border-border rounded-2xl shadow-sm overflow-hidden group cursor-none"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {/* Professional Photo */}
+                <motion.img 
                   src="/about/oguillermo-edit-about.jpg" 
-                  alt="Omar Guillermo"
-                  className="w-full h-full object-cover"
+                  alt="Omar Guillermo - Professional"
+                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                  animate={{ 
+                    opacity: isHovered ? 0 : 1,
+                    scale: isHovered ? 1.05 : 1,
+                  }}
+                  transition={{ duration: 0.4 }}
+                />
+
+                {/* Metalhead Easter Egg Photo with Periodic Headbang Shake */}
+                <motion.img 
+                  src="/about/oguillermo-metalhead.png" 
+                  alt="Omar Guillermo - Nightwish Concert"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: isHovered ? 1 : 0,
+                    // 0.5s rhythm: quick jitter, brief pause
+                    x: isHovered ? [0, -1.5, 1.5, -1.5, 0, 0] : 0,
+                    y: isHovered ? [0, 1.5, -1.5, 1.5, 0, 0] : 0,
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.4 },
+                    x: { 
+                      repeat: Infinity, 
+                      duration: 0.5, 
+                      times: [0, 0.1, 0.2, 0.3, 0.4, 1] 
+                    },
+                    y: { 
+                      repeat: Infinity, 
+                      duration: 0.5, 
+                      times: [0, 0.1, 0.2, 0.3, 0.4, 1] 
+                    }
+                  }}
+                />
+
+                {/* Extracted Design System Component */}
+                <TooltipFollower 
+                  text="🤘 @ 2022 Nightwish Concert"
+                  isVisible={isHovered}
+                  containerRef={containerRef}
                 />
               </div>
+
               <div className="space-y-2">
                 <p className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Location</p>
                 <p className="text-body font-medium">Mérida, México 🇲🇽</p>
@@ -39,21 +90,24 @@ export default function About() {
 
           <Reveal width="100%" delay={0.1}>
             <div className="space-y-12">
-              <section className="space-y-6 text-heading text-muted leading-relaxed font-light">
+              <section className="space-y-6 text-body text-muted leading-relaxed font-light">
                 <p>
                   Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
                 </p>
                 <p>
-                  I started my career with a strong foundation in traditional graphic design and advertising before discovering my true passion: UI/UX and product design. Over the years, I&apos;ve worked across very different environments—from navigating the complexities of large-scale enterprise platforms to building AI-driven products from the ground up at early-stage startups.
+                  I started my career with a strong foundation in traditional graphic design and advertising before discovering my true passion: UI/UX and product design. 
                 </p>
                 <p>
-                  My professional philosophy is &quot;Always Be Learning.&quot; I love taking projects all the way from a rough idea to a polished, finished product. I enjoy sweating the edge cases, working closely with developers, and playing around with new tech (like AI workflows) to improve my design process.
+                  Over the years, I&apos;ve worked across very different environments. From local creative studios, to in-house corporate design teams, then navigating the complexities of large scale enterprise platforms at global companies, and more recently at early-stage startups.
+                </p>
+                <p>
+                  My professional philosophy is &quot;Always Be Learning.&quot; I enjoy sweating the edge cases, working closely with developers, and playing around with new tech (like AI workflows) to improve my design process.
                 </p>
                 <p>
                   And while I love the technical side of product design, my graphic design roots always keep me honest, ensuring I never lose sight of color harmony and pixel-perfect precision.
                 </p>
                 <p>
-                  Outside of work, I&apos;m based in beautiful Mérida, México. You can usually find me drinking coffee, listening to heavy metal, or watching anime (Plus Ultra!).
+                  Outside of work, I&apos;m based in sunny Mérida, México. You can usually find me drinking coffee, listening to heavy metal, or watching anime (Go Beyond, Plus Ultra!).
                 </p>
                 <p className="pt-4 font-medium text-foreground">
                   Feel free to reach out at any time, even just for a quick chat. Looking forward to meeting you!
