@@ -1,8 +1,8 @@
 <svg width="32" height="32" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    path { fill: #1A9A5E; }
+    path { fill: #000000; }
     @media (prefers-color-scheme: dark) {
-      path { fill: #1A9A5E; }
+      path { fill: #FFFFFF; }
     }
   </style>
   <path d="M120 220C180 220 220 180 220 120C220 116.601 219.872 113.267 219.619 110H120L174.885 164.885C166.615 194.962 148.321 210 120 210C80 210 60 180 60 120C60 60 80 30 120 30C155.277 30 174.998 53.3333 179.163 100H218.423C210.472 51.276 173.055 20 120 20C60 20 20 60 20 120C20 180 60 220 120 220Z" />
