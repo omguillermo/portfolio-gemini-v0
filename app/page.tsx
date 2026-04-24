@@ -61,7 +61,7 @@ export default function Portfolio() {
       
       <main className="max-w-6xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
         {/* Hero Section */}
-        <header className="mb-32">
+        <header className="mb-24">
           <Reveal width="100%">
             <h1 className="text-hero font-bold mb-8 leading-tight">
               Senior Product Designer <br className="hidden md:block" />
@@ -74,8 +74,8 @@ export default function Portfolio() {
         </header>
 
         {/* Feature-Based Case Studies */}
-        <section className="mb-32">
-          <Reveal width="100%">
+        <section className="mb-24">
+          <Reveal width="100%" overflow="visible">
             <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-12 border-b border-border pb-4">
               01 / Highlighted Projects
             </h2>
@@ -89,7 +89,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                   style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
@@ -135,7 +135,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                   style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
@@ -178,7 +178,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-4 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
+                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 transition-all shadow-none"
                   style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
@@ -219,10 +219,11 @@ export default function Portfolio() {
         </section>
 
         {/* About & Contact */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-border pt-16">
-          <Reveal width="100%">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-16">
+
+          <Reveal width="100%" overflow="visible">
             <div>
-              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 border-b border-border pb-4">
                 02 / Background
               </h2>
               <div className="space-y-6 text-body text-foreground/80 leading-relaxed max-w-md">
@@ -236,9 +237,9 @@ export default function Portfolio() {
             </div>
           </Reveal>
 
-          <Reveal width="100%" delay={0.1}>
+          <Reveal width="100%" delay={0.1} overflow="visible">
             <div>
-              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8">
+              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 border-b border-border pb-4">
                 03 / Index
               </h2>
               <ul className="space-y-4">
@@ -266,7 +267,7 @@ export default function Portfolio() {
         </section>
 
         {/* Footer & Gacha Easter Egg */}
-        <footer className="mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+        <footer className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-small text-muted">
             Designed in Figma, built with Next.js & Gemini.
           </p>

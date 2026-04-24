@@ -9,6 +9,13 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleTouch = (e: React.MouseEvent | React.TouchEvent) => {
+    // If it's a touch event or we're on mobile, just toggle
+    if (window.matchMedia('(max-width: 1024px)').matches) {
+      setIsHovered(!isHovered);
+    }
+  };
+
   return (
     <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
       <main className="max-w-4xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
@@ -27,8 +34,9 @@ export default function About() {
               <div 
                 ref={containerRef}
                 className="relative aspect-square bg-surface border border-border rounded-2xl shadow-sm overflow-hidden group cursor-none"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                onMouseEnter={() => !window.matchMedia('(max-width: 1024px)').matches && setIsHovered(true)}
+                onMouseLeave={() => !window.matchMedia('(max-width: 1024px)').matches && setIsHovered(false)}
+                onClick={handleTouch}
               >
                 {/* Professional Photo */}
                 <motion.img 

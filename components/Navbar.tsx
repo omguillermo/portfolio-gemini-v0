@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
+import BrandSwitcher from './BrandSwitcher';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -53,7 +54,10 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <ThemeSwitcher />
+            <div className="flex items-center gap-2">
+              <BrandSwitcher />
+              <ThemeSwitcher />
+            </div>
           </div>
 
           {/* Mobile Menu Trigger */}
@@ -91,9 +95,15 @@ export default function Navbar() {
                 </Link>
               ))}
               
-              <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-4">
-                <p className="text-mono text-muted uppercase text-[10px] tracking-widest">System Theme</p>
-                <ThemeSwitcher />
+              <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-mono text-muted uppercase text-[10px] tracking-widest">Brand Logic</p>
+                  <BrandSwitcher />
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-mono text-muted uppercase text-[10px] tracking-widest">Appearance</p>
+                  <ThemeSwitcher />
+                </div>
               </div>
             </div>
           </motion.div>
