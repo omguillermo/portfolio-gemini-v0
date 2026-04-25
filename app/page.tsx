@@ -106,9 +106,6 @@ export default function Portfolio() {
                         target.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop";
                       }}
                     />
-                    <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-md p-2 rounded-full border border-border/50 text-brand">
-                      <Lock className="w-4 h-4" />
-                    </div>
                   </div>
                   <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
