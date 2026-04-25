@@ -26,6 +26,75 @@
   --fs-mono: 0.75rem;                          /* Systems Metadata (12px) */
 }
 
+/* Global Dark Mode Base (System Green) */
+.dark {
+  --background: #081A16;
+  --foreground: #F2F7F4;
+  --brand: #1A9A5E;
+  --surface: #0D2621;
+  --border: #1A2E28;
+  --muted: #8A9E98;
+  --tertiary: #4A5450;
+  --error: #F87171;
+  --accent: #FBBF24;
+  --selection-bg: #1A9A5E;
+  --selection-text: #ffffff;
+}
+
+/* Brand Themes - Full Environment Shifts */
+
+/* Forest (Explicit) */
+[data-brand='forest'].dark {
+  --brand: #1A9A5E !important;
+  --background: #081A16 !important;
+  --foreground: #F2F7F4 !important;
+  --surface: #0D2621 !important;
+  --border: #1A2E28 !important;
+  --muted: #8A9E98 !important;
+}
+
+/* Crimson - Warm Editorial */
+[data-brand='crimson'] {
+  --brand: #D92626;
+  --background: #FAF8F8;
+  --foreground: #1A1F1C;
+  --surface: #FFFFFF;
+  --border: #E8DEDE;
+  --muted: #544A4A;
+  --selection-bg: #D92626;
+}
+
+[data-brand='crimson'].dark {
+  --brand: #D92626 !important;
+  --background: #120808 !important;
+  --foreground: #F7F2F2 !important; /* Off-white for warmth */
+  --surface: #1C0D0D !important;
+  --border: #2E1A1A !important;
+  --muted: #9E8A8A !important;
+  --selection-bg: #D92626 !important;
+}
+
+/* Electric Blue - Technical Cold */
+[data-brand='blue'] {
+  --brand: #2667D9;
+  --background: #F8F9FA;
+  --foreground: #1A1F1C;
+  --surface: #FFFFFF;
+  --border: #DEE2E8;
+  --muted: #4A4E54;
+  --selection-bg: #2667D9;
+}
+
+[data-brand='blue'].dark {
+  --brand: #2667D9 !important;
+  --background: #080D12 !important;
+  --foreground: #F2F4F7 !important; /* Cool off-white */
+  --surface: #0D141C !important;
+  --border: #1A222E !important;
+  --muted: #8A919E !important;
+  --selection-bg: #2667D9 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
     --background: #081A16;
@@ -40,51 +109,6 @@
     --selection-bg: #1A9A5E;
     --selection-text: #ffffff;
   }
-}
-
-/* Brand Themes - Full Environment Shifts */
-
-/* Forest (Default) */
-[data-brand='forest'] {
-  --brand: #1A9A5E;
-}
-
-/* Crimson - Warm Editorial */
-[data-brand='crimson'] {
-  --brand: #D92626;
-  --background: #FAF8F8;
-  --surface: #FFFFFF;
-  --border: #E8DEDE;
-  --muted: #544A4A;
-  --selection-bg: #D92626;
-}
-
-.dark[data-brand='crimson'], [data-brand='crimson'].dark {
-  --brand: #D92626 !important;
-  --background: #120808 !important;
-  --surface: #1C0D0D !important;
-  --border: #2E1A1A !important;
-  --muted: #9E8A8A !important;
-  --selection-bg: #D92626 !important;
-}
-
-/* Electric Blue - Technical Cold */
-[data-brand='blue'] {
-  --brand: #2667D9;
-  --background: #F8F9FA;
-  --surface: #FFFFFF;
-  --border: #DEE2E8;
-  --muted: #4A4E54;
-  --selection-bg: #2667D9;
-}
-
-.dark[data-brand='blue'], [data-brand='blue'].dark {
-  --brand: #2667D9 !important;
-  --background: #080D12 !important;
-  --surface: #0D141C !important;
-  --border: #1A222E !important;
-  --muted: #8A919E !important;
-  --selection-bg: #2667D9 !important;
 }
 
 @theme inline {

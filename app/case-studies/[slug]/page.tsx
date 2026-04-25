@@ -16,6 +16,7 @@ interface Iteration {
   approach: string;
   why_it_failed: string;
   image_url?: string;
+  caption?: string;
 }
 
 interface ProjectData {
@@ -51,17 +52,19 @@ const projectsData: Record<string, ProjectData> = {
       problem: "The original AI chat interface blocked users from interacting with page content, obscuring critical inventory items. Navigating while chatting also caused new content to load invisibly behind the widget.",
       hypothesis: "By shifting to a dynamic and draggable interface, we could remove friction, allowing users to reference underlying data while utilizing the AI's enrichment tools simultaneously."
     },
-    design_rationale: "To solve the obstruction issue, I explored several iterations: \n1. Viewport Reduction: Keeping tools fixed at the bottom, which cramped the data-heavy screens. \n2. Persistent Right Panel: Triggered from the right nav bar, this approach significantly reduced the horizontal space available for the product directory, leading to poor readability for SKU and performance metrics. \nLanded on the 'Folder Tab' as a hybrid solution that is visible but utilizes a non-blocking, draggable overlay.",
+    design_rationale: "To solve the obstruction issue, I explored several iterations after doing research on industry standard patterns:",
     iterations: [
       {
         approach: "Viewport Reduction (Fixed Bottom)",
         why_it_failed: "Keeping tools fixed at the bottom cramped the data-heavy screens, reducing the 'fold' and forcing unnecessary scrolling for primary inventory tasks.",
-        image_url: "/projects/stockapp-ai/stoki-ai-proposal-bottom-042026.png" 
+        image_url: "/projects/stockapp-ai/stoki-ai-proposal-bottom-042026.png",
+        caption: "Exploration A: Attempting to integrate the AI into a fixed status bar at the bottom."
       },
       {
         approach: "Persistent Right Panel",
         why_it_failed: "Triggered from the right nav bar, this approach significantly reduced the horizontal space available for the product directory, leading to poor readability for SKUs.",
-        image_url: "/projects/stockapp-ai/stoki-ai-proposal-sidebar-042026.png"
+        image_url: "/projects/stockapp-ai/stoki-ai-proposal-sidebar-042026.png",
+        caption: "Exploration B: A standard sidebar approach that failed due to extreme data density requirements."
       }
     ],
     system_solution: "I redesigned the entry point into a subtle, non-blocking folder tab anchored at the bottom center of the screen. When activated, the chat opens as a draggable floating window with dynamic width (640px to 1080px) that properly displays complex agent responses, like data tables, without taking over the screen.",
@@ -175,7 +178,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
       <main className="max-w-4xl mx-auto px-6 md:px-12">
         <Reveal width="100%">
-          <header className="mb-24">
+          <header className="mb-32">
             <h1 className="text-display font-bold tracking-tighter mb-6">
               {project.title}
             </h1>
@@ -204,24 +207,24 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           </header>
         </Reveal>
 
-        <article className="space-y-24">
+        <article className="space-y-32">
           {/* 1. Problem & Hypothesis */}
           <Reveal width="100%">
-            <section className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-12 items-start border-b border-border pb-24">
-              <div className="space-y-8">
+            <section className="space-y-4">
+              <div className="space-y-4">
                 <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
-                  The System Failure
+                  The Problem
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed">
                   {project.problem_hypothesis.problem}
                 </p>
               </div>
-              <div className="bg-surface/50 border border-border p-6 rounded-2xl space-y-4">
+              <div className="bg-surface/50 border border-border p-8 rounded-2xl space-y-4 mt-12">
                 <div className="flex items-center gap-2 text-brand">
                   <Lightbulb className="w-4 h-4" />
                   <span className="text-mono font-mono text-[10px] uppercase tracking-widest font-bold">Hypothesis</span>
                 </div>
-                <p className="text-small text-muted leading-relaxed italic">
+                <p className="text-body text-muted leading-relaxed italic">
                   &quot;{project.problem_hypothesis.hypothesis}&quot;
                 </p>
               </div>
@@ -230,8 +233,8 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
           {/* 2. Design Iteration Section (FAANG "Messy Middle") */}
           <Reveal width="100%">
-            <section className="space-y-16 py-12">
-              <div className="max-w-2xl space-y-8">
+            <section className="space-y-4">
+              <div className="space-y-4">
                 <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
                   Design Iteration & Rationale
                 </h2>
@@ -240,10 +243,12 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 </p>
               </div>
 
-              <div className="space-y-24 pt-12">
+              <div className="space-y-16 mt-16">
                 {project.iterations.map((iteration, index) => (
-                  <div key={index} className="space-y-8 max-w-2xl">
-                    <div className="space-y-2 border-l-2 border-brand/20 pl-6">
+
+                  <div key={index} className="space-y-8">
+
+                    <div className="space-y-2">
                       <p className="text-mono text-brand font-mono text-[10px] uppercase tracking-widest">Iteration [{index + 1}]</p>
                       <h3 className="text-heading font-bold">{iteration.approach}</h3>
                       <p className="text-body text-muted leading-relaxed pt-2">
@@ -251,17 +256,24 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                       </p>
                     </div>
                     {iteration.image_url && (
-                      <div 
-                        className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden cursor-zoom-in relative group"
-                        onClick={() => setActiveImage(iteration.image_url!)}
-                      >
-                         <img src={iteration.image_url} alt={iteration.approach} className="w-full h-full object-cover" />
-                         <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
-                              <Maximize2 className="w-4 h-4" />
-                              Click to Expand
-                            </div>
-                         </div>
+                      <div className="space-y-4">
+                        <div 
+                          className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden cursor-zoom-in relative group"
+                          onClick={() => setActiveImage(iteration.image_url!)}
+                        >
+                           <img src={iteration.image_url} alt={iteration.approach} className="w-full h-full object-cover" />
+                           <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+                                <Maximize2 className="w-4 h-4" />
+                                Click to Expand
+                              </div>
+                           </div>
+                        </div>
+                        {iteration.caption && (
+                          <p className="text-small text-muted italic">
+                            {iteration.caption}
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>
@@ -272,10 +284,10 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
           {/* 3. Solution Section */}
           <Reveal width="100%">
-            <section className="space-y-16 py-12 border-t border-border">
-              <div className="max-w-2xl space-y-8">
+            <section className="space-y-4">
+              <div className="space-y-4">
                 <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
-                  The Component Intervention
+                  The Solution
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed">
                   {project.system_solution}
@@ -283,7 +295,8 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               </div>
               
               {/* Visual Highlights Grid */}
-              <div className="space-y-16">
+              <div className="space-y-16 mt-16">
+
                 {project.visual_highlights.map((highlight, index) => (
                   <div key={index} className="space-y-4">
                     <div 
@@ -320,7 +333,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="bg-surface border border-border rounded-2xl p-8 md:p-12">
               <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                Edge-Cases & Systems Logic
+                Edge Cases
               </h2>
               <ul className="space-y-6">
                 {project.edge_cases_handled.map((edgeCase, index) => (
@@ -337,13 +350,15 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
           {/* 5. Retrospective Section */}
           <Reveal width="100%">
-            <section className="border-t border-border pt-16">
-              <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
-                Results & Retrospective
-              </h2>
-              <p className="text-body text-foreground/90 leading-relaxed max-w-2xl italic">
-                &quot;{project.retrospective}&quot;
-              </p>
+            <section className="border-t border-border">
+              <div className="pt-16 space-y-4">
+                <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
+                  Results & Retrospective
+                </h2>
+                <p className="text-body text-foreground/90 leading-relaxed italic text-muted">
+                  &quot;{project.retrospective}&quot;
+                </p>
+              </div>
             </section>
           </Reveal>
 
