@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +11,15 @@ import BrandSwitcher from './BrandSwitcher';
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -21,8 +30,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[100] px-6 py-8 md:px-12 pointer-events-none">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 pointer-events-none ${
+        isScrolled 
+          ? 'py-4 bg-background/80 backdrop-blur-md border-b border-border/50' 
+          : 'py-8 bg-transparent border-b border-transparent'
+      }`}>
+        <div className="max-w-6xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo / Monogram Lockup */}
           <Link 
             href="/" 

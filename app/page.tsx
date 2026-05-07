@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Lock, RotateCcw, Clover, Star, Trophy, ThumbsUp, X, Sparkles, Coins, Egg, Wallet } from 'lucide-react';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
+import InteractiveDoodle from '@/components/InteractiveDoodle';
 
 type GachaRarity = 'R' | 'SR' | 'SSR' | 'UR';
 
@@ -80,22 +81,41 @@ export default function Portfolio() {
     <div className="min-h-screen text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_0%_0%,var(--brand),transparent_50%)] opacity-[0.03] pointer-events-none" />
       
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
-        <header className="mb-16 md:mb-24">
-          <Reveal width="100%">
-            <h1 className="text-hero font-bold mb-8 leading-tight">
-              Senior Product Designer <br className="hidden md:block" />
-              & Design System Builder.
-            </h1>
-            <p className="text-heading text-muted max-w-3xl leading-relaxed font-light tracking-wide">
+      <main className="max-w-6xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-64 md:pb-32 relative z-10">
+        <header className="mb-16 md:mb-24 flex flex-col items-center text-center">
+          <Reveal width="100%" overflow="visible">
+            <div className="relative inline-block">
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-20 h-20 hidden md:block z-20">
+                <InteractiveDoodle />
+              </div>
+              <h1 className="text-hero font-bold mb-4 leading-tight relative">
+                Senior Product Designer <br className="hidden md:block" />
+                & Design System Builder
+              </h1>
+            </div>
+            <p className="text-heading text-muted max-w-3xl mx-auto leading-relaxed font-light tracking-wide mb-8">
               I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
             </p>
+
+            {/* Availability Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface/50 group cursor-default transition-all duration-500 hover:pr-4 mx-auto">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+              </span>
+              <span className="text-mono font-mono text-[10px] uppercase tracking-widest text-foreground flex items-center">
+                Open to new roles
+                <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 group-hover:max-w-[300px] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                  <span className="mx-1">•</span> TN Visa Eligible <span className="mx-1">•</span> Open to relocate
+                </span>
+              </span>
+            </div>
           </Reveal>
         </header>
 
-        <section className="mb-24">
+        <section className="mb-32">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-12 border-b border-border pb-4">
+            <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-8 border-b border-border pb-4">
               01 / Highlighted Projects
             </h2>
           </Reveal>
@@ -106,7 +126,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none"
+                  className="bg-surface border border-border p-6 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none transition-all"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
@@ -115,19 +135,16 @@ export default function Portfolio() {
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
                     />
                   </div>
-                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Stoki AI Assistant</h3>
-                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </div>
-                      <p className="text-body text-muted leading-relaxed line-clamp-2">
-                        Redesigning an intrusive AI assistant into a non-blocking, persistent workflow tool.
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">$871K facilitated</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Founding Designer</span>
+                  
+                  <div className="px-2 space-y-2 flex-grow flex flex-col justify-between">
+                    <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
+                      Stoki AI Assistant
+                    </h3>
+                    
+                    <div className="flex items-center gap-3">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest text-[10px] font-bold">$871K facilitated</span>
+                      <span className="text-muted/40">•</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Founding Designer</span>
                     </div>
                   </div>
                 </motion.div>
@@ -139,7 +156,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none"
+                  className="bg-surface border border-border p-6 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none transition-all"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
@@ -148,19 +165,16 @@ export default function Portfolio() {
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
                     />
                   </div>
-                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Buy Shipping Labels</h3>
-                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </div>
-                      <p className="text-body text-muted leading-relaxed line-clamp-2">
-                        Streamlining label generation within the existing GoDaddy merchant dashboard.
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">7.5K Labels</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Senior Designer</span>
+                  
+                  <div className="px-2 space-y-2 flex-grow flex flex-col justify-between">
+                    <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
+                      Buy Shipping Labels
+                    </h3>
+                    
+                    <div className="flex items-center gap-3">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest text-[10px] font-bold">7.5K Labels</span>
+                      <span className="text-muted/40">•</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Senior Designer</span>
                     </div>
                   </div>
                 </motion.div>
@@ -172,7 +186,7 @@ export default function Portfolio() {
                 <motion.div 
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                  className="bg-surface border border-border p-6 pb-8 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none"
+                  className="bg-surface border border-border p-6 rounded-2xl h-full flex flex-col gap-6 group-hover:shadow-xl group-hover:border-brand/20 shadow-none transition-all"
                 >
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background flex items-center justify-center border border-border/50">
                     <img 
@@ -181,19 +195,16 @@ export default function Portfolio() {
                       className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
                     />
                   </div>
-                  <div className="px-2 space-y-4 flex-grow flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <h3 className="text-heading font-bold tracking-tight">Sign Up Experience</h3>
-                        <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-brand transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </div>
-                      <p className="text-body text-muted leading-relaxed line-clamp-2">
-                        Redesigning the registration flow to increase clarity and guide users to the correct product.
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pt-4 border-t border-border/50">
-                      <span className="text-mono font-mono text-brand uppercase tracking-widest">0.31% Bounce</span>
-                      <span className="text-mono font-mono text-muted uppercase tracking-widest">Senior Designer</span>
+                  
+                  <div className="px-2 space-y-2 flex-grow flex flex-col justify-between">
+                    <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
+                      Sign Up Experience
+                    </h3>
+                    
+                    <div className="flex items-center gap-3">
+                      <span className="text-mono font-mono text-brand uppercase tracking-widest text-[10px] font-bold">0.31% Bounce</span>
+                      <span className="text-muted/40">•</span>
+                      <span className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Senior Designer</span>
                     </div>
                   </div>
                 </motion.div>

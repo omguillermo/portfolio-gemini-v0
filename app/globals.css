@@ -18,9 +18,9 @@
   --radius: 1.5rem; /* 24px */
 
   /* Refined Typography Scales - More Professional & Restrained */
-  --fs-hero: clamp(2.25rem, 6vw, 4.5rem);      /* Homepage Main Title */
+  --fs-hero: clamp(2rem, 4vw, 3rem);        /* Homepage Main Title (Max 48px) */
   --fs-display: clamp(1.75rem, 5vw, 3.5rem);   /* Case Study Titles */
-  --fs-heading: clamp(1rem, 2vw, 1.25rem);     /* Subheadings/Descriptions */
+  --fs-heading: 1rem;                          /* Subheadings/Descriptions (Fixed 16px) */
   --fs-body: 1rem;                             /* Main Reading Text (16px) */
   --fs-small: 0.875rem;                        /* Footer/Labels (14px) */
   --fs-mono: 0.75rem;                          /* Systems Metadata (12px) */
@@ -170,6 +170,16 @@
   font-size: var(--fs-mono);
   letter-spacing: 0.05em;
   font-weight: 500;
+}
+
+@utility doodle-sticker {
+  .dark & {
+    background-color: white;
+    padding: 2px;
+    border-radius: 50%;
+    /* Create a thick white border + depth shadow */
+    box-shadow: 0 0 0 6px white, 0 12px 24px rgba(0,0,0,0.6);
+  }
 }
 
 body {
