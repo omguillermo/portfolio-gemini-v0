@@ -13,16 +13,18 @@ type BrandId = typeof brands[number]['id'];
 
 export default function BrandSwitcher() {
   const [activeBrand, setActiveBrand] = useState<BrandId>('forest');
+  const [mounted, setMounted] = useState(false);
 
-  // We use useEffect for the initial setup to avoid hydration mismatch
   useEffect(() => {
     const savedBrand = localStorage.getItem('brand-theme') as BrandId | null;
     if (savedBrand && brands.some(b => b.id === savedBrand)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveBrand(savedBrand);
       document.documentElement.setAttribute('data-brand', savedBrand);
     } else {
       document.documentElement.setAttribute('data-brand', 'forest');
     }
+    setMounted(true);
   }, []);
 
   const changeBrand = (id: BrandId) => {
@@ -30,6 +32,8 @@ export default function BrandSwitcher() {
     localStorage.setItem('brand-theme', id);
     document.documentElement.setAttribute('data-brand', id);
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="flex items-center gap-3 px-3 py-2 bg-surface/50 backdrop-blur-md border border-border rounded-full pointer-events-auto">

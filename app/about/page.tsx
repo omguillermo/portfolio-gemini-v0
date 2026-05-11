@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Reveal from '@/components/Reveal';
 import TooltipFollower from '@/components/TooltipFollower';
 
@@ -10,7 +10,7 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleTouch = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleTouch = () => {
     // If it's a touch event or we're on mobile, just toggle
     if (window.matchMedia('(max-width: 1024px)').matches) {
       setIsHovered(!isHovered);

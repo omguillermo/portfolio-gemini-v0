@@ -6,6 +6,7 @@ import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Check local storage or system preference
@@ -13,9 +14,11 @@ export default function ThemeSwitcher() {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     
     const initialTheme = savedTheme || systemTheme;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(initialTheme);
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     document.documentElement.classList.toggle('light', initialTheme === 'light');
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -25,6 +28,10 @@ export default function ThemeSwitcher() {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
     document.documentElement.classList.toggle('light', newTheme === 'light');
   };
+
+  if (!mounted) {
+    return <div className="w-8 h-8" />; // Placeholder
+  }
 
   return (
     <button

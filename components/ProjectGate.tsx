@@ -14,14 +14,15 @@ export default function ProjectGate({ children, password, projectSlug }: Project
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const unlocked = localStorage.getItem(`unlock_${projectSlug}`);
     if (unlocked === 'true') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsUnlocked(true);
     }
-    setIsLoading(false);
+    setMounted(true);
   }, [projectSlug]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,6 +35,8 @@ export default function ProjectGate({ children, password, projectSlug }: Project
       setInput('');
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence mode="wait">
