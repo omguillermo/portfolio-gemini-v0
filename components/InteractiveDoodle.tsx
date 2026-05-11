@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const InteractiveDoodle = () => {
   const [isEasterEgg, setIsEasterEgg] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const toggleEasterEgg = () => setIsEasterEgg(!isEasterEgg);
 
@@ -34,16 +35,23 @@ const InteractiveDoodle = () => {
     },
     eyebrowL: {
       default: "M9 21C10 20.5 11 20.5 12 21",
+      hover: "M9 20C10 19.5 11 19.5 12 20",
       easterEgg: "M9 19.375C10 19.5 11 19.875 12 20.375"
     },
     eyebrowR: {
       default: "M20 21C21 20.5 22 20.5 23 21",
+      hover: "M20 20C21 19.5 22 19.5 23 20",
       easterEgg: "M20 20.375C21 19.875 22 19.375 23 19.375"
     },
     mouth: {
       default: "M14.5 29C15.5 29.5 17.5 29.5 18.5 29",
       easterEgg: "M14.5 26C15.5 25 17.5 25 18.5 26"
     }
+  };
+
+  const getEyebrowPath = (side: 'L' | 'R') => {
+    if (isEasterEgg) return morphingPaths[`eyebrow${side}`].easterEgg;
+    return isHovered ? morphingPaths[`eyebrow${side}`].hover : morphingPaths[`eyebrow${side}`].default;
   };
 
   const longHairPaths = {
@@ -67,6 +75,8 @@ const InteractiveDoodle = () => {
     <div 
       className="relative cursor-pointer select-none w-full h-full doodle-sticker transition-all duration-300"
       onClick={toggleEasterEgg}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <motion.svg 
         width="100%" 
@@ -92,83 +102,108 @@ const InteractiveDoodle = () => {
           </clipPath>
         </defs>
 
-        {/* 1. hairBack (Black mass behind head) */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.hairBack.easterEgg : morphingPaths.hairBack.default }}
-          fill="black"
-          transition={transition}
-        />
-
-        {/* 2. face (White head mass) */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.face.easterEgg : morphingPaths.face.default }}
-          fill="white" stroke="black" strokeWidth="2"
-          transition={transition}
-        />
-        
-        {/* 3. ear (Silhouetted on left) */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.ear.easterEgg : morphingPaths.ear.default }}
-          fill="white" stroke="black" strokeWidth="2"
-          transition={transition}
-        />
-        
-        {/* 4. eyes */}
-        <motion.circle 
-          animate={{ cx: 10.5, cy: isEasterEgg ? 21.5 : 23.5 }}
-          r="1.5" fill="black" transition={transition}
-        />
-        <motion.circle 
-          animate={{ cx: 21.5, cy: isEasterEgg ? 21.5 : 23.5 }}
-          r="1.5" fill="black" transition={transition}
-        />
-
-        {/* 5. hairBangs (Short hair fringe) */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.hairBangs.easterEgg : morphingPaths.hairBangs.default }}
-          fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
-          transition={transition}
-        />
-
-        {/* 6. eyebrows */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.eyebrowL.easterEgg : morphingPaths.eyebrowL.default }}
-          stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          transition={transition}
-        />
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.eyebrowR.easterEgg : morphingPaths.eyebrowR.default }}
-          stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          transition={transition}
-        />
-
-        {/* 7. Long Hair Layers (Grow ON TOP of face/ears using clipPath) */}
-        <g clipPath="url(#hairGrowthClip)">
-          <path 
-            d={longHairPaths.hairLongSides}
-            fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+        {/* --- HEAD BOUNCE GROUP --- */}
+        <motion.g
+          animate={
+            isEasterEgg && isHovered
+              ? { y: [0, 1.5, 0] } // Pure vertical bounce (no rotation)
+              : { y: 0 }
+          }
+          transition={{
+            y: (isEasterEgg && isHovered)
+              ? { repeat: Infinity, duration: 0.35, ease: "easeInOut" }
+              : { type: "spring", stiffness: 260, damping: 20, duration: 0.5 }
+          }}
+        >
+          {/* 1. hairBack (Black mass behind head) */}
+          <motion.path 
+            animate={{ d: isEasterEgg ? morphingPaths.hairBack.easterEgg : morphingPaths.hairBack.default }}
+            fill="black"
+            transition={transition}
           />
-          <path 
-            d={longHairPaths.hairLongFront}
-            fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+
+          {/* 2. face (White head mass) */}
+          <motion.path 
+            animate={{ d: isEasterEgg ? morphingPaths.face.easterEgg : morphingPaths.face.default }}
+            fill="white" stroke="black" strokeWidth="2"
+            transition={transition}
           />
-        </g>
-        
-        {/* 8. mouth */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.mouth.easterEgg : morphingPaths.mouth.default }}
-          stroke="black" strokeWidth="2" strokeLinecap="round"
-          transition={transition}
-        />
+          
+          {/* 3. ear (Silhouetted on left) */}
+          <motion.path 
+            animate={{ d: isEasterEgg ? morphingPaths.ear.easterEgg : morphingPaths.ear.default }}
+            fill="white" stroke="black" strokeWidth="2"
+            transition={transition}
+          />
+          
+          {/* 4. eyes */}
+          <motion.circle 
+            animate={{ cx: 10.5, cy: isEasterEgg ? 21.5 : 23.5 }}
+            r="1.5" fill="black" transition={transition}
+          />
+          <motion.circle 
+            animate={{ cx: 21.5, cy: isEasterEgg ? 21.5 : 23.5 }}
+            r="1.5" fill="black" transition={transition}
+          />
+
+          {/* 5. hairBangs (Short hair fringe) */}
+          <motion.path 
+            animate={{ d: isEasterEgg ? morphingPaths.hairBangs.easterEgg : morphingPaths.hairBangs.default }}
+            fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+            transition={transition}
+          />
+
+          {/* 6. eyebrows */}
+          <motion.path 
+            animate={{ d: getEyebrowPath('L') }}
+            stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            transition={transition}
+          />
+          <motion.path 
+            animate={{ d: getEyebrowPath('R') }}
+            stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            transition={transition}
+          />
+
+          {/* 7. Long Hair Layers (Grow ON TOP of face/ears using clipPath) */}
+          <g clipPath="url(#hairGrowthClip)">
+            <path 
+              d={longHairPaths.hairLongSides}
+              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+            />
+            <path 
+              d={longHairPaths.hairLongFront}
+              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+            />
+          </g>
+          
+          {/* 8. mouth */}
+          <motion.path 
+            animate={{ d: isEasterEgg ? morphingPaths.mouth.easterEgg : morphingPaths.mouth.default }}
+            stroke="black" strokeWidth="2" strokeLinecap="round"
+            transition={transition}
+          />
+        </motion.g>
 
         {/* 9. hand */}
         <AnimatePresence>
           {isEasterEgg && (
             <motion.g
-              initial={{ opacity: 0, y: 10, scale: 0.5 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.5 }}
-              transition={{ delay: 0.1, ...transition }}
+              initial={{ opacity: 0, y: 10, scale: 0.5, rotate: 0 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                rotate: isHovered ? [0, -10, 15, -10, 0] : 0
+              }}
+              exit={{ opacity: 0, y: 10, scale: 0.5, rotate: 0 }}
+              transition={{ 
+                rotate: isHovered 
+                  ? { repeat: Infinity, duration: 0.4, ease: "linear" }
+                  : { type: "spring", stiffness: 260, damping: 20, duration: 0.5 },
+                default: { delay: 0.1, ...transition } 
+              }}
+              style={{ originX: 0.5, originY: 0.5 }} // Rotate from the center
             >
               <path d={handPaths.base} fill="white" />
               <path d={handPaths.outline} fill="black" />
@@ -197,3 +232,4 @@ const InteractiveDoodle = () => {
 };
 
 export default InteractiveDoodle;
+
