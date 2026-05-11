@@ -8,13 +8,19 @@ const InteractiveDoodle = () => {
 
   const toggleEasterEgg = () => setIsEasterEgg(!isEasterEgg);
 
-  // Common base elements that smoothly morph (same path commands)
+  // Nomenclature:
+  // 1. hairBack: Black mass behind head
+  // 2. face: White head (includes silhouette of right ear)
+  // 3. hairBangs: Short hair fringe (physically morphs)
+  // 4. hairLongFront: Curved piece ON TOP of bangs/face
+  // 5. hairLongSides: Main overall mass ON TOP of bangs/face
+
   const morphingPaths = {
     ear: {
       default: "M3 19C3 17 4.5 16 6 16V23C4.5 23 3 21 3 19Z",
       easterEgg: "M5 17C5 15 6.5 14 8 14V21C6.5 21 5 19 5 17Z"
     },
-    neck: {
+    hairBack: {
       default: "M23 27C19 25 11 25 8 27V18H23V27Z",
       easterEgg: "M23 33C19 31 11 31 8 33V24H23V33Z"
     },
@@ -22,8 +28,7 @@ const InteractiveDoodle = () => {
       default: "M17.0042 5C19.7736 5.00002 21.9648 5.59473 23.6771 6.64844C25.3919 7.70385 26.5569 9.1776 27.3431 10.8184C27.9762 12.1397 28.3662 13.5849 28.6097 15.0352C28.7351 15.014 28.8662 15 29.0042 15C29.9673 15 30.9628 15.3202 31.7308 16.0029C32.5172 16.702 33.0042 17.7286 33.0042 19C33.0042 20.2368 32.5459 21.4437 31.8665 22.3496C31.2059 23.2304 30.1945 24 29.0042 24C28.9464 24 28.8894 23.9972 28.8333 23.9941C28.5868 25.8637 28.021 27.5628 26.8128 28.916C24.9643 30.9863 21.8524 32 17.0042 32C12.0986 32 9.20216 30.7051 7.62239 28.4482C6.10528 26.2808 6.00422 23.4662 6.00422 21C6.00422 18.5726 5.86449 14.6055 7.13215 11.2695C7.77749 9.57143 8.8036 7.98268 10.4329 6.8252C12.0649 5.66592 14.2166 5.00002 17.0042 5Z",
       easterEgg: "M17.0042 3C19.7736 3.00002 21.9648 3.59473 23.6771 4.64844C25.3919 5.70385 26.5569 7.1776 27.3431 8.81836C27.9762 10.1397 28.3662 11.5849 28.6097 13.0352C28.7351 13.014 28.8662 13 29.0042 13C29.9673 13 28.9628 13.3202 29.7308 14.0029C30.5172 14.702 30.0042 15.7286 30.0042 17C28.0042 18.2368 30.5459 19.4437 29.8665 20.3496C29.2059 21.2304 30.1945 22 29.0042 22C28.9464 22 28.8894 21.9972 28.8333 21.9941C28.5868 23.8637 28.021 25.5628 26.8128 26.916C24.9643 28.9863 21.8524 30 17.0042 30C12.0986 30 9.20216 28.7051 7.62239 26.4482C6.10528 24.2808 6.00422 21.4662 6.00422 19C6.00422 16.5726 5.86449 12.6055 7.13215 9.26953C7.77749 7.57143 8.8036 5.98268 10.4329 4.8252C12.0649 3.66592 14.2166 3.00002 17.0042 3Z"
     },
-    // The front "bangs" morph smoothly from long to short
-    hair1: {
+    hairBangs: {
       default: "M6.95312 13.3125C5.9996 14.8749 6 16.4376 6 18C6 18 5 14.9913 5 13C5 9 7 4 18 4C29 4 31 10 31 13V15.5C28.5 15.5 27 17 27 20C26 20 26 13 26 13C25.74 14.7854 25.4731 15.7345 24 17C24 17 25 14.5 24 14C22.5 14 21 14.5 21 18C19.4245 16.3186 19.5 14.8933 19.5 13C18.5 13.5 17 15 17 17C15.6316 15.9737 14.732 14.4792 14.2998 12.9971C13.3077 13.6327 12.5718 14.5706 12 16C11.5399 14.1596 11.504 11.8963 12.6699 10.3779C11.2908 10.103 9.8497 10.7717 8.93945 11.333C8.64672 12.3359 8.5 13.4179 8.5 14.5C7.88992 14.2966 7.36414 13.8439 6.95312 13.3125Z",
       easterEgg: "M6.95312 8.3125C5.9996 9.87492 6 14.4376 6 16C6 16 5 12.9913 5 11C5 7 7 2 18 2C29 2 31 8 31 11V13.5C28.5 13.5 27 15 27 18C26 18 26 11 26 11C25.74 12.7854 25.4731 12.7345 24 14C24 14 25 12.5 24 12C22.5 12 21 8.5 21 12C19.4245 10.3186 19.5 9.89331 19.5 8C18.5 8.5 17 7 17 9C15.6316 7.97372 14.732 9.47916 14.2998 7.99707C13.3077 8.63265 12.5718 6.5706 12 8C11.5399 6.15955 11.504 7.8963 12.6699 6.37793C11.2908 6.10304 9.8497 6.77173 8.93945 7.33301C8.64672 8.33591 8.5 7.4179 8.5 8.5C7.88992 8.29664 7.36414 8.84392 6.95312 8.3125Z"
     },
@@ -41,16 +46,9 @@ const InteractiveDoodle = () => {
     }
   };
 
-  // Paths that cannot be cleanly morphed and must be crossfaded gracefully
-  const crossfadePaths = {
-    hair2: {
-      default: "M31 13V15.5C28.5 15.5 27 10 27 10L14 7L8 8C6 10 6 16 6 18C6 18 5 14.9913 5 13C5 9 7 4 18 4C29 4 31 10 31 13Z",
-      easterEgg: "M31 11V13.5C28.5 13.5 27 14 27 17C21.7295 17 19 13 14 9C11.5 7 8 10 8 10C6 12 6 14 6 16C6 16 5 12.9913 5 11C5 7 7 2 18 2C29 2 31 8 31 11Z"
-    },
-    hair3: {
-      default: "M7 11L14 8.99999L23 12V13L30 15L31 15C31 11 30 8 27 6C24 4 17.4 3.8 15 5C10 4 5 8 5 13V17L7 11Z",
-      easterEgg: "M8 11C8 8.45048 12.5 6.99999 14 6.99999C20 6.49999 23 10 23 13C23 15.4 23.1667 28.6667 23 34C27 34 31 33 31 30V13C31 9 30 6 27 4C24 2 17.4 1.8 15 3C10 2 5 6 5 11V30C5 33 6 34 8 34C7.83333 27.8333 8 13 8 11Z"
-    }
+  const longHairPaths = {
+    hairLongFront: "M31 11V13.5C28.5 13.5 27 14 27 17C21.7295 17 19 13 14 9C11.5 7 8 10 8 10C6 12 6 14 6 16C6 16 5 12.9913 5 11C5 7 7 2 18 2C29 2 31 8 31 11Z",
+    hairLongSides: "M8 11C8 8.45048 12.5 6.99999 14 6.99999C20 6.49999 23 10 23 13C23 15.4 23.1667 28.6667 23 34C27 34 31 33 31 30V13C31 9 30 6 27 4C24 2 17.4 1.8 15 3C10 2 5 6 5 11V30C5 33 6 34 8 34C7.83333 27.8333 8 13 8 11Z"
   };
 
   const handPaths = {
@@ -82,45 +80,57 @@ const InteractiveDoodle = () => {
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        {/* Layer 1: Ear */}
+        <defs>
+          <clipPath id="hairGrowthClip">
+            <motion.rect 
+              x="0" 
+              y="0" 
+              width="36" 
+              animate={{ height: isEasterEgg ? 36 : 0 }}
+              transition={transition}
+            />
+          </clipPath>
+        </defs>
+
+        {/* 1. hairBack (Black mass behind head) */}
         <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.ear.easterEgg : morphingPaths.ear.default }}
-          fill="white" stroke="black" strokeWidth="2"
-          transition={transition}
-        />
-        
-        {/* Layer 2: Neck */}
-        <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.neck.easterEgg : morphingPaths.neck.default }}
+          animate={{ d: isEasterEgg ? morphingPaths.hairBack.easterEgg : morphingPaths.hairBack.default }}
           fill="black"
           transition={transition}
         />
-        
-        {/* Layer 3: Face */}
+
+        {/* 2. face (White head mass) */}
         <motion.path 
           animate={{ d: isEasterEgg ? morphingPaths.face.easterEgg : morphingPaths.face.default }}
           fill="white" stroke="black" strokeWidth="2"
           transition={transition}
         />
         
-        {/* Layer 4: Eyes */}
-        <motion.circle 
-          animate={{ cx: isEasterEgg ? 10.5 : 10.5, cy: isEasterEgg ? 21.5 : 23.5 }}
-          r="1.5" fill="black" transition={transition}
-        />
-        <motion.circle 
-          animate={{ cx: isEasterEgg ? 21.5 : 21.5, cy: isEasterEgg ? 21.5 : 23.5 }}
-          r="1.5" fill="black" transition={transition}
-        />
-
-        {/* Layer 5: Hair 1 (Bangs - Smooth Morph) */}
+        {/* 3. ear (Silhouetted on left) */}
         <motion.path 
-          animate={{ d: isEasterEgg ? morphingPaths.hair1.easterEgg : morphingPaths.hair1.default }}
-          fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+          animate={{ d: isEasterEgg ? morphingPaths.ear.easterEgg : morphingPaths.ear.default }}
+          fill="white" stroke="black" strokeWidth="2"
           transition={transition}
         />
         
-        {/* Layer 6: Eyebrows */}
+        {/* 4. eyes */}
+        <motion.circle 
+          animate={{ cx: 10.5, cy: isEasterEgg ? 21.5 : 23.5 }}
+          r="1.5" fill="black" transition={transition}
+        />
+        <motion.circle 
+          animate={{ cx: 21.5, cy: isEasterEgg ? 21.5 : 23.5 }}
+          r="1.5" fill="black" transition={transition}
+        />
+
+        {/* 5. hairBangs (Short hair fringe) */}
+        <motion.path 
+          animate={{ d: isEasterEgg ? morphingPaths.hairBangs.easterEgg : morphingPaths.hairBangs.default }}
+          fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+          transition={transition}
+        />
+
+        {/* 6. eyebrows */}
         <motion.path 
           animate={{ d: isEasterEgg ? morphingPaths.eyebrowL.easterEgg : morphingPaths.eyebrowL.default }}
           stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -132,71 +142,33 @@ const InteractiveDoodle = () => {
           transition={transition}
         />
 
-        {/* Layer 7: Hair 2 (Front/Side Layer - Simultaneous Crossfade) */}
-        <AnimatePresence>
-          {!isEasterEgg ? (
-            <motion.path 
-              key="hair2-default"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              d={crossfadePaths.hair2.default}
-              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
-              transition={{ duration: 0.3 }}
-            />
-          ) : (
-            <motion.path 
-              key="hair2-easter"
-              initial={{ opacity: 0, scale: 0.9, y: -5 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              d={crossfadePaths.hair2.easterEgg}
-              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Layer 8: Hair 3 (Back Layer - Simultaneous Crossfade) */}
-        <AnimatePresence>
-          {!isEasterEgg ? (
-            <motion.path 
-              key="hair3-default"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 0.95, y: -5 }}
-              d={crossfadePaths.hair3.default}
-              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
-              transition={{ duration: 0.3 }}
-            />
-          ) : (
-            <motion.path 
-              key="hair3-easter"
-              initial={{ opacity: 0, scale: 0.9, y: 5 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              d={crossfadePaths.hair3.easterEgg}
-              fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            />
-          )}
-        </AnimatePresence>
+        {/* 7. Long Hair Layers (Grow ON TOP of face/ears using clipPath) */}
+        <g clipPath="url(#hairGrowthClip)">
+          <path 
+            d={longHairPaths.hairLongSides}
+            fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+          />
+          <path 
+            d={longHairPaths.hairLongFront}
+            fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round"
+          />
+        </g>
         
-        {/* Layer 9: Mouth */}
+        {/* 8. mouth */}
         <motion.path 
           animate={{ d: isEasterEgg ? morphingPaths.mouth.easterEgg : morphingPaths.mouth.default }}
           stroke="black" strokeWidth="2" strokeLinecap="round"
           transition={transition}
         />
 
-        {/* Layer 10: Hand Gesture */}
+        {/* 9. hand */}
         <AnimatePresence>
           {isEasterEgg && (
             <motion.g
               initial={{ opacity: 0, y: 10, scale: 0.5 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.5 }}
-              transition={{ delay: 0.1, type: "spring", stiffness: 260, damping: 20 }}
+              transition={{ delay: 0.1, ...transition }}
             >
               <path d={handPaths.base} fill="white" />
               <path d={handPaths.outline} fill="black" />
