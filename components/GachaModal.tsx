@@ -186,19 +186,21 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                     <motion.button 
                       onClick={handleGachaClick}
                       key={`shake1x-${shakeKey1x}`}
+                      style={{ transform: "skewX(-12deg)" }}
                       animate={shakeKey1x > 0 ? { 
                         x: [-5, 5, -5, 5, -2, 2, 0],
-                        rotate: [-1, 1, -1, 1, 0]
-                      } : { x: 0, rotate: 0 }}
+                        rotate: [-1, 1, -1, 1, 0],
+                        skewX: -12
+                      } : { x: 0, rotate: 0, skewX: -12 }}
                       transition={{ duration: 0.3, ease: "linear" }}
                       disabled={isPulling}
-                      className={`w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 -skew-x-12 border-4 outline-none focus-visible:ring-2 focus-visible:ring-brand/50 ${
+                      className={`w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none focus-visible:ring-2 focus-visible:ring-brand/50 ${
                         tokens < 50
                         ? 'bg-surface border-border text-muted shadow-[4px_4px_0_var(--color-border)]' 
                         : 'bg-brand border-foreground text-white shadow-[4px_4px_0_var(--color-foreground)] hover:brightness-110'
                       }`}
                     >
-                      <div className="flex flex-col items-center gap-1 skew-x-12">
+                      <div className="flex flex-col items-center gap-1" style={{ transform: "skewX(12deg)" }}>
                         <span className="font-black text-small uppercase tracking-wide">1x Pull</span>
                         <div className="flex items-center gap-1.5 bg-black/20 px-2 py-0.5 rounded text-white/90">
                           <Coins className="w-2.5 h-2.5" />
@@ -212,15 +214,17 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                     <motion.button 
                       onClick={handle10xClick}
                       key={`shake10x-${shakeKey10x}`}
+                      style={{ transform: "skewX(-12deg)" }}
                       animate={shakeKey10x > 0 ? { 
                         x: [-5, 5, -5, 5, -2, 2, 0],
-                        rotate: [-1, 1, -1, 1, 0]
-                      } : { x: 0, rotate: 0 }}
+                        rotate: [-1, 1, -1, 1, 0],
+                        skewX: -12
+                      } : { x: 0, rotate: 0, skewX: -12 }}
                       transition={{ duration: 0.3, ease: "linear" }}
                       disabled={isPulling}
-                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 -skew-x-12 border-4 outline-none bg-surface border-foreground text-foreground shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
+                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none bg-surface border-foreground text-foreground shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
                     >
-                      <div className="flex flex-col items-center gap-1 skew-x-12">
+                      <div className="flex flex-col items-center gap-1" style={{ transform: "skewX(12deg)" }}>
                         <span className="font-black text-muted text-small uppercase tracking-wide">10x Pull</span>
                         <div className="flex items-center gap-1.5 bg-foreground/10 px-2 py-0.5 rounded text-muted">
                           <Coins className="w-2.5 h-2.5" />
