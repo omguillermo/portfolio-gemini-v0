@@ -85,7 +85,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-xl flex items-center justify-center p-6"
+          className="fixed inset-0 z-[200] bg-background/80 backdrop-blur-xl flex items-center justify-center p-6"
           onClick={closeGacha}
         >
           <motion.div 

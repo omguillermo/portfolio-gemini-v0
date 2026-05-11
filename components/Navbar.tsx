@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 pointer-events-none ${
+      <nav className={`fixed top-0 left-0 w-full z-[50] transition-all duration-300 pointer-events-none ${
         isScrolled 
           ? 'py-4 bg-background/80 backdrop-blur-md border-b border-border/50' 
           : 'py-8 bg-transparent border-b border-transparent'
@@ -125,3 +125,4 @@ export default function Navbar() {
     </>
   );
 }
+
