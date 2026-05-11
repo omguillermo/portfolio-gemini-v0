@@ -65,7 +65,7 @@ const InteractiveDoodle = () => {
 
   return (
     <div 
-      className="relative cursor-pointer select-none w-full h-full"
+      className="relative cursor-pointer select-none w-full h-full doodle-sticker transition-all duration-300"
       onClick={toggleEasterEgg}
     >
       <motion.svg 
