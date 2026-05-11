@@ -210,10 +210,9 @@ export default function Portfolio() {
             <span className="font-mono uppercase tracking-wider text-[10px]">Oh, an easter egg!</span>
           </button>
         </footer>
-
-        <GachaModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
       </main>
+
+      <GachaModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
