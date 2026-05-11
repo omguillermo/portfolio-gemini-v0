@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Cursor from "../components/Cursor";
 import Navbar from "../components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -36,6 +35,23 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                  document.documentElement.classList.add(theme);
+                  
+                  const brand = localStorage.getItem('brand-theme') || 'forest';
+                  document.documentElement.setAttribute('data-brand', brand);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}

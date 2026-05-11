@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/Reveal';
 import TooltipFollower from '@/components/TooltipFollower';
@@ -39,22 +40,25 @@ export default function About() {
                 onClick={handleTouch}
               >
                 {/* Professional Photo */}
-                <motion.img 
-                  src="/about/oguillermo-edit-about.jpg" 
-                  alt="Omar Guillermo - Professional"
-                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                <motion.div
+                  className="absolute inset-0 w-full h-full grayscale"
                   animate={{ 
                     opacity: isHovered ? 0 : 1,
                     scale: isHovered ? 1.05 : 1,
                   }}
                   transition={{ duration: 0.4 }}
-                />
+                >
+                  <Image 
+                    src="/about/oguillermo-edit-about.jpg" 
+                    alt="Omar Guillermo - Professional"
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
 
                 {/* Metalhead Easter Egg Photo with Periodic Headbang Shake */}
-                <motion.img 
-                  src="/about/oguillermo-metalhead.png" 
-                  alt="Omar Guillermo - Nightwish Concert"
-                  className="absolute inset-0 w-full h-full object-cover"
+                <motion.div 
+                  className="absolute inset-0 w-full h-full"
                   initial={{ opacity: 0 }}
                   animate={{ 
                     opacity: isHovered ? 1 : 0,
@@ -75,7 +79,14 @@ export default function About() {
                       times: [0, 0.1, 0.2, 0.3, 0.4, 1] 
                     }
                   }}
-                />
+                >
+                  <Image 
+                    src="/about/oguillermo-metalhead.png" 
+                    alt="Omar Guillermo - Nightwish Concert"
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
 
                 {/* Extracted Design System Component */}
                 <TooltipFollower 
