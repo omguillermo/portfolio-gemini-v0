@@ -14,6 +14,17 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   const project = projectsData[slug as keyof typeof projectsData];
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
+  React.useEffect(() => {
+    if (activeImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeImage]);
+
   if (!project) {
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">

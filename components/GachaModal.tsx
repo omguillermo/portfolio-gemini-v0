@@ -23,6 +23,17 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
   const [shakeKey1x, setShakeKey1x] = useState(0);
   const [shakeKey10x, setShakeKey10x] = useState(0);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const handleGachaClick = () => {
     if (isPulling) return;
     
@@ -187,7 +198,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Slanted Game-like Buttons Section */}
-                <div className="grid grid-cols-2 gap-6 w-full mt-6 z-10 px-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mt-6 z-10 px-2">
                   <div className="relative w-full">
                     <motion.button 
                       onClick={handleGachaClick}

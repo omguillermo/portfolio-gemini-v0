@@ -20,27 +20,27 @@ export default function Portfolio() {
         <header className="mb-16 md:mb-24 flex flex-col items-center text-center">
           <Reveal width="100%" overflow="visible">
             <div className="relative inline-block">
-              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-20 h-20 hidden md:block z-20">
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-20 h-20 z-20">
                 <InteractiveDoodle />
               </div>
-              <h1 className="text-hero font-bold mb-4 leading-tight relative">
+              <h1 className="text-hero font-bold mb-4 leading-tight relative mt-4 md:mt-0">
                 Senior Product Designer <br className="hidden md:block" />
                 & Design System Builder
               </h1>
             </div>
-            <p className="text-heading text-muted max-w-3xl mx-auto leading-relaxed font-light tracking-wide mb-8">
+            <p className="text-heading text-muted max-w-3xl mx-auto leading-relaxed font-light tracking-wide mb-8 mt-4 md:mt-0">
               I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
             </p>
 
             {/* Availability Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface/50 group cursor-default transition-all duration-500 hover:pr-4 mx-auto">
-              <span className="relative flex h-2 w-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface/50 group cursor-default transition-all duration-500 md:hover:pr-4 mx-auto max-w-full">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
               </span>
-              <span className="text-mono font-mono text-[10px] uppercase tracking-widest text-foreground flex items-center">
+              <span className="text-mono font-mono text-[10px] uppercase tracking-widest text-foreground flex items-center overflow-hidden">
                 Open to new roles
-                <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 group-hover:max-w-[300px] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 md:group-hover:max-w-[300px] md:group-hover:opacity-100 transition-all duration-500 ease-in-out">
                   <span className="mx-1">•</span> TN Visa Eligible <span className="mx-1">•</span> Open to relocate
                 </span>
               </span>
