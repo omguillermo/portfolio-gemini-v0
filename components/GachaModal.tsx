@@ -96,7 +96,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[200] bg-background/80 backdrop-blur-xl flex items-center justify-center p-6"
+          className="fixed inset-0 z-[200] bg-background/80 backdrop-blur-xl flex items-center justify-center md:p-6"
           onClick={closeGacha}
         >
           <motion.div 
@@ -104,7 +104,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="bg-surface border-4 border-foreground p-8 md:p-12 max-w-lg w-full shadow-[8px_8px_0px_var(--color-foreground)] relative overflow-hidden flex flex-col"
+            className="bg-surface border-0 md:border-4 border-foreground p-6 md:p-12 max-w-lg w-full h-[100dvh] md:h-auto shadow-none md:shadow-[8px_8px_0px_var(--color-foreground)] relative overflow-y-auto md:overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button 

@@ -16,7 +16,7 @@ export default function Portfolio() {
     <div className="min-h-screen text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_0%_0%,var(--brand),transparent_50%)] opacity-[0.03] pointer-events-none" />
       
-      <main className="max-w-6xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-64 md:pb-32 relative z-10">
+      <main className="max-w-6xl mx-auto px-6 pt-56 pb-24 md:px-12 md:pt-64 md:pb-32 relative z-10">
         <header className="mb-16 md:mb-24 flex flex-col items-center text-center">
           <Reveal width="100%" overflow="visible">
             <div className="relative inline-block">
