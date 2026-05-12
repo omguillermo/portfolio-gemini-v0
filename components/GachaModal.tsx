@@ -116,9 +116,14 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
               {/* The Console Section */}
               <div className="bg-background border-4 border-foreground p-6 md:p-8 relative overflow-hidden flex flex-col items-center group">
                 {/* Game-like Scanline / Grid overlay */}
-                <div 
+                <motion.div 
                   className="absolute inset-0 opacity-[0.04] pointer-events-none transition-opacity group-hover:opacity-[0.06]" 
-                  style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, var(--foreground) 2px, var(--foreground) 4px)' }} 
+                  style={{ 
+                    backgroundImage: 'linear-gradient(0deg, transparent 50%, var(--foreground) 50%)',
+                    backgroundSize: '100% 4px'
+                  }} 
+                  animate={{ backgroundPosition: ["0px 0px", "0px -40px"] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
                 />
 
                 {/* Slanted Token Balance Indicator */}
@@ -161,11 +166,12 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                     {gachaResult && !isPulling && (
                       <motion.div
                         key="result-text"
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        className="text-center mt-4 bg-surface px-6 py-3 border-4 border-foreground shadow-[4px_4px_0_var(--color-foreground)] -skew-x-6"
+                        style={{ transform: "skewX(-12deg)" }}
+                        initial={{ y: 10, opacity: 0, skewX: -12 }}
+                        animate={{ y: 0, opacity: 1, skewX: -12 }}
+                        className="text-center mt-4 bg-surface px-6 py-3 border-4 border-foreground shadow-[4px_4px_0_var(--color-foreground)]"
                       >
-                        <div className="skew-x-6">
+                        <div className="skew-x-12">
                           <p className={`text-mono font-mono text-[10px] uppercase tracking-[0.2em] mb-1 font-black ${
                             gachaResult.rarity === 'UR' ? 'text-accent' : 'text-brand'
                           }`}>
