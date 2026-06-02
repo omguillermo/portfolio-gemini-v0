@@ -15,10 +15,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 40);
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -30,58 +33,63 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[50] transition-all duration-300 pointer-events-none ${
+      <nav className={`fixed top-0 left-0 w-full z-[50] transition-colors duration-300 pointer-events-auto ${
         isScrolled 
-          ? 'py-4 bg-background/80 backdrop-blur-md border-b border-border/50' 
-          : 'py-8 bg-transparent border-b border-transparent'
+          ? 'bg-background/80 backdrop-blur-md' 
+          : 'bg-transparent'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          {/* Logo / Monogram Lockup */}
-          <Link 
-            href="/" 
-            className="flex items-center gap-3 pointer-events-auto group"
-          >
-            <div className="w-10 h-10 text-foreground transition-colors duration-300">
-              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <path 
-                  d="M120 220C180 220 220 180 220 120C220 116.601 219.872 113.267 219.619 110H120L174.885 164.885C166.615 194.962 148.321 210 120 210C80 210 60 180 60 120C60 60 80 30 120 30C155.277 30 174.998 53.3333 179.163 100H218.423C210.472 51.276 173.055 20 120 20C60 20 20 60 20 120C20 180 60 220 120 220Z" 
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-            <span className="text-body font-bold tracking-tighter hover:text-brand transition-colors">
-              Omar Guillermo
-            </span>
-          </Link>
+        {/* Level 1: Global Branding & Controls */}
+        <div className="w-full border-b border-border/30 py-3 md:py-4">
+          <div className="max-w-5xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            {/* Left Side: Branding */}
+            <Link
+              href="/"
+              className="flex items-center gap-3 group"
+            >
+              <div className="w-8 h-8 text-foreground transition-colors duration-300">
+                <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  <path
+                    d="M120 220C180 220 220 180 220 120C220 116.601 219.872 113.267 219.619 110H120L174.885 164.885C166.615 194.962 148.321 210 120 210C80 210 60 180 60 120C60 60 80 30 120 30C155.277 30 174.998 53.3333 179.163 100H218.423C210.472 51.276 173.055 20 120 20C60 20 20 60 20 120C20 180 60 220 120 220Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <span className="text-body font-bold tracking-tighter hover:text-brand transition-colors">
+                Omar Guillermo
+              </span>
+            </Link>
 
-          {/* Desktop Links & Switcher */}
-          <div className="hidden md:flex items-center gap-8 pointer-events-auto">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.href}
-                href={link.href} 
-                className={`text-small font-mono uppercase tracking-widest hover:text-brand transition-colors ${
-                  pathname === link.href ? 'text-foreground' : 'text-muted'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="flex items-center gap-2">
-              <BrandSwitcher />
-              <ThemeSwitcher />
+            {/* Right Side: Navigation & Switchers */}
+            <div className="flex items-center gap-6 md:gap-8">
+              <div className="hidden md:flex items-center gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-small font-mono uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
+                      }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex items-center gap-1 md:gap-2">
+                <BrandSwitcher />
+                <ThemeSwitcher />
+              </div>
             </div>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={toggleMenu}
+              className="md:hidden p-2 -mr-2 text-foreground focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-
-          {/* Mobile Menu Trigger */}
-          <button 
-            onClick={toggleMenu}
-            className="md:hidden p-2 -mr-2 text-foreground pointer-events-auto focus:outline-none"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
+
       </nav>
 
       {/* Mobile Menu Overlay */}
@@ -100,14 +108,13 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${
-                    pathname === link.href ? 'text-foreground' : 'text-muted'
-                  }`}
+                  className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
+                    }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              
+
               <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-mono text-muted uppercase text-[10px] tracking-widest">Brand Logic</p>
@@ -125,4 +132,3 @@ export default function Navbar() {
     </>
   );
 }
-

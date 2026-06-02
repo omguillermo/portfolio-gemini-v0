@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
-      <main className="max-w-4xl mx-auto px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32 relative z-10">
+      <main className="max-w-3xl mx-auto px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 relative z-10">
         
         <Reveal width="100%">
           <h1 className="text-display font-bold tracking-tighter mb-8 leading-tight">
@@ -28,13 +28,13 @@ export default function About() {
           </h1>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 mt-12">
           <Reveal width="100%">
             <div className="space-y-8">
               {/* Photo Easter Egg Container */}
               <div 
                 ref={containerRef}
-                className="relative aspect-square bg-surface border border-border rounded-2xl shadow-sm overflow-hidden group cursor-none"
+                className="relative aspect-square bg-surface border border-border rounded-xl shadow-none overflow-hidden group cursor-none"
                 onMouseEnter={() => !window.matchMedia('(max-width: 1024px)').matches && setIsHovered(true)}
                 onMouseLeave={() => !window.matchMedia('(max-width: 1024px)').matches && setIsHovered(false)}
                 onClick={handleTouch}
@@ -52,6 +52,7 @@ export default function About() {
                     src="/about/oguillermo-edit-about.jpg" 
                     alt="Omar Guillermo - Professional"
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </motion.div>
@@ -84,6 +85,7 @@ export default function About() {
                     src="/about/oguillermo-metalhead.png" 
                     alt="Omar Guillermo - Nightwish Concert"
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </motion.div>
@@ -97,11 +99,11 @@ export default function About() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Location</p>
+                <p className="text-mono font-mono text-muted uppercase tracking-widest text-[11px]">Location</p>
                 <p className="text-body font-medium">Mérida, México 🇲🇽</p>
               </div>
               <div className="space-y-2">
-                <p className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Favorite Fuel</p>
+                <p className="text-mono font-mono text-muted uppercase tracking-widest text-[11px]">Favorite Fuel</p>
                 <p className="text-body font-medium">Chilaquiles & Coffee ☕️</p>
               </div>
             </div>
@@ -109,7 +111,7 @@ export default function About() {
 
           <Reveal width="100%" delay={0.1}>
             <div className="space-y-12">
-              <section className="space-y-6 text-body text-muted leading-relaxed font-light">
+              <section className="space-y-4 text-body text-muted leading-relaxed font-light">
                 <p>
                   Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
                 </p>
@@ -135,7 +137,7 @@ export default function About() {
 
               <div className="grid grid-cols-2 gap-12 pt-12 border-t border-border">
                 <div className="space-y-4">
-                  <h3 className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Capabilities</h3>
+                  <h3 className="text-mono font-mono text-muted uppercase tracking-widest text-[11px]">Capabilities</h3>
                   <ul className="space-y-2 text-body">
                     <li>Systems Design</li>
                     <li>UI/UX Architecture</li>
@@ -144,7 +146,7 @@ export default function About() {
                   </ul>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-mono font-mono text-muted uppercase tracking-widest text-[10px]">Stack</h3>
+                  <h3 className="text-mono font-mono text-muted uppercase tracking-widest text-[11px]">Stack</h3>
                   <ul className="space-y-2 text-body">
                     <li>Next.js / React</li>
                     <li>TailwindCSS</li>

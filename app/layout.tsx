@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -52,9 +53,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
+      <body className="min-h-full flex flex-col justify-between">
+        <div>
+          <Navbar />
+          {children}
+        </div>
+        <Footer />
         <Analytics />
       </body>
     </html>

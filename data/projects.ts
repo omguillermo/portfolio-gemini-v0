@@ -142,5 +142,40 @@ export const projectsData: Record<string, ProjectData> = {
       }
     ],
     retrospective: "This project proved that 'Personalization' isn't always the answer. Sometimes, raw data clarity and a reduced time-to-value are more powerful drivers for conversion than a fancy tailored onboarding."
+  },
+  'design-system-scale': {
+    title: "Scaling a Multi-Brand Design System",
+    subtitle: "Creating a unified token pipeline and component library to align design and engineering teams across 4 distinct products.",
+    role: "Design Systems Lead",
+    timeline: "September 2024 - April 2025",
+    impact: "Reduced design-to-development handoff time by 42% and saved ~120 hours per sprint.",
+    constraint: "Must support multiple sub-brands with a single source of truth, without code duplication or performance bloat.",
+    problem_hypothesis: {
+      problem: "Product teams were designing and coding in silos, leading to severe visual inconsistency across product lines and duplicate engineering effort.",
+      hypothesis: "By establishing a single token pipeline from Figma to Style Dictionary and building a React-based component library, we could automate design updates and unify the user experience."
+    },
+    design_rationale: "To construct a highly scalable system, I set up a multi-tier design token architecture (global, alias, component) and developed a workflow to build and export tokens automatically.",
+    iterations: [
+      {
+        approach: "Component-First Library (No Tokens)",
+        why_it_failed: "Changing styling or branding required editing the component source code itself, making it impossible to support separate brand themes.",
+        image_url: "/projects/design-system/ds-cover-temp.png",
+        caption: "Iteration A: Initial component-first layout that suffered from strict styling and hardcoded values."
+      }
+    ],
+    system_solution: "I designed a token architecture that maps brand values to semantic aliases, which are then referenced by React components. We automated this using Style Dictionary to compile tokens for CSS, Tailwind, and JS config files simultaneously.",
+    edge_cases_handled: [
+      "Dynamic Theming shifts: Engineered run-time theme switching for dark/light mode and brand changes without layout thrashing.",
+      "Automated A11y verification: Integrated color contrast checking in the build pipeline to reject component combinations that violate WCAG AA standards.",
+      "Legacy integration pathways: Provided semantic-to-legacy mapping tables for teams migrating older UI components incrementally."
+    ],
+    visual_highlights: [
+      {
+         "image_url": "/projects/design-system/ds-details-temp.png",
+         "caption": "Pipeline View: The style dictionary configuration mapping source JSON tokens directly to production-ready UI components."
+      }
+    ],
+    retrospective: "A design system is 20% code and 80% communication. The technical pipeline solved our scaling issues, but success was only realized after we conducted cross-team workshops and established clear governance models."
   }
 };
+

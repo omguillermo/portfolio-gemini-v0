@@ -17,13 +17,13 @@
   /* Radius Token */
   --radius: 1.5rem; /* 24px */
 
-  /* Refined Typography Scales - More Professional & Restrained */
-  --fs-hero: clamp(2rem, 4vw, 3rem);        /* Homepage Main Title (Max 48px) */
-  --fs-display: clamp(1.75rem, 5vw, 3.5rem);   /* Case Study Titles */
-  --fs-heading: 1rem;                          /* Subheadings/Descriptions (Fixed 16px) */
-  --fs-body: 1rem;                             /* Main Reading Text (16px) */
-  --fs-small: 0.875rem;                        /* Footer/Labels (14px) */
-  --fs-mono: 0.75rem;                          /* Systems Metadata (12px) */
+  /* Refined Typography Scales - Hard Tech / High Precision */
+  --fs-hero: clamp(1.75rem, 3.5vw, 2.5rem);     /* Reduced for tighter feel */
+  --fs-display: clamp(1.5rem, 4vw, 3rem); 
+  --fs-heading: 0.9375rem;                      /* 15px */
+  --fs-body: 0.9375rem;                         /* 15px */
+  --fs-small: 0.75rem;                          /* 12px - Precise metadata */
+  --fs-mono: 0.625rem;                          /* 10px - System labels */
 }
 
 /* Global Dark Mode Base (System Green) */
@@ -94,6 +94,28 @@
   --muted: #8A919E !important;
   --selection-bg: #2667D9 !important;
 }
+
+/* Royal Purple - Deep & Royal */
+[data-brand='purple'] {
+  --brand: #8A26D9;
+  --background: #FAF8FC;
+  --foreground: #1C1A1F;
+  --surface: #FFFFFF;
+  --border: #E8DEEE;
+  --muted: #524A54;
+  --selection-bg: #8A26D9;
+}
+
+[data-brand='purple'].dark {
+  --brand: #8A26D9 !important;
+  --background: #0F0814 !important;
+  --foreground: #F5F2F7 !important; /* Purple off-white */
+  --surface: #180D21 !important;
+  --border: #281A33 !important;
+  --muted: #9A8A9E !important;
+  --selection-bg: #8A26D9 !important;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
@@ -177,8 +199,8 @@
     background-color: white;
     padding: 2px;
     border-radius: 50%;
-    /* Create a thick white border + depth shadow */
-    box-shadow: 0 0 0 6px white, 0 12px 24px rgba(0,0,0,0.6);
+    /* Replaced fuzzy shadow with a solid 2px mechanical offset */
+    box-shadow: 0 0 0 2px white, 4px 4px 0px rgba(0,0,0,0.8);
   }
 }
 
@@ -197,4 +219,22 @@ body {
 ::selection {
   background-color: var(--selection-bg);
   color: var(--selection-text);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility mask-fade {
+  mask-image: linear-gradient(to right, transparent, rgba(0,0,0,1) 40px, rgba(0,0,0,1) calc(100% - 40px), transparent);
 }

@@ -138,10 +138,14 @@ const InteractiveDoodle = () => {
           
           {/* 4. eyes */}
           <motion.circle 
+            cx={10.5}
+            cy={23.5}
             animate={{ cx: 10.5, cy: isEasterEgg ? 21.5 : 23.5 }}
             r="1.5" fill="black" transition={transition}
           />
           <motion.circle 
+            cx={21.5}
+            cy={23.5}
             animate={{ cx: 21.5, cy: isEasterEgg ? 21.5 : 23.5 }}
             r="1.5" fill="black" transition={transition}
           />
@@ -220,10 +224,10 @@ const InteractiveDoodle = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.5 }}
             transition={transition}
-            className="absolute -top-12 -right-12 bg-foreground text-background px-3 py-1.5 rounded text-[9px] font-bold tracking-widest whitespace-nowrap shadow-xl z-50 border border-border/10"
+            className="absolute top-1/2 -right-24 -translate-y-1/2 bg-foreground text-background px-3 py-1.5 rounded text-[9px] font-bold tracking-widest whitespace-nowrap shadow-xl z-50 border border-border/10"
           >
             LET&apos;S ROCK!
-            <div className="absolute -bottom-1 left-2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[6px] border-t-foreground" />
+            <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[8px] border-r-foreground" />
           </motion.div>
         )}
       </AnimatePresence>

@@ -35,16 +35,16 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
   const content = (
     <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
-      <nav className="max-w-4xl mx-auto px-6 pt-32 pb-12 md:px-12">
+      <nav className="max-w-3xl mx-auto px-6 pt-32 pb-8 md:px-12 md:pt-40">
         <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-muted hover:text-foreground transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Return to Index
         </Link>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-6 md:px-12">
+      <main className="max-w-3xl mx-auto px-6 md:px-12">
         <Reveal width="100%">
-          <header className="mb-32">
+          <header className="mb-16">
             <h1 className="text-display font-bold tracking-tighter mb-6">
               {project.title}
             </h1>
@@ -52,7 +52,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               {project.subtitle}
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-border">
               <div>
                 <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Role</p>
                 <p className="text-small font-medium tracking-tight">{project.role}</p>
@@ -73,7 +73,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           </header>
         </Reveal>
 
-        <article className="space-y-32">
+        <article className="space-y-16">
           {/* 1. Problem & Hypothesis */}
           <Reveal width="100%">
             <section className="space-y-4">
@@ -85,7 +85,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                   {project.problem_hypothesis.problem}
                 </p>
               </div>
-              <div className="bg-surface/50 border border-border p-8 rounded-2xl space-y-4 mt-12">
+              <div className="bg-surface/50 border border-border p-6 rounded-xl space-y-4 mt-8">
                 <div className="flex items-center gap-2 text-brand">
                   <Lightbulb className="w-4 h-4" />
                   <span className="text-mono font-mono text-[10px] uppercase tracking-widest font-bold">Hypothesis</span>
@@ -109,7 +109,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 </p>
               </div>
 
-              <div className="space-y-16 mt-16">
+              <div className="space-y-12 mt-12">
                 {project.iterations.map((iteration, index) => (
 
                   <div key={index} className="space-y-8">
@@ -124,7 +124,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     {iteration.image_url && (
                       <div className="space-y-4">
                         <button 
-                          className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden cursor-zoom-in relative group block"
+                          className="w-full aspect-video bg-surface border border-border rounded-xl overflow-hidden cursor-zoom-in relative group block"
                           onClick={() => setActiveImage(iteration.image_url!)}
                           aria-label={`View full size image of ${iteration.approach}`}
                         >
@@ -132,6 +132,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                             src={iteration.image_url} 
                             alt={iteration.approach} 
                             fill 
+                            sizes="(max-width: 1024px) 100vw, 896px"
                             className="object-cover" 
                            />
                            <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -167,12 +168,12 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               </div>
               
               {/* Visual Highlights Grid */}
-              <div className="space-y-16 mt-16">
+              <div className="space-y-12 mt-12">
 
                 {project.visual_highlights.map((highlight, index) => (
                   <div key={index} className="space-y-4">
                     <button 
-                      className="w-full aspect-video bg-surface border border-border rounded-2xl overflow-hidden relative cursor-zoom-in group block"
+                      className="w-full aspect-video bg-surface border border-border rounded-xl overflow-hidden relative cursor-zoom-in group block"
                       onClick={() => setActiveImage(highlight.image_url)}
                       aria-label={`View full size image: ${highlight.caption}`}
                     >
@@ -180,6 +181,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                         src={highlight.image_url} 
                         alt={highlight.caption}
                         fill
+                        sizes="(max-width: 1024px) 100vw, 896px"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -200,7 +202,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
           {/* 4. Edge Cases Section */}
           <Reveal width="100%">
-            <section className="bg-surface border border-border rounded-2xl p-8 md:p-12">
+            <section className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
                 Edge Cases
               </h2>
@@ -220,7 +222,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           {/* 5. Retrospective Section */}
           <Reveal width="100%">
             <section className="border-t border-border">
-              <div className="pt-16 space-y-4">
+              <div className="pt-12 space-y-4">
                 <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
                   Results & Retrospective
                 </h2>
@@ -251,7 +253,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
           {/* Footer Navigation */}
           <Reveal width="100%">
-            <footer className="pt-16 border-t border-border flex justify-between items-center">
+            <footer className="pt-12 border-t border-border flex justify-between items-center">
               <Link href="/" className="text-small font-mono text-muted hover:text-brand transition-colors">
                 ← INDEX
               </Link>
@@ -290,6 +292,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 src={activeImage} 
                 alt="High resolution project preview" 
                 fill
+                sizes="100vw"
                 className="object-contain"
               />
             </motion.div>
