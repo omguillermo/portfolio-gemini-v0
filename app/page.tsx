@@ -1,112 +1,47 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import InteractiveDoodle from '@/components/InteractiveDoodle';
 import ProjectCard from '@/components/ProjectCard';
+import StatusTerminal from '@/components/StatusTerminal';
 
 export default function Portfolio() {
-  const [time, setTime] = useState<string>('');
-
-  useEffect(() => {
-    // Live clock logic for Mérida, MX
-    const updateTime = () => {
-      const now = new Date();
-      const formatter = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Merida',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true,
-      });
-      setTime(formatter.format(now));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000 * 30); // Update every 30s
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen text-foreground font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_0%_0%,var(--brand),transparent_50%)] opacity-[0.03] pointer-events-none" />
 
       <main className="max-w-5xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-[88px] md:pb-20 relative z-10">
-        {/* HUD Data Grid */}
-        <Reveal width="100%">
-          <div className="mb-10 md:mb-12 pb-6">
-            <div className="grid grid-cols-2 gap-y-3 sm:flex sm:flex-wrap md:flex-nowrap md:items-center md:justify-between gap-x-4 text-mono font-mono text-[9px] uppercase tracking-[0.12em] text-muted">
-              {/* Cell: Location */}
-              <div className="flex items-center gap-2">
-                <span className="text-muted font-light">LOCATION</span>
-                <span className="text-foreground/80 font-medium">Mérida, MX</span>
-              </div>
-
-              <div className="hidden md:block h-3 w-[1px] bg-border/40 shrink-0" />
-
-              {/* Cell: Time */}
-              <div className="flex items-center gap-2">
-                <span className="text-muted font-light">LOCAL TIME</span>
-                <span className="text-foreground/80 font-medium tabular-nums">{time}</span>
-              </div>
-
-              <div className="hidden md:block h-3 w-[1px] bg-border/40 shrink-0" />
-
-              {/* Cell: Status */}
-              <div className="flex items-center gap-2">
-                <span className="text-muted font-light">STATUS</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand"></span>
-                  </span>
-                  <span className="text-foreground/80 font-medium">Open to roles</span>
-                </div>
-              </div>
-
-              <div className="hidden md:block h-3 w-[1px] bg-border/40 shrink-0" />
-
-              {/* Cell: Visa */}
-              <div className="flex items-center gap-2">
-                <span className="text-muted font-light">VISA</span>
-                <span className="text-foreground/80 font-medium flex items-center gap-1">
-                  <span className="text-[10px]">🇺🇸🇲🇽</span> TN Eligible
-                </span>
-              </div>
-
-              <div className="hidden md:block h-3 w-[1px] bg-border/40 shrink-0" />
-
-              {/* Cell: Relocation */}
-              <div className="flex items-center gap-2">
-                <span className="text-muted font-light">MOBILITY</span>
-                <span className="text-foreground/80 font-medium flex items-center gap-1">
-                  <span className="text-[10px]">✈️</span> Relocate
-                </span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        {/* Hero — 2-column layout */}
         <header className="mb-12 md:mb-16">
           <Reveal width="100%" overflow="visible">
-            <div className="max-w-3xl space-y-4">
-              {/* Top Meta Row: Doodle */}
-              <div className="flex flex-row items-center gap-6">
-                <div className="w-16 h-16 shrink-0">
-                  <InteractiveDoodle />
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
+              {/* Left column: Doodle + Heading */}
+              <div className="max-w-3xl space-y-4">
+                {/* Doodle */}
+                <div className="flex flex-row items-center gap-6">
+                  <div className="w-16 h-16 shrink-0">
+                    <InteractiveDoodle />
+                  </div>
+                </div>
+
+                {/* Heading Unit */}
+                <div className="space-y-6">
+                  <h1 className="text-hero font-bold leading-[1.05] tracking-tighter">
+                    Senior Product Designer <br />
+                    & Design System Builder
+                  </h1>
+                  <p className="text-[14px] text-muted max-w-2xl leading-relaxed font-light tracking-wide">
+                    I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
+                  </p>
                 </div>
               </div>
 
-              {/* Heading Unit */}
-              <div className="space-y-6">
-                <h1 className="text-hero font-bold leading-[1.05] tracking-tighter">
-                  Senior Product Designer <br />
-                  & Design System Builder
-                </h1>
-                <p className="text-[14px] text-muted max-w-2xl leading-relaxed font-light tracking-wide">
-                  I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
-                </p>
-              </div>
+              {/* Right column: Status Terminal */}
+              <StatusTerminal />
             </div>
           </Reveal>
         </header>
