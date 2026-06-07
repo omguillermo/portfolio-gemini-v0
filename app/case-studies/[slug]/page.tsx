@@ -54,19 +54,19 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-border">
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Role</p>
+                <p className="text-mono text-muted uppercase mb-2 tracking-widest">Role</p>
                 <p className="text-small font-medium tracking-tight">{project.role}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Timeline</p>
+                <p className="text-mono text-muted uppercase mb-2 tracking-widest">Timeline</p>
                 <p className="text-small font-medium tracking-tight">{project.timeline}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Impact</p>
+                <p className="text-mono text-muted uppercase mb-2 tracking-widest">Impact</p>
                 <p className="text-small font-medium tracking-tight text-brand font-bold">{project.impact}</p>
               </div>
               <div>
-                <p className="text-mono text-muted font-mono uppercase mb-2 text-[10px] tracking-widest">Constraint</p>
+                <p className="text-mono text-muted uppercase mb-2 tracking-widest">Constraint</p>
                 <p className="text-small font-medium tracking-tight">{project.constraint}</p>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="space-y-4">
               <div className="space-y-4">
-                <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
+                <h2 className="text-mono text-muted uppercase tracking-widest flex items-center gap-4">
                   The Problem
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed">
@@ -88,7 +88,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               <div className="bg-surface/50 border border-border p-6 rounded-xl space-y-4 mt-8">
                 <div className="flex items-center gap-2 text-brand">
                   <Lightbulb className="w-4 h-4" />
-                  <span className="text-mono font-mono text-[10px] uppercase tracking-widest font-bold">Hypothesis</span>
+                  <span className="text-mono uppercase tracking-widest font-bold">Hypothesis</span>
                 </div>
                 <p className="text-body text-muted leading-relaxed italic">
                   &quot;{project.problem_hypothesis.hypothesis}&quot;
@@ -101,7 +101,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="space-y-4">
               <div className="space-y-4">
-                <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
+                <h2 className="text-mono text-muted uppercase tracking-widest flex items-center gap-4">
                   Design Iteration & Rationale
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed whitespace-pre-wrap">
@@ -115,7 +115,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                   <div key={index} className="space-y-8">
 
                     <div className="space-y-2">
-                      <p className="text-mono text-brand font-mono text-[10px] uppercase tracking-widest">Iteration [{index + 1}]</p>
+                      <p className="text-mono text-brand uppercase tracking-widest">Iteration 0{index + 1}</p>
                       <h3 className="text-heading font-bold">{iteration.approach}</h3>
                       <p className="text-body text-muted leading-relaxed pt-2">
                         {iteration.why_it_failed}
@@ -159,7 +159,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="space-y-4">
               <div className="space-y-4">
-                <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
+                <h2 className="text-mono text-muted uppercase tracking-widest flex items-center gap-4">
                   The Solution
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed">
@@ -203,7 +203,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           {/* 4. Edge Cases Section */}
           <Reveal width="100%">
             <section className="bg-surface border border-border rounded-xl p-6 md:p-8">
-              <h2 className="text-mono font-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4 text-[11px]">
+              <h2 className="text-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4">
                 Edge Cases
               </h2>
               <ul className="space-y-6">
@@ -223,7 +223,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <section className="border-t border-border">
               <div className="pt-12 space-y-4">
-                <h2 className="text-mono font-mono text-muted uppercase tracking-widest flex items-center gap-4 text-[11px]">
+                <h2 className="text-mono text-muted uppercase tracking-widest flex items-center gap-4">
                   Results & Retrospective
                 </h2>
                 <p className="text-body text-foreground/90 leading-relaxed italic text-muted">
@@ -258,7 +258,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 ← INDEX
               </Link>
               <div className="flex gap-8">
-                <span className="text-mono text-tertiary uppercase text-[10px]">Next Project: Coming Soon</span>
+                <span className="text-mono text-tertiary uppercase">Next Project: Coming Soon</span>
               </div>
             </footer>
           </Reveal>

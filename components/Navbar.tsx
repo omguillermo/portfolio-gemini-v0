@@ -66,7 +66,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-small font-mono uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
+                    className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
                       }`}
                   >
                     {link.label}

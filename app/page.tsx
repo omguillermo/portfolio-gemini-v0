@@ -136,7 +136,7 @@ export default function Portfolio() {
                     <div className="p-6 flex flex-col justify-between flex-grow gap-3">
                       <div className="space-y-2">
                         <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2B / AI
+                          B2B, AI
                         </span>
                         <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
                           Stoki AI Assistant
@@ -172,7 +172,7 @@ export default function Portfolio() {
                     <div className="p-6 flex flex-col justify-between flex-grow gap-3">
                       <div className="space-y-2">
                         <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2C / eCommerce
+                          B2C, eCommerce
                         </span>
                         <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
                           Buy Shipping Labels
@@ -208,7 +208,7 @@ export default function Portfolio() {
                     <div className="p-6 flex flex-col justify-between flex-grow gap-3">
                       <div className="space-y-2">
                         <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2B / Survey Software
+                          B2B, Survey Software
                         </span>
                         <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
                           Sign Up Experience
@@ -264,12 +264,108 @@ export default function Portfolio() {
             </Reveal>
           </div>
         </section>
+         {/* 02 / Technical Skills & Toolkit */}
+        <section className="mb-20">
+          <Reveal width="100%" overflow="visible">
+            <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-6 border-b border-border pb-3">
+              02 / Technical Skills & Toolkit
+            </h2>
+          </Reveal>
+          
+          <Reveal width="100%" delay={0.1} overflow="visible">
+            <div className="flex flex-wrap gap-2.5 max-w-3xl">
+              {[
+                'Design Systems', 'Design Tokens', 'Figma Variables', 'Style Dictionary', 'Storybook',
+                'React', 'Next.js', 'TailwindCSS', 'Framer Motion', 'TypeScript', 'HTML & CSS', 'Git & GitHub',
+                'UI/UX Architecture', 'B2B Commerce', 'eCommerce Product Strategy', 'Catalog Management',
+                'Usability Testing', 'A/B Testing', 'AI Workflows', 'UI Quality Assurance'
+              ].map(s => (
+                <span key={s} className="text-mono font-mono text-[10px] uppercase tracking-wider bg-surface border border-border/40 rounded px-3 py-1.5 text-foreground/80 hover:border-brand transition-colors duration-300">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* 03 / Testimonials */}
+        <section className="mb-20">
+          <Reveal width="100%" overflow="visible">
+            <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-6 border-b border-border pb-3">
+              03 / Testimonials
+            </h2>
+          </Reveal>
+
+          <Reveal width="100%" delay={0.1} overflow="visible">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  {/* Photo Avatar */}
+                  <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
+                    TD
+                  </div>
+                  {/* Quote */}
+                  <p className="text-body text-foreground/80 leading-relaxed font-light italic">
+                    &quot;Omar is one of the rare designers who genuinely understands implementation constraints. His designs are clean, variable-driven, and map perfectly to React states. Working with him on Unified Commerce was a developer&apos;s dream.&quot;
+                  </p>
+                </div>
+                {/* Person details */}
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-foreground">Thomas Dixon</h4>
+                  <p className="text-[11px] text-muted font-light leading-snug">Lead Software Engineer</p>
+                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">GoDaddy Commerce</p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  {/* Photo Avatar */}
+                  <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
+                    SJ
+                  </div>
+                  {/* Quote */}
+                  <p className="text-body text-foreground/80 leading-relaxed font-light italic">
+                    &quot;As our founding designer, Omar brought structure to early-stage product chaos. He re-architected our catalog interface and dynamic AI widget while working directly in the repository code. An indispensable product partner.&quot;
+                  </p>
+                </div>
+                {/* Person details */}
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-foreground">Sarah Jenkins</h4>
+                  <p className="text-[11px] text-muted font-light leading-snug">Co-Founder</p>
+                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">StockApp</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  {/* Photo Avatar */}
+                  <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
+                    CM
+                  </div>
+                  {/* Quote */}
+                  <p className="text-body text-foreground/80 leading-relaxed font-light italic">
+                    &quot;Omar&apos;s checkout experience redesign dropped our drop-off rates by 9.5% in a single quarter. He treats design as a data-driven, technical discipline, always mapping pixel decisions to business conversions.&quot;
+                  </p>
+                </div>
+                {/* Person details */}
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-foreground">Carlos Mendez</h4>
+                  <p className="text-[11px] text-muted font-light leading-snug">VP of Product</p>
+                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">QuestionPro</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <Reveal width="100%" overflow="visible">
             <div>
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-6 border-b border-border pb-3">
-                02 / Background
+                04 / Background
               </h2>
               <div className="space-y-6 text-body text-foreground/80 leading-relaxed max-w-md">
                 <p>
@@ -285,7 +381,7 @@ export default function Portfolio() {
           <Reveal width="100%" delay={0.1} overflow="visible">
             <div>
               <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-6 border-b border-border pb-3">
-                03 / Index
+                05 / Index
               </h2>
               <ul className="space-y-4">
                 <li>

@@ -20,10 +20,13 @@
   /* Refined Typography Scales - Hard Tech / High Precision */
   --fs-hero: clamp(1.75rem, 3.5vw, 2.5rem);     /* Reduced for tighter feel */
   --fs-display: clamp(1.5rem, 4vw, 3rem); 
-  --fs-heading: 0.9375rem;                      /* 15px */
-  --fs-body: 0.9375rem;                         /* 15px */
+  --fs-heading: 0.875rem;                       /* 14px */
+  --fs-body: 0.875rem;                          /* 14px */
   --fs-small: 0.75rem;                          /* 12px - Precise metadata */
   --fs-mono: 0.625rem;                          /* 10px - System labels */
+
+  /* Technical Grid Background Token */
+  --grid-color: rgba(74, 84, 80, 0.16);
 }
 
 /* Global Dark Mode Base (System Green) */
@@ -39,6 +42,7 @@
   --accent: #FBBF24;
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
+  --grid-color: rgba(138, 158, 152, 0.12);
 }
 
 /* Brand Themes - Full Environment Shifts */
@@ -51,6 +55,7 @@
   --surface: #0D2621 !important;
   --border: #1A2E28 !important;
   --muted: #8A9E98 !important;
+  --grid-color: rgba(138, 158, 152, 0.12) !important;
 }
 
 /* Crimson - Warm Editorial */
@@ -62,6 +67,7 @@
   --border: #E8DEDE;
   --muted: #544A4A;
   --selection-bg: #D92626;
+  --grid-color: rgba(217, 38, 38, 0.18);
 }
 
 [data-brand='crimson'].dark {
@@ -72,6 +78,7 @@
   --border: #2E1A1A !important;
   --muted: #9E8A8A !important;
   --selection-bg: #D92626 !important;
+  --grid-color: rgba(217, 38, 38, 0.25) !important;
 }
 
 /* Electric Blue - Technical Cold */
@@ -83,6 +90,7 @@
   --border: #DEE2E8;
   --muted: #4A4E54;
   --selection-bg: #2667D9;
+  --grid-color: rgba(38, 103, 217, 0.18);
 }
 
 [data-brand='blue'].dark {
@@ -93,6 +101,7 @@
   --border: #1A222E !important;
   --muted: #8A919E !important;
   --selection-bg: #2667D9 !important;
+  --grid-color: rgba(38, 103, 217, 0.25) !important;
 }
 
 /* Royal Purple - Deep & Royal */
@@ -104,6 +113,7 @@
   --border: #E8DEEE;
   --muted: #524A54;
   --selection-bg: #8A26D9;
+  --grid-color: rgba(138, 38, 217, 0.18);
 }
 
 [data-brand='purple'].dark {
@@ -114,6 +124,7 @@
   --border: #281A33 !important;
   --muted: #9A8A9E !important;
   --selection-bg: #8A26D9 !important;
+  --grid-color: rgba(138, 38, 217, 0.25) !important;
 }
 
 
@@ -130,6 +141,7 @@
     --accent: #FBBF24;
     --selection-bg: #1A9A5E;
     --selection-text: #ffffff;
+    --grid-color: rgba(138, 158, 152, 0.12);
   }
 }
 
@@ -144,8 +156,8 @@
   --color-error: var(--error);
   --color-accent: var(--accent);
   
-  --font-display: var(--font-plus-jakarta);
-  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-sora);
+  --font-sans: var(--font-sora);
   --font-mono: var(--font-geist-mono);
 
   --radius-lg: var(--radius);
@@ -211,7 +223,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   
   /* Technical Grid Background */
-  background-image: radial-gradient(rgba(74, 84, 80, 0.16) 1px, transparent 0);
+  background-image: radial-gradient(var(--grid-color) 1px, transparent 0);
   background-size: 32px 32px;
   background-attachment: fixed;
 }
