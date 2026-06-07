@@ -16,9 +16,9 @@ export default function Portfolio() {
 
       <main className="max-w-5xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-[88px] md:pb-20 relative z-10">
         {/* Hero — 2-column layout */}
-        <header className="mb-12 md:mb-16">
+        <header className="mt-10 mb-16">
           <Reveal width="100%" overflow="visible">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center md:min-h-[310px]">
               {/* Left column: Doodle + Heading */}
               <div className="max-w-3xl space-y-4">
                 {/* Doodle */}

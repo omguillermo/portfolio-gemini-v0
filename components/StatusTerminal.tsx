@@ -98,10 +98,10 @@ export default function StatusTerminal() {
               onClick={() => toggle(index)}
               className="w-full flex items-center justify-between px-4 py-3 text-left cursor-pointer group"
             >
-              <div className="flex items-center gap-3 text-mono font-mono text-[10px] uppercase tracking-[0.12em] min-w-0">
-                {/* Labels are dim, values are high contrast */}
-                <span className="text-muted/50 shrink-0 font-normal">{row.label}</span>
-                <span className="text-foreground font-medium truncate">{row.value}</span>
+              <div className="flex items-center text-mono font-mono text-[10px] uppercase tracking-[0.12em] min-w-0 w-full">
+                {/* Labels are dim with fixed width to align values vertically */}
+                <span className="text-muted/50 w-20 shrink-0 font-normal inline-block">{row.label}</span>
+                <span className="text-foreground font-medium truncate min-w-0 flex-1">{row.value}</span>
               </div>
               <motion.span
                 className="text-muted text-[10px] ml-2 shrink-0"
