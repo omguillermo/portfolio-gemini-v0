@@ -158,7 +158,7 @@
   
   --font-display: var(--font-sora);
   --font-sans: var(--font-sora);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Consolas, monospace;
 
   --radius-lg: var(--radius);
 }
