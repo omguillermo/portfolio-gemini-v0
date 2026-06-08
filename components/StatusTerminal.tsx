@@ -101,6 +101,8 @@ export default function StatusTerminal() {
         e.preventDefault();
         setViewState('menu');
         setConfirmedIndex(null);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
       }
     }
   };
@@ -110,9 +112,14 @@ export default function StatusTerminal() {
   return (
     <motion.div
       tabIndex={0}
+      onMouseEnter={(e) => e.currentTarget.focus()}
+      onMouseLeave={(e) => e.currentTarget.blur()}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       onKeyDown={handleKeyDown}
+      role="listbox"
+      aria-label="Status Terminal Menu"
+      aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
       className="bg-surface border border-border rounded-xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none focus:ring-1 focus:ring-brand/40 select-none p-5 font-mono text-[10px] text-foreground flex flex-col justify-between h-[250px] relative z-20"
     >
       <AnimatePresence mode="wait">
@@ -143,6 +150,9 @@ export default function StatusTerminal() {
                   return (
                     <div
                       key={row.key}
+                      id={row.key}
+                      role="option"
+                      aria-selected={isSelected}
                       onMouseEnter={() => setSelectedRowIndex(index)}
                       onClick={() => {
                         setConfirmedIndex(index);
@@ -152,8 +162,8 @@ export default function StatusTerminal() {
                     >
                       {/* Selector Arrow */}
                       <span
-                        className={`w-3.5 shrink-0 transition-opacity duration-150 font-mono ${
-                          isSelected ? 'text-brand opacity-100' : 'opacity-0'
+                        className={`w-3.5 shrink-0 font-mono ${
+                          isSelected ? 'text-brand opacity-100 animate-terminal-blink' : 'opacity-0'
                         }`}
                       >
                         ❯
@@ -186,7 +196,7 @@ export default function StatusTerminal() {
             <div className="pt-2 text-muted flex justify-between items-center font-mono">
               <span className="font-mono">↑↓ to navigate · Enter to select</span>
               {isFocused && (
-                <span className="text-brand select-none animate-pulse font-mono">
+                <span className="text-brand select-none font-mono">
                   [Active]
                 </span>
               )}
@@ -225,7 +235,7 @@ export default function StatusTerminal() {
               className="pt-2 text-muted cursor-pointer hover:text-brand transition-colors duration-150 flex items-center select-none font-mono"
             >
               <span className="font-mono">Press Enter to go back</span>
-              <span className="animate-pulse text-brand ml-0.5 font-bold font-mono">▊</span>
+              <span className="animate-terminal-blink text-brand ml-0.5 font-bold font-mono">▊</span>
             </div>
           </motion.div>
         )}
