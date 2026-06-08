@@ -29,7 +29,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Heading Unit */}
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <h1 className="text-hero font-bold leading-[1.05] tracking-tighter">
                     Senior Product Designer <br />
                     & Design System Builder
@@ -199,14 +199,14 @@ export default function Portfolio() {
             </Reveal>
           </div>
         </section>
-         {/* 02 / Technical Skills & Toolkit */}
+        {/* 02 / Technical Skills & Toolkit */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono font-mono text-muted uppercase tracking-widest mb-6 border-b border-border pb-3">
               02 / Technical Skills & Toolkit
             </h2>
           </Reveal>
-          
+
           <Reveal width="100%" delay={0.1} overflow="visible">
             <div className="flex flex-wrap gap-2.5 max-w-3xl">
               {[

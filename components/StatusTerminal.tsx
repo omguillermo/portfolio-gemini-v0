@@ -37,7 +37,7 @@ export default function StatusTerminal() {
       detail: 'CST timezone · Overlaps fully with US Central business hours.',
     },
     {
-      label: 'LOCAL',
+      label: 'LOCAL TIME',
       value: <span className="tabular-nums">{time}</span>,
       detail: 'Same working hours as Chicago, Dallas, Mexico City.',
     },
@@ -70,7 +70,7 @@ export default function StatusTerminal() {
           <span className="text-[10px]">✈️</span> Relocate
         </span>
       ),
-      detail: 'Open to remote, hybrid, or full relocation to the US.',
+      detail: 'Open to remote, hybrid, or full relocation to the US or Canada preferably.',
     },
   ];
 
@@ -80,8 +80,8 @@ export default function StatusTerminal() {
 
   return (
     <div className="bg-surface border border-border rounded-xl overflow-hidden w-full md:w-[320px] shrink-0">
-      {/* Terminal top bar (Darker chrome background) */}
-      <div className="flex items-center px-4 py-2.5 bg-background border-b border-border/40">
+      {/* Terminal top bar (Matching body surface background) */}
+      <div className="flex items-center px-4 py-2.5 bg-surface border-b border-border/40">
         <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted select-none">
           ~/status
         </span>
@@ -99,8 +99,8 @@ export default function StatusTerminal() {
               className="w-full flex items-center justify-between px-4 py-3 text-left cursor-pointer group"
             >
               <div className="flex items-center text-mono font-mono text-[10px] uppercase tracking-[0.12em] min-w-0 w-full">
-                {/* Labels are dim with fixed width to align values vertically */}
-                <span className="text-muted/50 w-20 shrink-0 font-normal inline-block">{row.label}</span>
+                {/* Labels are dim with fixed width (w-24 / 96px) and nowrap to prevent wrapping */}
+                <span className="text-muted/50 w-24 shrink-0 font-normal inline-block whitespace-nowrap">{row.label}</span>
                 <span className="text-foreground font-medium truncate min-w-0 flex-1">{row.value}</span>
               </div>
               <motion.span
@@ -123,7 +123,7 @@ export default function StatusTerminal() {
                   className="overflow-hidden"
                 >
                   <div className="bg-background px-4 py-3 border-t border-border/10">
-                    <p className="text-small text-muted max-w-[280px] leading-relaxed font-light">
+                    <p className="font-mono text-[10px] text-muted max-w-[280px] leading-relaxed font-normal">
                       {row.detail}
                     </p>
                   </div>
