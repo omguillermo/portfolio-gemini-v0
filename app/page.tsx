@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import InteractiveDoodle from '@/components/InteractiveDoodle';
-import ProjectCard from '@/components/ProjectCard';
 import StatusTerminal from '@/components/StatusTerminal';
 
 export default function Portfolio() {
@@ -18,7 +17,7 @@ export default function Portfolio() {
         {/* Hero — 2-column layout */}
         <header className="mt-10 mb-16">
           <Reveal width="100%" overflow="visible">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center md:min-h-[310px]">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-center md:min-h-[310px]">
               {/* Left column: Doodle + Heading */}
               <div className="max-w-3xl space-y-4">
                 {/* Doodle */}
@@ -53,150 +52,77 @@ export default function Portfolio() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Reveal width="100%" delay={0.1} overflow="visible">
-              <Link href="/case-studies/stoki-ai" className="group block h-full">
-                <ProjectCard className="h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[11px] bg-background border-b border-border/30">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {[
+              {
+                href: "/case-studies/stoki-ai",
+                src: "/projects/stockapp-ai/stockapp-cover-stoki-temp.png",
+                title: "Stoki AI Assistant",
+                desc: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
+                tag: "B2B, AI",
+                metric: "$871K facilitated"
+              },
+              {
+                href: "/case-studies/godaddy-shipping",
+                src: "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
+                title: "Buy Shipping Labels",
+                desc: "Streamlining label generation within the existing GoDaddy merchant dashboard.",
+                tag: "B2C, eCommerce",
+                metric: "7.5K Labels"
+              },
+              {
+                href: "/case-studies/questionpro-signup",
+                src: "/projects/questionpro-signup/qp-signup-cover-temp.png",
+                title: "Sign Up Experience",
+                desc: "Redesigning the registration flow to increase clarity and guide users to the correct product.",
+                tag: "B2B, Survey Software",
+                metric: "0.31% Bounce"
+              }
+            ].map((p, idx) => (
+              <Reveal key={p.title} width="100%" delay={0.1 * (idx + 1)} overflow="visible" className="h-full flex flex-col items-stretch">
+                <Link href={p.href} className="group w-full h-full flex flex-col">
+                  {/* 
+                    Framed card container: solid, opaque background slightly darker 
+                    than main canvas (no transparency to avoid grid bleed-through).
+                  */}
+                  <div className="h-full flex flex-col p-4 pb-6 rounded-2xl bg-surface-inset border-0 transition-all duration-300 group-hover:brightness-[0.98] dark:group-hover:brightness-[1.03]">
+                    {/* Nested image frame */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-background border border-border/10">
                       <Image
-                        src="/projects/stockapp-ai/stockapp-cover-stoki-temp.png"
-                        alt="Stoki AI Assistant"
+                        src={p.src}
+                        alt={p.title}
                         fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                       />
                     </div>
 
-                    <div className="p-6 flex flex-col justify-between flex-grow gap-3">
-                      <div className="space-y-2">
+                    {/* Un-divided content section sitting below */}
+                    <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
+                      <div className="space-y-1.5 px-1">
                         <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2B, AI
+                          {p.tag}
                         </span>
-                        <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
-                          Stoki AI Assistant
+                        <h3 className="text-[15px] font-semibold tracking-tight text-foreground group-hover:text-brand transition-colors">
+                          {p.title}
                         </h3>
                         <p className="text-[12px] text-muted leading-relaxed font-light">
-                          Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.
+                          {p.desc}
                         </p>
                       </div>
 
-                      <div className="pt-1.5 border-t border-border/10 text-mono font-mono text-[10px] uppercase tracking-wider">
-                        <span className="text-brand font-bold">$871K facilitated</span>
-                      </div>
-                    </div>
-                  </div>
-                </ProjectCard>
-              </Link>
-            </Reveal>
-
-            <Reveal width="100%" delay={0.2} overflow="visible">
-              <Link href="/case-studies/godaddy-shipping" className="group block h-full">
-                <ProjectCard className="h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[11px] bg-background border-b border-border/30">
-                      <Image
-                        src="/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png"
-                        alt="Buy Shipping Labels"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="p-6 flex flex-col justify-between flex-grow gap-3">
-                      <div className="space-y-2">
-                        <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2C, eCommerce
+                      <div className="pt-2 flex items-center justify-between text-mono font-mono text-[10px] uppercase tracking-wider mt-auto px-1">
+                        <span className="text-brand font-bold">{p.metric}</span>
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                          </svg>
                         </span>
-                        <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
-                          Buy Shipping Labels
-                        </h3>
-                        <p className="text-[12px] text-muted leading-relaxed font-light">
-                          Streamlining label generation within the existing GoDaddy merchant dashboard.
-                        </p>
-                      </div>
-
-                      <div className="pt-1.5 border-t border-border/10 text-mono font-mono text-[10px] uppercase tracking-wider">
-                        <span className="text-brand font-bold">7.5K Labels</span>
                       </div>
                     </div>
                   </div>
-                </ProjectCard>
-              </Link>
-            </Reveal>
-
-            <Reveal width="100%" delay={0.3} overflow="visible">
-              <Link href="/case-studies/questionpro-signup" className="group block h-full">
-                <ProjectCard className="h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[11px] bg-background border-b border-border/30">
-                      <Image
-                        src="/projects/questionpro-signup/qp-signup-cover-temp.png"
-                        alt="Sign Up Experience"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="p-6 flex flex-col justify-between flex-grow gap-3">
-                      <div className="space-y-2">
-                        <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          B2B, Survey Software
-                        </span>
-                        <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
-                          Sign Up Experience
-                        </h3>
-                        <p className="text-[12px] text-muted leading-relaxed font-light">
-                          Redesigning the registration flow to increase clarity and guide users to the correct product.
-                        </p>
-                      </div>
-
-                      <div className="pt-1.5 border-t border-border/10 text-mono font-mono text-[10px] uppercase tracking-wider">
-                        <span className="text-brand font-bold">0.31% Bounce</span>
-                      </div>
-                    </div>
-                  </div>
-                </ProjectCard>
-              </Link>
-            </Reveal>
-
-            <Reveal width="100%" delay={0.4} overflow="visible">
-              <Link href="/case-studies/design-system-scale" className="group block h-full">
-                <ProjectCard className="h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[11px] bg-background border-b border-border/30">
-                      <Image
-                        src="/projects/design-system/ds-cover-temp.png"
-                        alt="Scaling Design Systems"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="p-6 flex flex-col justify-between flex-grow gap-3">
-                      <div className="space-y-2">
-                        <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-muted/50">
-                          Design Systems
-                        </span>
-                        <h3 className="text-heading font-bold tracking-tight text-foreground group-hover:text-brand transition-colors">
-                          Scaling Design Systems
-                        </h3>
-                        <p className="text-[12px] text-muted leading-relaxed font-light">
-                          Creating a unified token pipeline and component library to align design and engineering teams across 4 distinct products.
-                        </p>
-                      </div>
-
-                      <div className="pt-1.5 border-t border-border/10 text-mono font-mono text-[10px] uppercase tracking-wider">
-                        <span className="text-brand font-bold">42% faster handoff</span>
-                      </div>
-                    </div>
-                  </div>
-                </ProjectCard>
-              </Link>
-            </Reveal>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </section>
         {/* 02 / Technical Skills & Toolkit */}
@@ -215,7 +141,7 @@ export default function Portfolio() {
                 'UI/UX Architecture', 'B2B Commerce', 'eCommerce Product Strategy', 'Catalog Management',
                 'Usability Testing', 'A/B Testing', 'AI Workflows', 'UI Quality Assurance'
               ].map(s => (
-                <span key={s} className="text-mono font-mono text-[10px] uppercase tracking-wider bg-surface border border-border/40 rounded px-3 py-1.5 text-foreground/80 hover:border-brand transition-colors duration-300">
+                <span key={s} className="text-mono font-mono text-[10px] uppercase tracking-wider bg-surface-inset border border-transparent rounded px-3 py-1.5 text-foreground/80 hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
                   {s}
                 </span>
               ))}
@@ -234,7 +160,7 @@ export default function Portfolio() {
           <Reveal width="100%" delay={0.1} overflow="visible">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
-              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
@@ -254,7 +180,7 @@ export default function Portfolio() {
               </div>
 
               {/* Card 2 */}
-              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
@@ -274,7 +200,7 @@ export default function Portfolio() {
               </div>
 
               {/* Card 3 */}
-              <div className="bg-surface border border-border/40 rounded-xl p-6 flex flex-col justify-between space-y-6">
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">

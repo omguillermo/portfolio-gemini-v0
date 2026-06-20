@@ -76,7 +76,7 @@ export default function StatusTerminal() {
       label: 'MOBILITY',
       value: (
         <span className="flex items-center gap-1 font-mono">
-          <span className="text-[10px] select-none">✈️</span> Relocate
+          <span className="text-[10px] select-none">✈️</span> Open to relocate
         </span>
       ),
       detail: 'Open to remote, hybrid, or full relocation. Interested in US, Canada or northern Mexico. Adventure, baby!',
@@ -112,134 +112,141 @@ export default function StatusTerminal() {
   return (
     <motion.div
       tabIndex={0}
-      onMouseEnter={(e) => e.currentTarget.focus()}
-      onMouseLeave={(e) => e.currentTarget.blur()}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       onKeyDown={handleKeyDown}
       role="listbox"
       aria-label="Status Terminal Menu"
       aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
-      className="bg-surface border border-border rounded-xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none focus:ring-1 focus:ring-brand/40 select-none p-5 font-mono text-[10px] text-foreground flex flex-col justify-between h-[250px] relative z-20"
+      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-[10px] text-foreground flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
     >
-      <AnimatePresence mode="wait">
-        {viewState === 'menu' ? (
-          <motion.div
-            key="menu-view"
-            initial={{ opacity: 0, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -3 }}
-            transition={{ duration: 0.15, ease: 'easeInOut' }}
-            className="space-y-3 flex flex-col justify-between h-full flex-1 font-mono"
-          >
-            <div className="space-y-3 font-mono">
-              {/* Shell line */}
-              <div className="text-muted font-mono">
-                guest@omguillermo.dev ~ % <span className="text-foreground font-semibold font-mono">status</span>
-              </div>
+      {/* Terminal Window Header */}
+      <div className="flex items-center px-5 py-2.5 bg-terminal-header border-b border-border/10 select-none">
+        <div className="flex gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
+          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
+          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
+        </div>
+      </div>
 
-              {/* Prompt Instruction */}
-              <div className="text-muted font-mono">
-                ? Please select an option to inspect:
-              </div>
-
-              {/* List items */}
-              <div className="space-y-1 font-mono">
-                {rows.map((row, index) => {
-                  const isSelected = selectedRowIndex === index;
-                  return (
-                    <div
-                      key={row.key}
-                      id={row.key}
-                      role="option"
-                      aria-selected={isSelected}
-                      onMouseEnter={() => setSelectedRowIndex(index)}
-                      onClick={() => {
-                        setConfirmedIndex(index);
-                        setViewState('detail');
-                      }}
-                      className="flex items-center cursor-pointer py-0.5 font-mono"
-                    >
-                      {/* Selector Arrow */}
-                      <span
-                        className={`w-3.5 shrink-0 font-mono ${
-                          isSelected ? 'text-brand opacity-100 animate-terminal-blink' : 'opacity-0'
-                        }`}
-                      >
-                        ❯
-                      </span>
-
-                      {/* Key label */}
-                      <span
-                        className={`w-24 shrink-0 whitespace-nowrap transition-colors duration-150 font-mono ${
-                          isSelected ? 'text-brand font-bold' : 'text-muted font-normal'
-                        }`}
-                      >
-                        {row.label}
-                      </span>
-
-                      {/* Value */}
-                      <span
-                        className={`truncate flex-1 font-mono flex items-center transition-colors duration-150 ${
-                          isSelected ? 'text-foreground font-semibold' : 'text-muted font-normal'
-                        }`}
-                      >
-                        {row.value}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Footer controls */}
-            <div className="pt-2 text-muted flex justify-between items-center font-mono">
-              <span className="font-mono">↑↓ to navigate · Enter to select</span>
-              {isFocused && (
-                <span className="text-brand select-none font-mono">
-                  [Active]
-                </span>
-              )}
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="detail-view"
-            initial={{ opacity: 0, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -3 }}
-            transition={{ duration: 0.15, ease: 'easeInOut' }}
-            className="space-y-3 flex flex-col justify-between h-full flex-1 font-mono"
-          >
-            <div className="space-y-3 font-mono">
-              {/* Shell Line showing active flag */}
-              <div className="text-muted font-mono">
-                guest@omguillermo.dev ~ %{' '}
-                <span className="text-foreground font-semibold font-mono">
-                  status --{activeRow?.key}
-                </span>
-              </div>
-
-              {/* Recessed detail text */}
-              <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-muted font-normal text-[10px] font-mono">
-                {activeRow?.detail}
-              </div>
-            </div>
-
-            {/* Go back prompt */}
-            <div
-              onClick={() => {
-                setViewState('menu');
-                setConfirmedIndex(null);
-              }}
-              className="pt-2 text-muted cursor-pointer hover:text-brand transition-colors duration-150 flex items-center select-none font-mono"
+      {/* Terminal Content Area */}
+      <div className="p-5 flex-grow flex flex-col justify-between min-h-0">
+        <AnimatePresence mode="wait">
+          {viewState === 'menu' ? (
+            <motion.div
+              key="menu-view"
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.15, ease: 'easeInOut' }}
+              className="space-y-3 flex flex-col justify-between h-full flex-1 font-mono"
             >
-              <span className="font-mono">Press Enter to go back</span>
-              <span className="animate-terminal-blink text-brand ml-0.5 font-bold font-mono">▊</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="space-y-3 font-mono">
+                {/* Shell line */}
+                <div className="text-muted font-mono">
+                  guest@omguillermo.dev ~ % <span className="text-foreground font-semibold font-mono">status</span>
+                </div>
+
+                {/* Prompt Instruction */}
+                <div className="text-muted font-mono">
+                  ? Please select an option to inspect:
+                </div>
+
+                {/* List items */}
+                <div className="space-y-1 font-mono">
+                  {rows.map((row, index) => {
+                    const isSelected = selectedRowIndex === index;
+                    return (
+                      <div
+                        key={row.key}
+                        id={row.key}
+                        role="option"
+                        aria-selected={isSelected}
+                        onMouseEnter={() => setSelectedRowIndex(index)}
+                        onClick={() => {
+                          setConfirmedIndex(index);
+                          setViewState('detail');
+                        }}
+                        className="flex items-center cursor-pointer py-0.5 font-mono"
+                      >
+                        {/* Selector Arrow */}
+                        <span
+                          className={`w-3.5 shrink-0 font-mono ${
+                            isSelected ? 'text-brand opacity-100 animate-terminal-blink' : 'opacity-0'
+                          }`}
+                        >
+                          ❯
+                        </span>
+
+                        {/* Key label */}
+                        <span
+                          className={`w-24 shrink-0 whitespace-nowrap transition-colors duration-150 font-mono ${
+                            isSelected ? 'text-brand font-bold' : 'text-muted font-normal'
+                          }`}
+                        >
+                          {row.label}
+                        </span>
+
+                        {/* Value */}
+                        <span
+                          className={`truncate flex-1 font-mono flex items-center transition-colors duration-150 ${
+                            isSelected ? 'text-foreground font-semibold' : 'text-muted font-normal'
+                          }`}
+                        >
+                          {row.value}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Footer controls */}
+              <div className="pt-2 text-muted flex justify-between items-center font-mono">
+                <span className="font-mono">
+                  {isFocused ? '↑↓ to navigate · Enter to select' : 'click to focus'}
+                </span>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="detail-view"
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.15, ease: 'easeInOut' }}
+              className="space-y-3 flex flex-col justify-between h-full flex-grow font-mono"
+            >
+              <div className="space-y-3 font-mono">
+                {/* Shell Line showing active flag */}
+                <div className="text-muted font-mono">
+                  guest@omguillermo.dev ~ %
+                  <span className="text-foreground font-semibold font-mono ml-1">
+                    status --{activeRow?.key}
+                  </span>
+                </div>
+
+                {/* Recessed detail text */}
+                <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-muted font-normal text-[10px] font-mono">
+                  {activeRow?.detail}
+                </div>
+              </div>
+
+              {/* Go back prompt */}
+              <div
+                onClick={() => {
+                  setViewState('menu');
+                  setConfirmedIndex(null);
+                }}
+                className="pt-2 text-muted cursor-pointer hover:text-brand transition-colors duration-150 flex items-center select-none font-mono"
+              >
+                <span className="font-mono">Press Enter to go back</span>
+                <span className={`${isFocused ? 'animate-terminal-blink' : ''} text-brand ml-0.5 font-bold font-mono`}>▊</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
   );
 }

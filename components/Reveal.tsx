@@ -8,17 +8,32 @@ interface RevealProps {
   width?: "fit-content" | "100%";
   delay?: number;
   overflow?: "hidden" | "visible";
+  className?: string;
 }
 
 export default function Reveal({ 
   children, 
   width = "fit-content", 
   delay = 0,
-  overflow = "hidden" 
+  overflow = "hidden",
+  className = ""
 }: RevealProps) {
+  const isFullHeight = className.includes("h-full");
+
   return (
-    <div style={{ position: "relative", width, overflow }}>
+    <div 
+      className={className}
+      style={{ 
+        position: "relative", 
+        width, 
+        overflow,
+        height: isFullHeight ? "100%" : undefined,
+        display: isFullHeight ? "flex" : undefined,
+        flexDirection: isFullHeight ? "column" : undefined
+      }}
+    >
       <motion.div
+        className={isFullHeight ? "h-full w-full flex flex-col" : ""}
         variants={{
           hidden: { opacity: 0, y: 75 },
           visible: { opacity: 1, y: 0 },
@@ -27,6 +42,7 @@ export default function Reveal({
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 + delay, ease: "easeOut" }}
+        style={{ width: "100%", height: isFullHeight ? "100%" : undefined }}
       >
         {children}
       </motion.div>

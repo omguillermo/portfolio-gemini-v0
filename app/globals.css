@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  /* Forest Signal - Light Mode - Desaturated */
-  --background: #F7F9F8;
+  /* Forest Signal - Light Mode - Desaturated - Lighter canvas */
+  --background: #FAFBFB;
   --foreground: #1A1F1C;
   --brand: #1A9A5E;
   --surface: #ffffff;
@@ -14,9 +16,14 @@
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
 
+  /* Terminal Hue Variations */
+  --terminal-surface: #F0F4F2;
+  --terminal-header: #D1DED8;
+  --surface-inset: #F1F4F3;
+
   /* Radius Token */
   --radius: 1.5rem; /* 24px */
-
+  
   /* Refined Typography Scales - Hard Tech / High Precision */
   --fs-hero: clamp(1.75rem, 3.5vw, 2.5rem);     /* Reduced for tighter feel */
   --fs-display: clamp(1.5rem, 4vw, 3rem); 
@@ -43,6 +50,10 @@
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
   --grid-color: rgba(138, 158, 152, 0.12);
+
+  --terminal-surface: var(--surface);
+  --terminal-header: var(--background);
+  --surface-inset: #040D0B;
 }
 
 /* Brand Themes - Full Environment Shifts */
@@ -56,18 +67,23 @@
   --border: #1A2E28 !important;
   --muted: #8A9E98 !important;
   --grid-color: rgba(138, 158, 152, 0.12) !important;
+  --surface-inset: #040D0B !important;
 }
 
 /* Crimson - Warm Editorial */
 [data-brand='crimson'] {
   --brand: #D92626;
-  --background: #FAF8F8;
+  --background: #FDFBFB;
   --foreground: #1A1F1C;
   --surface: #FFFFFF;
   --border: #E8DEDE;
   --muted: #544A4A;
   --selection-bg: #D92626;
   --grid-color: rgba(217, 38, 38, 0.18);
+
+  --terminal-surface: #F7F0F0;
+  --terminal-header: #E6D0D0;
+  --surface-inset: #F6EEEE;
 }
 
 [data-brand='crimson'].dark {
@@ -79,18 +95,23 @@
   --muted: #9E8A8A !important;
   --selection-bg: #D92626 !important;
   --grid-color: rgba(217, 38, 38, 0.25) !important;
+  --surface-inset: #0A0404 !important;
 }
 
 /* Electric Blue - Technical Cold */
 [data-brand='blue'] {
   --brand: #2667D9;
-  --background: #F8F9FA;
+  --background: #FBFBFC;
   --foreground: #1A1F1C;
   --surface: #FFFFFF;
   --border: #DEE2E8;
   --muted: #4A4E54;
   --selection-bg: #2667D9;
   --grid-color: rgba(38, 103, 217, 0.18);
+
+  --terminal-surface: #F0F3F7;
+  --terminal-header: #D0DCEB;
+  --surface-inset: #F1F3F6;
 }
 
 [data-brand='blue'].dark {
@@ -98,22 +119,27 @@
   --background: #080D12 !important;
   --foreground: #F2F4F7 !important; /* Cool off-white */
   --surface: #0D141C !important;
-  --border: #1A222E !important;
+  --border: #1A2E2E !important;
   --muted: #8A919E !important;
   --selection-bg: #2667D9 !important;
   --grid-color: rgba(38, 103, 217, 0.25) !important;
+  --surface-inset: #04070A !important;
 }
 
 /* Royal Purple - Deep & Royal */
 [data-brand='purple'] {
   --brand: #8A26D9;
-  --background: #FAF8FC;
+  --background: #FCFBFD;
   --foreground: #1C1A1F;
   --surface: #FFFFFF;
   --border: #E8DEEE;
   --muted: #524A54;
   --selection-bg: #8A26D9;
   --grid-color: rgba(138, 38, 217, 0.18);
+
+  --terminal-surface: #F4F0F7;
+  --terminal-header: #DCD0EB;
+  --surface-inset: #F5F0FA;
 }
 
 [data-brand='purple'].dark {
@@ -125,6 +151,7 @@
   --muted: #9A8A9E !important;
   --selection-bg: #8A26D9 !important;
   --grid-color: rgba(138, 38, 217, 0.25) !important;
+  --surface-inset: #08040A !important;
 }
 
 
@@ -142,6 +169,9 @@
     --selection-bg: #1A9A5E;
     --selection-text: #ffffff;
     --grid-color: rgba(138, 158, 152, 0.12);
+
+    --terminal-surface: var(--surface);
+    --terminal-header: var(--background);
   }
 }
 
@@ -155,6 +185,9 @@
   --color-tertiary: var(--tertiary);
   --color-error: var(--error);
   --color-accent: var(--accent);
+  --color-terminal-surface: var(--terminal-surface);
+  --color-terminal-header: var(--terminal-header);
+  --color-surface-inset: var(--surface-inset);
   
   --font-display: var(--font-sora);
   --font-sans: var(--font-sora);
@@ -222,10 +255,11 @@ body {
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
   
-  /* Technical Grid Background */
+  /* Technical Grid Background (Disabled for cleaner aesthetic)
   background-image: radial-gradient(var(--grid-color) 1px, transparent 0);
   background-size: 32px 32px;
   background-attachment: fixed;
+  */
 }
 
 ::selection {

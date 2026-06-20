@@ -13,7 +13,15 @@ const brands = [
 type BrandId = typeof brands[number]['id'];
 
 export default function BrandSwitcher() {
-  const [activeBrand, setActiveBrand] = useState<BrandId>('forest');
+  const [activeBrand, setActiveBrand] = useState<BrandId>(() => {
+    if (typeof window !== 'undefined') {
+      const savedBrand = localStorage.getItem('brand-theme') as BrandId | null;
+      if (savedBrand && brands.some(b => b.id === savedBrand)) {
+        return savedBrand;
+      }
+    }
+    return 'forest';
+  });
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,12 +29,15 @@ export default function BrandSwitcher() {
   useEffect(() => {
     const savedBrand = localStorage.getItem('brand-theme') as BrandId | null;
     if (savedBrand && brands.some(b => b.id === savedBrand)) {
-      setActiveBrand(savedBrand);
       document.documentElement.setAttribute('data-brand', savedBrand);
     } else {
       document.documentElement.setAttribute('data-brand', 'forest');
     }
-    setMounted(true);
+    
+    // Defer mount registration to avoid React 19 synchronous cascading render warnings
+    setTimeout(() => {
+      setMounted(true);
+    }, 0);
 
     // Close on click outside
     const handleClickOutside = (event: MouseEvent) => {
