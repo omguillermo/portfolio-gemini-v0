@@ -63,7 +63,7 @@ export default function ProjectGate({ children, password, projectSlug }: Project
                 <Lock className="w-6 h-6" />
               </div>
               <h1 className="text-heading font-bold tracking-tighter">Private Case Study</h1>
-              <p className="text-body text-muted leading-relaxed">
+              <p className="text-body text-secondary leading-relaxed">
                 This project contains sensitive information. Please enter the access code to view the details.
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function ProjectGate({ children, password, projectSlug }: Project
                 />
                 <button
                   type="submit"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-brand transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary hover:text-brand transition-colors"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </button>
@@ -110,7 +110,7 @@ export default function ProjectGate({ children, password, projectSlug }: Project
             <div className="pt-8">
               <button 
                 onClick={() => window.history.back()}
-                className="text-mono text-muted hover:text-foreground transition-colors uppercase tracking-widest"
+                className="text-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest"
               >
                 Go Back
               </button>

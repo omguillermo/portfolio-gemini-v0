@@ -84,7 +84,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
       case 'UR': return <Trophy className="w-16 h-16 text-accent" />;
       case 'SSR':
       case 'SR': return <Star className="w-16 h-16 text-brand" />;
-      case 'R': return <ThumbsUp className="w-16 h-16 text-muted" />;
+      case 'R': return <ThumbsUp className="w-16 h-16 text-secondary" />;
       default: return <Clover className="w-16 h-16 text-brand" />;
     }
   };
@@ -109,7 +109,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
           >
             <button 
               onClick={closeGacha}
-              className="absolute top-6 right-6 text-muted hover:text-foreground transition-colors z-30 bg-background border-2 border-foreground p-1 shadow-[2px_2px_0px_var(--color-foreground)] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_var(--color-foreground)]"
+              className="absolute top-6 right-6 text-secondary hover:text-primary transition-colors z-30 bg-background border-2 border-foreground p-1 shadow-[2px_2px_0px_var(--color-foreground)] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_var(--color-foreground)]"
               disabled={isPulling}
             >
               <X className="w-5 h-5" />
@@ -118,8 +118,8 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
             <div className="flex flex-col space-y-8">
               {/* Header */}
               <div className="space-y-2 text-center pr-8 relative z-10">
-                <h2 className="text-heading font-black tracking-tight text-foreground uppercase italic">Welcome to The Design Gacha</h2>
-                <p className="text-small text-muted leading-relaxed max-w-sm mx-auto font-medium">
+                <h2 className="text-heading font-black tracking-tight text-primary uppercase italic">Welcome to The Design Gacha</h2>
+                <p className="text-small text-secondary leading-relaxed max-w-sm mx-auto font-medium">
                   Use your design tokens to roll the gacha and discover what kind of designer you are today.
                 </p>
               </div>
@@ -141,7 +141,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-surface px-4 py-1.5 border-4 border-foreground -skew-x-12 shadow-[4px_4px_0_var(--color-foreground)] transition-transform hover:-translate-y-0.5">
                   <div className="flex items-center gap-2 skew-x-12">
                     <Coins className="w-3.5 h-3.5 text-brand" />
-                    <span className="text-mono font-mono text-[11px] uppercase tracking-widest font-black whitespace-nowrap text-foreground">
+                    <span className="text-mono font-mono text-[11px] uppercase tracking-widest font-black whitespace-nowrap text-primary">
                       {tokens} Tokens
                     </span>
                   </div>
@@ -213,7 +213,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                       disabled={isPulling}
                       className={`w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none focus-visible:ring-2 focus-visible:ring-brand/50 ${
                         tokens < 50
-                        ? 'bg-surface border-border text-muted shadow-[4px_4px_0_var(--color-border)]' 
+                        ? 'bg-surface border-border text-secondary shadow-[4px_4px_0_var(--color-border)]' 
                         : 'bg-brand border-foreground text-white shadow-[4px_4px_0_var(--color-foreground)] hover:brightness-110'
                       }`}
                     >
@@ -239,11 +239,11 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                       } : { x: 0, rotate: 0, skewX: -12 }}
                       transition={{ duration: 0.3, ease: "linear" }}
                       disabled={isPulling}
-                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none bg-surface border-foreground text-foreground shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
+                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none bg-surface border-foreground text-primary shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
                     >
                       <div className="flex flex-col items-center gap-1" style={{ transform: "skewX(12deg)" }}>
-                        <span className="font-black text-muted text-small uppercase tracking-wide">10x Pull</span>
-                        <div className="flex items-center gap-1.5 bg-foreground/10 px-2 py-0.5 rounded text-muted">
+                        <span className="font-black text-secondary text-small uppercase tracking-wide">10x Pull</span>
+                        <div className="flex items-center gap-1.5 bg-foreground/10 px-2 py-0.5 rounded text-secondary">
                           <Coins className="w-2.5 h-2.5" />
                           <span className="text-[11px] uppercase tracking-widest font-mono font-bold">500</span>
                         </div>
@@ -255,7 +255,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
 
               {/* Footer Disclaimer */}
               <div className="text-center pt-2 relative z-10">
-                <p className="text-[10px] text-muted font-mono uppercase tracking-tighter leading-relaxed font-bold">
+                <p className="text-[10px] text-secondary font-mono uppercase tracking-tighter leading-relaxed font-bold">
                   No actual micro-transactions in this portfolio. <br />
                   <button 
                     onClick={resetGacha}

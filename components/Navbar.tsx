@@ -46,7 +46,7 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-3 group"
             >
-              <div className="w-8 h-8 text-foreground transition-colors duration-300">
+              <div className="w-8 h-8 text-primary transition-colors duration-300">
                 <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <path
                     d="M120 220C180 220 220 180 220 120C220 116.601 219.872 113.267 219.619 110H120L174.885 164.885C166.615 194.962 148.321 210 120 210C80 210 60 180 60 120C60 60 80 30 120 30C155.277 30 174.998 53.3333 179.163 100H218.423C210.472 51.276 173.055 20 120 20C60 20 20 60 20 120C20 180 60 220 120 220Z"
@@ -66,7 +66,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
+                    className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
                       }`}
                   >
                     {link.label}
@@ -82,7 +82,7 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 -mr-2 text-foreground focus:outline-none"
+              className="md:hidden p-2 -mr-2 text-primary focus:outline-none"
               aria-label="Toggle Menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -108,7 +108,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${pathname === link.href ? 'text-foreground' : 'text-muted'
+                  className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
                     }`}
                 >
                   {link.label}
@@ -117,11 +117,11 @@ export default function Navbar() {
 
               <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-mono text-muted uppercase text-[10px] tracking-widest">Brand Logic</p>
+                  <p className="text-mono text-secondary uppercase text-[10px] tracking-widest">Brand Logic</p>
                   <BrandSwitcher />
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-mono text-muted uppercase text-[10px] tracking-widest">Appearance</p>
+                  <p className="text-mono text-secondary uppercase text-[10px] tracking-widest">Appearance</p>
                   <ThemeSwitcher />
                 </div>
               </div>

@@ -19,7 +19,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen text-foreground font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
+    <div className="min-h-screen text-primary font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
       <main className="max-w-3xl mx-auto px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 relative z-10">
 
         <Reveal width="100%">
@@ -100,11 +100,11 @@ export default function About() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-mono text-muted uppercase tracking-widest">Location</p>
+                <p className="text-mono text-secondary uppercase tracking-widest">Location</p>
                 <p className="text-body font-medium">Mérida, México 🇲🇽</p>
               </div>
               <div className="space-y-2">
-                <p className="text-mono text-muted uppercase tracking-widest">Favorite Fuel</p>
+                <p className="text-mono text-secondary uppercase tracking-widest">Favorite Fuel</p>
                 <p className="text-body font-medium">Chilaquiles & Coffee ☕️</p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function About() {
 
           <Reveal width="100%" delay={0.1}>
             <div className="space-y-12">
-              <section className="space-y-4 text-body text-muted leading-relaxed font-light">
+              <section className="space-y-4 text-body text-secondary leading-relaxed font-light">
                 <p>
                   Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
                 </p>
@@ -131,14 +131,14 @@ export default function About() {
                 <p>
                   Outside of work, I&apos;m based in sunny Mérida, México. You can usually find me drinking coffee, listening to heavy metal, or watching anime (Go Beyond, Plus Ultra!).
                 </p>
-                <p className="pt-4 font-medium text-foreground">
+                <p className="pt-4 font-medium text-primary">
                   Feel free to reach out at any time, even just for a quick chat. Looking forward to meeting you!
                 </p>
               </section>
 
               <div className="grid grid-cols-2 gap-12 pt-12 border-t border-border">
                 <div className="space-y-4">
-                  <h3 className="text-mono text-muted uppercase tracking-widest">Capabilities</h3>
+                  <h3 className="text-mono text-secondary uppercase tracking-widest">Capabilities</h3>
                   <ul className="space-y-2 text-body">
                     <li>Systems Design</li>
                     <li>UI/UX Architecture</li>
@@ -147,7 +147,7 @@ export default function About() {
                   </ul>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-mono text-muted uppercase tracking-widest">Stack</h3>
+                  <h3 className="text-mono text-secondary uppercase tracking-widest">Stack</h3>
                   <ul className="space-y-2 text-body">
                     <li>HTML and CSS</li>
                     <li>Vibe Coding</li>
@@ -163,7 +163,7 @@ export default function About() {
         {/* Career Timeline Section (Full Width Breakout) */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-muted uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
               Career History Timeline
             </h2>
           </Reveal>
@@ -191,11 +191,11 @@ export default function About() {
                       className="flex items-start justify-between gap-4 cursor-pointer"
                     >
                       <div className="space-y-1">
-                        <span className="text-mono font-mono text-muted text-[10px] tracking-wider block">
+                        <span className="text-mono font-mono text-secondary text-[10px] tracking-wider block">
                           {exp.period}
                         </span>
-                        <h3 className="text-body font-bold text-foreground group-hover:text-brand transition-colors block leading-tight">
-                          {exp.role} <span className="text-muted font-normal">@</span> {exp.company}
+                        <h3 className="text-body font-bold text-primary group-hover:text-brand transition-colors block leading-tight">
+                          {exp.role} <span className="text-secondary font-normal">@</span> {exp.company}
                         </h3>
                       </div>
 
@@ -203,7 +203,7 @@ export default function About() {
                         <motion.svg
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
-                          className="w-4 h-4 text-muted/60 shrink-0"
+                          className="w-4 h-4 text-secondary shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -214,7 +214,7 @@ export default function About() {
                       </div>
                     </div>
 
-                    <p className="text-[13px] text-muted font-light leading-relaxed max-w-2xl">
+                    <p className="text-[13px] text-secondary font-light leading-relaxed max-w-2xl">
                       {exp.description}
                     </p>
 
@@ -236,7 +236,7 @@ export default function About() {
                               <span className="text-mono font-mono text-brand font-bold text-[9px] tracking-wider uppercase shrink-0 mt-0.5 w-[85px] text-right">
                                 [{ach.tag}]
                               </span>
-                              <span className="text-foreground/80 font-light">
+                              <span className="text-primary font-light">
                                 {ach.text}
                               </span>
                             </div>
@@ -244,9 +244,9 @@ export default function About() {
                         </div>
 
                         {/* Stack Details */}
-                        <div className="pt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-[10px] text-muted">
-                          <span className="text-muted/50 uppercase tracking-wider">Stack:</span>
-                          <span className="text-foreground/70">{exp.stack}</span>
+                        <div className="pt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-[10px] text-secondary">
+                          <span className="text-secondary uppercase tracking-wider">Stack:</span>
+                          <span className="text-primary/70">{exp.stack}</span>
                         </div>
                       </div>
                     </motion.div>
@@ -260,21 +260,21 @@ export default function About() {
         {/* Prior Experience Section */}
         <div className="mt-16 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-muted uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
               Past Graphic Design Experience
             </h2>
           </Reveal>
 
           <Reveal width="100%">
-            <div className="font-mono text-mono text-muted/80 bg-surface border border-border/40 rounded-xl p-6 space-y-2.5">
+            <div className="font-mono text-mono text-secondary/80 bg-surface border border-border/40 rounded-xl p-6 space-y-2.5">
               {priorExperiences.map((exp, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] hover:text-foreground transition-colors py-1 border-b border-border/5 last:border-0">
+                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] hover:text-primary transition-colors py-1 border-b border-border/5 last:border-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-foreground/80 font-medium">{exp.role}</span>
-                    <span className="text-muted/40">@</span>
-                    <span className="text-muted">{exp.company}</span>
+                    <span className="text-primary font-medium">{exp.role}</span>
+                    <span className="text-secondary/40">@</span>
+                    <span className="text-secondary">{exp.company}</span>
                   </div>
-                  <div className="text-muted/50 tabular-nums">
+                  <div className="text-secondary tabular-nums">
                     [{exp.period}]
                   </div>
                 </div>
@@ -286,7 +286,7 @@ export default function About() {
         {/* Certifications and Training */}
         <div className="mt-16 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-muted uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
               Verified Credentials & Education
             </h2>
           </Reveal>
@@ -295,7 +295,7 @@ export default function About() {
             <div className="overflow-x-auto border border-border/40 rounded-xl bg-surface">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-border/40 text-mono font-mono text-[9px] uppercase tracking-wider text-muted/60 bg-muted/8">
+                  <tr className="border-b border-border/40 text-mono font-mono text-[9px] uppercase tracking-wider text-secondary bg-muted/8">
                     <th className="px-6 py-3 font-semibold w-20">Year</th>
                     <th className="px-6 py-3 font-semibold">Credential / Program</th>
                     <th className="px-6 py-3 font-semibold text-right">Issuer</th>
@@ -304,9 +304,9 @@ export default function About() {
                 <tbody className="divide-y divide-border/20 text-[13px] font-light">
                   {educationAndCerts.map((cert, idx) => (
                     <tr key={idx} className="hover:bg-border/30 transition-colors">
-                      <td className="px-6 py-3.5 font-mono text-[10px] text-muted tabular-nums">{cert.year}</td>
-                      <td className="px-6 py-3.5 text-foreground/80 font-normal">{cert.title}</td>
-                      <td className="px-6 py-3.5 text-muted text-right text-[12px]">{cert.issuer}</td>
+                      <td className="px-6 py-3.5 font-mono text-[10px] text-secondary tabular-nums">{cert.year}</td>
+                      <td className="px-6 py-3.5 text-primary font-normal">{cert.title}</td>
+                      <td className="px-6 py-3.5 text-secondary text-right text-[12px]">{cert.issuer}</td>
                     </tr>
                   ))}
                 </tbody>

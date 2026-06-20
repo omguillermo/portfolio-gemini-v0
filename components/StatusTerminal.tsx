@@ -118,7 +118,7 @@ export default function StatusTerminal() {
       role="listbox"
       aria-label="Status Terminal Menu"
       aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
-      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-[10px] text-foreground flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
+      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-[10px] text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
     >
       {/* Terminal Window Header */}
       <div className="flex items-center px-5 py-2.5 bg-terminal-header border-b border-border/10 select-none">
@@ -143,12 +143,12 @@ export default function StatusTerminal() {
             >
               <div className="space-y-3 font-mono">
                 {/* Shell line */}
-                <div className="text-muted font-mono">
-                  guest@omguillermo.dev ~ % <span className="text-foreground font-semibold font-mono">status</span>
+                <div className="text-secondary font-mono">
+                  guest@omguillermo.dev ~ % <span className="text-primary font-semibold font-mono">status</span>
                 </div>
 
                 {/* Prompt Instruction */}
-                <div className="text-muted font-mono">
+                <div className="text-secondary font-mono">
                   ? Please select an option to inspect:
                 </div>
 
@@ -181,7 +181,7 @@ export default function StatusTerminal() {
                         {/* Key label */}
                         <span
                           className={`w-24 shrink-0 whitespace-nowrap transition-colors duration-150 font-mono ${
-                            isSelected ? 'text-brand font-bold' : 'text-muted font-normal'
+                            isSelected ? 'text-brand font-bold' : 'text-secondary font-normal'
                           }`}
                         >
                           {row.label}
@@ -190,7 +190,7 @@ export default function StatusTerminal() {
                         {/* Value */}
                         <span
                           className={`truncate flex-1 font-mono flex items-center transition-colors duration-150 ${
-                            isSelected ? 'text-foreground font-semibold' : 'text-muted font-normal'
+                            isSelected ? 'text-primary font-semibold' : 'text-secondary font-normal'
                           }`}
                         >
                           {row.value}
@@ -202,7 +202,7 @@ export default function StatusTerminal() {
               </div>
 
               {/* Footer controls */}
-              <div className="pt-2 text-muted flex justify-between items-center font-mono">
+              <div className="pt-2 text-secondary flex justify-between items-center font-mono">
                 <span className="font-mono">
                   {isFocused ? '↑↓ to navigate · Enter to select' : 'click to focus'}
                 </span>
@@ -219,15 +219,15 @@ export default function StatusTerminal() {
             >
               <div className="space-y-3 font-mono">
                 {/* Shell Line showing active flag */}
-                <div className="text-muted font-mono">
+                <div className="text-secondary font-mono">
                   guest@omguillermo.dev ~ %
-                  <span className="text-foreground font-semibold font-mono ml-1">
+                  <span className="text-primary font-semibold font-mono ml-1">
                     status --{activeRow?.key}
                   </span>
                 </div>
 
                 {/* Recessed detail text */}
-                <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-muted font-normal text-[10px] font-mono">
+                <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-secondary font-normal text-[10px] font-mono">
                   {activeRow?.detail}
                 </div>
               </div>
@@ -238,7 +238,7 @@ export default function StatusTerminal() {
                   setViewState('menu');
                   setConfirmedIndex(null);
                 }}
-                className="pt-2 text-muted cursor-pointer hover:text-brand transition-colors duration-150 flex items-center select-none font-mono"
+                className="pt-2 text-secondary cursor-pointer hover:text-brand transition-colors duration-150 flex items-center select-none font-mono"
               >
                 <span className="font-mono">Press Enter to go back</span>
                 <span className={`${isFocused ? 'animate-terminal-blink' : ''} text-brand ml-0.5 font-bold font-mono`}>▊</span>

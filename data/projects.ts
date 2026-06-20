@@ -27,6 +27,9 @@ export interface ProjectData {
   edge_cases_handled: string[];
   visual_highlights: VisualHighlight[];
   retrospective: string;
+  tag: string;
+  metric: string;
+  thumbnail: string;
   prototype_link?: string;
   password?: string;
 }
@@ -37,6 +40,9 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
     role: "Founding Designer",
     timeline: "August 2025 - March 2026",
+    tag: "B2B • AI",
+    metric: "$871K facilitated",
+    thumbnail: "/projects/stockapp-ai/stockapp-cover-stoki-temp.png",
     impact: "Facilitated over $871K in B2B orders by 900+ active users. Sales teams reported increased satisfaction and more frequent tool adoption after the frictionless redesign.",
     constraint: "The AI assistant needed to remain highly visible and accessible from any page, while allowing non-blocking interaction so users could view underlying content.",
     problem_hypothesis: {
@@ -85,6 +91,9 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Streamlining label generation within the existing GoDaddy merchant dashboard.",
     role: "Senior Product Designer",
     timeline: "Q3 2022",
+    tag: "B2C • ECOMMERCE",
+    metric: "7.5K Labels",
+    thumbnail: "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
     impact: "7,521 labels purchased by 6,722 active merchants in the first 3 months.",
     constraint: "Must keep users inside the GoDaddy ecosystem without external redirects.",
     problem_hypothesis: {
@@ -117,6 +126,9 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Redesigning the registration flow to increase clarity and guide users to the correct product.",
     role: "Senior UI/UX Designer",
     timeline: "2021",
+    tag: "B2B • SURVEY SOFTWARE",
+    metric: "0.31% Bounce",
+    thumbnail: "/projects/questionpro-signup/qp-signup-cover-temp.png",
     impact: "Reduced bounce rate from 1.51% to 0.31% and generated significantly better-qualified sales leads.",
     constraint: "Had to accommodate multiple distinct software products within a single entry point without overwhelming the user.",
     problem_hypothesis: {
@@ -148,6 +160,9 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Creating a unified token pipeline and component library to align design and engineering teams across 4 distinct products.",
     role: "Design Systems Lead",
     timeline: "September 2024 - April 2025",
+    tag: "DESIGN SYSTEMS • TOOLING",
+    metric: "42% faster handoff",
+    thumbnail: "/projects/design-system/ds-cover-temp.png",
     impact: "Reduced design-to-development handoff time by 42% and saved ~120 hours per sprint.",
     constraint: "Must support multiple sub-brands with a single source of truth, without code duplication or performance bloat.",
     problem_hypothesis: {
