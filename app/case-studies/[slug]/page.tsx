@@ -73,9 +73,9 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   };
 
   const content = (
-    <div className="min-h-screen text-primary font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
+    <div className="min-h-screen text-primary font-sans antialiased pb-12 md:pb-20 selection:bg-selection-bg selection:text-selection-text">
       {/* Full-width Page Header */}
-      <div className="max-w-5xl mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-8 border-b border-border/10">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8 border-b border-border/10">
         {/* Return link */}
         <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-secondary hover:text-brand transition-colors mb-6">
           <ArrowLeft className="w-4 h-4" />
@@ -105,45 +105,39 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         {/* Sticky Left Sidebar */}
         <aside className="w-full md:w-[220px] shrink-0 md:sticky md:top-28 h-fit space-y-8 z-30 pb-6 md:pb-0">
           {/* Project Context Box: flat, solid surface-inset */}
-          <div className="bg-surface-inset border-0 rounded-2xl p-5 space-y-4 text-[11px] leading-relaxed">
-            <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-secondary border-b border-border/10 pb-2">Project Context</p>
-            <div className="space-y-3.5">
-              <div>
-                <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Role</p>
-                <p className="font-semibold text-primary mt-0.5">{project.role}</p>
-              </div>
-              <div>
-                <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Timeline</p>
-                <p className="font-semibold text-primary mt-0.5">{project.timeline}</p>
-              </div>
-              <div>
-                <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Constraint</p>
-                <p className="text-primary mt-0.5">{project.constraint}</p>
-              </div>
+          <div className="bg-surface-inset border-0 rounded-2xl p-5 space-y-3.5 text-[11px] leading-relaxed">
+            <div>
+              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Role</p>
+              <p className="font-semibold text-primary mt-0.5">{project.role}</p>
+            </div>
+            <div>
+              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Timeline</p>
+              <p className="font-semibold text-primary mt-0.5">{project.timeline}</p>
+            </div>
+            <div>
+              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Constraint</p>
+              <p className="text-primary mt-0.5">{project.constraint}</p>
             </div>
           </div>
 
           {/* Table of Contents */}
-          <div className="space-y-3">
-            <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-secondary border-b border-border/10 pb-2">Table of Contents</p>
-            <ul className="space-y-2 text-[10px]">
-              {sections.map((sec) => (
-                <li key={sec.id}>
-                  <button
-                    onClick={() => scrollTo(sec.id)}
-                    className={`block w-full text-left font-mono uppercase tracking-wider transition-colors py-0.5 ${
-                      activeSection === sec.id
-                        ? 'text-brand font-bold'
-                        : 'text-secondary hover:text-primary'
-                    }`}
-                  >
-                    <span className={`inline-block w-2.5 mr-0.5 transition-opacity ${activeSection === sec.id ? 'opacity-100' : 'opacity-0'}`}>❯</span>
-                    {sec.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="space-y-2 text-[10px]">
+            {sections.map((sec) => (
+              <li key={sec.id}>
+                <button
+                  onClick={() => scrollTo(sec.id)}
+                  className={`block w-full text-left font-mono uppercase tracking-wider transition-colors py-0.5 ${
+                    activeSection === sec.id
+                      ? 'text-brand font-bold'
+                      : 'text-secondary hover:text-primary'
+                  }`}
+                >
+                  <span className={`inline-block w-2.5 mr-0.5 transition-opacity ${activeSection === sec.id ? 'opacity-100' : 'opacity-0'}`}>❯</span>
+                  {sec.label}
+                </button>
+              </li>
+            ))}
+          </ul>
 
           {/* Try Prototype CTA */}
           {project.prototype_link && (

@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import TooltipFollower from '@/components/TooltipFollower';
 
@@ -19,8 +20,8 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen text-primary font-sans antialiased pb-32 selection:bg-selection-bg selection:text-selection-text">
-      <main className="max-w-3xl mx-auto px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-24 relative z-10">
+    <div className="min-h-screen text-primary font-sans antialiased pb-0 selection:bg-selection-bg selection:text-selection-text">
+      <main className="max-w-3xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-24 md:pb-20 relative z-10">
 
         <Reveal width="100%">
           <h1 className="text-display font-bold tracking-tighter mb-8 leading-tight">
@@ -111,52 +112,29 @@ export default function About() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1}>
-            <div className="space-y-12">
-              <section className="space-y-4 text-body text-secondary leading-relaxed font-light">
-                <p>
-                  Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
-                </p>
-                <p>
-                  I started my career with a strong foundation in traditional graphic design and advertising before discovering my true passion: UI/UX and product design.
-                </p>
-                <p>
-                  Over the years, I&apos;ve worked across very different environments. From local creative studios, to in-house corporate design teams, then navigating the complexities of large scale enterprise platforms at global companies, and more recently at early-stage startups.
-                </p>
-                <p>
-                  My professional philosophy is &quot;Always Be Learning.&quot; I enjoy sweating the edge cases, working closely with developers, and playing around with new tech (like AI workflows) to improve my design process.
-                </p>
-                <p>
-                  And while I love the technical side of product design, my graphic design roots always keep me honest, ensuring I never lose sight of color harmony and pixel-perfect precision.
-                </p>
-                <p>
-                  Outside of work, I&apos;m based in sunny Mérida, México. You can usually find me drinking coffee, listening to heavy metal, or watching anime (Go Beyond, Plus Ultra!).
-                </p>
-                <p className="pt-4 font-medium text-primary">
-                  Feel free to reach out at any time, even just for a quick chat. Looking forward to meeting you!
-                </p>
-              </section>
-
-              <div className="grid grid-cols-2 gap-12 pt-12 border-t border-border">
-                <div className="space-y-4">
-                  <h3 className="text-mono text-secondary uppercase tracking-widest">Capabilities</h3>
-                  <ul className="space-y-2 text-body">
-                    <li>Systems Design</li>
-                    <li>UI/UX Architecture</li>
-                    <li>AI Workflows</li>
-                    <li>Frontend Strategy</li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-mono text-secondary uppercase tracking-widest">Stack</h3>
-                  <ul className="space-y-2 text-body">
-                    <li>HTML and CSS</li>
-                    <li>Vibe Coding</li>
-                    <li>Design Tokens</li>
-                    <li>Figma</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <section className="space-y-4 text-body text-secondary leading-relaxed font-light">
+              <p>
+                Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
+              </p>
+              <p>
+                I started my career with a strong foundation in traditional graphic design and advertising before discovering my true passion: UI/UX and product design.
+              </p>
+              <p>
+                Over the years, I&apos;ve worked across very different environments. From local creative studios, to in-house corporate design teams, then navigating the complexities of large scale enterprise platforms at global companies, and more recently at early-stage startups.
+              </p>
+              <p>
+                My professional philosophy is &quot;Always Be Learning.&quot; I enjoy sweating the edge cases, working closely with developers, and playing around with new tech (like AI workflows) to improve my design process.
+              </p>
+              <p>
+                And while I love the technical side of product design, my graphic design roots always keep me honest, ensuring I never lose sight of color harmony and pixel-perfect precision.
+              </p>
+              <p>
+                Outside of work, I&apos;m based in sunny Mérida, México. You can usually find me drinking coffee, listening to heavy metal, or watching anime (Go Beyond, Plus Ultra!).
+              </p>
+              <p className="pt-4 font-medium text-primary">
+                Feel free to reach out at any time, even just for a quick chat. Looking forward to meeting you!
+              </p>
+            </section>
           </Reveal>
         </div>
 
@@ -258,7 +236,7 @@ export default function About() {
         </div>
 
         {/* Prior Experience Section */}
-        <div className="mt-16 space-y-6">
+        <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
               Past Graphic Design Experience
@@ -266,12 +244,12 @@ export default function About() {
           </Reveal>
 
           <Reveal width="100%">
-            <div className="font-mono text-mono text-secondary/80 bg-surface border border-border/40 rounded-xl p-6 space-y-2.5">
+            <div className="font-mono text-mono text-secondary bg-surface-inset border-0 rounded-xl p-6 space-y-2.5">
               {priorExperiences.map((exp, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] hover:text-primary transition-colors py-1 border-b border-border/5 last:border-0">
                   <div className="flex items-center gap-2">
                     <span className="text-primary font-medium">{exp.role}</span>
-                    <span className="text-secondary/40">@</span>
+                    <span className="text-muted">@</span>
                     <span className="text-secondary">{exp.company}</span>
                   </div>
                   <div className="text-secondary tabular-nums">
@@ -284,7 +262,7 @@ export default function About() {
         </div>
 
         {/* Certifications and Training */}
-        <div className="mt-16 space-y-6">
+        <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
               Verified Credentials & Education
@@ -292,20 +270,34 @@ export default function About() {
           </Reveal>
 
           <Reveal width="100%">
-            <div className="overflow-x-auto border border-border/40 rounded-xl bg-surface">
+            <div className="overflow-x-auto border-0 rounded-xl bg-surface-inset">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-border/40 text-mono font-mono text-[9px] uppercase tracking-wider text-secondary bg-muted/8">
+                  <tr className="border-b border-border/10 text-mono font-mono text-[9px] uppercase tracking-wider text-secondary bg-surface/5">
                     <th className="px-6 py-3 font-semibold w-20">Year</th>
                     <th className="px-6 py-3 font-semibold">Credential / Program</th>
                     <th className="px-6 py-3 font-semibold text-right">Issuer</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border/20 text-[13px] font-light">
+                <tbody className="divide-y divide-border/10 text-[13px] font-light">
                   {educationAndCerts.map((cert, idx) => (
-                    <tr key={idx} className="hover:bg-border/30 transition-colors">
+                    <tr key={idx} className="hover:bg-surface/10 transition-colors">
                       <td className="px-6 py-3.5 font-mono text-[10px] text-secondary tabular-nums">{cert.year}</td>
-                      <td className="px-6 py-3.5 text-primary font-normal">{cert.title}</td>
+                      <td className="px-6 py-3.5 text-primary font-normal">
+                        {cert.link ? (
+                          <a 
+                            href={cert.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline hover:text-brand transition-colors group/link"
+                          >
+                            {cert.title}
+                            <ArrowUpRight className="inline-block w-3.5 h-3.5 ml-1 align-middle -translate-y-[1px] opacity-0 group-hover/link:opacity-100 transition-opacity text-brand" />
+                          </a>
+                        ) : (
+                          cert.title
+                        )}
+                      </td>
                       <td className="px-6 py-3.5 text-secondary text-right text-[12px]">{cert.issuer}</td>
                     </tr>
                   ))}
@@ -385,12 +377,12 @@ const priorExperiences = [
 ];
 
 const educationAndCerts = [
-  { year: '2023', title: 'AI-Powered UX Design: How to Elevate Your UX Career', issuer: 'Interaction Design Foundation' },
-  { year: '2023', title: 'Agile Methods for UX Design', issuer: 'Interaction Design Foundation' },
-  { year: '2022', title: 'Accessibility: How to Design for All', issuer: 'Interaction Design Foundation' },
-  { year: '2022', title: 'Design Thinking: The Ultimate Guide', issuer: 'Interaction Design Foundation' },
-  { year: '2022', title: 'User Experience: The Beginner’s Guide', issuer: 'Interaction Design Foundation' },
-  { year: '2022', title: 'Foundations of User Experience (UX) Design', issuer: 'Google' },
+  { year: '2023', title: 'AI-Powered UX Design: How to Elevate Your UX Career', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
+  { year: '2023', title: 'Agile Methods for UX Design', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
+  { year: '2022', title: 'Accessibility: How to Design for All', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
+  { year: '2022', title: 'Design Thinking: The Ultimate Guide', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
+  { year: '2022', title: 'User Experience: The Beginner’s Guide', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
+  { year: '2022', title: 'Foundations of User Experience (UX) Design', issuer: 'Google', link: 'https://grow.google/' },
   { year: '2013', title: 'Bachelor’s Degree in Graphic and Advertising Design', issuer: 'Centro de Estudios de Las Americas (CELA)' }
 ];
 
