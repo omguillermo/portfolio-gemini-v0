@@ -1,5 +1,13 @@
 # Portfolio Design Review — Homepage
 
+> [!WARNING]
+> **Implementation Status — Updated 2026-06-22 (branch: `hero-experiments`)**
+> This review was written against an earlier version of the page. Several recommendations have since been implemented. Do **not** treat the "Missing Sections" analysis below as the current state of the page.
+>
+> **✅ Already implemented:** Skills/Toolkit section (`02 / Technical Skills & Toolkit`), Testimonials section (`03 / Testimonials`, 3 cards), Hero 2-column layout (doodle left, StatusTerminal right).
+>
+> **❌ Still open:** Hero CTA buttons under subtitle, full-width featured Stoki card, sharpened subtitle copy with hard metrics, proper CTA/contact section (current `05 / Index` is still a plain link-dump).
+
 > [!NOTE]
 > This review covers structure, layout hierarchy, missing sections, and actionable improvements. I'm reviewing the **design logic**, not just the code.
 

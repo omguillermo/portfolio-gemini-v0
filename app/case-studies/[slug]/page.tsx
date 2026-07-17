@@ -3,11 +3,95 @@
 import React, { use, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ArrowUpRight, X, Maximize2, Lightbulb } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, X, Maximize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/Reveal';
 import ProjectGate from '@/components/ProjectGate';
 import { projectsData } from '@/data/projects';
+
+function parseInlineMarkdown(text: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = [];
+  const boldRegex = /\*\*(.*?)\*\*/g;
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = boldRegex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    
+    if (matchIndex > lastIndex) {
+      parts.push(text.substring(lastIndex, matchIndex));
+    }
+    
+    parts.push(
+      <strong key={matchIndex} className="font-bold text-primary">
+        {match[1]}
+      </strong>
+    );
+    
+    lastIndex = boldRegex.lastIndex;
+  }
+  
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  
+  return parts.length > 0 ? parts : [text];
+}
+
+function parseMarkdown(text: string): React.ReactNode {
+  if (!text) return null;
+  
+  const blocks = text.split('\n\n');
+  
+  return blocks.map((block, blockIdx) => {
+    const trimmed = block.trim();
+    if (!trimmed) return null;
+    
+    if (trimmed.startsWith('### ')) {
+      return (
+        <h3 key={blockIdx} className="text-body font-bold mt-8 mb-4 text-primary uppercase tracking-wider font-mono text-xs">
+          {parseInlineMarkdown(trimmed.substring(4))}
+        </h3>
+      );
+    }
+    if (trimmed.startsWith('## ')) {
+      return (
+        <h2 key={blockIdx} className="text-heading font-bold mt-10 mb-4 text-primary">
+          {parseInlineMarkdown(trimmed.substring(3))}
+        </h2>
+      );
+    }
+    
+    const lines = block.split('\n');
+    const isList = lines.every(line => {
+      const tLine = line.trim();
+      return tLine.startsWith('* ') || tLine.startsWith('- ') || tLine === '';
+    });
+    
+    if (isList) {
+      return (
+        <ul key={blockIdx} className="list-disc pl-5 space-y-2 mt-4 mb-4 text-primary">
+          {lines.map((line, lineIdx) => {
+            const tLine = line.trim();
+            if (!tLine) return null;
+            const content = tLine.substring(2);
+            return (
+              <li key={lineIdx} className="leading-relaxed text-body">
+                {parseInlineMarkdown(content)}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
+    
+    return (
+      <p key={blockIdx} className="text-body text-primary leading-relaxed mb-4">
+        {parseInlineMarkdown(trimmed)}
+      </p>
+    );
+  });
+}
 
 export default function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -39,7 +123,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
       { rootMargin: '-20% 0px -60% 0px' }
     );
 
-    const targetIds = ['overview', 'problem', 'iteration', 'solution', 'edge-cases', 'retrospective'];
+    const targetIds = ['overview', 'problem', 'hypothesis', 'constraint', 'iteration', 'solution', 'edge-cases', 'outcomes', 'retrospective'];
     targetIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -59,9 +143,12 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   const sections = [
     { id: 'overview', label: 'Overview' },
     { id: 'problem', label: 'The Problem' },
-    { id: 'iteration', label: 'Design Iteration' },
+    { id: 'hypothesis', label: 'Hypothesis' },
+    { id: 'constraint', label: 'Constraints' },
+    { id: 'iteration', label: 'Design Iterations' },
     { id: 'solution', label: 'The Solution' },
     { id: 'edge-cases', label: 'Edge Cases' },
+    { id: 'outcomes', label: 'Outcomes' },
     { id: 'retrospective', label: 'Retrospective' },
   ];
 
@@ -97,6 +184,18 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         <p className="text-heading text-secondary leading-relaxed font-light tracking-wide max-w-3xl">
           {project.subtitle}
         </p>
+        {project.hero_image && (
+          <div className="mt-8 relative aspect-[21/9] w-full overflow-hidden rounded-2xl bg-surface-inset">
+            <Image 
+              src={project.hero_image} 
+              alt={`${project.title} Hero Cover`} 
+              fill 
+              className="object-cover" 
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              priority
+            />
+          </div>
+        )}
       </div>
 
       {/* Two-Column Layout Split */}
@@ -115,8 +214,8 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               <p className="font-semibold text-primary mt-0.5">{project.timeline}</p>
             </div>
             <div>
-              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Constraint</p>
-              <p className="text-primary mt-0.5">{project.constraint}</p>
+              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Teams Involved</p>
+              <p className="font-semibold text-primary mt-0.5">{project.teams_involved}</p>
             </div>
           </div>
 
@@ -156,123 +255,41 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         {/* Right Content Area */}
         <main className="flex-grow min-w-0 max-w-3xl">
           <Reveal width="100%">
-            <header className="mb-12 scroll-mt-28" id="overview">
-              <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4 mb-6">
-                Overview
-              </h2>
-              <p className="text-body font-semibold text-primary leading-relaxed">
-                {project.impact}
-              </p>
-            </header>
-          </Reveal>
+            <div className="space-y-12">
+              <header className="scroll-mt-28" id="overview">
+                <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4 mb-6">
+                  Overview
+                </h2>
+                <p className="text-body font-semibold text-primary leading-relaxed">
+                  {project.impact}
+                </p>
+              </header>
 
-          <article className="space-y-16">
-            {/* 1. Problem & Hypothesis */}
-            <Reveal width="100%">
-              <section id="problem" className="space-y-4 scroll-mt-24">
-                <div className="space-y-4">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
-                    The Problem
-                  </h2>
-                  <p className="text-body text-primary leading-relaxed">
-                    {project.problem_hypothesis.problem}
-                  </p>
-                </div>
-                <div className="bg-surface-inset border-0 p-6 rounded-2xl space-y-4 mt-8">
-                  <div className="flex items-center gap-2 text-brand">
-                    <Lightbulb className="w-4 h-4" />
-                    <span className="text-mono uppercase tracking-widest font-bold">Hypothesis</span>
-                  </div>
-                  <p className="text-body text-secondary leading-relaxed">
-                    &quot;{project.problem_hypothesis.hypothesis}&quot;
-                  </p>
-                </div>
-              </section>
-            </Reveal>
-
-            {/* 2. Design Iteration Section */}
-            <Reveal width="100%">
-              <section id="iteration" className="space-y-4 scroll-mt-24">
-                <div className="space-y-4">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
-                    Design Iteration & Rationale
-                  </h2>
-                  <p className="text-body text-primary leading-relaxed whitespace-pre-wrap">
-                    {project.design_rationale}
-                  </p>
-                </div>
-
-                <div className="space-y-12 mt-12">
-                  {project.iterations.map((iteration, index) => (
-                    <div key={index} className="space-y-8">
-                      <div className="space-y-2">
-                        <p className="text-mono text-secondary uppercase tracking-widest">Iteration 0{index + 1}</p>
-                        <h3 className="text-heading font-bold">{iteration.approach}</h3>
-                        <p className="text-body text-primary leading-relaxed pt-2">
-                          {iteration.why_it_failed}
-                        </p>
-                      </div>
-                      {iteration.image_url && (
-                        <div className="space-y-4">
-                          <button 
-                            className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block"
-                            onClick={() => setActiveImage(iteration.image_url!)}
-                            aria-label={`View full size image of ${iteration.approach}`}
-                          >
-                            <Image 
-                              src={iteration.image_url} 
-                              alt={iteration.approach} 
-                              fill 
-                              sizes="(max-width: 1024px) 100vw, 896px"
-                              className="object-cover" 
-                            />
-                            <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
-                                <Maximize2 className="w-4 h-4" />
-                                Click to Expand
-                              </div>
-                            </div>
-                          </button>
-                          {iteration.caption && (
-                            <p className="text-small text-secondary italic">
-                              {iteration.caption}
-                            </p>
-                          )}
-                        </div>
-                      )}
+              <article className="space-y-12">
+                {/* 1. The Problem */}
+                <section id="problem" className="space-y-4 scroll-mt-24">
+                  <div className="space-y-4">
+                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                      The Problem
+                    </h2>
+                    <div>
+                      {parseMarkdown(project.problem_hypothesis.problem)}
                     </div>
-                  ))}
-                </div>
-              </section>
-            </Reveal>
+                  </div>
 
-            {/* 3. Solution Section */}
-            <Reveal width="100%">
-              <section id="solution" className="space-y-4 scroll-mt-24">
-                <div className="space-y-4">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
-                    The Solution
-                  </h2>
-                  <p className="text-body text-primary leading-relaxed">
-                    {project.system_solution}
-                  </p>
-                </div>
-                
-                {/* Visual Highlights Grid */}
-                <div className="space-y-12 mt-12">
-                  {project.visual_highlights.map((highlight, index) => (
-                    <div key={index} className="space-y-4">
+                  {project.problem_image && (
+                    <div className="space-y-4 pt-2">
                       <button 
-                        className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden relative cursor-zoom-in group block"
-                        onClick={() => setActiveImage(highlight.image_url)}
-                        aria-label={`View full size image: ${highlight.caption}`}
+                        className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block"
+                        onClick={() => setActiveImage(project.problem_image!.image_url)}
+                        aria-label="View full size image of previous design"
                       >
                         <Image 
-                          src={highlight.image_url} 
-                          alt={highlight.caption}
-                          fill
+                          src={project.problem_image.image_url} 
+                          alt={project.problem_image.caption} 
+                          fill 
                           sizes="(max-width: 1024px) 100vw, 896px"
-                          className="object-cover"
+                          className="object-cover" 
                         />
                         <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
@@ -282,50 +299,168 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                         </div>
                       </button>
                       <p className="text-small text-secondary italic">
-                        {highlight.caption}
+                        {project.problem_image.caption}
                       </p>
                     </div>
-                  ))}
-                </div>
-              </section>
-            </Reveal>
+                  )}
+                </section>
 
-            {/* 4. Edge Cases Section */}
-            <Reveal width="100%">
-              <section id="edge-cases" className="bg-surface-inset border-0 rounded-2xl p-6 md:p-8 scroll-mt-24">
-                <h2 className="text-mono text-brand uppercase tracking-widest mb-8 flex items-center gap-4">
-                  Edge Cases
-                </h2>
-                <ul className="space-y-6">
-                  {project.edge_cases_handled.map((edgeCase, index) => (
-                    <li key={index} className="flex gap-4">
-                      <span className="text-brand font-mono text-small mt-1">[{index + 1}]</span>
-                      <p className="text-body text-primary leading-relaxed">
-                        {edgeCase}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </Reveal>
-
-            {/* 5. Retrospective Section */}
-            <Reveal width="100%">
-              <section id="retrospective" className="border-t border-border scroll-mt-24">
-                <div className="pt-12 space-y-4">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
-                    Results & Retrospective
+                {/* 1.5 Hypothesis */}
+                <section id="hypothesis" className="space-y-4 scroll-mt-24">
+                  <h2 className="text-mono text-secondary uppercase tracking-widest">
+                    Hypothesis
                   </h2>
-                  <p className="text-body text-primary leading-relaxed">
-                    &quot;{project.retrospective}&quot;
-                  </p>
-                </div>
-              </section>
-            </Reveal>
+                  <div>
+                    {parseMarkdown(project.problem_hypothesis.hypothesis)}
+                  </div>
+                </section>
 
-            {/* Prototype Link (Centred under main article if needed, but sticky CTA is also on left) */}
-            {project.prototype_link && (
-              <Reveal width="100%">
+                {/* 1.6 Constraints */}
+                <section id="constraint" className="space-y-4 scroll-mt-24">
+                  <h2 className="text-mono text-secondary uppercase tracking-widest">
+                    Constraints
+                  </h2>
+                  <div className="text-secondary">
+                    {parseMarkdown(project.constraint)}
+                  </div>
+                </section>
+
+                {/* 2. Design Iterations */}
+                <section id="iteration" className="space-y-4 scroll-mt-24">
+                  <div className="space-y-4">
+                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                      Design Iterations
+                    </h2>
+                    <p className="text-body text-primary leading-relaxed whitespace-pre-wrap">
+                      {project.design_rationale}
+                    </p>
+                  </div>
+
+                  <div className="space-y-12 mt-12">
+                    {project.iterations.map((iteration, index) => (
+                      <div key={index} className="space-y-8">
+                        <div className="space-y-2">
+                          <p className="text-mono text-secondary uppercase tracking-widest">Iteration 0{index + 1}</p>
+                          <h3 className="text-heading font-bold">{iteration.approach}</h3>
+                          <div className="pt-2 space-y-4">
+                            {parseMarkdown(iteration.why_it_failed)}
+                          </div>
+                        </div>
+                        {iteration.image_url && (
+                          <div className="space-y-4">
+                            <button 
+                              className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block"
+                              onClick={() => setActiveImage(iteration.image_url!)}
+                              aria-label={`View full size image of ${iteration.approach}`}
+                            >
+                              <Image 
+                                src={iteration.image_url} 
+                                alt={iteration.approach} 
+                                fill 
+                                sizes="(max-width: 1024px) 100vw, 896px"
+                                className="object-cover" 
+                              />
+                              <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+                                  <Maximize2 className="w-4 h-4" />
+                                  Click to Expand
+                                </div>
+                              </div>
+                            </button>
+                            {iteration.caption && (
+                              <p className="text-small text-secondary italic">
+                                {iteration.caption}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* 3. The Solution */}
+                <section id="solution" className="space-y-4 scroll-mt-24">
+                  <div className="space-y-4">
+                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                      The Solution
+                    </h2>
+                    <div>
+                      {parseMarkdown(project.system_solution)}
+                    </div>
+                  </div>
+                  
+                  {/* Visual Highlights Grid */}
+                  <div className="space-y-12 mt-12">
+                    {project.visual_highlights.map((highlight, index) => (
+                      <div key={index} className="space-y-4">
+                        <button 
+                          className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden relative cursor-zoom-in group block"
+                          onClick={() => setActiveImage(highlight.image_url)}
+                          aria-label={`View full size image: ${highlight.caption}`}
+                        >
+                          <Image 
+                            src={highlight.image_url} 
+                            alt={highlight.caption}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 896px"
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+                              <Maximize2 className="w-4 h-4" />
+                              Click to Expand
+                            </div>
+                          </div>
+                        </button>
+                        <p className="text-small text-secondary italic">
+                          {highlight.caption}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* 4. Edge Cases Section */}
+                <section id="edge-cases" className="space-y-4 scroll-mt-24">
+                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    Edge Cases
+                  </h2>
+                  <ul className="space-y-6">
+                    {project.edge_cases_handled.map((edgeCase, index) => (
+                      <li key={index} className="flex gap-4">
+                        <span className="text-brand font-mono text-small mt-1">[{index + 1}]</span>
+                        <div className="space-y-2">
+                          {parseMarkdown(edgeCase)}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                {/* 4.5 Outcomes Section */}
+                <section id="outcomes" className="space-y-4 scroll-mt-24">
+                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    Outcomes
+                  </h2>
+                  <div>
+                    {parseMarkdown(project.outcomes)}
+                  </div>
+                </section>
+
+                {/* 5. Retrospective Section */}
+                <section id="retrospective" className="space-y-4 scroll-mt-24">
+                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    Retrospective
+                  </h2>
+                  <div>
+                    {parseMarkdown(project.retrospective)}
+                  </div>
+                </section>
+              </article>
+
+              {/* Prototype Link */}
+              {project.prototype_link && (
                 <section className="flex flex-col items-center py-16">
                   <h3 className="text-heading font-bold mb-8">Ready to explore the logic?</h3>
                   <a 
@@ -338,11 +473,9 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
                 </section>
-              </Reveal>
-            )}
+              )}
 
-            {/* Footer Navigation */}
-            <Reveal width="100%">
+              {/* Footer Navigation */}
               <footer className="pt-12 border-t border-border flex justify-between items-center">
                 <Link href="/" className="text-small font-mono text-secondary hover:text-brand transition-colors">
                   ← INDEX
@@ -351,8 +484,8 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                   <span className="text-mono text-muted uppercase">Next Project: Coming Soon</span>
                 </div>
               </footer>
-            </Reveal>
-          </article>
+            </div>
+          </Reveal>
         </main>
       </div>
 

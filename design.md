@@ -51,8 +51,8 @@ To mimic a dashboard system and maintain a premium, unified visual aesthetic:
 
 ### Rule 1: Always Use Solid Backgrounds
 *   **Never** use transparent surface colors (e.g. `bg-surface/30` or `bg-surface/50`) for container widgets, tables, or cards.
-*   **Why**: The page utilizes a global technical dot grid background (`radial-gradient` in `body`). Transparent backgrounds let the dot grid show through, making the text inside the card noisy and unreadable.
-*   **Correct**: Use solid `bg-surface` to fully block out the background dot grid.
+*   **Why**: The page was originally built with a global technical dot grid background (`radial-gradient` in `body`). The dot grid is **currently disabled** in `globals.css` (commented out for a cleaner aesthetic), but this rule is retained as a precautionary standard — if the grid is re-enabled, transparent cards will immediately show bleed-through noise.
+*   **Correct**: Use solid `bg-surface-inset` or `bg-surface` to fully block out any background texture.
 
 ### Rule 2: Heading Borders & Card Integration
 *   Section headings always maintain their bottom border (`border-b border-border pb-3 mb-6`) to anchor the section visually.

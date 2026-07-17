@@ -72,6 +72,8 @@ export default function Portfolio() {
                           src={project.thumbnail}
                           alt={project.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          loading={idx === 0 ? 'eager' : 'lazy'}
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                         />
                       </div>
