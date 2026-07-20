@@ -100,6 +100,10 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
   const [activeSection, setActiveSection] = useState('overview');
 
+  // Refs to control click-to-scroll spy locks
+  const isScrollingRef = React.useRef(false);
+  const scrollTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
   React.useEffect(() => {
     if (activeImage) {
       document.body.style.overflow = 'hidden';
@@ -112,24 +116,52 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   }, [activeImage]);
 
   React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const targetIds = ['overview', 'problem', 'hypothesis', 'constraint', 'iteration', 'solution', 'edge-cases', 'outcomes', 'retrospective'];
+          
+          // Special case: if scrolled to the absolute bottom, select the last section
+          const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+          if (isAtBottom) {
+            setActiveSection('retrospective');
+            ticking = false;
+            return;
           }
+
+          let minDistance = Infinity;
+          let activeId = 'overview';
+
+          targetIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              // Calculate absolute distance of the section's top from a line 150px down from viewport top
+              const distance = Math.abs(rect.top - 150);
+              if (distance < minDistance) {
+                minDistance = distance;
+                activeId = id;
+              }
+            }
+          });
+
+          setActiveSection(activeId);
+          ticking = false;
         });
-      },
-      { rootMargin: '-20% 0px -60% 0px' }
-    );
+        ticking = true;
+      }
+    };
 
-    const targetIds = ['overview', 'problem', 'hypothesis', 'constraint', 'iteration', 'solution', 'edge-cases', 'outcomes', 'retrospective'];
-    targetIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, [project]);
 
   if (!project) {
@@ -155,7 +187,18 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
+      // Set section active immediately to prevent lag/bugs at bottom scroll boundaries
+      setActiveSection(id);
+      
+      // Lock scroll spy updates during smooth scroll animation
+      isScrollingRef.current = true;
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      
       el.scrollIntoView({ behavior: 'smooth' });
+      
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 800);
     }
   };
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download, ExternalLink } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
 import BrandSwitcher from './BrandSwitcher';
 
@@ -27,8 +27,19 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { href: '/', label: 'Work' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Work', type: 'internal' },
+    { href: '/about', label: 'About', type: 'internal' },
+    { 
+      href: '/Omar_Guillermo_Resume_2026_-_Custom.pdf', 
+      label: 'Resume', 
+      type: 'download', 
+      download: 'Omar_Guillermo_Resume_2026_-_Custom.pdf' 
+    },
+    { 
+      href: 'https://www.linkedin.com/in/omar-guillermo/', 
+      label: 'LinkedIn', 
+      type: 'external' 
+    },
   ];
 
   return (
@@ -62,17 +73,41 @@ export default function Navbar() {
             {/* Right Side: Navigation & Switchers */}
             <div className="flex items-center gap-6 md:gap-8">
               <div className="hidden md:flex items-center gap-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
-                      }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  if (link.type === 'internal') {
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
+                          }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  } else {
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        download={link.download}
+                        target={link.type === 'external' ? '_blank' : undefined}
+                        rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                        className="flex items-center gap-1 text-small font-sans uppercase tracking-widest text-secondary hover:text-brand transition-colors cursor-pointer group"
+                      >
+                        <span>{link.label}</span>
+                        {link.type === 'download' && (
+                          <Download className="w-3 h-3 text-muted group-hover:text-brand transition-colors shrink-0" />
+                        )}
+                        {link.type === 'external' && (
+                          <ExternalLink className="w-3 h-3 text-muted group-hover:text-brand transition-colors shrink-0" />
+                        )}
+                      </a>
+                    );
+                  }
+                })}
               </div>
+
               <div className="flex items-center gap-1 md:gap-2">
                 <BrandSwitcher />
                 <ThemeSwitcher />
@@ -103,17 +138,41 @@ export default function Navbar() {
             className="fixed inset-0 z-[90] bg-background/95 backdrop-blur-xl md:hidden pt-32 px-6"
           >
             <div className="flex flex-col gap-8 items-center text-center">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
-                    }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                if (link.type === 'internal') {
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-2xl font-bold tracking-tighter hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
+                        }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      download={link.download}
+                      target={link.type === 'external' ? '_blank' : undefined}
+                      rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-center gap-1.5 text-2xl font-bold tracking-tighter text-secondary hover:text-brand transition-colors cursor-pointer group"
+                    >
+                      <span>{link.label}</span>
+                      {link.type === 'download' && (
+                        <Download className="w-4.5 h-4.5 text-muted group-hover:text-brand transition-colors shrink-0" />
+                      )}
+                      {link.type === 'external' && (
+                        <ExternalLink className="w-4.5 h-4.5 text-muted group-hover:text-brand transition-colors shrink-0" />
+                      )}
+                    </a>
+                  );
+                }
+              })}
 
               <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
                 <div className="flex flex-col items-center gap-2">

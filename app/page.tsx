@@ -58,6 +58,10 @@ export default function Portfolio() {
               const project = projectsData[slug];
               if (!project) return null;
 
+              const parts = project.metric.split(' ');
+              const numberPart = parts[0];
+              const labelPart = parts.slice(1).join(' ');
+
               return (
                 <Reveal key={project.title} width="100%" delay={0.1 * (idx + 1)} overflow="visible" className="h-full flex flex-col items-stretch">
                   <Link href={`/case-studies/${slug}`} className="group w-full h-full flex flex-col">
@@ -92,9 +96,12 @@ export default function Portfolio() {
                           </p>
                         </div>
 
-                        <div className="pt-2 flex items-center justify-between text-mono font-mono text-[10px] uppercase tracking-wider mt-auto px-1">
-                          <span className="text-brand font-bold">{project.metric}</span>
-                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0">
+                        <div className="pt-2 flex items-end justify-between mt-auto px-1">
+                          <div className="font-mono tracking-wider flex items-baseline gap-1.5 select-none">
+                            <span className="text-[15px] font-bold text-primary">{numberPart}</span>
+                            <span className="text-[12px] text-secondary font-medium">{labelPart}</span>
+                          </div>
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mb-0.5">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>
@@ -205,13 +212,13 @@ export default function Portfolio() {
           </Reveal>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <div>
+            <div className="max-w-2xl">
               <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
                 04 / Background
               </h2>
-              <div className="space-y-6 text-body text-primary leading-relaxed max-w-md">
+              <div className="space-y-6 text-body text-primary leading-relaxed">
                 <p>
                   With 14+ years of design experience, my practice revolves around consistency, organization, and treating design as a highly technical discipline. I started in graphic design and advertising, which gave me a rich foundation that has allowed my style to grow and adapt.
                 </p>
@@ -219,34 +226,6 @@ export default function Portfolio() {
                   Today, my career is defined by peripheral vision: noticing what’s coming next and adapting early. Whether I&apos;m building design systems that scale, or partnering with AI to ship features faster, I build interfaces that withstand any sneaky edge-case.
                 </p>
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal width="100%" delay={0.1} overflow="visible">
-            <div>
-              <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
-                05 / Index
-              </h2>
-              <ul className="space-y-4">
-                <li>
-                  <a href="/Omar Guillermo Resume 2026 - Custom.docx" download className="flex items-center gap-2 text-body text-primary hover:text-brand transition-colors w-fit group">
-                    <span className="text-secondary group-hover:text-brand transition-colors">↗</span>
-                    Download Resume
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:omguillermo90@gmail.com" className="flex items-center gap-2 text-body text-primary hover:text-brand transition-colors w-fit group">
-                    <span className="text-secondary group-hover:text-brand transition-colors">↗</span>
-                    Email Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/omar-guillermo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-body text-primary hover:text-brand transition-colors w-fit group">
-                    <span className="text-secondary group-hover:text-brand transition-colors">↗</span>
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
             </div>
           </Reveal>
         </section>

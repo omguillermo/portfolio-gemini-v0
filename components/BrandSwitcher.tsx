@@ -66,7 +66,7 @@ export default function BrandSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface border border-transparent hover:border-border transition-all focus:outline-none group relative"
-        aria-label="Change brand environment"
+        aria-label="Change brand theme"
       >
         <div 
           className="w-3.5 h-3.5 rounded-full shadow-sm transition-transform group-hover:scale-110" 
@@ -84,7 +84,7 @@ export default function BrandSwitcher() {
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="absolute right-0 top-full mt-2 p-2 bg-surface border border-border shadow-2xl rounded-xl z-[100] min-w-[140px]"
           >
-            <p className="text-[9px] font-mono uppercase tracking-widest text-secondary px-2 py-1 mb-1">Environment</p>
+            <p className="text-[9px] font-mono uppercase tracking-widest text-secondary px-2 py-1 mb-1">Theme</p>
             <div className="space-y-1">
               {brands.map((brand) => (
                 <button
