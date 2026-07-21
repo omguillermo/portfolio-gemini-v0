@@ -7,6 +7,7 @@ import Reveal from '@/components/Reveal';
 import InteractiveDoodle from '@/components/InteractiveDoodle';
 import StatusTerminal from '@/components/StatusTerminal';
 import { projectsData } from '@/data/projects';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function Portfolio() {
 
@@ -53,7 +54,7 @@ export default function Portfolio() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {['stoki-ai', 'godaddy-shipping', 'questionpro-signup'].map((slug, idx) => {
               const project = projectsData[slug];
               if (!project) return null;
@@ -148,7 +149,7 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Card 1 */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
@@ -212,23 +213,46 @@ export default function Portfolio() {
           </Reveal>
         </section>
 
-        <section className="mb-20">
-          <Reveal width="100%" overflow="visible">
-            <div className="max-w-2xl">
-              <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
-                04 / Background
-              </h2>
-              <div className="space-y-6 text-body text-primary leading-relaxed">
-                <p>
-                  With 14+ years of design experience, my practice revolves around consistency, organization, and treating design as a highly technical discipline. I started in graphic design and advertising, which gave me a rich foundation that has allowed my style to grow and adapt.
+        {/* Closing CTA Strip */}
+        <Reveal width="100%" overflow="visible">
+          <div className="mt-20 mb-0 pt-12 pb-16">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+              {/* Left: copy */}
+              <div className="space-y-3 max-w-lg">
+                <p className="text-mono font-mono text-secondary uppercase tracking-widest text-[11px]">
+                  Still here?
                 </p>
-                <p>
-                  Today, my career is defined by peripheral vision: noticing what’s coming next and adapting early. Whether I&apos;m building design systems that scale, or partnering with AI to ship features faster, I build interfaces that withstand any sneaky edge-case.
+                <h2 className="text-2xl font-bold tracking-tighter">
+                  There&apos;s more to the story.
+                </h2>
+                <p className="text-body text-secondary leading-relaxed">
+                  14 years of experience, a full career timeline, and a few credentials that might surprise you.
                 </p>
               </div>
+
+              {/* Right: actions */}
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <Link
+                  href="/about"
+                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white text-small font-sans font-medium tracking-wide hover:bg-brand/90 transition-all duration-200"
+                >
+                  About me
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+                <a
+                  href="https://www.linkedin.com/in/omar-guillermo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit LinkedIn profile (opens in new tab)"
+                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border/50 text-secondary text-small font-sans font-medium tracking-wide hover:border-brand/40 hover:text-brand transition-all duration-200"
+                >
+                  LinkedIn
+                  <ExternalLink className="w-3.5 h-3.5 transition-colors duration-200" />
+                </a>
+              </div>
             </div>
-          </Reveal>
-        </section>
+          </div>
+        </Reveal>
 
       </main>
     </div>

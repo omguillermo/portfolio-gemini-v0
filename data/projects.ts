@@ -37,7 +37,6 @@ export interface ProjectData {
   metric: string;
   thumbnail: string;
   hero_image?: string;
-  prototype_link?: string;
   password?: string;
 }
 
@@ -129,8 +128,7 @@ export const projectsData: Record<string, ProjectData> = {
          "caption": "Order Details Page with the new Buy Shipping Label entry point."
       }
     ],
-    retrospective: "The success of this integration was driven by trust. By exposing live API validation states early, we reduced merchant anxiety and significantly increased the 'Buy' conversion rate.",
-    prototype_link: "https://www.figma.com/proto/jS9lpzXQorkkrfDoTYYFeO/Create-a-Shipping-Label"
+    retrospective: "The success of this integration was driven by trust. By exposing live API validation states early, we reduced merchant anxiety and significantly increased the 'Buy' conversion rate."
   },
   'questionpro-signup': {
     title: "Sign Up Experience Redesign",

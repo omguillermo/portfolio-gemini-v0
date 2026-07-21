@@ -205,9 +205,9 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   const content = (
     <div className="min-h-screen text-primary font-sans antialiased pb-12 md:pb-20 selection:bg-selection-bg selection:text-selection-text">
       {/* Full-width Page Header */}
-      <div className="max-w-5xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8 border-b border-border/10">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8 border-b border-border/10">
         {/* Return link */}
-        <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-secondary hover:text-brand transition-colors mb-6">
+        <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-secondary hover:text-brand transition-colors mt-8 mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to projects
         </Link>
@@ -242,7 +242,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
       </div>
 
       {/* Two-Column Layout Split */}
-      <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12 pt-12">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12 pt-12">
         
         {/* Sticky Left Sidebar */}
         <aside className="w-full md:w-[220px] shrink-0 md:sticky md:top-28 h-fit space-y-8 z-30 pb-6 md:pb-0">
@@ -281,18 +281,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
             ))}
           </ul>
 
-          {/* Try Prototype CTA */}
-          {project.prototype_link && (
-            <a 
-              href={project.prototype_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between w-full bg-foreground text-background px-4 py-3 rounded-xl text-mono font-mono text-[9px] uppercase tracking-wider hover:bg-brand hover:text-white transition-all duration-300 shadow-sm"
-            >
-              Try prototype
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          )}
+
         </aside>
 
         {/* Right Content Area */}
@@ -502,21 +491,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 </section>
               </article>
 
-              {/* Prototype Link */}
-              {project.prototype_link && (
-                <section className="flex flex-col items-center py-16">
-                  <h3 className="text-heading font-bold mb-8">Ready to explore the logic?</h3>
-                  <a 
-                    href={project.prototype_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full font-medium hover:bg-brand hover:text-white transition-all shadow-xl shadow-brand/10 group"
-                  >
-                    Interact with Prototype
-                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                </section>
-              )}
+
 
               {/* Footer Navigation */}
               <footer className="pt-12 border-t border-border flex justify-between items-center">

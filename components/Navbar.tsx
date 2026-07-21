@@ -93,6 +93,7 @@ export default function Navbar() {
                         download={link.download}
                         target={link.type === 'external' ? '_blank' : undefined}
                         rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                        aria-label={link.type === 'download' ? 'Download resume PDF' : `Visit ${link.label} profile (opens in new tab)`}
                         className="flex items-center gap-1 text-small font-sans uppercase tracking-widest text-secondary hover:text-brand transition-colors cursor-pointer group"
                       >
                         <span>{link.label}</span>
@@ -160,6 +161,7 @@ export default function Navbar() {
                       target={link.type === 'external' ? '_blank' : undefined}
                       rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
                       onClick={() => setIsOpen(false)}
+                      aria-label={link.type === 'download' ? 'Download resume PDF' : `Visit ${link.label} profile (opens in new tab)`}
                       className="flex items-center justify-center gap-1.5 text-2xl font-bold tracking-tighter text-secondary hover:text-brand transition-colors cursor-pointer group"
                     >
                       <span>{link.label}</span>
