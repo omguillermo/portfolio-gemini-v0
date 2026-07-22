@@ -101,11 +101,11 @@ export default function About() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-mono text-secondary uppercase tracking-widest">Location</p>
+                <p className="text-mono text-secondary text-[11px] font-medium">Location</p>
                 <p className="text-body font-medium">Mérida, México 🇲🇽</p>
               </div>
               <div className="space-y-2">
-                <p className="text-mono text-secondary uppercase tracking-widest">Favorite Fuel</p>
+                <p className="text-mono text-secondary text-[11px] font-medium">Favorite Fuel</p>
                 <p className="text-body font-medium">Chilaquiles & Coffee ☕️</p>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function About() {
         {/* Career Timeline Section (Full Width Breakout) */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
               Career History Timeline
             </h2>
           </Reveal>
@@ -223,7 +223,7 @@ export default function About() {
 
                         {/* Stack Details */}
                         <div className="pt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-[10px] text-secondary">
-                          <span className="text-secondary uppercase tracking-wider">Stack:</span>
+                          <span className="text-secondary font-medium">Stack:</span>
                           <span className="text-primary/70">{exp.stack}</span>
                         </div>
                       </div>
@@ -238,7 +238,7 @@ export default function About() {
         {/* Prior Experience Section */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
               Past Graphic Design Experience
             </h2>
           </Reveal>
@@ -264,7 +264,7 @@ export default function About() {
         {/* Certifications and Training */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary uppercase tracking-widest border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
               Verified Credentials & Education
             </h2>
           </Reveal>
@@ -273,7 +273,7 @@ export default function About() {
             <div className="overflow-x-auto border-0 rounded-xl bg-surface-inset">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-border/10 text-mono font-mono text-[9px] uppercase tracking-wider text-secondary bg-surface/5">
+                  <tr className="border-b border-border/10 text-mono font-mono text-[10px] font-medium text-secondary bg-surface/5">
                     <th className="px-6 py-3 font-semibold w-20">Year</th>
                     <th className="px-6 py-3 font-semibold">Credential / Program</th>
                     <th className="px-6 py-3 font-semibold text-right">Issuer</th>

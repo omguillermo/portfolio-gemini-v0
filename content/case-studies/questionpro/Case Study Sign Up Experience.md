@@ -1,6 +1,6 @@
 # Sign Up Redesign
 
-![][image1]
+<!-- Hero image goes here -->
 
 # Metadata
 

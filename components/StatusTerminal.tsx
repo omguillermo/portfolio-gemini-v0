@@ -120,12 +120,14 @@ export default function StatusTerminal() {
       aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
       className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-[10px] text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
     >
+
+
       {/* Terminal Window Header */}
-      <div className="flex items-center px-5 py-2.5 bg-terminal-header border-b border-border/10 select-none">
-        <div className="flex gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
-          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
-          <span className="w-1.5 h-1.5 rounded-full bg-muted/30" />
+      <div className="flex items-center px-4 h-6 bg-terminal-header border-b border-border/10 select-none shrink-0">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-foreground/12" />
+          <span className="w-1.5 h-1.5 rounded-full bg-foreground/12" />
+          <span className="w-1.5 h-1.5 rounded-full bg-foreground/12" />
         </div>
       </div>
 
@@ -171,27 +173,24 @@ export default function StatusTerminal() {
                       >
                         {/* Selector Arrow */}
                         <span
-                          className={`w-3.5 shrink-0 font-mono ${
-                            isSelected ? 'text-brand opacity-100 animate-terminal-blink' : 'opacity-0'
-                          }`}
+                          className={`w-3.5 shrink-0 font-mono ${isSelected ? 'text-brand opacity-100 animate-terminal-blink' : 'opacity-0'
+                            }`}
                         >
                           ❯
                         </span>
 
                         {/* Key label */}
                         <span
-                          className={`w-24 shrink-0 whitespace-nowrap transition-colors duration-150 font-mono ${
-                            isSelected ? 'text-brand font-bold' : 'text-secondary font-normal'
-                          }`}
+                          className={`w-24 shrink-0 whitespace-nowrap transition-colors duration-150 font-mono ${isSelected ? 'text-brand font-bold' : 'text-secondary font-normal'
+                            }`}
                         >
                           {row.label}
                         </span>
 
                         {/* Value */}
                         <span
-                          className={`truncate flex-1 font-mono flex items-center transition-colors duration-150 ${
-                            isSelected ? 'text-primary font-semibold' : 'text-secondary font-normal'
-                          }`}
+                          className={`truncate flex-1 font-mono flex items-center transition-colors duration-150 ${isSelected ? 'text-primary font-semibold' : 'text-secondary font-normal'
+                            }`}
                         >
                           {row.value}
                         </span>

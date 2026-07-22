@@ -79,7 +79,7 @@ export default function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={`text-small font-sans uppercase tracking-widest hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
+                        className={`text-small font-sans font-medium hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
                           }`}
                       >
                         {link.label}
@@ -94,7 +94,7 @@ export default function Navbar() {
                         target={link.type === 'external' ? '_blank' : undefined}
                         rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
                         aria-label={link.type === 'download' ? 'Download resume PDF' : `Visit ${link.label} profile (opens in new tab)`}
-                        className="flex items-center gap-1 text-small font-sans uppercase tracking-widest text-secondary hover:text-brand transition-colors cursor-pointer group"
+                        className="flex items-center gap-1 text-small font-sans font-medium text-secondary hover:text-brand transition-colors cursor-pointer group"
                       >
                         <span>{link.label}</span>
                         {link.type === 'download' && (

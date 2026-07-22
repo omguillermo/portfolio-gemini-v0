@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Omar Guillermo
 
-## Getting Started
+Personal portfolio built as a high-density **Designer-Engineer Console**. Next.js 16 / React 19 / Tailwind CSS 4 / Framer Motion.
 
-First, run the development server:
+## Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | Next.js 16.2 (App Router) |
+| UI | React 19 |
+| Styling | Tailwind CSS 4 (`@tailwindcss/postcss`) |
+| Animation | Framer Motion 12 |
+| Icons | Lucide React |
+| Analytics | Vercel Analytics |
+| Language | TypeScript 5 |
+
+> **Note:** This uses Next.js 16 — APIs and conventions may differ significantly from the Next.js you know. Read `node_modules/next/dist/docs/` before touching framework-level code.
+
+---
+
+## Dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev    # starts dev server (webpack mode)
+npm run build  # production build
+npm run lint   # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Opens at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes
 
-## Learn More
+| Route | File | Description |
+|---|---|---|
+| `/` | `app/page.tsx` | Homepage — hero, projects, skills, testimonials, CTA strip |
+| `/about` | `app/about/page.tsx` | Web resume — career timeline with expandable accordions |
+| `/case-studies/[slug]` | `app/case-studies/[slug]/page.tsx` | Dynamic case study pages |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Data Layer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All project/case study content lives in a single source of truth:
 
-## Deploy on Vercel
+**`data/projects.ts`** — exports `projectsData`, an array of `ProjectData` objects.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To add a case study:
+1. Add a new entry to `projectsData` in `data/projects.ts`.
+2. Set a unique `slug` — this becomes the URL (`/case-studies/[slug]`).
+3. Add any supporting images to `public/`.
+4. The dynamic route `app/case-studies/[slug]/page.tsx` will pick it up automatically.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Theme System
+
+Themes are applied via a `data-brand` attribute on `<html>`. The initializer script runs before hydration (in `app/layout.tsx` via `<Script strategy="beforeInteractive">`) to prevent flash.
+
+| `data-brand` value | Name | Accent |
+|---|---|---|
+| *(default)* | Forest | `#1A9A5E` (green) |
+| `crimson` | Crimson | `#D92626` (red) |
+| `electric-blue` | Electric Blue | `#2667D9` (blue) |
+| `royal-purple` | Royal Purple | `#8A26D9` (purple) |
+
+All color tokens are CSS custom properties defined in `app/globals.css`. See `color_system.md` for the full token reference and usage rules.
+
+---
+
+## Key Design Rules
+
+- **No transparent surfaces** on cards/widgets — always use solid `bg-surface-inset` or `bg-surface`.
+- **Dot grid** background (`radial-gradient`) is intentionally **disabled** in `globals.css`. Kept commented as a reference; do not re-enable.
+- **`/` heading separators** (`01 / Projects`) only on major homepage section headings — never in nav, tags, or case study subheadings.
+- See `design.md` for the full design system reference and `color_system.md` for token usage.

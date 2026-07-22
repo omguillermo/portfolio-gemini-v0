@@ -49,7 +49,7 @@ function parseMarkdown(text: string): React.ReactNode {
     
     if (trimmed.startsWith('### ')) {
       return (
-        <h3 key={blockIdx} className="text-body font-bold mt-8 mb-4 text-primary uppercase tracking-wider font-mono text-xs">
+        <h3 key={blockIdx} className="text-body font-bold mt-8 mb-4 text-primary font-mono text-xs">
           {parseInlineMarkdown(trimmed.substring(4))}
         </h3>
       );
@@ -249,15 +249,15 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           {/* Project Context Box: flat, solid surface-inset */}
           <div className="bg-surface-inset border-0 rounded-2xl p-5 space-y-3.5 text-[11px] leading-relaxed">
             <div>
-              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Role</p>
+              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Role</p>
               <p className="font-semibold text-primary mt-0.5">{project.role}</p>
             </div>
             <div>
-              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Timeline</p>
+              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Timeline</p>
               <p className="font-semibold text-primary mt-0.5">{project.timeline}</p>
             </div>
             <div>
-              <p className="text-mono font-mono text-[9px] uppercase text-secondary tracking-wider">Teams Involved</p>
+              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Teams Involved</p>
               <p className="font-semibold text-primary mt-0.5">{project.teams_involved}</p>
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               <li key={sec.id}>
                 <button
                   onClick={() => scrollTo(sec.id)}
-                  className={`block w-full text-left font-mono uppercase tracking-wider transition-colors py-0.5 ${
+                  className={`block w-full text-left font-mono transition-colors py-0.5 ${
                     activeSection === sec.id
                       ? 'text-brand font-bold'
                       : 'text-secondary hover:text-primary'
@@ -289,7 +289,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           <Reveal width="100%">
             <div className="space-y-12">
               <header className="scroll-mt-28" id="overview">
-                <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4 mb-6">
+                <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4 mb-6">
                   Overview
                 </h2>
                 <p className="text-body font-semibold text-primary leading-relaxed">
@@ -301,7 +301,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 {/* 1. The Problem */}
                 <section id="problem" className="space-y-4 scroll-mt-24">
                   <div className="space-y-4">
-                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                       The Problem
                     </h2>
                     <div>
@@ -339,7 +339,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
                 {/* 1.5 Hypothesis */}
                 <section id="hypothesis" className="space-y-4 scroll-mt-24">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest">
+                  <h2 className="text-mono text-secondary font-medium tracking-wide">
                     Hypothesis
                   </h2>
                   <div>
@@ -349,7 +349,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
                 {/* 1.6 Constraints */}
                 <section id="constraint" className="space-y-4 scroll-mt-24">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest">
+                  <h2 className="text-mono text-secondary font-medium tracking-wide">
                     Constraints
                   </h2>
                   <div className="text-secondary">
@@ -360,7 +360,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 {/* 2. Design Iterations */}
                 <section id="iteration" className="space-y-4 scroll-mt-24">
                   <div className="space-y-4">
-                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                       Design Iterations
                     </h2>
                     <p className="text-body text-primary leading-relaxed whitespace-pre-wrap">
@@ -372,7 +372,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     {project.iterations.map((iteration, index) => (
                       <div key={index} className="space-y-8">
                         <div className="space-y-2">
-                          <p className="text-mono text-secondary uppercase tracking-widest">Iteration 0{index + 1}</p>
+                          <p className="text-mono text-secondary font-medium tracking-wide">Iteration 0{index + 1}</p>
                           <h3 className="text-heading font-bold">{iteration.approach}</h3>
                           <div className="pt-2 space-y-4">
                             {parseMarkdown(iteration.why_it_failed)}
@@ -414,7 +414,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 {/* 3. The Solution */}
                 <section id="solution" className="space-y-4 scroll-mt-24">
                   <div className="space-y-4">
-                    <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                    <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                       The Solution
                     </h2>
                     <div>
@@ -455,7 +455,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
                 {/* 4. Edge Cases Section */}
                 <section id="edge-cases" className="space-y-4 scroll-mt-24">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                  <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                     Edge Cases
                   </h2>
                   <ul className="space-y-6">
@@ -472,7 +472,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
                 {/* 4.5 Outcomes Section */}
                 <section id="outcomes" className="space-y-4 scroll-mt-24">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                  <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                     Outcomes
                   </h2>
                   <div>
@@ -482,7 +482,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
 
                 {/* 5. Retrospective Section */}
                 <section id="retrospective" className="space-y-4 scroll-mt-24">
-                  <h2 className="text-mono text-secondary uppercase tracking-widest flex items-center gap-4">
+                  <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                     Retrospective
                   </h2>
                   <div>
@@ -496,11 +496,9 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
               {/* Footer Navigation */}
               <footer className="pt-12 border-t border-border flex justify-between items-center">
                 <Link href="/" className="text-small font-mono text-secondary hover:text-brand transition-colors">
-                  ← INDEX
+                  ← Back to index
                 </Link>
-                <div className="flex gap-8">
-                  <span className="text-mono text-muted uppercase">Next Project: Coming Soon</span>
-                </div>
+                <span className="text-mono font-mono text-[11px] text-muted">Next Project: Coming Soon</span>
               </footer>
             </div>
           </Reveal>

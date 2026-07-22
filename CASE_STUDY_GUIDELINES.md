@@ -9,12 +9,13 @@ This document serves as the master guide for drafting, refining, and auditing ca
 Every case study must follow this exact sectional hierarchy. Do not omit sections or change heading titles unless explicitly instructed.
 
 ### 1. Archive Metadata (Internal Use Only)
-*This section is for project archiving hygiene and is hidden on the live portfolio site.*
+*This section is for project archiving hygiene and is hidden on the live portfolio site. Omar actually saves this on a personal google docs. You need not to store it, but if you encounter it during a prompt, you can use it for reference if needed.*
 * **Client / Company:** [Name]
 * **Project Title:** [Name]
-* **Year & Launch Date:** [e.g., Nov 2021]
+* **Year & Launch Date:** [e.g., November 13, 2021]
+* **Timeline:** [e.g., Q3-Q4 2021]
 * **Project Type:** [e.g., Web App, Core B2B Funnel]
-* **Cross-Functional Teams Involved:** [e.g., Inbound Sales, Engineering, Executive Stakeholders]
+* **Teams Involved:** [e.g., Inbound Sales, Engineering, Executive Stakeholders]
 
 ---
 
@@ -28,7 +29,6 @@ Every case study must follow this exact sectional hierarchy. Do not omit section
 * **Role:** [Your exact ownership, e.g., Senior Product Designer / Founding Designer]
 * **Timeline:** [Duration & dates, e.g., Q3-Q4 2021, Released Nov 2021]
 * **Teams Involved:** [e.g., COO, VP of Engineering, Inbound Sales, Design]
-* **Primary Metric Badge:** [e.g., +5% Conversion Lift, $871K Facilitated]
 
 ---
 
@@ -54,11 +54,11 @@ Every case study must follow this exact sectional hierarchy. Do not omit section
 * **Objective:** Showcase strategic decision-making over generic wireframe dumps.
 * **Key Focus:** Present at least 2-3 distinct explorations or MVPs. Explicitly explain why early ideas failed or were dropped. Focus heavily on business or engineering compromises made along the way.
 
-#### Solution & Architecture
+#### Solution
 * **Objective:** Detail the final shipped design and its architectural mechanics.
 * **Key Focus:** Break down the layout logically (e.g., Left Column trust elements vs. Right Column form card). Explain how the interface actively solves the problem, hypothesis, and constraints established earlier.
 
-#### Edge Cases Handled
+#### Edge Cases
 * **Objective:** Demonstrate senior-level thoroughness in edge case & error condition handling.
 * **Key Focus:** List 2-3 specific edge cases (e.g., dynamic funneling based on marketing sources, cooldown logic for promos, API validation states before rate calculation).
 
@@ -75,7 +75,7 @@ Every case study must follow this exact sectional hierarchy. Do not omit section
 ## Part 2: Voice, Tone & Writing Style Guidelines
 
 ### 1. Tone and Voice Philosophy
-* **Conversational yet Professional:** Write as if speaking to a peer or engineering lead during a sync. Be direct, clear, and honest about failures.
+* **Conversational yet Professional:** Write as if speaking to a peer or engineering or design lead during a sync. Be direct, clear, and honest about failures.
 * **Active Voice Only:** Own the actions. Avoid passive corporate phrasing.
   * ❌ *Bad (Passive):* "The user research was conducted and a pattern was observed."
   * ✅ *Good (Active):* "I interviewed five users and noticed they all got stuck on the registration page."

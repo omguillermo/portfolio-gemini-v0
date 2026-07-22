@@ -52,7 +52,7 @@
   --grid-color: rgba(138, 158, 152, 0.12);
 
   --terminal-surface: var(--surface);
-  --terminal-header: var(--background);
+  --terminal-header: #173C33;
   --surface-inset: #040D0B;
 }
 
@@ -68,6 +68,8 @@
   --muted: #8A9E98 !important;
   --grid-color: rgba(138, 158, 152, 0.12) !important;
   --surface-inset: #040D0B !important;
+  --terminal-surface: #0D2621 !important;
+  --terminal-header: #173C33 !important;
 }
 
 /* Crimson - Warm Editorial */
@@ -96,6 +98,8 @@
   --selection-bg: #D92626 !important;
   --grid-color: rgba(217, 38, 38, 0.25) !important;
   --surface-inset: #0A0404 !important;
+  --terminal-surface: #1C0D0D !important;
+  --terminal-header: #331919 !important;
 }
 
 /* Electric Blue - Technical Cold */
@@ -124,6 +128,8 @@
   --selection-bg: #2667D9 !important;
   --grid-color: rgba(38, 103, 217, 0.25) !important;
   --surface-inset: #04070A !important;
+  --terminal-surface: #0D141C !important;
+  --terminal-header: #1A2B3E !important;
 }
 
 /* Royal Purple - Deep & Royal */
@@ -152,6 +158,8 @@
   --selection-bg: #8A26D9 !important;
   --grid-color: rgba(138, 38, 217, 0.25) !important;
   --surface-inset: #08040A !important;
+  --terminal-surface: #180D21 !important;
+  --terminal-header: #2C183C !important;
 }
 
 
@@ -171,7 +179,7 @@
     --grid-color: rgba(138, 158, 152, 0.12);
 
     --terminal-surface: var(--surface);
-    --terminal-header: var(--background);
+    --terminal-header: #173C33;
   }
 }
 

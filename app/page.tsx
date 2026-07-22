@@ -35,8 +35,8 @@ export default function Portfolio() {
                     Senior Product Designer <br />
                     & Design System Builder
                   </h1>
-                  <p className="text-[14px] text-secondary max-w-2xl leading-relaxed font-light tracking-wide">
-                    I bridge the gap between design and engineering to build useful B2B and eCommerce products. Focused on sweating the edge cases, scaling design systems, and adopting AI workflows early.
+                  <p className="text-[14px] text-secondary max-w-2xl leading-relaxed font-light tracking-wide text-pretty">
+                    Started in Photoshop. Today I think, design, prototype, and build - with AI as a sparring partner.
                   </p>
                 </div>
               </div>
@@ -49,7 +49,7 @@ export default function Portfolio() {
 
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
               01 / Highlighted Projects
             </h2>
           </Reveal>
@@ -119,20 +119,20 @@ export default function Portfolio() {
         {/* 02 / Technical Skills & Toolkit */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
               02 / Technical Skills & Toolkit
             </h2>
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="flex flex-wrap gap-2.5 max-w-3xl">
+            <div className="flex flex-wrap gap-2.5 max-w-4xl">
               {[
-                'Design Systems', 'Design Tokens', 'Figma Variables', 'Style Dictionary', 'Storybook',
+                'Design Systems', 'Design Tokens', 'Figma Variables', 'Storybook',
                 'React', 'Next.js', 'TailwindCSS', 'Framer Motion', 'TypeScript', 'HTML & CSS', 'Git & GitHub',
-                'UI/UX Architecture', 'B2B Commerce', 'eCommerce Product Strategy', 'Catalog Management',
-                'Usability Testing', 'A/B Testing', 'AI Workflows', 'UI Quality Assurance'
+                'UI/UX', 'B2B', 'eCommerce', 'Documentation', 'SaaS', 'Visual Design', 'Interaction Design',
+                'Usability Testing', 'A/B Testing', 'AI Workflows', 'Design Audits', 'User Research'
               ].map(s => (
-                <span key={s} className="text-mono font-mono text-[10px] uppercase tracking-wider bg-surface-inset border border-transparent rounded px-3 py-1.5 text-primary hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
+                <span key={s} className="text-mono font-mono text-[10px] tracking-wider bg-surface-inset border border-transparent rounded px-3 py-1.5 text-primary hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
                   {s}
                 </span>
               ))}
@@ -143,7 +143,7 @@ export default function Portfolio() {
         {/* 03 / Testimonials */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary uppercase tracking-widest mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
               03 / Testimonials
             </h2>
           </Reveal>
@@ -166,7 +166,7 @@ export default function Portfolio() {
                 <div className="pt-3 border-t border-border/10">
                   <h4 className="text-small font-bold text-primary">Thomas Dixon</h4>
                   <p className="text-[11px] text-secondary font-light leading-snug">Lead Software Engineer</p>
-                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">GoDaddy Commerce</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
                 </div>
               </div>
 
@@ -186,7 +186,7 @@ export default function Portfolio() {
                 <div className="pt-3 border-t border-border/10">
                   <h4 className="text-small font-bold text-primary">Sarah Jenkins</h4>
                   <p className="text-[11px] text-secondary font-light leading-snug">Co-Founder</p>
-                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">StockApp</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">StockApp</p>
                 </div>
               </div>
 
@@ -206,7 +206,7 @@ export default function Portfolio() {
                 <div className="pt-3 border-t border-border/10">
                   <h4 className="text-small font-bold text-primary">Carlos Mendez</h4>
                   <p className="text-[11px] text-secondary font-light leading-snug">VP of Product</p>
-                  <p className="text-mono font-mono text-[9px] uppercase tracking-wider text-brand font-bold mt-0.5">QuestionPro</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">QuestionPro</p>
                 </div>
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function Portfolio() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
               {/* Left: copy */}
               <div className="space-y-3 max-w-lg">
-                <p className="text-mono font-mono text-secondary uppercase tracking-widest text-[11px]">
+                <p className="text-mono font-mono text-secondary text-[11px] font-medium">
                   Still here?
                 </p>
                 <h2 className="text-2xl font-bold tracking-tighter">

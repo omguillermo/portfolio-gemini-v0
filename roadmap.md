@@ -14,13 +14,9 @@ This document outlines the strategic expansion of the portfolio, transitioning f
 
 ---
 
-## 3. Contact Portal & CTAs (Initiate Session) — *Pending*
-*   **Target Location:** Global `/contact` Page or Bottom Section
-*   **Goal:** Drive actions from recruiters with a tactile, interactive contact experience rather than a basic mailto link.
-*   **Visual Direction:**
-    *   **Console Form:** Inputs styled like terminal input lines with custom inline status logs (e.g. `[READY]`, `[VALIDATING...]`, `[TRANSMITTED]`).
-    *   **Clear CTAs:** Unified headers and button states throughout the site that read `INITIATE SESSION` or `ESTABLISH CONTACT`.
-*   **Note:** The current `05 / Index` section (resume download, email, LinkedIn links) is a placeholder. This item replaces it with a proper conversion-focused CTA block.
+## ✅ 3. Contact / CTA (Initiate Session) — **DONE (V1)**
+*   **Shipped:** Closing CTA strip at the bottom of `app/page.tsx` — "There's more to the story" with About + LinkedIn buttons. Replaced the old `05 / Index` link-dump.
+*   **Future V2 (Optional):** A dedicated `/contact` page with a console-styled form (`[READY]`, `[VALIDATING...]`, `[TRANSMITTED]` states) if direct contact volume warrants it.
 
 ---
 
@@ -35,8 +31,8 @@ This document outlines the strategic expansion of the portfolio, transitioning f
 
 ## Next Steps
 Remaining open work:
-1.  **CTA Section:** Design and build the `06 / Initiate Contact` block to replace the current `05 / Index` link-dump. See `design_review.md` for the proposed layout.
-2.  **Hero CTAs:** Add inline text-button CTAs under the hero subtitle ("View selected work ↓ / Get in touch →").
+1.  **Hero CTAs:** Add inline text-button CTAs under the hero subtitle ("View selected work ↓ / Get in touch →") — still not shipped as of 2026-07-20.
+2.  **Featured Project Layout:** Consider making Stoki AI a full-width featured card above a 3-col grid for the remaining projects.
 3.  **Changelog Route:** Scaffold `/log` page when ready to start writing.
 
 ---
