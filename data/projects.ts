@@ -95,40 +95,49 @@ export const projectsData: Record<string, ProjectData> = {
     retrospective: "Designing for AI requires anticipating complex outputs and giving users total control over screen real estate. If given more time, I would expand discovery features and improve UI states for handling API errors during high-volume bulk updates."
   },
   'godaddy-shipping': {
-    title: "Buy Shipping Labels Integration",
-    subtitle: "Streamlining label generation within the existing GoDaddy merchant dashboard.",
+    title: "GoDaddy: Native Shipping Labels Integration",
+    subtitle: "Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem.",
     role: "Senior Product Designer",
-    timeline: "Q3 2022",
-    tag: "B2C • ECOMMERCE",
-    metric: "7.5K Labels",
+    timeline: "4 Months (Released July 2022)",
+    tag: "ECOMMERCE • GODADDY",
+    metric: "6.7K Merchants",
     thumbnail: "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
-    impact: "7,521 labels purchased by 6,722 active merchants in the first 3 months.",
-    constraint: "Must keep users inside the GoDaddy ecosystem without external redirects.",
-    teams_involved: "Product Management, Engineering, Operations",
+    impact: "6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels in the first 3 months.",
+    constraint: "Integrating a third-party partner API (ShipEngine) required navigating a multi-step setup (terms, payment methods, account funding) that carried a high risk of user fatigue and drop-off.",
+    teams_involved: "Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team",
     problem_hypothesis: {
-      problem: "Merchants were wasting time searching for rates externally. A previous integration (Shippo) failed with only an 11.3% adoption rate because of trust issues and complexity.",
-      hypothesis: "By engineering a seamless multi-step integration using the ShipEngine API, we could increase trust and reduce time-to-label."
+      problem: "Store owners were losing hours searching externally for rates across carrier portals. A previous integration (Shippo) failed with only an 11.3% adoption rate among 44,000 monthly active merchants due to high setup complexity and lack of platform trust.",
+      hypothesis: "By natively embedding shipping label purchases directly inside the Order Details workflow using GoDaddy's design system, we could build merchant trust and significantly reduce fulfillment time for high-volume Power Sellers."
     },
-    design_rationale: "I streamlined the complex setup process to avoid information overload and implemented a 2-column layout to handle extreme data density during checkout.",
+    design_rationale: "Balancing third-party API requirements with a clean merchant experience required exploring multiple UI architectures and solving critical trust barriers:",
     iterations: [
       {
-        approach: "Single-page Linear Wizard",
-        why_it_failed: "The vertical scroll became unmanageable when multiple packages were involved. Users lost context of their order total while configuring dimensions.",
+        approach: "3-Column & Step-by-Step Wizard Layouts",
+        why_it_failed: "The 3-column layout felt cramped on standard laptop screens (1366x768), while the step-by-step wizard forced merchants to click back and forth between screens when tweaking package weights."
+      },
+      {
+        approach: "Fragmented View & Print Post-Purchase Confirmation",
+        why_it_failed: "Treating View and Print as separate actions created awkward layout gaps and forced extra clicks after label purchase."
+      },
+      {
+        approach: "Unbranded Third-Party ShipEngine Setup",
+        why_it_failed: "In usability testing with the GoDaddy Customer Council, merchants distrusted unbranded screens ('I don't see any GoDaddy logo... can I trust them?'), threatening feature adoption."
       }
     ],
-    system_solution: "Engineered a seamless multi-step integration using the ShipEngine API. I streamlined the complex setup process to avoid information overload and implemented a 2-column layout to handle extreme data density during checkout.",
+    system_solution: "I designed a structured, 5-step fulfillment flow built on GoDaddy's DeepSee design system. The experience starts on the Order Details page with a non-intrusive promotional modal, routes merchants through an educational Shipping Settings hub, guides them through a co-branded ShipEngine onboarding flow, and lands them in a 2-column Buy Shipping Label hub with live rate calculations and instant 1-click purchasing.",
     edge_cases_handled: [
-      "Designed cooldown logic for the promo modal: if a user clicks 'Maybe Later', the prompt hides for a set period to prevent annoyance on every order.",
-      "Mapped out API validation states: Package and 'Ship To' info must be strictly validated by the API before the UI allows returning available rates."
+      "Modal Snooze Logic: Selecting 'Maybe Later' suppresses promotional prompts for a set period to prevent modal fatigue for merchants fulfilling dozens of daily orders.",
+      "API Rate Validation Gates: Package dimensions and recipient addresses must pass strict API validation before rate calculation is triggered, preventing rate-limit calls and inaccurate estimates.",
+      "Flexible Carrier Onboarding: Merchants can skip configuring specific carriers during initial setup and finish them later in Shipping Settings without blocking immediate order fulfillment."
     ],
-    outcomes: "Successfully launched in Q3 2022. 7,521 shipping labels were generated and purchased directly within the GoDaddy dashboard by 6,722 active merchants in the first three months, representing a massive adoption increase over the legacy integration.",
+    outcomes: "Launched in July 2022. 6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels directly within GoDaddy in the first 3 months. Over 2,000 merchants adopted the feature on Day 1, earning our team a featured shout-out during GoDaddy's company-wide All-Hands meeting.",
     visual_highlights: [
       {
          "image_url": "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
          "caption": "Order Details Page with the new Buy Shipping Label entry point."
       }
     ],
-    retrospective: "The success of this integration was driven by trust. By exposing live API validation states early, we reduced merchant anxiety and significantly increased the 'Buy' conversion rate."
+    retrospective: "Enterprise feature adoption is fundamentally about user trust and context preservation. Merchants didn't reject shipping tools because of pricing—they rejected them because leaving their home dashboard felt fragmented. Maintaining strict brand continuity across third-party API boundaries turned a tedious chore into a high-converting tool."
   },
   'questionpro-signup': {
     title: "Sign Up Experience Redesign",
