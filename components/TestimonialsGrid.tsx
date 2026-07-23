@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import Image from 'next/image';
 
 interface Testimonial {
   id: string;
   name: string;
   role: string;
   company: string;
-  initials: string;
+  avatar: string;
   quote: string;
 }
 
@@ -18,7 +18,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Sanika Vedak',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    initials: 'SV',
+    avatar: '/images/avatars/sanika_vedak.svg',
     quote: 'Omar, you are a design wizard. Your design craft, file organization and problem solving skills are inspirational.'
   },
   {
@@ -26,7 +26,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Allie Hough-Barkley',
     role: 'Sr. Product Design Manager',
     company: 'GoDaddy Commerce',
-    initials: 'AH',
+    avatar: '/images/avatars/allie_hough.svg',
     quote: 'Thank you, Omar, for all of your excellent work and great partnership during your time here.'
   },
   {
@@ -34,7 +34,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ji Hyun Park',
     role: 'Sr. Director of Product UX',
     company: 'GoDaddy Commerce',
-    initials: 'JP',
+    avatar: '/images/avatars/ji_hyun_park.svg',
     quote: 'Thank you for all the amazing work you’ve done in Commerce! Your creativity, dedication, and energy have made such a huge difference to our team.'
   },
   {
@@ -42,7 +42,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ada Flores',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    initials: 'AF',
+    avatar: '/images/avatars/ada_flores.svg',
     quote: 'Omar, I was so lucky to have you as a mentor when I started at GoDaddy. You made me feel so welcome from day one, and you were a huge reason my first days at the company went so smoothly.'
   },
   {
@@ -50,7 +50,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Benjamin Balderas',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    initials: 'BB',
+    avatar: '/images/avatars/benjamin_balderas.svg',
     quote: 'Omar! You\'ve been an inspiration for dedication and kindness—that\'s something that will be your legacy to the team.'
   },
   {
@@ -58,7 +58,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Thiago Leite',
     role: 'Sr. Product Designer',
     company: 'FullStack Labs',
-    initials: 'TL',
+    avatar: '/images/avatars/thiago_leite.svg',
     quote: 'Omar understands the essence of the product and manages to solve problems in an incredible way that actually delivers value. Solid knowledge of Design Systems and communication.'
   },
   {
@@ -66,7 +66,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ana Romero',
     role: 'Digital Marketing Professional',
     company: 'QuestionPro',
-    initials: 'AR',
+    avatar: '/images/avatars/ana_romero.svg',
     quote: 'It was fantastic to work together with Omar. He leads by example and I find his enthusiasm and dedication inspiring.'
   },
   {
@@ -74,65 +74,34 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Guille Santana',
     role: 'Marketing Delivery Manager',
     company: 'QuestionPro',
-    initials: 'GS',
+    avatar: '/images/avatars/guille_santana.svg',
     quote: 'Dedicated and always very efficient, Omar is a very creative, talented, and proactive designer who always has a smile on his face!'
   }
 ];
 
-export default function TestimonialsCarousel() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = (direction: 'left' | 'right') => {
-    if (!scrollContainerRef.current) return;
-    const scrollAmount = 350;
-    scrollContainerRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-
+export default function TestimonialsGrid() {
   return (
     <div className="space-y-6">
-      {/* Header controls */}
-      <div className="flex items-center justify-between border-b border-border pb-3">
-        <h2 className="text-mono font-mono text-secondary font-medium tracking-wide">
-          Endorsements & Team Feedback
-        </h2>
+      {/* Section Header */}
+      <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3">
+        Endorsements & Team Feedback
+      </h2>
 
-        {/* Carousel Navigation Buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => handleScroll('left')}
-            aria-label="Scroll left"
-            className="w-8 h-8 rounded-lg bg-surface-inset border border-border/20 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface transition-colors cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => handleScroll('right')}
-            aria-label="Scroll right"
-            className="w-8 h-8 rounded-lg bg-surface-inset border border-border/20 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface transition-colors cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Horizontal Carousel Track */}
-      <div
-        ref={scrollContainerRef}
-        className="flex gap-5 overflow-x-auto scroll-smooth pb-4 pt-1 snap-x snap-mandatory scrollbar-none"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
+      {/* Testimonials 2-column Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {aboutTestimonials.map((item) => (
           <div
             key={item.id}
-            className="snap-start shrink-0 w-[290px] sm:w-[340px] bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6"
           >
             <div className="space-y-4">
-              <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
-                {item.initials}
-              </div>
+              <Image
+                src={item.avatar}
+                alt={item.name}
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full shrink-0 border border-brand/20 object-cover"
+              />
               <p className="text-body text-primary leading-relaxed font-light text-[13px]">
                 &quot;{item.quote}&quot;
               </p>

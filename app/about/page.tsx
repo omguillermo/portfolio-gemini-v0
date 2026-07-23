@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import TooltipFollower from '@/components/TooltipFollower';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
+import TestimonialsGrid from '@/components/TestimonialsGrid';
 
 export default function About() {
   const [isHovered, setIsHovered] = useState(false);
@@ -308,10 +308,10 @@ export default function About() {
           </Reveal>
         </div>
 
-        {/* Endorsements & Team Feedback Carousel */}
+        {/* Endorsements & Team Feedback Grid */}
         <div className="mt-20">
           <Reveal width="100%">
-            <TestimonialsCarousel />
+            <TestimonialsGrid />
           </Reveal>
         </div>
 
