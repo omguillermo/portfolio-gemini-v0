@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ROCK_QUOTES = [
   "LET'S ROCK!",
-  "YEAH BABY!",
-  "WASSUP!",
   "WOOOOOO!",
 ];
 

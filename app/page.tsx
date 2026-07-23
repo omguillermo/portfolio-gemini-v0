@@ -197,10 +197,10 @@ export default function Portfolio() {
         {/* Closing CTA Strip */}
         <Reveal width="100%" overflow="visible">
           <div className="mt-20 mb-0 pt-12 pb-16">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               {/* Left: copy */}
               <div className="space-y-3 max-w-lg">
-                <p className="text-mono font-mono text-secondary text-xs font-medium uppercase tracking-wider">
+                <p className="text-mono font-mono text-secondary text-xs font-medium tracking-wider">
                   Still here?
                 </p>
                 <h2 className="text-2xl font-bold tracking-tighter">
