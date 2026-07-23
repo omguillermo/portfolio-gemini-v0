@@ -18,7 +18,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Sanika Vedak',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    avatar: '/images/avatars/sanika_vedak.svg',
+    avatar: '/images/avatars/sanika_vedak.jpg',
     quote: 'Omar, you are a design wizard. Your design craft, file organization and problem solving skills are inspirational.'
   },
   {
@@ -26,7 +26,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Allie Hough-Barkley',
     role: 'Sr. Product Design Manager',
     company: 'GoDaddy Commerce',
-    avatar: '/images/avatars/allie_hough.svg',
+    avatar: '/images/avatars/allie_hough.jpg',
     quote: 'Thank you, Omar, for all of your excellent work and great partnership during your time here.'
   },
   {
@@ -34,7 +34,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ji Hyun Park',
     role: 'Sr. Director of Product UX',
     company: 'GoDaddy Commerce',
-    avatar: '/images/avatars/ji_hyun_park.svg',
+    avatar: '/images/avatars/ji_hyun_park.jpg',
     quote: 'Thank you for all the amazing work you’ve done in Commerce! Your creativity, dedication, and energy have made such a huge difference to our team.'
   },
   {
@@ -42,7 +42,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ada Flores',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    avatar: '/images/avatars/ada_flores.svg',
+    avatar: '/images/avatars/ada_flores.jpg',
     quote: 'Omar, I was so lucky to have you as a mentor when I started at GoDaddy. You made me feel so welcome from day one, and you were a huge reason my first days at the company went so smoothly.'
   },
   {
@@ -50,7 +50,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Benjamin Balderas',
     role: 'Sr. Product Designer',
     company: 'GoDaddy Commerce',
-    avatar: '/images/avatars/benjamin_balderas.svg',
+    avatar: '/images/avatars/benjamin_balderas.jpg',
     quote: 'Omar! You\'ve been an inspiration for dedication and kindness—that\'s something that will be your legacy to the team.'
   },
   {
@@ -58,7 +58,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Thiago Leite',
     role: 'Sr. Product Designer',
     company: 'FullStack Labs',
-    avatar: '/images/avatars/thiago_leite.svg',
+    avatar: '/images/avatars/thiago_leite.jpg',
     quote: 'Omar understands the essence of the product and manages to solve problems in an incredible way that actually delivers value. Solid knowledge of Design Systems and communication.'
   },
   {
@@ -66,7 +66,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Ana Romero',
     role: 'Digital Marketing Professional',
     company: 'QuestionPro',
-    avatar: '/images/avatars/ana_romero.svg',
+    avatar: '/images/avatars/ana_romero.jpg',
     quote: 'It was fantastic to work together with Omar. He leads by example and I find his enthusiasm and dedication inspiring.'
   },
   {
@@ -74,7 +74,7 @@ const aboutTestimonials: Testimonial[] = [
     name: 'Guille Santana',
     role: 'Marketing Delivery Manager',
     company: 'QuestionPro',
-    avatar: '/images/avatars/guille_santana.svg',
+    avatar: '/images/avatars/guille_santana.jpg',
     quote: 'Dedicated and always very efficient, Omar is a very creative, talented, and proactive designer who always has a smile on his face!'
   }
 ];

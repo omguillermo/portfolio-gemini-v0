@@ -154,7 +154,7 @@ export default function Portfolio() {
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <Image
-                    src="/images/avatars/adelina_green.svg"
+                    src="/images/avatars/adelina_green.jpg"
                     alt="Adelina Green"
                     width={40}
                     height={40}
@@ -175,7 +175,7 @@ export default function Portfolio() {
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <Image
-                    src="/images/avatars/john_newcomb.svg"
+                    src="/images/avatars/john_newcomb.jpg"
                     alt="John Newcomb"
                     width={40}
                     height={40}
@@ -196,7 +196,7 @@ export default function Portfolio() {
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <Image
-                    src="/images/avatars/paulina_rodriguez.svg"
+                    src="/images/avatars/paulina_rodriguez.jpg"
                     alt="Paulina Rodríguez"
                     width={40}
                     height={40}
@@ -217,7 +217,7 @@ export default function Portfolio() {
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <Image
-                    src="/images/avatars/gerardo_vazquez.svg"
+                    src="/images/avatars/gerardo_vazquez.jpg"
                     alt="Gerardo Vázquez"
                     width={40}
                     height={40}
