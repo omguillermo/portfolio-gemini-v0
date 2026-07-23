@@ -149,63 +149,71 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Card 1 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Card 1: Senior UX Manager (GoDaddy) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
-                  {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
-                    TD
+                    AG
                   </div>
-                  {/* Quote */}
                   <p className="text-body text-primary leading-relaxed font-light italic">
-                    &quot;Omar is one of the rare designers who genuinely understands implementation constraints. His designs are clean, variable-driven, and map perfectly to React states. Working with him on Unified Commerce was a developer&apos;s dream.&quot;
+                    &quot;Omar took full ownership of the Catalog, Inventory, Orders and Fulfillment space as lead designer E2E. Decisions were grounded in real data and edge cases got accounted for. He brought a level of care and craft that raised the bar for everyone around.&quot;
                   </p>
                 </div>
-                {/* Person details */}
                 <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Thomas Dixon</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">Lead Software Engineer</p>
+                  <h4 className="text-small font-bold text-primary">Adelina Green</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Senior UX Manager</p>
                   <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
                 </div>
               </div>
 
-              {/* Card 2 */}
+              {/* Card 2: Engineering Lead (GoDaddy) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
-                  {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
-                    SJ
+                    JN
                   </div>
-                  {/* Quote */}
                   <p className="text-body text-primary leading-relaxed font-light italic">
-                    &quot;As our founding designer, Omar brought structure to early-stage product chaos. He re-architected our catalog interface and dynamic AI widget while working directly in the repository code. An indispensable product partner.&quot;
+                    &quot;The frontend buy label experience is looking really good! Huge shoutout to Omar Guillermo for his outstanding design work, responsiveness, and frontend collaboration.&quot;
                   </p>
                 </div>
-                {/* Person details */}
                 <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Sarah Jenkins</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">Co-Founder</p>
-                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">StockApp</p>
+                  <h4 className="text-small font-bold text-primary">John Newcomb</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Engineering Lead</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
                 </div>
               </div>
 
-              {/* Card 3 */}
+              {/* Card 3: Marketing Delivery Manager (QuestionPro) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
-                  {/* Photo Avatar */}
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
-                    CM
+                    PR
                   </div>
-                  {/* Quote */}
                   <p className="text-body text-primary leading-relaxed font-light italic">
-                    &quot;Omar&apos;s checkout experience redesign dropped our drop-off rates by 9.5% in a single quarter. He treats design as a data-driven, technical discipline, always mapping pixel decisions to business conversions.&quot;
+                    &quot;Omar has a highly creative, out-of-the-box mind. His profound knowledge in graphic design and openness to learn new things every day, paired with his integrity, makes him a valuable asset on any team.&quot;
                   </p>
                 </div>
-                {/* Person details */}
                 <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Carlos Mendez</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">VP of Product</p>
+                  <h4 className="text-small font-bold text-primary">Paulina Rodríguez</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Marketing Delivery Manager</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">QuestionPro CX</p>
+                </div>
+              </div>
+
+              {/* Card 4: UX Director (QuestionPro) */}
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
+                    GV
+                  </div>
+                  <p className="text-body text-primary leading-relaxed font-light italic">
+                    &quot;Omar has been a diligent, intelligent and proficient designer. My favorite trait is how he's not one to shy away from a challenge, putting in the time and effort to learn whatever he needs to get things done.&quot;
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-primary">Gerardo Vázquez</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">UX Director</p>
                   <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">QuestionPro</p>
                 </div>
               </div>

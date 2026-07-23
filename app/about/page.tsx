@@ -307,6 +307,71 @@ export default function About() {
           </Reveal>
         </div>
 
+        {/* Endorsements & Team Feedback Section */}
+        <div className="mt-20 space-y-6">
+          <Reveal width="100%" overflow="visible">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
+              Endorsements & Team Feedback
+            </h2>
+          </Reveal>
+
+          <Reveal width="100%">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1: Verified Client Audit */}
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold text-brand bg-brand/10 border border-brand/20 px-2 py-0.5 rounded">Quality: 5/5</span>
+                    <span className="text-[10px] font-mono font-bold text-brand bg-brand/10 border border-brand/20 px-2 py-0.5 rounded">Volume: 5/5</span>
+                  </div>
+                  <p className="text-body text-primary leading-relaxed font-light italic text-[13px]">
+                    &quot;Omar is an extremely talented designer who consistently exceeds expectations. He took on an extremely complex project and delivered outstanding results despite numerous shifts and challenges.&quot;
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-primary">Official Client Evaluation</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Quarterly Audit Feedback</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">FullStack Labs / GoDaddy</p>
+                </div>
+              </div>
+
+              {/* Card 2: Culture & Mentorship */}
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <p className="text-body text-primary leading-relaxed font-light italic text-[13px]">
+                    &quot;I was so lucky to have you as a mentor when I started at GoDaddy. You made me feel so welcome from day one, and you were a huge reason my first days went so smoothly.&quot;
+                  </p>
+                  <p className="text-[12px] text-secondary italic">
+                    &quot;Your creativity, dedication, and energy have made such a huge difference to our team.&quot; — Ji Hyun Park, Sr. Director of UX
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-primary">Ada Flores</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Sr. Product Designer</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
+                </div>
+              </div>
+
+              {/* Card 3: Peer & Leadership Praise */}
+              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <p className="text-body text-primary leading-relaxed font-light italic text-[13px]">
+                    &quot;Omar understands the essence of the product and manages to solve problems in an incredible way that actually delivers value. Solid knowledge of Design Systems and communication.&quot;
+                  </p>
+                  <p className="text-[12px] text-secondary italic">
+                    &quot;Dedicated and always very efficient... a very creative, talented, and proactive designer.&quot; — Guille Santana, Marketing Delivery Lead
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-border/10">
+                  <h4 className="text-small font-bold text-primary">Thiago Leite</h4>
+                  <p className="text-[11px] text-secondary font-light leading-snug">Sr. Product Designer</p>
+                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">FullStack Labs</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
       </main>
     </div>
   );
