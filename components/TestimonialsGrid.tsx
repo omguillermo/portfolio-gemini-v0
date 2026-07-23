@@ -84,14 +84,13 @@ export default function TestimonialsGrid() {
             key={item.id}
             className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6"
           >
-            <p className="text-body text-primary leading-relaxed font-light text-[13px]">
+            <p className="text-sm text-primary leading-relaxed font-light">
               &quot;{item.quote}&quot;
             </p>
 
-            <div className="pt-3 border-t border-border/10">
-              <h4 className="text-small font-bold text-primary">{item.name}</h4>
-              <p className="text-[11px] text-secondary font-light leading-snug">{item.role}</p>
-              <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">{item.company}</p>
+            <div className="pt-4 border-t border-border/10 space-y-0.5">
+              <h4 className="text-sm font-medium text-primary">{item.name}</h4>
+              <p className="text-xs text-secondary font-normal">{item.role}, {item.company}</p>
             </div>
           </div>
         ))}

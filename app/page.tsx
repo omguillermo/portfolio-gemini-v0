@@ -152,49 +152,45 @@ export default function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Card 1: Senior UX Manager (GoDaddy) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <p className="text-body text-primary leading-relaxed font-light">
+                <p className="text-sm text-primary leading-relaxed font-light">
                   &quot;Omar took full ownership of the Catalog, Inventory, Orders and Fulfillment space as lead designer E2E. Decisions were grounded in real data and edge cases got accounted for. He brought a level of care and craft that raised the bar for everyone around.&quot;
                 </p>
-                <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Adelina Green</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">Senior UX Manager</p>
-                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
+                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                  <h4 className="text-sm font-medium text-primary">Adelina Green</h4>
+                  <p className="text-xs text-secondary font-normal">Senior UX Manager, GoDaddy Commerce</p>
                 </div>
               </div>
 
               {/* Card 2: Engineering Lead (GoDaddy) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <p className="text-body text-primary leading-relaxed font-light">
+                <p className="text-sm text-primary leading-relaxed font-light">
                   &quot;The frontend buy label experience is looking really good! Huge shoutout to Omar Guillermo for his outstanding design work, responsiveness, and frontend collaboration.&quot;
                 </p>
-                <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">John Newcomb</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">Engineering Lead</p>
-                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">GoDaddy Commerce</p>
+                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                  <h4 className="text-sm font-medium text-primary">John Newcomb</h4>
+                  <p className="text-xs text-secondary font-normal">Engineering Lead, GoDaddy Commerce</p>
                 </div>
               </div>
 
               {/* Card 3: Marketing Delivery Manager (QuestionPro) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <p className="text-body text-primary leading-relaxed font-light">
+                <p className="text-sm text-primary leading-relaxed font-light">
                   &quot;Omar has a highly creative, out-of-the-box mind. His profound knowledge in graphic design and openness to learn new things every day, paired with his integrity, makes him a valuable asset on any team.&quot;
                 </p>
-                <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Paulina Rodríguez</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">Marketing Delivery Manager</p>
-                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">QuestionPro CX</p>
+                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                  <h4 className="text-sm font-medium text-primary">Paulina Rodríguez</h4>
+                  <p className="text-xs text-secondary font-normal">Marketing Delivery Manager, QuestionPro CX</p>
                 </div>
               </div>
 
               {/* Card 4: UX Director (QuestionPro) */}
               <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <p className="text-body text-primary leading-relaxed font-light">
+                <p className="text-sm text-primary leading-relaxed font-light">
                   &quot;Omar has been a diligent, intelligent and proficient designer. My favorite trait is how he's not one to shy away from a challenge, putting in the time and effort to learn whatever he needs to get things done.&quot;
                 </p>
-                <div className="pt-3 border-t border-border/10">
-                  <h4 className="text-small font-bold text-primary">Gerardo Vázquez</h4>
-                  <p className="text-[11px] text-secondary font-light leading-snug">UX Director</p>
-                  <p className="text-mono font-mono text-[10px] text-brand font-medium mt-0.5">QuestionPro</p>
+                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                  <h4 className="text-sm font-medium text-primary">Gerardo Vázquez</h4>
+                  <p className="text-xs text-secondary font-normal">UX Director, QuestionPro</p>
                 </div>
               </div>
             </div>
