@@ -35,7 +35,7 @@ export default function Portfolio() {
                     Senior Product Designer <br />
                     & Design System Builder
                   </h1>
-                  <p className="text-[14px] text-secondary max-w-2xl leading-relaxed font-light tracking-wide text-pretty">
+                  <p className="text-sm text-secondary max-w-2xl leading-relaxed font-light tracking-wide text-pretty">
                     Started in Photoshop. Today I think, design, prototype, and build - with AI as a sparring partner.
                   </p>
                 </div>
@@ -49,7 +49,7 @@ export default function Portfolio() {
 
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
               01 / Highlighted Projects
             </h2>
           </Reveal>
@@ -66,10 +66,6 @@ export default function Portfolio() {
               return (
                 <Reveal key={project.title} width="100%" delay={0.1 * (idx + 1)} overflow="visible" className="h-full flex flex-col items-stretch">
                   <Link href={`/case-studies/${slug}`} className="group w-full h-full flex flex-col">
-                    {/* 
-                      Framed card container: solid, opaque background slightly darker 
-                      than main canvas (no transparency to avoid grid bleed-through).
-                    */}
                     <div className="h-full flex flex-col p-4 pb-6 rounded-2xl bg-surface-inset border-0 transition-all duration-300 group-hover:brightness-[0.98] dark:group-hover:brightness-[1.03]">
                       {/* Nested image frame */}
                       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-background border border-border/10">
@@ -83,24 +79,24 @@ export default function Portfolio() {
                         />
                       </div>
 
-                      {/* Un-divided content section sitting below */}
+                      {/* Content section */}
                       <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
                         <div className="space-y-1.5 px-1">
-                          <span className="text-mono font-mono text-[9px] uppercase tracking-[0.15em] text-secondary">
+                          <span className="text-mono font-mono text-xs uppercase tracking-wider text-secondary">
                             {project.tag}
                           </span>
-                          <h3 className="text-[15px] font-semibold tracking-tight text-primary group-hover:text-brand transition-colors">
+                          <h3 className="text-base font-semibold tracking-tight text-primary group-hover:text-brand transition-colors">
                             {project.title}
                           </h3>
-                          <p className="text-[12px] text-secondary leading-relaxed font-light">
+                          <p className="text-xs text-secondary leading-relaxed font-light">
                             {project.subtitle}
                           </p>
                         </div>
 
                         <div className="pt-2 flex items-end justify-between mt-auto px-1">
                           <div className="font-mono tracking-wider flex items-baseline gap-1.5 select-none">
-                            <span className="text-[15px] font-bold text-primary">{numberPart}</span>
-                            <span className="text-[12px] text-secondary font-medium">{labelPart}</span>
+                            <span className="text-base font-bold text-primary">{numberPart}</span>
+                            <span className="text-xs text-secondary font-medium">{labelPart}</span>
                           </div>
                           <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mb-0.5">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
@@ -116,10 +112,11 @@ export default function Portfolio() {
             })}
           </div>
         </section>
+
         {/* 02 / Technical Skills & Toolkit */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
               02 / Technical Skills & Toolkit
             </h2>
           </Reveal>
@@ -132,7 +129,7 @@ export default function Portfolio() {
                 'UI/UX', 'B2B', 'eCommerce', 'Documentation', 'SaaS', 'Visual Design', 'Interaction Design',
                 'Usability Testing', 'A/B Testing', 'AI Workflows', 'Design Audits', 'User Research'
               ].map(s => (
-                <span key={s} className="text-mono font-mono text-[10px] tracking-wider bg-surface-inset border border-transparent rounded px-3 py-1.5 text-primary hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
+                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-surface-inset border border-transparent rounded-lg px-3.5 py-1.5 text-primary hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
                   {s}
                 </span>
               ))}
@@ -143,7 +140,7 @@ export default function Portfolio() {
         {/* 03 / Testimonials */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
               03 / Testimonials
             </h2>
           </Reveal>
@@ -203,13 +200,13 @@ export default function Portfolio() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
               {/* Left: copy */}
               <div className="space-y-3 max-w-lg">
-                <p className="text-mono font-mono text-secondary text-[11px] font-medium">
+                <p className="text-mono font-mono text-secondary text-xs font-medium uppercase tracking-wider">
                   Still here?
                 </p>
                 <h2 className="text-2xl font-bold tracking-tighter">
                   There&apos;s more to the story.
                 </h2>
-                <p className="text-body text-secondary leading-relaxed">
+                <p className="text-sm text-secondary leading-relaxed">
                   14 years of experience, a full career timeline, and a few credentials that might surprise you.
                 </p>
               </div>
@@ -218,7 +215,7 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">
                 <Link
                   href="/about"
-                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white text-small font-sans font-medium tracking-wide hover:bg-brand/90 transition-all duration-200"
+                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white text-sm font-sans font-medium tracking-wide hover:bg-brand/90 transition-all duration-200"
                 >
                   About me
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -228,7 +225,7 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit LinkedIn profile (opens in new tab)"
-                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border/50 text-secondary text-small font-sans font-medium tracking-wide hover:border-brand/40 hover:text-brand transition-all duration-200"
+                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border/50 text-secondary text-sm font-sans font-medium tracking-wide hover:border-brand/40 hover:text-brand transition-all duration-200"
                 >
                   LinkedIn
                   <ExternalLink className="w-3.5 h-3.5 transition-colors duration-200" />
