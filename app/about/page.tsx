@@ -102,18 +102,18 @@ export default function About() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-mono text-secondary text-[11px] font-medium">Location</p>
-                <p className="text-body font-medium">Mérida, México 🇲🇽</p>
+                <p className="text-mono text-secondary text-xs font-medium uppercase tracking-wider">Location</p>
+                <p className="text-sm font-medium">Mérida, México 🇲🇽</p>
               </div>
               <div className="space-y-2">
-                <p className="text-mono text-secondary text-[11px] font-medium">Favorite Fuel</p>
-                <p className="text-body font-medium">Chilaquiles & Coffee ☕️</p>
+                <p className="text-mono text-secondary text-xs font-medium uppercase tracking-wider">Favorite Fuel</p>
+                <p className="text-sm font-medium">Chilaquiles & Coffee ☕️</p>
               </div>
             </div>
           </Reveal>
 
           <Reveal width="100%" delay={0.1}>
-            <section className="space-y-4 text-body text-secondary leading-relaxed font-light">
+            <section className="space-y-4 text-sm text-secondary leading-relaxed font-light">
               <p>
                 Hello! I&apos;m Omar Guillermo, a Senior Product Designer with over 14 years of experience.
               </p>
@@ -142,7 +142,7 @@ export default function About() {
         {/* Career Timeline Section (Full Width Breakout) */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
               Career History Timeline
             </h2>
           </Reveal>
@@ -170,10 +170,10 @@ export default function About() {
                       className="flex items-start justify-between gap-4 cursor-pointer"
                     >
                       <div className="space-y-1">
-                        <span className="text-mono font-mono text-secondary text-[10px] tracking-wider block">
+                        <span className="text-mono font-mono text-secondary text-xs tracking-wider block">
                           {exp.period}
                         </span>
-                        <h3 className="text-body font-bold text-primary group-hover:text-brand transition-colors block leading-tight">
+                        <h3 className="text-base font-semibold text-primary group-hover:text-brand transition-colors block leading-tight">
                           {exp.role} <span className="text-secondary font-normal">@</span> {exp.company}
                         </h3>
                       </div>
@@ -193,7 +193,7 @@ export default function About() {
                       </div>
                     </div>
 
-                    <p className="text-[13px] text-secondary font-light leading-relaxed max-w-2xl">
+                    <p className="text-sm text-secondary font-light leading-relaxed max-w-2xl">
                       {exp.description}
                     </p>
 
@@ -211,8 +211,8 @@ export default function About() {
                         {/* Achievements List */}
                         <div className="space-y-3">
                           {exp.achievements.map((ach, aIdx) => (
-                            <div key={aIdx} className="flex items-start gap-3 text-[13px] leading-relaxed">
-                              <span className="text-mono font-mono text-brand font-bold text-[9px] tracking-wider uppercase shrink-0 mt-0.5 w-[85px] text-right">
+                            <div key={aIdx} className="flex items-start gap-3 text-sm leading-relaxed">
+                              <span className="text-mono font-mono text-brand font-bold text-xxs tracking-wider uppercase shrink-0 mt-0.5 w-[85px] text-right">
                                 [{ach.tag}]
                               </span>
                               <span className="text-primary font-light">
@@ -223,7 +223,7 @@ export default function About() {
                         </div>
 
                         {/* Stack Details */}
-                        <div className="pt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-[10px] text-secondary">
+                        <div className="pt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-xs text-secondary">
                           <span className="text-secondary font-medium">Stack:</span>
                           <span className="text-primary/70">{exp.stack}</span>
                         </div>
@@ -239,7 +239,7 @@ export default function About() {
         {/* Prior Experience Section */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
               Past Graphic Design Experience
             </h2>
           </Reveal>
@@ -247,7 +247,7 @@ export default function About() {
           <Reveal width="100%">
             <div className="font-mono text-mono text-secondary bg-surface-inset border-0 rounded-xl p-6 space-y-2.5">
               {priorExperiences.map((exp, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] hover:text-primary transition-colors py-1 border-b border-border/5 last:border-0">
+                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hover:text-primary transition-colors py-1 border-b border-border/5 last:border-0">
                   <div className="flex items-center gap-2">
                     <span className="text-primary font-medium">{exp.role}</span>
                     <span className="text-muted">@</span>
@@ -265,7 +265,7 @@ export default function About() {
         {/* Certifications and Training */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6">
+            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
               Verified Credentials & Education
             </h2>
           </Reveal>
@@ -274,16 +274,16 @@ export default function About() {
             <div className="overflow-x-auto border-0 rounded-xl bg-surface-inset">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-border/10 text-mono font-mono text-[10px] font-medium text-secondary bg-surface/5">
+                  <tr className="border-b border-border/10 text-mono font-mono text-xs font-medium text-secondary bg-surface/5">
                     <th className="px-6 py-3 font-semibold w-20">Year</th>
                     <th className="px-6 py-3 font-semibold">Credential / Program</th>
                     <th className="px-6 py-3 font-semibold text-right">Issuer</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border/10 text-[13px] font-light">
+                <tbody className="divide-y divide-border/10 text-sm font-light">
                   {educationAndCerts.map((cert, idx) => (
                     <tr key={idx} className="hover:bg-surface/10 transition-colors">
-                      <td className="px-6 py-3.5 font-mono text-[10px] text-secondary tabular-nums">{cert.year}</td>
+                      <td className="px-6 py-3.5 font-mono text-xs text-secondary tabular-nums">{cert.year}</td>
                       <td className="px-6 py-3.5 text-primary font-normal">
                         {cert.link ? (
                           <a
@@ -299,7 +299,7 @@ export default function About() {
                           cert.title
                         )}
                       </td>
-                      <td className="px-6 py-3.5 text-secondary text-right text-[12px]">{cert.issuer}</td>
+                      <td className="px-6 py-3.5 text-secondary text-right text-xs">{cert.issuer}</td>
                     </tr>
                   ))}
                 </tbody>

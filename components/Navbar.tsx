@@ -178,11 +178,11 @@ export default function Navbar() {
 
               <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-mono text-secondary uppercase text-[10px] tracking-widest">Brand Logic</p>
+                  <p className="text-mono text-secondary uppercase text-xxs tracking-widest font-mono">Brand Logic</p>
                   <BrandSwitcher />
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-mono text-secondary uppercase text-[10px] tracking-widest">Appearance</p>
+                  <p className="text-mono text-secondary uppercase text-xxs tracking-widest font-mono">Appearance</p>
                   <ThemeSwitcher />
                 </div>
               </div>

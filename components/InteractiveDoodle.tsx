@@ -224,7 +224,7 @@ const InteractiveDoodle = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.5 }}
             transition={transition}
-            className="absolute top-1/2 -right-24 -translate-y-1/2 bg-foreground text-background px-3 py-1.5 rounded text-[9px] font-bold tracking-widest whitespace-nowrap shadow-xl z-50 border border-border/10"
+            className="absolute top-1/2 -right-24 -translate-y-1/2 bg-foreground text-background px-3 py-1.5 rounded text-xxs font-mono font-bold tracking-widest whitespace-nowrap shadow-xl z-50 border border-border/10"
           >
             LET&apos;S ROCK!
             <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[8px] border-r-foreground" />

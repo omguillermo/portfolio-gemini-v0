@@ -141,7 +141,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-surface px-4 py-1.5 border-4 border-foreground -skew-x-12 shadow-[4px_4px_0_var(--color-foreground)] transition-transform hover:-translate-y-0.5">
                   <div className="flex items-center gap-2 skew-x-12">
                     <Coins className="w-3.5 h-3.5 text-brand" />
-                    <span className="text-mono font-mono text-[11px] uppercase tracking-widest font-black whitespace-nowrap text-primary">
+                    <span className="text-mono font-mono text-xs uppercase tracking-widest font-black whitespace-nowrap text-primary">
                       {tokens} Tokens
                     </span>
                   </div>
@@ -183,7 +183,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                         className="text-center mt-4 bg-surface px-6 py-3 border-4 border-foreground shadow-[4px_4px_0_var(--color-foreground)]"
                       >
                         <div className="skew-x-12">
-                          <p className={`text-mono font-mono text-[10px] uppercase tracking-[0.2em] mb-1 font-black ${
+                          <p className={`text-mono font-mono text-xxs uppercase tracking-[0.2em] mb-1 font-black ${
                             gachaResult.rarity === 'UR' ? 'text-accent' : 'text-brand'
                           }`}>
                             {gachaResult.rarity} Rarity Acquired
@@ -221,7 +221,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                         <span className="font-black text-small uppercase tracking-wide">1x Pull</span>
                         <div className="flex items-center gap-1.5 bg-black/20 px-2 py-0.5 rounded text-white/90">
                           <Coins className="w-2.5 h-2.5" />
-                          <span className="text-[11px] uppercase tracking-widest font-mono font-bold">50</span>
+                          <span className="text-xs uppercase tracking-widest font-mono font-bold">50</span>
                         </div>
                       </div>
                     </motion.button>
@@ -245,7 +245,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                         <span className="font-black text-secondary text-small uppercase tracking-wide">10x Pull</span>
                         <div className="flex items-center gap-1.5 bg-foreground/10 px-2 py-0.5 rounded text-secondary">
                           <Coins className="w-2.5 h-2.5" />
-                          <span className="text-[11px] uppercase tracking-widest font-mono font-bold">500</span>
+                          <span className="text-xs uppercase tracking-widest font-mono font-bold">500</span>
                         </div>
                       </div>
                     </motion.button>
@@ -255,7 +255,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
 
               {/* Footer Disclaimer */}
               <div className="text-center pt-2 relative z-10">
-                <p className="text-[10px] text-secondary font-mono uppercase tracking-tighter leading-relaxed font-bold">
+                <p className="text-xxs text-secondary font-mono uppercase tracking-tighter leading-relaxed font-bold">
                   No actual micro-transactions in this portfolio. <br />
                   <button 
                     onClick={resetGacha}

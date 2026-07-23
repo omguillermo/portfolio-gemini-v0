@@ -215,7 +215,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         {/* Project Tag Pills */}
         <div className="mb-4 flex flex-wrap gap-2">
           {project.tag.split('•').map((t) => (
-            <span key={t.trim()} className="inline-flex items-center px-3 py-1 rounded-full text-mono font-mono text-[9px] uppercase tracking-wider text-brand bg-brand/5 border border-brand/20">
+            <span key={t.trim()} className="inline-flex items-center px-3 py-1 rounded-full text-mono font-mono text-xxs uppercase tracking-wider text-brand bg-brand/5 border border-brand/20">
               {t.trim()}
             </span>
           ))}
@@ -247,23 +247,23 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         {/* Sticky Left Sidebar */}
         <aside className="w-full md:w-[220px] shrink-0 md:sticky md:top-28 h-fit space-y-8 z-30 pb-6 md:pb-0">
           {/* Project Context Box: flat, solid surface-inset */}
-          <div className="bg-surface-inset border-0 rounded-2xl p-5 space-y-3.5 text-[11px] leading-relaxed">
+          <div className="bg-surface-inset border-0 rounded-2xl p-5 space-y-3.5 text-xs leading-relaxed">
             <div>
-              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Role</p>
+              <p className="text-mono font-mono text-xxs text-secondary font-medium uppercase tracking-wider">Role</p>
               <p className="font-semibold text-primary mt-0.5">{project.role}</p>
             </div>
             <div>
-              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Timeline</p>
+              <p className="text-mono font-mono text-xxs text-secondary font-medium uppercase tracking-wider">Timeline</p>
               <p className="font-semibold text-primary mt-0.5">{project.timeline}</p>
             </div>
             <div>
-              <p className="text-mono font-mono text-[10px] text-secondary font-medium">Teams Involved</p>
+              <p className="text-mono font-mono text-xxs text-secondary font-medium uppercase tracking-wider">Teams Involved</p>
               <p className="font-semibold text-primary mt-0.5">{project.teams_involved}</p>
             </div>
           </div>
 
           {/* Table of Contents */}
-          <ul className="space-y-2 text-[10px]">
+          <ul className="space-y-2 text-xs">
             {sections.map((sec) => (
               <li key={sec.id}>
                 <button
@@ -498,7 +498,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                 <Link href="/" className="text-small font-mono text-secondary hover:text-brand transition-colors">
                   ← Back to index
                 </Link>
-                <span className="text-mono font-mono text-[11px] text-muted">Next Project: Coming Soon</span>
+                <span className="text-mono font-mono text-xs text-muted">Next Project: Coming Soon</span>
               </footer>
             </div>
           </Reveal>

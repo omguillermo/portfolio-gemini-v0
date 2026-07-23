@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <>
       <footer className="w-full border-t border-border/30 py-4 bg-transparent mt-auto relative z-10 overflow-hidden">
-        <div className="w-full text-mono font-mono text-[10px] text-secondary">
+        <div className="w-full text-mono font-mono text-xxs text-secondary">
           {/* Ticker Container - full-width, no edge fades */}
           <div className="w-full overflow-hidden cursor-default">
             <div className="animate-marquee flex items-center gap-6 whitespace-nowrap">

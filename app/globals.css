@@ -31,9 +31,20 @@
   --fs-body: 0.875rem;                          /* 14px */
   --fs-small: 0.75rem;                          /* 12px - Precise metadata */
   --fs-mono: 0.6875rem;                         /* 11px - System labels */
+  --fs-xxs: 0.625rem;                           /* 10px - Micro badges & tags */
 
   /* Technical Grid Background Token */
   --grid-color: rgba(74, 84, 80, 0.16);
+}
+
+@theme {
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: 0.875rem;
+}
+
+@utility text-xxs {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
 }
 
 /* Global Dark Mode Base (System Green) */

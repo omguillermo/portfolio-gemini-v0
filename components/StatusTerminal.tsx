@@ -66,7 +66,7 @@ export default function StatusTerminal() {
       label: 'VISA',
       value: (
         <span className="flex items-center gap-1 font-mono">
-          <span className="text-[10px] select-none">🇺🇸🇲🇽</span> TN Eligible
+          <span className="text-xxs select-none">🇺🇸🇲🇽</span> TN Eligible
         </span>
       ),
       detail: 'Mexican citizen. Sponsorship required for US roles, but TN Visa is easier to process than other visas :)',
@@ -76,7 +76,7 @@ export default function StatusTerminal() {
       label: 'MOBILITY',
       value: (
         <span className="flex items-center gap-1 font-mono">
-          <span className="text-[10px] select-none">✈️</span> Open to relocate
+          <span className="text-xxs select-none">✈️</span> Open to relocate
         </span>
       ),
       detail: 'Open to remote, hybrid, or full relocation. Interested in US, Canada or northern Mexico. Adventure, baby!',
@@ -118,7 +118,7 @@ export default function StatusTerminal() {
       role="listbox"
       aria-label="Status Terminal Menu"
       aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
-      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-[10px] text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
+      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-xxs text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
     >
 
 
@@ -226,7 +226,7 @@ export default function StatusTerminal() {
                 </div>
 
                 {/* Recessed detail text */}
-                <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-secondary font-normal text-[10px] font-mono">
+                <div className="bg-background border border-border/30 rounded p-3.5 leading-relaxed text-secondary font-normal text-xxs font-mono">
                   {activeRow?.detail}
                 </div>
               </div>

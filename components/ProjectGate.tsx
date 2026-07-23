@@ -100,7 +100,7 @@ export default function ProjectGate({ children, password, projectSlug }: Project
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-mono text-error uppercase tracking-widest text-[10px]"
+                  className="text-mono text-error uppercase tracking-widest text-xxs font-mono"
                 >
                   Invalid Access Code
                 </motion.p>

@@ -48,7 +48,7 @@ export default function TooltipFollower({ text, isVisible, containerRef }: Toolt
       }}
       className="absolute pointer-events-none z-50 bg-foreground text-background px-3 py-2 rounded-[8px] shadow-2xl whitespace-nowrap border border-white/10"
     >
-      <p className="text-mono font-mono text-[10px] uppercase tracking-wider font-bold">
+      <p className="text-mono font-mono text-xxs uppercase tracking-wider font-bold">
         {text}
       </p>
     </motion.div>

@@ -84,7 +84,7 @@ export default function BrandSwitcher() {
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="absolute right-0 top-full mt-2 p-2 bg-surface border border-border shadow-2xl rounded-xl z-[100] min-w-[140px]"
           >
-            <p className="text-[9px] font-mono uppercase tracking-widest text-secondary px-2 py-1 mb-1">Theme</p>
+            <p className="text-xxs font-mono uppercase tracking-widest text-secondary px-2 py-1 mb-1">Theme</p>
             <div className="space-y-1">
               {brands.map((brand) => (
                 <button
@@ -98,7 +98,7 @@ export default function BrandSwitcher() {
                     className="w-3 h-3 rounded-full shrink-0" 
                     style={{ backgroundColor: brand.color }}
                   />
-                  <span className={`text-[10px] font-mono uppercase tracking-widest ${
+                  <span className={`text-xxs font-mono uppercase tracking-widest ${
                     activeBrand === brand.id ? 'text-primary font-bold' : 'text-secondary'
                   }`}>
                     {brand.id}
