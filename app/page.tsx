@@ -156,7 +156,7 @@ export default function Portfolio() {
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
                     AG
                   </div>
-                  <p className="text-body text-primary leading-relaxed font-light italic">
+                  <p className="text-body text-primary leading-relaxed font-light">
                     &quot;Omar took full ownership of the Catalog, Inventory, Orders and Fulfillment space as lead designer E2E. Decisions were grounded in real data and edge cases got accounted for. He brought a level of care and craft that raised the bar for everyone around.&quot;
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function Portfolio() {
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
                     JN
                   </div>
-                  <p className="text-body text-primary leading-relaxed font-light italic">
+                  <p className="text-body text-primary leading-relaxed font-light">
                     &quot;The frontend buy label experience is looking really good! Huge shoutout to Omar Guillermo for his outstanding design work, responsiveness, and frontend collaboration.&quot;
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default function Portfolio() {
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
                     PR
                   </div>
-                  <p className="text-body text-primary leading-relaxed font-light italic">
+                  <p className="text-body text-primary leading-relaxed font-light">
                     &quot;Omar has a highly creative, out-of-the-box mind. His profound knowledge in graphic design and openness to learn new things every day, paired with his integrity, makes him a valuable asset on any team.&quot;
                   </p>
                 </div>
@@ -207,7 +207,7 @@ export default function Portfolio() {
                   <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-[11px] font-mono font-bold text-brand uppercase shrink-0">
                     GV
                   </div>
-                  <p className="text-body text-primary leading-relaxed font-light italic">
+                  <p className="text-body text-primary leading-relaxed font-light">
                     &quot;Omar has been a diligent, intelligent and proficient designer. My favorite trait is how he's not one to shy away from a challenge, putting in the time and effort to learn whatever he needs to get things done.&quot;
                   </p>
                 </div>
