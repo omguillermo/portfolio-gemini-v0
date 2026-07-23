@@ -82,13 +82,13 @@ export default function Portfolio() {
                       {/* Content section */}
                       <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
                         <div className="space-y-1.5 px-1">
-                          <span className="text-mono font-mono text-xs uppercase tracking-wider text-secondary">
+                          <span className="text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
                             {project.tag}
                           </span>
                           <h3 className="text-base font-semibold tracking-tight text-primary group-hover:text-brand transition-colors">
                             {project.title}
                           </h3>
-                          <p className="text-xs text-secondary leading-relaxed font-light">
+                          <p className="text-sm text-secondary leading-relaxed font-light">
                             {project.subtitle}
                           </p>
                         </div>
