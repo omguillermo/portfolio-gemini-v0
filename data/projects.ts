@@ -50,7 +50,7 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
     role: "Founding Designer",
     timeline: "August 2025 - March 2026",
-    tag: "B2B • AI",
+    tag: "B2B, AI, Wholesale",
     metric: "$871K Facilitated",
     thumbnail: "/projects/stockapp-ai/stockapp-cover-stoki-temp.png",
     impact: "Facilitated over $871K in B2B orders by 900+ active users. Sales teams reported increased satisfaction and more frequent tool adoption after the frictionless redesign.",
@@ -84,16 +84,16 @@ export const projectsData: Record<string, ProjectData> = {
     outcomes: "Facilitated over $871K in B2B orders by 900+ active users. Post-launch surveys showed a significant increase in tool adoption and user satisfaction after shifting to the frictionless floating trigger.",
     visual_highlights: [
       {
-         "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-trigger-042026.png",
-         "caption": "Entry Point: The non-blocking folder tab anchored to the system grid."
+        "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-trigger-042026.png",
+        "caption": "Entry Point: The non-blocking folder tab anchored to the system grid."
       },
       {
-         "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-active-042026.png",
-         "caption": "After clicking the tab, the composer pill would show alongside options to see previous chats, resume latest one, and prompt suggestions."
+        "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-active-042026.png",
+        "caption": "After clicking the tab, the composer pill would show alongside options to see previous chats, resume latest one, and prompt suggestions."
       },
       {
-         "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-example-042026.png",
-         "caption": "The new popover experience wasn't intrusive and allowed dynamic width based on the response, with additional customization options."
+        "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-example-042026.png",
+        "caption": "The new popover experience wasn't intrusive and allowed dynamic width based on the response, with additional customization options."
       }
     ],
     retrospective: "Designing for AI requires anticipating complex outputs and giving users total control over screen real estate. If given more time, I would expand discovery features and improve UI states for handling API errors during high-volume bulk updates."
@@ -105,7 +105,7 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem.",
     role: "Senior Product Designer",
     timeline: "4 Months (Released July 2022)",
-    tag: "ECOMMERCE • FULFILLMENT",
+    tag: "B2C, Order Fulfillment, eCommerce",
     metric: "6.7K Merchants",
     thumbnail: "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
     impact: "6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels in the first 3 months.",
@@ -139,8 +139,8 @@ export const projectsData: Record<string, ProjectData> = {
     outcomes: "Launched in July 2022. 6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels directly within GoDaddy in the first 3 months. Over 2,000 merchants adopted the feature on Day 1, earning our team a featured shout-out during GoDaddy's company-wide All-Hands meeting.",
     visual_highlights: [
       {
-         "image_url": "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
-         "caption": "Order Details Page with the new Buy Shipping Label entry point."
+        "image_url": "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
+        "caption": "Order Details Page with the new Buy Shipping Label entry point."
       }
     ],
     retrospective: "Enterprise feature adoption is fundamentally about user trust and context preservation. Merchants didn't reject shipping tools because of pricing—they rejected them because leaving their home dashboard felt fragmented. Maintaining strict brand continuity across third-party API boundaries turned a tedious chore into a high-converting tool."
@@ -152,7 +152,7 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "How we improved lead quality and boosted conversion rates by replacing an outdated, generic registration form with a clear, targeted layout.",
     role: "Senior UI/UX Designer",
     timeline: "Q3-Q4 2021, Released Nov 2021",
-    tag: "B2B • SURVEY SOFTWARE",
+    tag: "B2B, SaaS, Survey Software",
     metric: "0.31% Bounce",
     thumbnail: "/projects/questionpro-signup/qp-signup-cover-temp.png",
     hero_image: "/projects/questionpro-signup/qp-signup-hero.png",
@@ -256,8 +256,8 @@ The design struck such a good balance between user trust and business data needs
     outcomes: "Successfully established a single token pipeline from Figma to Style Dictionary. This reduced design-to-development handoff time by 42% and saved approximately 120 hours per sprint across four product lines.",
     visual_highlights: [
       {
-         "image_url": "/projects/design-system/ds-details-temp.png",
-         "caption": "Pipeline View: The style dictionary configuration mapping source JSON tokens directly to production-ready UI components."
+        "image_url": "/projects/design-system/ds-details-temp.png",
+        "caption": "Pipeline View: The style dictionary configuration mapping source JSON tokens directly to production-ready UI components."
       }
     ],
     retrospective: "A design system is 20% code and 80% communication. The technical pipeline solved our scaling issues, but success was only realized after we conducted cross-team workshops and established clear governance models."

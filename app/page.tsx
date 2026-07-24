@@ -76,7 +76,7 @@ export default function Portfolio() {
                       </div>
 
                       {/* Content section */}
-                      <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
+                      <div className="pt-6 flex flex-col justify-between flex-grow gap-2">
                         <div className="px-1">
                           <h3 className="text-base font-semibold tracking-tight text-primary leading-snug group-hover:text-brand transition-colors">
                             {project.card_headline}
