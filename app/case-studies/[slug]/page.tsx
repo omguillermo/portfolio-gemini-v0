@@ -214,7 +214,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
         
         {/* Project Tag Pills */}
         <div className="mb-4 flex flex-wrap gap-2">
-          {project.tag.split('•').map((t) => (
+          {project.tag.split(/[,•]/).map((t) => (
             <span key={t.trim()} className="inline-flex items-center px-3 py-1 rounded-full text-mono font-mono text-xxs uppercase tracking-wider text-brand bg-brand/5 border border-brand/20">
               {t.trim()}
             </span>

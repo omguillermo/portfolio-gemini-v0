@@ -84,9 +84,16 @@ export default function Portfolio() {
                         </div>
 
                         <div className="pt-2 flex items-center justify-between mt-auto px-1">
-                          <span className="text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
-                            {project.tag}
-                          </span>
+                          <div className="flex flex-wrap items-center gap-1.5 min-w-0 flex-1">
+                            {project.tag.split(/[,•]/).map((tagText, tIdx) => (
+                              <span
+                                key={tIdx}
+                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/5 border border-border/20"
+                              >
+                                {tagText.trim()}
+                              </span>
+                            ))}
+                          </div>
                           <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0 ml-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
