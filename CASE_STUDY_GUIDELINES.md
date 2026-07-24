@@ -106,9 +106,21 @@ Ban these structural crutches entirely:
 
 ---
 
-## Part 3: Data Model Mapping (`data/projects.ts`)
+## Part 3: Data Model Mapping & 100% Verbatim Synchronization (`data/projects.ts`)
 
-For developers or AI agents updating `data/projects.ts`, map the schema fields to these exact keys:
+For developers or AI agents updating `data/projects.ts`, map the schema fields to these exact keys.
+
+> [!IMPORTANT]
+> **Rule of 100% Verbatim Parity:**
+> The standalone Markdown file (`content/case-studies/[company]/[slug].md`) and the project data object in `data/projects.ts` **MUST match 100% verbatim, word-for-word** across all corresponding sections (`Overview` / `impact`, `The Problem` / `problem`, `Hypothesis` / `hypothesis`, `Constraints` / `constraint`, `iterations`, `system_solution`, `edge_cases_handled`, `outcomes`, `retrospective`). 
+> 
+> Neither file may contain extra paragraphs, altered metrics, or summary rewrites that differ from the other.
+
+> [!NOTE]
+> **Schema & Iteration Flexibility:**
+> While verbatim text synchronization between the `.md` file and `data/projects.ts` is mandatory, the **number of items within structured arrays is fully flexible per project**:
+> - A complex enterprise project may include 3–4 design iterations (`iterations`), whereas a focused feature redesign may include 1–2.
+> - The number of edge cases (`edge_cases_handled`) and visual highlights (`visual_highlights`) can adapt to the scope of the project.
 
 ```typescript
 export interface ProjectData {
@@ -120,31 +132,31 @@ export interface ProjectData {
   teams_involved: string;        // [Sidebar] Teams Involved
   thumbnail: string;             // Homepage Thumbnail image path
   hero_image?: string;           // Optional cover hero image
-  impact: string;                // [Overview] Section content
+  impact: string;                // [Overview] Section content (Verbatim to .md Overview)
   problem_hypothesis: {
-    problem: string;             // [The Problem] Markdown content
-    hypothesis: string;          // [Hypothesis] Markdown content
+    problem: string;             // [The Problem] Markdown content (Verbatim to .md)
+    hypothesis: string;          // [Hypothesis] Markdown content (Verbatim to .md)
   };
   problem_image?: {
     image_url: string;
     caption: string;
   };
-  constraint: string;            // [Constraints] Markdown content
+  constraint: string;            // [Constraints] Markdown content (Verbatim to .md)
   design_rationale: string;      // Intro text for iterations
   iterations: {
     approach: string;
     why_it_failed: string;
     image_url?: string;
     caption?: string;
-  }[];                           // [Design Iterations & Trade-offs]
-  system_solution: string;       // [Solution] Markdown content
+  }[];                           // [Design Iterations & Trade-offs] (1 to N items)
+  system_solution: string;       // [Solution] Markdown content (Verbatim to .md)
   edge_cases_handled: string[];  // [Edge Cases Handled] Bullet array
-  outcomes: string;              // [Outcomes] Markdown content
+  outcomes: string;              // [Outcomes] Markdown content (Verbatim to .md)
   visual_highlights: {
     image_url: string;
     caption: string;
-  }[];                           // Solution visual galleries
-  retrospective: string;         // [Retrospective] Markdown content
+  }[];                           // Solution visual galleries (1 to N items)
+  retrospective: string;         // [Retrospective] Markdown content (Verbatim to .md)
 }
 ```
 
@@ -152,7 +164,8 @@ export interface ProjectData {
 
 ## Part 4: Pre-Flight Audit Checklist
 
-Before publishing any case study, complete these 3 checks:
-1. **The Out-Loud Test:** Read every paragraph aloud. If a sentence stumbles or sounds unnatural in coffee-shop conversation, rewrite it.
-2. **The Fluff Filter:** Search (`Cmd+F`) for *delve*, *leverage*, *elevate*, *meticulously*, *testament*. Remove them.
-3. **The Dash Audit:** Count em dashes (`—`). If there are more than two in the entire case study, replace them with clean punctuation.
+Before publishing any case study, complete these 4 checks:
+1. **The Verbatim Parity Check:** Compare `content/case-studies/[company]/[slug].md` line-by-line with `data/projects.ts`. Ensure every section's text matches 100% word-for-word.
+2. **The Out-Loud Test:** Read every paragraph aloud. If a sentence stumbles or sounds unnatural in coffee-shop conversation, rewrite it.
+3. **The Fluff Filter:** Search (`Cmd+F`) for *delve*, *leverage*, *elevate*, *meticulously*, *testament*. Remove them.
+4. **The Dash Audit:** Count em dashes (`—`). If there are more than two in the entire case study, replace them with clean punctuation.
