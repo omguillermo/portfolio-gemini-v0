@@ -59,14 +59,10 @@ export default function Portfolio() {
               const project = projectsData[slug];
               if (!project) return null;
 
-              const parts = project.metric.split(' ');
-              const numberPart = parts[0];
-              const labelPart = parts.slice(1).join(' ');
-
               return (
                 <Reveal key={project.title} width="100%" delay={0.1 * (idx + 1)} overflow="visible" className="h-full flex flex-col items-stretch">
                   <Link href={`/case-studies/${slug}`} className="group w-full h-full flex flex-col">
-                    <div className="h-full flex flex-col p-4 pb-6 rounded-2xl bg-surface-inset border-0 transition-all duration-300 group-hover:brightness-[0.98] dark:group-hover:brightness-[1.03]">
+                    <div className="h-full flex flex-col p-4 pb-5 rounded-2xl bg-surface-inset border-0 transition-all duration-300 group-hover:brightness-[0.98] dark:group-hover:brightness-[1.03]">
                       {/* Nested image frame */}
                       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-background border border-border/10">
                         <Image
@@ -81,24 +77,17 @@ export default function Portfolio() {
 
                       {/* Content section */}
                       <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
-                        <div className="space-y-1.5 px-1">
+                        <div className="space-y-2 px-1">
                           <span className="text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
                             {project.tag}
                           </span>
-                          <h3 className="text-base font-semibold tracking-tight text-primary group-hover:text-brand transition-colors">
-                            {project.title}
+                          <h3 className="text-base font-semibold tracking-tight text-primary leading-snug group-hover:text-brand transition-colors">
+                            {project.card_headline}
                           </h3>
-                          <p className="text-sm text-secondary leading-relaxed font-light">
-                            {project.subtitle}
-                          </p>
                         </div>
 
-                        <div className="pt-2 flex items-end justify-between mt-auto px-1">
-                          <div className="font-mono tracking-wider flex items-baseline gap-1.5 select-none">
-                            <span className="text-base font-bold text-primary">{numberPart}</span>
-                            <span className="text-xs text-secondary font-medium">{labelPart}</span>
-                          </div>
-                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mb-0.5">
+                        <div className="pt-1 flex items-center justify-end mt-auto px-1">
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>

@@ -24,23 +24,20 @@ Every case study Markdown file begins with two structured metadata tables:
 * **Headline Impact:** [Primary metric and result summary]
 
 #### Table 2: Live Portfolio Sidebar (Exact UI Mapping)
-*This table maps 1:1 with the sticky sidebar and project card badges rendered on the live website.*
+*This table maps 1:1 with the sticky sidebar rendered on the live case study page.*
 * **Role:** [Exact role rendered on sidebar]
 * **Timeline:** [Combined duration + release date string rendered on sidebar, e.g., 4 Months (Released July 2022)]
 * **Teams:** [Teams string rendered on sidebar]
-* **Metric Badge:** [Concise metric badge text rendered on homepage cards, e.g., 6.7K Merchants]
 
 ---
 
-### 2. Live Portfolio Header
+### 2. Live Portfolio Title Architecture (3-Tier Title System)
 
-#### [H1] One-Sentence Narrative Title (Action Title)
-* **Format:** A single high-impact sentence designed for skim-reading recruiters to immediately understand the project's entire scope, action, and business result.
-* **Example:** *"GoDaddy: Native Shipping Labels Integration"*
+Every case study utilizes three distinct title formats tailored to their specific surface:
 
-#### Subtitle
-* **Format:** Action-driven subtitle framing the core strategic goal.
-* **Example:** *"Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem."*
+1. **Internal Archive Title (`archive_title`):** Generic name for Google Docs / personal tracking (e.g. `Buy Shipping Label Experience`).
+2. **Live Case Study H1 Title (`title`):** Clean, professional title displayed at the top of the case study page (e.g. `GoDaddy: Native Shipping Labels Integration`).
+3. **Homepage Card Headline (`card_headline`):** Punchy, FAANG-style outcome-driven action sentence rendered on homepage project cards, combining Action + Scale/Metric + Product (e.g. `Facilitating 7.5K shipping label purchases for 6.7K GoDaddy Power Sellers`).
 
 ---
 
@@ -136,11 +133,12 @@ For developers or AI agents updating `data/projects.ts`, map the schema fields t
 
 ```typescript
 export interface ProjectData {
-  title: string;                 // [H1] One-Sentence Action Title
+  archive_title?: string;        // [Internal Archive] Generic project title
+  title: string;                 // [Case Study Page H1] Clean page title
+  card_headline: string;         // [Homepage Card] Punchy FAANG-style outcome headline
   role: string;                  // [Sidebar] Role
   timeline: string;              // [Sidebar] Timeline
   tag: string;                   // [Sidebar] Category Tag
-  metric: string;                // [Sidebar] Primary Metric Badge
   teams_involved: string;        // [Sidebar] Teams Involved
   thumbnail: string;             // Homepage Thumbnail image path
   hero_image?: string;           // Optional cover hero image

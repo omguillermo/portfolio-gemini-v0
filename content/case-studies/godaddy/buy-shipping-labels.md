@@ -20,7 +20,7 @@
 | **Role** | Senior Product Designer |
 | **Timeline** | 4 Months (Released July 2022) |
 | **Teams** | Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team |
-| **Metric Badge** | 6.7K Merchants |
+| **Homepage Card Headline** | Facilitating 7.5K shipping label purchases for 6.7K GoDaddy Power Sellers |
 
 ---
 

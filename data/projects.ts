@@ -11,7 +11,9 @@ export interface Iteration {
 }
 
 export interface ProjectData {
+  archive_title?: string;
   title: string;
+  card_headline: string;
   subtitle: string;
   role: string;
   timeline: string;
@@ -42,7 +44,9 @@ export interface ProjectData {
 
 export const projectsData: Record<string, ProjectData> = {
   'stoki-ai': {
+    archive_title: "Stoki AI Assistant Redesign",
     title: "Stoki AI Assistant Redesign",
+    card_headline: "Improving the B2B AI ordering experience for 900+ active merchants",
     subtitle: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
     role: "Founding Designer",
     timeline: "August 2025 - March 2026",
@@ -95,7 +99,9 @@ export const projectsData: Record<string, ProjectData> = {
     retrospective: "Designing for AI requires anticipating complex outputs and giving users total control over screen real estate. If given more time, I would expand discovery features and improve UI states for handling API errors during high-volume bulk updates."
   },
   'godaddy-shipping': {
+    archive_title: "Buy Shipping Label Experience",
     title: "GoDaddy: Native Shipping Labels Integration",
+    card_headline: "Facilitating 7.5K shipping label purchases for 6.7K GoDaddy Power Sellers",
     subtitle: "Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem.",
     role: "Senior Product Designer",
     timeline: "4 Months (Released July 2022)",
@@ -140,7 +146,9 @@ export const projectsData: Record<string, ProjectData> = {
     retrospective: "Enterprise feature adoption is fundamentally about user trust and context preservation. Merchants didn't reject shipping tools because of pricing—they rejected them because leaving their home dashboard felt fragmented. Maintaining strict brand continuity across third-party API boundaries turned a tedious chore into a high-converting tool."
   },
   'questionpro-signup': {
+    archive_title: "Sign Up Experience Redesign",
     title: "Sign Up Experience Redesign",
+    card_headline: "Redesigning B2B registration to boost lead quality by 5%",
     subtitle: "How we improved lead quality and boosted conversion rates by replacing an outdated, generic registration form with a clear, targeted layout.",
     role: "Senior UI/UX Designer",
     timeline: "Q3-Q4 2021, Released Nov 2021",
@@ -214,7 +222,9 @@ The design struck such a good balance between user trust and business data needs
     retrospective: `This project taught me the difference between a simple form and a clear one. The failure of our ultra-short MVP proved that users want context and safety just as much as they want fewer fields. Designing for enterprise growth means realizing that standard UX patterns sometimes have to take a back seat to building trust and supporting internal business operations.`
   },
   'design-system-scale': {
+    archive_title: "Scaling a Multi-Brand Design System",
     title: "Scaling a Multi-Brand Design System",
+    card_headline: "Unifying design tokens & component libraries to speed up handoff by 42%",
     subtitle: "Creating a unified token pipeline and component library to align design and engineering teams across 4 distinct products.",
     role: "Design Systems Lead",
     timeline: "September 2024 - April 2025",
