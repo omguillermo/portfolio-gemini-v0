@@ -77,17 +77,17 @@ export default function Portfolio() {
 
                       {/* Content section */}
                       <div className="pt-4 flex flex-col justify-between flex-grow gap-4">
-                        <div className="space-y-2 px-1">
-                          <span className="text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
-                            {project.tag}
-                          </span>
+                        <div className="px-1">
                           <h3 className="text-base font-semibold tracking-tight text-primary leading-snug group-hover:text-brand transition-colors">
                             {project.card_headline}
                           </h3>
                         </div>
 
-                        <div className="pt-1 flex items-center justify-end mt-auto px-1">
-                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0">
+                        <div className="pt-2 flex items-center justify-between mt-auto px-1">
+                          <span className="text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
+                            {project.tag}
+                          </span>
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0 ml-2">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>
