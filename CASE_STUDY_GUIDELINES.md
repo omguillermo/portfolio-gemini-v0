@@ -8,27 +8,39 @@ This document serves as the master guide for drafting, refining, and auditing ca
 
 Every case study must follow this exact sectional hierarchy. Do not omit sections or change heading titles unless explicitly instructed.
 
-### 1. Archive Metadata (Internal Use Only)
-*This section is for project archiving hygiene and is hidden on the live portfolio site. Omar actually saves this on a personal google docs. You need not to store it, but if you encounter it during a prompt, you can use it for reference if needed.*
+### 1. Metadata Schema
+
+Every case study Markdown file begins with two structured metadata tables:
+
+#### Table 1: Project Archive (Full Historical Context)
+*This table stores the complete personal record for archiving hygiene.*
 * **Client / Company:** [Name]
 * **Project Title:** [Name]
-* **Year & Launch Date:** [e.g., November 13, 2021]
-* **Timeline:** [e.g., Q3-Q4 2021]
-* **Project Type:** [e.g., Web App, Core B2B Funnel]
-* **Teams Involved:** [e.g., Inbound Sales, Engineering, Executive Stakeholders]
+* **Role:** [Your exact title/ownership, e.g., Senior Product Designer]
+* **Duration:** [Time spent developing the project, e.g., 4 Months (March – June 2022)]
+* **Launch Date:** [Exact release date, e.g., July 5, 2022]
+* **Project Type:** [e.g., Web App / Core B2B Fulfillment Funnel]
+* **Teams Involved:** [e.g., Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team]
+* **Headline Impact:** [Primary metric and result summary]
+
+#### Table 2: Live Portfolio Sidebar (Exact UI Mapping)
+*This table maps 1:1 with the sticky sidebar and project card badges rendered on the live website.*
+* **Role:** [Exact role rendered on sidebar]
+* **Timeline:** [Combined duration + release date string rendered on sidebar, e.g., 4 Months (Released July 2022)]
+* **Teams:** [Teams string rendered on sidebar]
+* **Metric Badge:** [Concise metric badge text rendered on homepage cards, e.g., 6.7K Merchants]
 
 ---
 
-### 2. Live Portfolio Header & Sidebar
+### 2. Live Portfolio Header
 
 #### [H1] One-Sentence Narrative Title (Action Title)
 * **Format:** A single high-impact sentence designed for skim-reading recruiters to immediately understand the project's entire scope, action, and business result.
-* **Example:** *"Redesigning QuestionPro's B2B Onboarding to Balance Trust & Lead Quality"*
+* **Example:** *"GoDaddy: Native Shipping Labels Integration"*
 
-#### [Sidebar] Metadata
-* **Role:** [Your exact ownership, e.g., Senior Product Designer / Founding Designer]
-* **Timeline:** [Duration & dates, e.g., Q3-Q4 2021, Released Nov 2021]
-* **Teams Involved:** [e.g., COO, VP of Engineering, Inbound Sales, Design]
+#### Subtitle
+* **Format:** Action-driven subtitle framing the core strategic goal.
+* **Example:** *"Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem."*
 
 ---
 

@@ -1,23 +1,26 @@
-# Archive Metadata
+# Project Archive
 
 | Field | Value |
 | :--- | :--- |
 | **Client / Company** | GoDaddy |
 | **Project Title** | Buy Shipping Label Experience |
-| **Year & Launch Date** | Released July 5th, 2022 (Q3 2022) |
-| **Timeline** | 4 months (March – June 2022) |
+| **Role** | Senior Product Designer |
+| **Duration** | 4 Months (March – June 2022) |
+| **Launch Date** | July 5, 2022 |
 | **Project Type** | Web App / Core B2B Fulfillment Funnel |
-| **Teams Involved** | Senior Product Designer (Omar Guillermo), Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team |
+| **Teams Involved** | Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team |
+| **Headline Impact** | 6,722 active merchants (+236% increase) purchased 7,521 shipping labels in 3 months |
 
 ---
 
-# Live Portfolio Metadata
+# Live Portfolio Sidebar
 
-| Attribute | Detail |
+| Attribute | Exact Live Value |
 | :--- | :--- |
 | **Role** | Senior Product Designer |
 | **Timeline** | 4 Months (Released July 2022) |
-| **Impact** | 6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels in the first 3 months. |
+| **Teams** | Product Management, Engineering Lead & Dev Team, ShipEngine Partner Design Team |
+| **Metric Badge** | 6.7K Merchants |
 
 ---
 
