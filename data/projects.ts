@@ -105,7 +105,7 @@ export const projectsData: Record<string, ProjectData> = {
     subtitle: "Improving the order fulfillment process for Power Sellers by natively integrating ShipEngine into the GoDaddy Commerce ecosystem.",
     role: "Senior Product Designer",
     timeline: "4 Months (Released July 2022)",
-    tag: "ECOMMERCE • GODADDY",
+    tag: "ECOMMERCE • FULFILLMENT",
     metric: "6.7K Merchants",
     thumbnail: "/projects/godaddy-labels/godaddy-shippinglabels-cover-temp.png",
     impact: "6,722 active merchants (+236% increase over legacy tool) purchased 7,521 shipping labels in the first 3 months.",
