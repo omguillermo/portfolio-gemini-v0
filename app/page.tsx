@@ -88,7 +88,7 @@ export default function Portfolio() {
                             {project.tag.split(/[,•]/).map((tagText, tIdx) => (
                               <span
                                 key={tIdx}
-                                className="inline-flex items-center px-2.5 py-1 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.07] border-0 font-medium whitespace-nowrap"
+                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.07] border-0 font-medium whitespace-nowrap"
                               >
                                 {tagText.trim()}
                               </span>
