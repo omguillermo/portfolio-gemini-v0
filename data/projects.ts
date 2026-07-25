@@ -46,7 +46,7 @@ export const projectsData: Record<string, ProjectData> = {
   'stoki-ai': {
     archive_title: "Stoki AI Assistant Redesign",
     title: "Stoki AI Assistant Redesign",
-    card_headline: "Improving the B2B AI ordering experience for 900+ active merchants",
+    card_headline: "Redesigning StockApp's AI chat for catalog enrichment & sales reporting tools for 900+ B2B users",
     subtitle: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
     role: "Founding Designer",
     timeline: "August 2025 - March 2026",
