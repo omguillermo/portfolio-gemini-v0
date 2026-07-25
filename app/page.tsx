@@ -88,7 +88,7 @@ export default function Portfolio() {
                             {project.tag.split(/[,•]/).map((tagText, tIdx) => (
                               <span
                                 key={tIdx}
-                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/5 border border-border/20"
+                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-brand bg-brand/5 border border-brand/20"
                               >
                                 {tagText.trim()}
                               </span>
@@ -118,14 +118,14 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="flex flex-wrap gap-2.5 max-w-4xl">
+            <div className="flex flex-wrap gap-2 max-w-4xl">
               {[
                 'Design Systems', 'Design Tokens', 'Figma Variables', 'Storybook',
                 'React', 'Next.js', 'TailwindCSS', 'Framer Motion', 'TypeScript', 'HTML & CSS', 'Git & GitHub',
                 'UI/UX', 'B2B', 'eCommerce', 'Documentation', 'SaaS', 'Visual Design', 'Interaction Design',
                 'Usability Testing', 'A/B Testing', 'AI Workflows', 'Design Audits', 'User Research'
               ].map(s => (
-                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-surface-inset border border-transparent rounded-lg px-3.5 py-1.5 text-primary hover:border-brand/30 hover:bg-brand/5 hover:text-brand transition-all duration-300">
+                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-surface-inset border border-border/20 rounded-md px-3 py-1 text-primary hover:border-brand/20 hover:bg-brand/5 hover:text-brand transition-all duration-300">
                   {s}
                 </span>
               ))}
