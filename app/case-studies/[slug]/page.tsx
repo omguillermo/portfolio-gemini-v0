@@ -11,24 +11,55 @@ import { projectsData } from '@/data/projects';
 
 function parseInlineMarkdown(text: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
-  const boldRegex = /\*\*(.*?)\*\*/g;
+  const combinedRegex = /(\*\*(.*?)\*\*)|(\[(.*?)\]\((.*?)\))/g;
   let lastIndex = 0;
   let match;
   
-  while ((match = boldRegex.exec(text)) !== null) {
+  while ((match = combinedRegex.exec(text)) !== null) {
     const matchIndex = match.index;
     
     if (matchIndex > lastIndex) {
       parts.push(text.substring(lastIndex, matchIndex));
     }
     
-    parts.push(
-      <strong key={matchIndex} className="font-bold text-primary">
-        {match[1]}
-      </strong>
-    );
+    if (match[1]) {
+      parts.push(
+        <strong key={matchIndex} className="font-bold text-primary">
+          {match[2]}
+        </strong>
+      );
+    } else if (match[3]) {
+      const linkText = match[4];
+      const linkUrl = match[5];
+      const isButton = linkText.toLowerCase().includes('prototype');
+      if (isButton) {
+        parts.push(
+          <a 
+            key={matchIndex} 
+            href={linkUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="my-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-foreground text-background font-medium text-xs hover:opacity-90 transition-opacity"
+          >
+            {linkText} <ArrowUpRight className="w-4 h-4" />
+          </a>
+        );
+      } else {
+        parts.push(
+          <a 
+            key={matchIndex} 
+            href={linkUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-1 font-medium text-brand hover:underline"
+          >
+            {linkText} <ArrowUpRight className="w-3 h-3" />
+          </a>
+        );
+      }
+    }
     
-    lastIndex = boldRegex.lastIndex;
+    lastIndex = combinedRegex.lastIndex;
   }
   
   if (lastIndex < text.length) {
@@ -38,59 +69,260 @@ function parseInlineMarkdown(text: string): React.ReactNode[] {
   return parts.length > 0 ? parts : [text];
 }
 
-function parseMarkdown(text: string): React.ReactNode {
+function parseMarkdown(text: string, onExpandImage?: (url: string) => void): React.ReactNode {
   if (!text) return null;
   
-  const blocks = text.split('\n\n');
+  const lines = text.split('\n');
+  const elements: React.ReactNode[] = [];
   
-  return blocks.map((block, blockIdx) => {
-    const trimmed = block.trim();
-    if (!trimmed) return null;
-    
+  let paragraphBuffer: string[] = [];
+  let listBuffer: { type: 'ul' | 'ol'; items: string[] } | null = null;
+  let quoteBuffer: string[] = [];
+
+  const flushParagraph = () => {
+    if (paragraphBuffer.length === 0) return;
+    const content = paragraphBuffer.join('\n').trim();
+    if (content) {
+      elements.push(
+        <p key={`p-${elements.length}`} className="text-body text-primary leading-relaxed mb-4">
+          {parseInlineMarkdown(content)}
+        </p>
+      );
+    }
+    paragraphBuffer = [];
+  };
+
+  const flushList = () => {
+    if (!listBuffer) return;
+    const ListTag = listBuffer.type === 'ul' ? 'ul' : 'ol';
+    const listClass = listBuffer.type === 'ul' ? 'list-disc pl-5 space-y-2 my-4 text-primary' : 'list-decimal pl-5 space-y-2 my-4 text-primary';
+    elements.push(
+      <ListTag key={`list-${elements.length}`} className={listClass}>
+        {listBuffer.items.map((item, idx) => (
+          <li key={idx} className="leading-relaxed text-body">
+            {parseInlineMarkdown(item)}
+          </li>
+        ))}
+      </ListTag>
+    );
+    listBuffer = null;
+  };
+
+  const flushQuote = () => {
+    if (quoteBuffer.length === 0) return;
+    elements.push(
+      <div key={`quote-${elements.length}`} className="my-4 border-l-2 border-brand/50 pl-4 py-2 space-y-2 bg-brand/5 rounded-r-lg">
+        {quoteBuffer.map((q, idx) => (
+          <p key={idx} className="text-body text-secondary italic leading-relaxed">
+            {parseInlineMarkdown(q)}
+          </p>
+        ))}
+      </div>
+    );
+    quoteBuffer = [];
+  };
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushParagraph();
+      flushList();
+      flushQuote();
+      return;
+    }
+
+    const imgMatch = /^!\[(.*?)\]\((.*?)\)$/.exec(trimmed);
+    if (imgMatch) {
+      flushParagraph();
+      flushList();
+      flushQuote();
+      const caption = imgMatch[1];
+      const imgUrl = imgMatch[2];
+      elements.push(
+        <div key={`img-${elements.length}`} className="my-6">
+          <SafeImage
+            src={imgUrl}
+            alt={caption}
+            caption={caption}
+            onClick={() => onExpandImage && onExpandImage(imgUrl)}
+          />
+        </div>
+      );
+      return;
+    }
+
+    if (trimmed.startsWith('#### ')) {
+      flushParagraph();
+      flushList();
+      flushQuote();
+      elements.push(
+        <h4 key={`h4-${elements.length}`} className="text-body font-bold mt-6 mb-3 text-primary font-mono text-xs uppercase tracking-wider">
+          {parseInlineMarkdown(trimmed.substring(5))}
+        </h4>
+      );
+      return;
+    }
+
     if (trimmed.startsWith('### ')) {
-      return (
-        <h3 key={blockIdx} className="text-body font-bold mt-8 mb-4 text-primary font-mono text-xs">
+      flushParagraph();
+      flushList();
+      flushQuote();
+      elements.push(
+        <h3 key={`h3-${elements.length}`} className="text-body font-bold mt-8 mb-4 text-primary font-mono text-xs">
           {parseInlineMarkdown(trimmed.substring(4))}
         </h3>
       );
+      return;
     }
+
     if (trimmed.startsWith('## ')) {
-      return (
-        <h2 key={blockIdx} className="text-heading font-bold mt-10 mb-4 text-primary">
+      flushParagraph();
+      flushList();
+      flushQuote();
+      elements.push(
+        <h2 key={`h2-${elements.length}`} className="text-heading font-bold mt-10 mb-4 text-primary">
           {parseInlineMarkdown(trimmed.substring(3))}
         </h2>
       );
+      return;
     }
-    
-    const lines = block.split('\n');
-    const isList = lines.every(line => {
-      const tLine = line.trim();
-      return tLine.startsWith('* ') || tLine.startsWith('- ') || tLine === '';
-    });
-    
-    if (isList) {
-      return (
-        <ul key={blockIdx} className="list-disc pl-5 space-y-2 mt-4 mb-4 text-primary">
-          {lines.map((line, lineIdx) => {
-            const tLine = line.trim();
-            if (!tLine) return null;
-            const content = tLine.substring(2);
-            return (
-              <li key={lineIdx} className="leading-relaxed text-body">
-                {parseInlineMarkdown(content)}
-              </li>
-            );
-          })}
-        </ul>
-      );
+
+    if (trimmed.startsWith('>')) {
+      flushParagraph();
+      flushList();
+      quoteBuffer.push(trimmed.replace(/^>\s*/, ''));
+      return;
     }
-    
-    return (
-      <p key={blockIdx} className="text-body text-primary leading-relaxed mb-4">
-        {parseInlineMarkdown(trimmed)}
-      </p>
-    );
+
+    if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+      flushParagraph();
+      flushQuote();
+      if (!listBuffer || listBuffer.type !== 'ul') {
+        flushList();
+        listBuffer = { type: 'ul', items: [] };
+      }
+      listBuffer.items.push(trimmed.substring(2));
+      return;
+    }
+
+    if (/^\d+\.\s/.test(trimmed)) {
+      flushParagraph();
+      flushQuote();
+      if (!listBuffer || listBuffer.type !== 'ol') {
+        flushList();
+        listBuffer = { type: 'ol', items: [] };
+      }
+      listBuffer.items.push(trimmed.replace(/^\d+\.\s*/, ''));
+      return;
+    }
+
+    flushList();
+    flushQuote();
+    paragraphBuffer.push(trimmed);
   });
+
+  flushParagraph();
+  flushList();
+  flushQuote();
+
+  return elements;
+}
+
+function SafeImage({ 
+  src, 
+  alt, 
+  caption, 
+  onClick, 
+  aspectRatio = 'aspect-video' 
+}: { 
+  src: string; 
+  alt: string; 
+  caption?: string; 
+  onClick?: () => void; 
+  aspectRatio?: string; 
+}) {
+  return (
+    <div className="space-y-3">
+      <button 
+        className={`w-full ${aspectRatio} bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block`}
+        onClick={onClick}
+        aria-label={`View full size image: ${alt}`}
+      >
+        <Image 
+          src={src} 
+          alt={alt} 
+          fill 
+          sizes="(max-width: 1024px) 100vw, 896px"
+          className="object-cover object-top" 
+        />
+        <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
+            <Maximize2 className="w-4 h-4" />
+            Click to Expand
+          </div>
+        </div>
+      </button>
+      {caption && (
+        <p className="text-small text-secondary italic">
+          {caption}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function SolutionCarousel({ slides, onExpand }: { slides: Array<{ title: string; image_url: string; caption: string }>; onExpand: (url: string) => void }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!slides || slides.length === 0) return null;
+
+  const currentSlide = slides[currentIndex];
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  return (
+    <div className="my-8 space-y-4">
+      <div className="relative aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden group">
+        <SafeImage
+          src={currentSlide.image_url}
+          alt={currentSlide.title}
+          caption={currentSlide.caption}
+          onClick={() => onExpand(currentSlide.image_url)}
+        />
+        <div className="absolute bottom-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
+          <div className="bg-background/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-border/20 text-mono font-mono text-xxs uppercase tracking-wider text-primary pointer-events-auto">
+            {currentIndex + 1} / {slides.length} • {currentSlide.title}
+          </div>
+          <div className="flex items-center gap-2 pointer-events-auto">
+            <button
+              onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+              className="w-8 h-8 rounded-full bg-background/90 backdrop-blur-md border border-border/20 flex items-center justify-center text-primary hover:bg-background transition-colors"
+              aria-label="Previous slide"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); handleNext(); }}
+              className="w-8 h-8 rounded-full bg-background/90 backdrop-blur-md border border-border/20 flex items-center justify-center text-primary hover:bg-background transition-colors"
+              aria-label="Next slide"
+            >
+              <ArrowLeft className="w-4 h-4 rotate-180" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <p className="text-small text-secondary italic">
+        {currentSlide.caption}
+      </p>
+    </div>
+  );
 }
 
 export default function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
@@ -228,14 +460,12 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
           {project.subtitle}
         </p>
         {project.hero_image && (
-          <div className="mt-8 relative aspect-[21/9] w-full overflow-hidden rounded-2xl bg-surface-inset">
-            <Image 
-              src={project.hero_image} 
-              alt={`${project.title} Hero Cover`} 
-              fill 
-              className="object-cover" 
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              priority
+          <div className="mt-8">
+            <SafeImage
+              src={project.hero_image}
+              alt={`${project.title} Hero Cover`}
+              onClick={() => setActiveImage(project.hero_image!)}
+              aspectRatio="aspect-[16/10]"
             />
           </div>
         )}
@@ -305,34 +535,18 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                       The Problem
                     </h2>
                     <div>
-                      {parseMarkdown(project.problem_hypothesis.problem)}
+                      {parseMarkdown(project.problem_hypothesis.problem, setActiveImage)}
                     </div>
                   </div>
 
                   {project.problem_image && (
-                    <div className="space-y-4 pt-2">
-                      <button 
-                        className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block"
+                    <div className="pt-2">
+                      <SafeImage
+                        src={project.problem_image.image_url}
+                        alt={project.problem_image.caption}
+                        caption={project.problem_image.caption}
                         onClick={() => setActiveImage(project.problem_image!.image_url)}
-                        aria-label="View full size image of previous design"
-                      >
-                        <Image 
-                          src={project.problem_image.image_url} 
-                          alt={project.problem_image.caption} 
-                          fill 
-                          sizes="(max-width: 1024px) 100vw, 896px"
-                          className="object-cover" 
-                        />
-                        <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
-                            <Maximize2 className="w-4 h-4" />
-                            Click to Expand
-                          </div>
-                        </div>
-                      </button>
-                      <p className="text-small text-secondary italic">
-                        {project.problem_image.caption}
-                      </p>
+                      />
                     </div>
                   )}
                 </section>
@@ -343,7 +557,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     Hypothesis
                   </h2>
                   <div>
-                    {parseMarkdown(project.problem_hypothesis.hypothesis)}
+                    {parseMarkdown(project.problem_hypothesis.hypothesis, setActiveImage)}
                   </div>
                 </section>
 
@@ -353,7 +567,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     Constraints
                   </h2>
                   <div className="text-secondary">
-                    {parseMarkdown(project.constraint)}
+                    {parseMarkdown(project.constraint, setActiveImage)}
                   </div>
                 </section>
 
@@ -363,52 +577,36 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                     <h2 className="text-mono text-secondary font-medium tracking-wide flex items-center gap-4">
                       Design Iterations
                     </h2>
-                    <p className="text-body text-primary leading-relaxed whitespace-pre-wrap">
-                      {project.design_rationale}
-                    </p>
+                    <div>
+                      {parseMarkdown(project.design_rationale, setActiveImage)}
+                    </div>
                   </div>
 
-                  <div className="space-y-12 mt-12">
-                    {project.iterations.map((iteration, index) => (
-                      <div key={index} className="space-y-8">
-                        <div className="space-y-2">
-                          <p className="text-mono text-secondary font-medium tracking-wide">Iteration 0{index + 1}</p>
-                          <h3 className="text-heading font-bold">{iteration.approach}</h3>
-                          <div className="pt-2 space-y-4">
-                            {parseMarkdown(iteration.why_it_failed)}
+                  {project.iterations && project.iterations.length > 0 && (
+                    <div className="space-y-12 mt-12">
+                      {project.iterations.map((iteration, index) => (
+                        <div key={index} className="space-y-8">
+                          <div className="space-y-2">
+                            <p className="text-mono text-secondary font-medium tracking-wide">Iteration 0{index + 1}</p>
+                            <h3 className="text-heading font-bold">{iteration.approach}</h3>
+                            <div className="pt-2 space-y-4">
+                              {parseMarkdown(iteration.why_it_failed, setActiveImage)}
+                            </div>
                           </div>
-                        </div>
-                        {iteration.image_url && (
-                          <div className="space-y-4">
-                            <button 
-                              className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden cursor-zoom-in relative group block"
-                              onClick={() => setActiveImage(iteration.image_url!)}
-                              aria-label={`View full size image of ${iteration.approach}`}
-                            >
-                              <Image 
-                                src={iteration.image_url} 
-                                alt={iteration.approach} 
-                                fill 
-                                sizes="(max-width: 1024px) 100vw, 896px"
-                                className="object-cover" 
+                          {iteration.image_url && (
+                            <div>
+                              <SafeImage
+                                src={iteration.image_url}
+                                alt={iteration.approach}
+                                caption={iteration.caption}
+                                onClick={() => setActiveImage(iteration.image_url!)}
                               />
-                              <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
-                                  <Maximize2 className="w-4 h-4" />
-                                  Click to Expand
-                                </div>
-                              </div>
-                            </button>
-                            {iteration.caption && (
-                              <p className="text-small text-secondary italic">
-                                {iteration.caption}
-                              </p>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </section>
 
                 {/* 3. The Solution */}
@@ -418,39 +616,44 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
                       The Solution
                     </h2>
                     <div>
-                      {parseMarkdown(project.system_solution)}
+                      {parseMarkdown(project.system_solution, setActiveImage)}
                     </div>
                   </div>
+
+                  {/* Interactive E2E Flow Solution Carousel */}
+                  {project.carousel_slides && project.carousel_slides.length > 0 && (
+                    <SolutionCarousel slides={project.carousel_slides} onExpand={setActiveImage} />
+                  )}
+
+                  {/* Try Prototype CTA Button */}
+                  {project.prototype_url && (
+                    <div className="pt-2 pb-6">
+                      <a 
+                        href={project.prototype_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-foreground text-background font-medium text-xs hover:opacity-90 transition-opacity"
+                      >
+                        Or try the Prototype! <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    </div>
+                  )}
                   
-                  {/* Visual Highlights Grid */}
-                  <div className="space-y-12 mt-12">
-                    {project.visual_highlights.map((highlight, index) => (
-                      <div key={index} className="space-y-4">
-                        <button 
-                          className="w-full aspect-video bg-surface-inset border-0 rounded-2xl overflow-hidden relative cursor-zoom-in group block"
-                          onClick={() => setActiveImage(highlight.image_url)}
-                          aria-label={`View full size image: ${highlight.caption}`}
-                        >
-                          <Image 
-                            src={highlight.image_url} 
+                  {/* Visual Highlights Grid (if any) */}
+                  {project.visual_highlights && project.visual_highlights.length > 0 && (
+                    <div className="space-y-12 mt-8">
+                      {project.visual_highlights.map((highlight, index) => (
+                        <div key={index}>
+                          <SafeImage
+                            src={highlight.image_url}
                             alt={highlight.caption}
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 896px"
-                            className="object-cover"
+                            caption={highlight.caption}
+                            onClick={() => setActiveImage(highlight.image_url)}
                           />
-                          <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <div className="bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 text-small">
-                              <Maximize2 className="w-4 h-4" />
-                              Click to Expand
-                            </div>
-                          </div>
-                        </button>
-                        <p className="text-small text-secondary italic">
-                          {highlight.caption}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </section>
 
                 {/* 4. Edge Cases Section */}
