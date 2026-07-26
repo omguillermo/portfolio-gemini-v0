@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Egg } from 'lucide-react';
+import { Egg, Rabbit } from 'lucide-react';
 import GachaModal from './GachaModal';
 
 export default function Footer() {
@@ -12,23 +12,21 @@ export default function Footer() {
     <>
       <span className="text-primary font-medium">© 2026 Omar Guillermo</span>
       <span className="text-secondary/30">•</span>
-      <span className="text-primary font-medium">Designed in Figma</span>
-      <span className="text-secondary/30">•</span>
       <span className="text-primary font-medium">Built with Next.js & Gemini</span>
       <span className="text-secondary/30">•</span>
       <span className="text-primary font-medium">Fueled by lots of coffee ☕️</span>
       <span className="text-secondary/30">•</span>
       <span className="text-primary font-medium">All works owned by their respective clients & organizations</span>
       <span className="text-secondary/30">•</span>
-      <span className="text-brand font-semibold">Go Beyond, Plus Ultra! 💥</span>
+      <span className="text-primary font-semibold">Go Beyond, Plus Ultra! 💪</span>
       <span className="text-secondary/30">•</span>
-      <span className="text-primary font-medium">Still reading? Hi! 👋</span>
+      <span className="text-primary font-medium">Hello! 👋</span>
       <span className="text-secondary/30">•</span>
-      <button 
+      <button
         onClick={() => setIsModalOpen(true)}
         className="flex items-center gap-1.5 text-secondary hover:text-brand transition-colors focus:outline-none cursor-pointer group shrink-0"
       >
-        <Egg className="w-3 h-3 text-brand transition-transform group-hover:scale-110" />
+        <Rabbit className="w-3.5 h-3.5 text-brand transition-transform group-hover:scale-110" />
         <span className="text-primary font-medium">Easter Egg</span>
       </button>
       <span className="text-secondary/30">•</span>
