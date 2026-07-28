@@ -245,19 +245,25 @@ export default function About() {
           </Reveal>
 
           <Reveal width="100%">
-            <div className="font-mono text-mono text-secondary bg-surface-inset border-0 rounded-xl p-6 space-y-2.5">
-              {priorExperiences.map((exp, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hover:text-primary transition-colors py-1 border-b border-border/5 last:border-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary font-medium">{exp.role}</span>
-                    <span className="text-muted">@</span>
-                    <span className="text-secondary">{exp.company}</span>
-                  </div>
-                  <div className="text-secondary tabular-nums">
-                    [{exp.period}]
-                  </div>
-                </div>
-              ))}
+            <div className="overflow-x-auto border-0 rounded-xl bg-surface-inset">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-border/10 text-mono font-mono text-xs font-medium text-secondary bg-surface/5">
+                    <th className="px-6 py-3 font-semibold">Role</th>
+                    <th className="px-6 py-3 font-semibold">Company</th>
+                    <th className="px-6 py-3 font-semibold text-right">Period</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/10 text-sm font-light">
+                  {priorExperiences.map((exp, idx) => (
+                    <tr key={idx} className="hover:bg-surface/10 transition-colors">
+                      <td className="px-6 py-3.5 text-primary font-normal">{exp.role}</td>
+                      <td className="px-6 py-3.5 text-secondary text-xs">{exp.company}</td>
+                      <td className="px-6 py-3.5 font-mono text-xs text-secondary text-right tabular-nums">{exp.period}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </Reveal>
         </div>
@@ -385,12 +391,70 @@ const priorExperiences = [
 ];
 
 const educationAndCerts = [
-  { year: '2023', title: 'AI-Powered UX Design: How to Elevate Your UX Career', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
-  { year: '2023', title: 'Agile Methods for UX Design', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
-  { year: '2022', title: 'Accessibility: How to Design for All', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
-  { year: '2022', title: 'Design Thinking: The Ultimate Guide', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
-  { year: '2022', title: 'User Experience: The Beginner’s Guide', issuer: 'Interaction Design Foundation', link: 'https://www.interaction-design.org/' },
-  { year: '2022', title: 'Foundations of User Experience (UX) Design', issuer: 'Google', link: 'https://grow.google/' },
-  { year: '2013', title: 'Bachelor’s Degree in Graphic and Advertising Design', issuer: 'Centro de Estudios de Las Americas (CELA)' }
+  {
+    year: '2023',
+    title: 'Introduction to UX Writing',
+    issuer: 'Udemy',
+    link: 'https://www.udemy.com/certificate/UC-946d91b7-46f4-4aaf-9d01-74e0929be123/'
+  },
+  {
+    year: '2023',
+    title: 'AI-Powered UX Design: How to Elevate Your UX Career',
+    issuer: 'Interaction Design Foundation',
+    link: 'https://ixdf.org/members/omar-guillermo/certificate/masterclass/mcc_cfe7e5b9a5b24f7888570aad089bf765'
+  },
+  {
+    year: '2023',
+    title: 'Agile Methods for UX Design',
+    issuer: 'Interaction Design Foundation',
+    link: 'https://ixdf.org/members/omar-guillermo/certificate/course/267232ed-f436-4e99-a3d9-33973607750c'
+  },
+  {
+    year: '2022',
+    title: 'Accessibility: How to Design for All',
+    issuer: 'Interaction Design Foundation',
+    link: 'https://ixdf.org/members/omar-guillermo/certificate/course/eabd99bf-6585-4671-a064-1826c121fdf0'
+  },
+  {
+    year: '2022',
+    title: 'Design Thinking: The Ultimate Guide',
+    issuer: 'Interaction Design Foundation',
+    link: 'https://ixdf.org/members/omar-guillermo/certificate/course/4c292745-f392-4002-9388-07ccef1e2eb6'
+  },
+  {
+    year: '2022',
+    title: 'User Experience: The Beginner’s Guide',
+    issuer: 'Interaction Design Foundation',
+    link: 'https://ixdf.org/members/omar-guillermo/certificate/course/a42e9bed-2abe-49e8-962c-87f5b6fd7d54'
+  },
+  {
+    year: '2022',
+    title: 'Foundations of User Experience (UX) Design',
+    issuer: 'Google',
+    link: 'https://www.coursera.org/account/accomplishments/verify/WNUGLC6JWM4N'
+  },
+  {
+    year: '2021',
+    title: 'QuestionPro Research Expert',
+    issuer: 'QuestionPro',
+    link: 'https://drive.google.com/file/d/1MVzIL0H0sd7e1DY9My2tBEWzHxg5YJW1/view'
+  },
+  {
+    year: '2021',
+    title: 'QuestionPro Research Pro',
+    issuer: 'QuestionPro',
+    link: 'https://drive.google.com/file/d/1oIFXMNTJRhl7NAJVoKfJKt-HB9DQdmSS/view'
+  },
+  {
+    year: '2020',
+    title: 'Workshop - UX en productos digitales',
+    issuer: 'HackSureste',
+    link: 'https://drive.google.com/file/d/1jwdNd84SG6GPgm-TBG_XKLZ_4ZHuylSR/view'
+  },
+  {
+    year: '2013',
+    title: 'Bachelor’s Degree in Graphic and Advertising Design',
+    issuer: 'Centro de Estudios de Las Americas (CELA)'
+  }
 ];
 
