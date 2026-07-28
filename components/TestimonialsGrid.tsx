@@ -73,7 +73,7 @@ export default function TestimonialsGrid() {
   return (
     <div className="space-y-6">
       {/* Section Header */}
-      <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3">
+      <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs">
         Endorsements & Team Feedback
       </h2>
 

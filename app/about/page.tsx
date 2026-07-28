@@ -142,7 +142,7 @@ export default function About() {
         {/* Career Timeline Section (Full Width Breakout) */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs">
               Career History Timeline
             </h2>
           </Reveal>
@@ -239,7 +239,7 @@ export default function About() {
         {/* Prior Experience Section */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs">
               Past Graphic Design Experience
             </h2>
           </Reveal>
@@ -271,7 +271,7 @@ export default function About() {
         {/* Certifications and Training */}
         <div className="mt-20 space-y-6">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs uppercase">
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide border-b border-border pb-3 mb-6 text-xs">
               Verified Credentials & Education
             </h2>
           </Reveal>

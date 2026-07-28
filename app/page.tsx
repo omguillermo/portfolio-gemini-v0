@@ -49,8 +49,8 @@ export default function Portfolio() {
 
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
-              01 / Highlighted Projects
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
+              Highlighted Projects
             </h2>
           </Reveal>
 
@@ -109,11 +109,11 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 02 / Technical Skills & Toolkit */}
+        {/* Technical Skills & Toolkit */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
-              02 / Technical Skills & Toolkit
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
+              Technical Skills & Toolkit
             </h2>
           </Reveal>
 
@@ -133,11 +133,11 @@ export default function Portfolio() {
           </Reveal>
         </section>
 
-        {/* 03 / Testimonials */}
+        {/* Testimonials */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs uppercase">
-              03 / Testimonials
+            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
+              Testimonials
             </h2>
           </Reveal>
 
