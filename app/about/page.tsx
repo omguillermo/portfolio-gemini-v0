@@ -147,18 +147,18 @@ export default function About() {
             </h2>
           </Reveal>
 
-          <div className="relative pl-8 ml-3 space-y-12">
+          <div className="space-y-12">
             {experiences.map((exp, idx) => {
               const isExpanded = expandedJob === idx;
               return (
-                <div key={idx} className="relative group">
+                <div key={idx} className="relative pl-7 group">
                   {/* Vertical Line Segment - connects current dot to next dot */}
                   {idx < experiences.length - 1 && (
-                    <div className="absolute -left-[18px] top-[13px] bottom-[-61px] w-[1px] bg-border/40" />
+                    <div className="absolute left-[6.5px] top-[9px] bottom-[-61px] w-[1px] bg-border/40" />
                   )}
 
                   {/* Timeline Node */}
-                  <div className={`absolute -left-[25px] top-1.5 h-3.5 w-3.5 rounded-full border transition-all duration-300 z-10 ${isExpanded
+                  <div className={`absolute left-0 top-[1px] h-3.5 w-3.5 rounded-full border transition-all duration-300 z-10 ${isExpanded
                     ? 'bg-brand border-brand scale-110 shadow-[0_0_8px_rgba(26,154,94,0.4)]'
                     : 'bg-background border-muted/50 group-hover:border-brand group-hover:bg-brand/10'
                     }`} />
@@ -211,9 +211,9 @@ export default function About() {
                         {/* Achievements List */}
                         <div className="space-y-3">
                           {exp.achievements.map((ach, aIdx) => (
-                            <div key={aIdx} className="flex items-start gap-3 text-sm leading-relaxed">
-                              <span className="text-mono font-mono text-brand font-bold text-xxs tracking-wider uppercase shrink-0 mt-0.5 w-[85px] text-right">
-                                [{ach.tag}]
+                            <div key={aIdx} className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3 text-sm leading-relaxed">
+                              <span className="text-mono font-mono text-brand font-semibold text-xxs tracking-wider shrink-0 sm:w-[130px] sm:text-right sm:mt-0.5">
+                                {ach.tag}
                               </span>
                               <span className="text-primary font-light">
                                 {ach.text}
@@ -333,13 +333,13 @@ const experiences = [
     role: 'Founding Designer',
     period: 'Aug 2025 – Mar 2026',
     description: 'An early-stage B2B commerce platform for global trade networks, backed by the StartX/Stanford accelerator. Closed in March 2026 following an investor decision to wind down operations.',
-    stack: 'Next.js, React, TailwindCSS, Framer Motion, Figma, JSON Tokens, VS Code, Claude Code',
+    stack: 'Figma, Design Systems, JSON Tokens, VS Code, v0, Claude Code, Github, AI',
     achievements: [
-      { tag: 'SYS-BUILD', text: 'Created StockApp’s Design System built on top of shadcn, managing Figma variables, components, and exportable JSON tokens.' },
-      { tag: 'AI-ASSIST', text: 'Redesigned Stoki (AI Assistant) from a full-screen blocking overlay to a persistent floating widget that adapts to content dynamically.' },
-      { tag: 'UX-LEAD', text: 'Led UX for connection management, purchasing permissions, payment terms, and buyer identity validation (BPID).' },
-      { tag: 'CATALOG', text: 'Enhanced catalog experience: optimized layouts, integrated performance metrics, and designed a 3D network ecosystem visualization.' },
-      { tag: 'DEV-PR', text: 'Submitted pull requests directly to the production codebase for UI fixes and feature implementations using VS Code.' }
+      { tag: 'Design Systems', text: 'Created StockApp’s Design System built on top of shadcn, managing Figma variables, components, and exportable JSON tokens.' },
+      { tag: 'AI Workflows', text: 'Redesigned Stoki (AI Assistant) from a full-screen blocking overlay to a persistent floating widget that adapts to content dynamically.' },
+      { tag: 'Data Validation', text: 'Led UX for connection management, purchasing permissions, payment terms, and buyer identity validation (BPID).' },
+      { tag: 'Catalog UX', text: 'Enhanced catalog experience: optimized layouts, integrated performance metrics, and designed a 3D network ecosystem visualization.' },
+      { tag: 'AI+Handoff', text: 'Submitted pull requests directly to the production codebase for UI fixes and feature implementations using VS Code and Claude Code.' }
     ]
   },
   {
@@ -347,14 +347,14 @@ const experiences = [
     role: 'Senior Product Designer',
     period: 'Jan 2022 – Jul 2025',
     description: 'Assigned to GoDaddy Commerce within the Orders & Fulfillment and Unified Commerce teams, designing merchant dashboards and toolkits.',
-    stack: 'GoDaddy Commerce Design System, React, UsabilityHub, Figma, Agile/Scrum',
+    stack: 'Design System, Figma, Agile/Scrum, UsabilityHub, Confluence, M365 Copilot',
     achievements: [
-      { tag: 'SHIPPING', text: 'Designed and tested a shipping label purchase flow — 7,500 labels purchased by 6,000+ merchants within 3 months of launch.' },
-      { tag: 'CATALOG', text: 'Shipped 10+ core features for Unified Catalog, enabling merchants to manage products, categories, and tax variations.' },
-      { tag: 'UX-MOBILE', text: 'Increased mobile usability for the Orders dashboard by introducing a Compact View data table, validated by a 70% user preference rate.' },
-      { tag: 'ORDER-UI', text: 'Redesigned Order Details UI with history timeline, customer notes, and clear status visualizations.' },
-      { tag: 'SYS-CONTRIB', text: 'Contributed Empty State component to Commerce’s design system, used by 50+ designers across the organization.' },
-      { tag: 'DESIGN-QA', text: 'Conducted QA on Unified Catalog — identified 39 issues and drove the resolution of 17 of them within two weeks.' }
+      { tag: 'Shipping Flow', text: 'Designed and tested a shipping label purchase flow: 7,500 labels purchased by 6,000+ merchants within 3 months of launch.' },
+      { tag: 'Unified Catalog', text: 'Shipped 10+ core features for Unified Catalog, enabling merchants to manage products, categories, and tax variations.' },
+      { tag: 'Mobile UX', text: 'Increased mobile usability for the Orders dashboard by introducing a Compact View data table, validated by a 70% user preference rate.' },
+      { tag: 'UI Revamp', text: 'Redesigned Order Details UI with history timeline, customer notes, and clear status visualizations.' },
+      { tag: 'Component Library', text: 'Contributed Empty State component to Commerce’s design system, used by 50+ designers across the organization.' },
+      { tag: 'Design QA', text: 'Conducted QA on Unified Catalog — identified 39 issues and drove the resolution of 17 of them within two weeks.' }
     ]
   },
   {
@@ -362,13 +362,13 @@ const experiences = [
     role: 'Senior Digital Designer',
     period: 'Jan 2019 – Dec 2021',
     description: 'Promoted to the global team. Owned web design for QuestionPro US and brand/marketing design across LATAM, MENA, APAC, and GmbH regions.',
-    stack: 'Framer Motion, HTML/CSS, Web Design System, Figma, Adobe Suite',
+    stack: 'HTML/CSS, Design System, Figma, Adobe Suite, Hotjar, Metabase, Google Analytics, Hubspot',
     achievements: [
-      { tag: 'CHECKOUT', text: 'Redesigned credit card checkout experience, reducing the bounce rate by 9.52% within one quarter.' },
-      { tag: 'SYS-BUILD', text: 'Built a web design system translated into templates, cutting page production time by 66% (from 3 months to 1 month).' },
-      { tag: 'SIGNUP', text: 'Updated signup flow to guide users to correct product channels, leading to higher quality qualified sales leads.' },
-      { tag: 'IDENTITY', text: 'Designed brand identity for all product lines and full marketing/responsive assets for Xday event.' },
-      { tag: 'LEADERSHIP', text: 'Led a team of 2 designers for web, marketing, and sales assets.' }
+      { tag: 'Checkout Flow', text: 'Redesigned credit card checkout experience, reducing the bounce rate by 9.52% within one quarter.' },
+      { tag: 'Design Systems', text: 'Built a web design system translated into templates, cutting page production time by 66% (from 3 months to 1 month).' },
+      { tag: 'Signup Flow', text: 'Updated signup flow to guide users to correct product channels, leading to higher quality qualified sales leads.' },
+      { tag: 'Brand Identity', text: 'Designed brand identity for all product lines and full marketing/responsive assets for Xday event.' },
+      { tag: 'Team Leadership', text: 'Led a team of 2 designers for web, marketing, and sales assets.' }
     ]
   },
   {
@@ -378,7 +378,7 @@ const experiences = [
     description: 'Lead graphic designer within the marketing team. Designed region-specific web assets and email campaigns.',
     stack: 'HTML/CSS, Email Marketing, Mascot Design, Brand Asset Management',
     achievements: [
-      { tag: 'MARKETING', text: 'Designed web contents, HTML/CSS email campaigns, event materials, slides, and the corporate mascot (still in use).' }
+      { tag: 'Marketing & Brand', text: 'Designed web contents, HTML/CSS email campaigns, event materials, slides, and the corporate mascot (still in use).' }
     ]
   }
 ];

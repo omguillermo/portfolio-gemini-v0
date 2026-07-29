@@ -38,11 +38,11 @@ Feel free to reach out at any time, even just for a quick chat. Looking forward 
 * **Description:** An early-stage B2B commerce platform for global trade networks, backed by the StartX/Stanford accelerator. Closed in March 2026 following an investor decision to wind down operations.
 * **Stack:** Next.js, React, TailwindCSS, Framer Motion, Figma, JSON Tokens, VS Code, Claude Code
 * **Key Achievements:**
-  * `[SYS-BUILD]` Created StockApp’s Design System built on top of shadcn, managing Figma variables, components, and exportable JSON tokens.
-  * `[AI-ASSIST]` Redesigned Stoki (AI Assistant) from a full-screen blocking overlay to a persistent floating widget that adapts to content dynamically.
-  * `[UX-LEAD]` Led UX for connection management, purchasing permissions, payment terms, and buyer identity validation (BPID).
-  * `[CATALOG]` Enhanced catalog experience: optimized layouts, integrated performance metrics, and designed a 3D network ecosystem visualization.
-  * `[DEV-PR]` Submitted pull requests directly to the production codebase for UI fixes and feature implementations using VS Code.
+  * **Design Systems:** Created StockApp’s Design System built on top of shadcn, managing Figma variables, components, and exportable JSON tokens.
+  * **AI Workflows:** Redesigned Stoki (AI Assistant) from a full-screen blocking overlay to a persistent floating widget that adapts to content dynamically.
+  * **Verification:** Led UX for connection management, purchasing permissions, payment terms, and buyer identity validation (BPID).
+  * **Catalog UX:** Enhanced catalog experience: optimized layouts, integrated performance metrics, and designed a 3D network ecosystem visualization.
+  * **Prototyping:** Submitted pull requests directly to the production codebase for UI fixes and feature implementations using VS Code.
 
 ### 2. FullStack Labs (Client: GoDaddy)
 * **Role:** Senior Product Designer
@@ -50,12 +50,12 @@ Feel free to reach out at any time, even just for a quick chat. Looking forward 
 * **Description:** Assigned to GoDaddy Commerce within the Orders & Fulfillment and Unified Commerce teams, designing merchant dashboards and toolkits.
 * **Stack:** GoDaddy Commerce Design System, React, UsabilityHub, Figma, Agile/Scrum
 * **Key Achievements:**
-  * `[SHIPPING]` Designed and tested a shipping label purchase flow — 7,500 labels purchased by 6,000+ merchants within 3 months of launch.
-  * `[CATALOG]` Shipped 10+ core features for Unified Catalog, enabling merchants to manage products, categories, and tax variations.
-  * `[UX-MOBILE]` Increased mobile usability for the Orders dashboard by introducing a Compact View data table, validated by a 70% user preference rate.
-  * `[ORDER-UI]` Redesigned Order Details UI with history timeline, customer notes, and clear status visualizations.
-  * `[SYS-CONTRIB]` Contributed Empty State component to Commerce’s design system, used by 50+ designers across the organization.
-  * `[DESIGN-QA]` Conducted QA on Unified Catalog — identified 39 issues and drove the resolution of 17 of them within two weeks.
+  * **Shipping Flow:** Designed and tested a shipping label purchase flow — 7,500 labels purchased by 6,000+ merchants within 3 months of launch.
+  * **Unified Catalog:** Shipped 10+ core features for Unified Catalog, enabling merchants to manage products, categories, and tax variations.
+  * **Mobile UX:** Increased mobile usability for the Orders dashboard by introducing a Compact View data table, validated by a 70% user preference rate.
+  * **Order Details UI:** Redesigned Order Details UI with history timeline, customer notes, and clear status visualizations.
+  * **Component Library:** Contributed Empty State component to Commerce’s design system, used by 50+ designers across the organization.
+  * **Design QA:** Conducted QA on Unified Catalog — identified 39 issues and drove the resolution of 17 of them within two weeks.
 
 ### 3. QuestionPro
 * **Role:** Senior Digital Designer
@@ -63,11 +63,11 @@ Feel free to reach out at any time, even just for a quick chat. Looking forward 
 * **Description:** Promoted to the global team. Owned web design for QuestionPro US and brand/marketing design across LATAM, MENA, APAC, and GmbH regions.
 * **Stack:** Framer Motion, HTML/CSS, Web Design System, Figma, Adobe Suite
 * **Key Achievements:**
-  * `[CHECKOUT]` Redesigned credit card checkout experience, reducing the bounce rate by 9.52% within one quarter.
-  * `[SYS-BUILD]` Built a web design system translated into templates, cutting page production time by 66% (from 3 months to 1 month).
-  * `[SIGNUP]` Updated signup flow to guide users to correct product channels, leading to higher quality qualified sales leads.
-  * `[IDENTITY]` Designed brand identity for all product lines and full marketing/responsive assets for Xday event.
-  * `[LEADERSHIP]` Led a team of 2 designers for web, marketing, and sales assets.
+  * **Checkout Flow:** Redesigned credit card checkout experience, reducing the bounce rate by 9.52% within one quarter.
+  * **Design Systems:** Built a web design system translated into templates, cutting page production time by 66% (from 3 months to 1 month).
+  * **Signup Flow:** Updated signup flow to guide users to correct product channels, leading to higher quality qualified sales leads.
+  * **Brand Identity:** Designed brand identity for all product lines and full marketing/responsive assets for Xday event.
+  * **Team Leadership:** Led a team of 2 designers for web, marketing, and sales assets.
 
 ### 4. QuestionPro LATAM
 * **Role:** Senior Graphic Designer
@@ -75,7 +75,7 @@ Feel free to reach out at any time, even just for a quick chat. Looking forward 
 * **Description:** Lead graphic designer within the marketing team. Designed region-specific web assets and email campaigns.
 * **Stack:** HTML/CSS, Email Marketing, Mascot Design, Brand Asset Management
 * **Key Achievements:**
-  * `[MARKETING]` Designed web contents, HTML/CSS email campaigns, event materials, slides, and the corporate mascot (still in use).
+  * **Marketing & Brand:** Designed web contents, HTML/CSS email campaigns, event materials, slides, and the corporate mascot (still in use).
 
 ---
 
