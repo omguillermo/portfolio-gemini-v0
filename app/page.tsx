@@ -88,7 +88,7 @@ export default function Portfolio() {
                             {project.tag.split(/[,•]/).map((tagText, tIdx) => (
                               <span
                                 key={tIdx}
-                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.07] border-0 font-medium whitespace-nowrap"
+                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.08] border-0 font-medium whitespace-nowrap"
                               >
                                 {tagText.trim()}
                               </span>
@@ -125,7 +125,7 @@ export default function Portfolio() {
                 'UI/UX', 'B2B', 'eCommerce', 'Documentation', 'SaaS', 'Visual Design', 'Interaction Design',
                 'Usability Testing', 'A/B Testing', 'AI Workflows', 'Design Audits', 'User Research'
               ].map(s => (
-                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-foreground/[0.06] border-0 rounded-md px-3 py-1.5 text-primary hover:bg-brand/10 hover:text-brand transition-all duration-300">
+                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-foreground/[0.08] border-0 rounded-md px-3 py-1.5 text-secondary hover:bg-brand/10 hover:text-brand transition-all duration-300">
                   {s}
                 </span>
               ))}

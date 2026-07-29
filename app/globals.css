@@ -49,11 +49,11 @@
 
 /* Global Dark Mode Base (System Green) */
 .dark {
-  --background: #081A16;
+  --background: #081613;
   --foreground: #F2F7F4;
   --brand: #1A9A5E;
-  --surface: #0D2621;
-  --border: #1A2E28;
+  --surface: #0E2822;
+  --border: #1B453A;
   --muted: #8A9E98;
   --tertiary: #4A5450;
   --error: #F87171;
@@ -62,9 +62,9 @@
   --selection-text: #ffffff;
   --grid-color: rgba(138, 158, 152, 0.12);
 
-  --terminal-surface: var(--surface);
-  --terminal-header: #173C33;
-  --surface-inset: #040D0B;
+  --terminal-surface: #0E2822;
+  --terminal-header: #19443A;
+  --surface-inset: #12332B;
 }
 
 /* Brand Themes - Full Environment Shifts */
@@ -72,15 +72,15 @@
 /* Forest (Explicit) */
 [data-brand='forest'].dark {
   --brand: #1A9A5E !important;
-  --background: #081A16 !important;
+  --background: #081613 !important;
   --foreground: #F2F7F4 !important;
-  --surface: #0D2621 !important;
-  --border: #1A2E28 !important;
+  --surface: #0E2822 !important;
+  --border: #1B453A !important;
   --muted: #8A9E98 !important;
   --grid-color: rgba(138, 158, 152, 0.12) !important;
-  --surface-inset: #040D0B !important;
-  --terminal-surface: #0D2621 !important;
-  --terminal-header: #173C33 !important;
+  --surface-inset: #12332B !important;
+  --terminal-surface: #0E2822 !important;
+  --terminal-header: #19443A !important;
 }
 
 /* Crimson - Warm Editorial */
@@ -100,17 +100,17 @@
 }
 
 [data-brand='crimson'].dark {
-  --brand: #D92626 !important;
-  --background: #120808 !important;
-  --foreground: #F7F2F2 !important; /* Off-white for warmth */
-  --surface: #1C0D0D !important;
-  --border: #2E1A1A !important;
-  --muted: #9E8A8A !important;
-  --selection-bg: #D92626 !important;
-  --grid-color: rgba(217, 38, 38, 0.25) !important;
-  --surface-inset: #0A0404 !important;
-  --terminal-surface: #1C0D0D !important;
-  --terminal-header: #331919 !important;
+  --brand: #E03636 !important;
+  --background: #140909 !important;
+  --foreground: #F7F2F2 !important;
+  --surface: #221212 !important;
+  --border: #3E2222 !important;
+  --muted: #A38C8C !important;
+  --selection-bg: #E03636 !important;
+  --grid-color: rgba(224, 54, 54, 0.22) !important;
+  --surface-inset: #2C1818 !important;
+  --terminal-surface: #221212 !important;
+  --terminal-header: #381E1E !important;
 }
 
 /* Electric Blue - Technical Cold */
@@ -130,17 +130,17 @@
 }
 
 [data-brand='blue'].dark {
-  --brand: #2667D9 !important;
-  --background: #080D12 !important;
-  --foreground: #F2F4F7 !important; /* Cool off-white */
-  --surface: #0D141C !important;
-  --border: #1A2E2E !important;
-  --muted: #8A919E !important;
-  --selection-bg: #2667D9 !important;
-  --grid-color: rgba(38, 103, 217, 0.25) !important;
-  --surface-inset: #04070A !important;
-  --terminal-surface: #0D141C !important;
-  --terminal-header: #1A2B3E !important;
+  --brand: #3B7BF0 !important;
+  --background: #080E17 !important;
+  --foreground: #F2F5F8 !important;
+  --surface: #101B2B !important;
+  --border: #1C314E !important;
+  --muted: #8FA2BE !important;
+  --selection-bg: #3B7BF0 !important;
+  --grid-color: rgba(59, 123, 240, 0.22) !important;
+  --surface-inset: #17283E !important;
+  --terminal-surface: #101B2B !important;
+  --terminal-header: #1E3352 !important;
 }
 
 /* Royal Purple - Deep & Royal */
@@ -160,27 +160,27 @@
 }
 
 [data-brand='purple'].dark {
-  --brand: #8A26D9 !important;
-  --background: #0F0814 !important;
-  --foreground: #F5F2F7 !important; /* Purple off-white */
-  --surface: #180D21 !important;
-  --border: #281A33 !important;
-  --muted: #9A8A9E !important;
-  --selection-bg: #8A26D9 !important;
-  --grid-color: rgba(138, 38, 217, 0.25) !important;
-  --surface-inset: #08040A !important;
-  --terminal-surface: #180D21 !important;
-  --terminal-header: #2C183C !important;
+  --brand: #9D36F0 !important;
+  --background: #0F0816 !important;
+  --foreground: #F6F2F8 !important;
+  --surface: #1C1029 !important;
+  --border: #331D4A !important;
+  --muted: #A68FBE !important;
+  --selection-bg: #9D36F0 !important;
+  --grid-color: rgba(157, 54, 240, 0.22) !important;
+  --surface-inset: #261738 !important;
+  --terminal-surface: #1C1029 !important;
+  --terminal-header: #2F1B45 !important;
 }
 
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --background: #081A16;
+    --background: #081613;
     --foreground: #F2F7F4;
     --brand: #1A9A5E;
-    --surface: #0D2621;
-    --border: #1A2E28;
+    --surface: #0E2822;
+    --border: #1B453A;
     --muted: #8A9E98;
     --tertiary: #4A5450;
     --error: #F87171;
@@ -189,8 +189,9 @@
     --selection-text: #ffffff;
     --grid-color: rgba(138, 158, 152, 0.12);
 
-    --terminal-surface: var(--surface);
-    --terminal-header: #173C33;
+    --terminal-surface: #0E2822;
+    --terminal-header: #19443A;
+    --surface-inset: #12332B;
   }
 }
 
