@@ -92,9 +92,17 @@ const InteractiveDoodle = () => {
   };
 
   return (
-    <div 
-      className="relative cursor-pointer select-none w-full h-full doodle-sticker transition-all duration-300"
+    <button 
+      type="button"
+      aria-label="Toggle interactive doodle easter egg"
+      className="relative cursor-pointer select-none w-full h-full doodle-sticker transition-all duration-300 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background text-left block"
       onClick={toggleEasterEgg}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleEasterEgg();
+        }
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -252,7 +260,7 @@ const InteractiveDoodle = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </button>
   );
 };
 

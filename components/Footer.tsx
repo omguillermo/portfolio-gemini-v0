@@ -8,7 +8,7 @@ export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Expanded set of statements to build a rich, continuous stream of data
-  const renderTickerContent = () => (
+  const renderTickerContent = (isDuplicate = false) => (
     <>
       <span className="text-primary font-medium">© 2026 Omar Guillermo</span>
       <span className="text-secondary/30">•</span>
@@ -24,7 +24,9 @@ export default function Footer() {
       <span className="text-secondary/30">•</span>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="flex items-center gap-1.5 text-secondary hover:text-brand transition-colors focus:outline-none cursor-pointer group shrink-0"
+        tabIndex={isDuplicate ? -1 : 0}
+        aria-hidden={isDuplicate ? true : undefined}
+        className="flex items-center gap-1.5 text-secondary hover:text-brand transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md cursor-pointer group shrink-0"
       >
         <Rabbit className="w-3.5 h-3.5 text-brand transition-transform group-hover:scale-110" />
         <span className="text-primary font-medium">Easter Egg</span>
@@ -42,11 +44,11 @@ export default function Footer() {
             <div className="animate-marquee flex items-center gap-6 whitespace-nowrap">
               {/* First Track */}
               <div className="flex items-center gap-6">
-                {renderTickerContent()}
+                {renderTickerContent(false)}
               </div>
               {/* Second Track for seamless connection */}
               <div className="flex items-center gap-6" aria-hidden="true">
-                {renderTickerContent()}
+                {renderTickerContent(true)}
               </div>
             </div>
           </div>

@@ -65,7 +65,7 @@ export default function BrandSwitcher() {
       {/* Trigger: The Single Active Swatch */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface border border-transparent hover:border-border transition-all focus:outline-none group relative"
+        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface border border-transparent hover:border-border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background group relative"
         aria-label="Change brand theme"
       >
         <div 
@@ -90,7 +90,7 @@ export default function BrandSwitcher() {
                 <button
                   key={brand.id}
                   onClick={() => changeBrand(brand.id)}
-                  className={`w-full flex items-center gap-3 px-2 py-1.5 rounded-md hover:bg-foreground/5 transition-colors text-left group ${
+                  className={`w-full flex items-center gap-3 px-2 py-1.5 rounded-md hover:bg-foreground/5 transition-colors text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
                     activeBrand === brand.id ? 'bg-foreground/[0.03]' : ''
                   }`}
                 >

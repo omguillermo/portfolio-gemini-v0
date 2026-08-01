@@ -109,8 +109,9 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
           >
             <button 
               onClick={closeGacha}
-              className="absolute top-6 right-6 text-secondary hover:text-primary transition-colors z-30 bg-background border-2 border-foreground p-1 shadow-[2px_2px_0px_var(--color-foreground)] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_var(--color-foreground)]"
+              className="absolute top-6 right-6 text-secondary hover:text-primary transition-colors z-30 bg-background border-2 border-foreground p-1 shadow-[2px_2px_0px_var(--color-foreground)] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_var(--color-foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               disabled={isPulling}
+              aria-label="Close Gacha Modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -239,7 +240,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                       } : { x: 0, rotate: 0, skewX: -12 }}
                       transition={{ duration: 0.3, ease: "linear" }}
                       disabled={isPulling}
-                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none bg-surface border-foreground text-primary shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
+                      className="w-full relative transition-all duration-100 ease-in-out active:translate-y-[4px] active:shadow-none py-3 px-2 border-4 outline-none focus-visible:ring-2 focus-visible:ring-brand/50 bg-surface border-foreground text-primary shadow-[4px_4px_0_var(--color-foreground)] hover:bg-surface/80"
                     >
                       <div className="flex flex-col items-center gap-1" style={{ transform: "skewX(12deg)" }}>
                         <span className="font-black text-secondary text-small uppercase tracking-wide">10x Pull</span>
@@ -259,7 +260,7 @@ const GachaModal: React.FC<GachaModalProps> = ({ isOpen, onClose }) => {
                   No actual micro-transactions in this portfolio. <br />
                   <button 
                     onClick={resetGacha}
-                    className="mt-2 text-brand hover:text-brand/80 transition-colors inline-flex items-center gap-1 underline underline-offset-4 decoration-brand/30"
+                    className="mt-2 text-brand hover:text-brand/80 transition-colors inline-flex items-center gap-1 underline underline-offset-4 decoration-brand/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                   >
                     [ <RotateCcw className="w-2.5 h-2.5" /> Reset Gacha ]
                   </button>

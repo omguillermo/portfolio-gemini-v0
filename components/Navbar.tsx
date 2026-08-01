@@ -55,7 +55,7 @@ export default function Navbar() {
             {/* Left Side: Branding */}
             <Link
               href="/"
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md"
             >
               <div className="w-8 h-8 text-primary transition-colors duration-300">
                 <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -79,7 +79,7 @@ export default function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={`text-small font-sans font-medium hover:text-brand transition-colors ${pathname === link.href ? 'text-primary' : 'text-secondary'
+                        className={`text-small font-sans font-medium hover:text-brand transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md px-1 py-0.5 ${pathname === link.href ? 'text-primary' : 'text-secondary'
                           }`}
                       >
                         {link.label}
@@ -94,7 +94,7 @@ export default function Navbar() {
                         target={link.type === 'external' ? '_blank' : undefined}
                         rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
                         aria-label={link.type === 'download' ? 'Download resume PDF' : `Visit ${link.label} profile (opens in new tab)`}
-                        className="flex items-center gap-1 text-small font-sans font-medium text-secondary hover:text-brand transition-colors cursor-pointer group"
+                        className="flex items-center gap-1 text-small font-sans font-medium text-secondary hover:text-brand transition-colors cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md px-1 py-0.5"
                       >
                         <span>{link.label}</span>
                         {link.type === 'download' && (

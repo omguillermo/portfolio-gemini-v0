@@ -36,7 +36,7 @@ export default function ThemeSwitcher() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full hover:bg-surface border border-transparent hover:border-border transition-all focus:outline-none group"
+      className="p-2 rounded-full hover:bg-surface border border-transparent hover:border-border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
       aria-label="Toggle theme"
     >
       <div className="relative w-4 h-4 overflow-hidden">

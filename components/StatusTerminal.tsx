@@ -118,7 +118,7 @@ export default function StatusTerminal() {
       role="listbox"
       aria-label="Status Terminal Menu"
       aria-activedescendant={viewState === 'menu' ? rows[selectedRowIndex].key : undefined}
-      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-xxs text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus:ring-1 focus:ring-brand/30"
+      className="bg-terminal-surface border-0 rounded-2xl overflow-hidden w-full md:w-[340px] shrink-0 outline-none select-none font-mono text-xxs text-primary flex flex-col h-[270px] relative z-20 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
 
 
