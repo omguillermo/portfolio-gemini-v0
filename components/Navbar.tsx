@@ -30,10 +30,10 @@ export default function Navbar() {
     { href: '/', label: 'Work', type: 'internal' },
     { href: '/about', label: 'About', type: 'internal' },
     { 
-      href: '/Omar_Guillermo_Resume_2026_-_Custom.pdf', 
+      href: '/Omar-Guillermo-Senior-Product-Designer-Resume.pdf', 
       label: 'Resume', 
       type: 'download', 
-      download: 'Omar_Guillermo_Resume_2026_-_Custom.pdf' 
+      download: 'Omar-Guillermo-Senior-Product-Designer-Resume.pdf' 
     },
     { 
       href: 'https://www.linkedin.com/in/omar-guillermo/', 
