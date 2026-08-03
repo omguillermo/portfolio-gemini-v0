@@ -56,11 +56,11 @@ export default async function Image({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#f7f8f9",
-          padding: "52px 64px",
+          backgroundColor: "#ffffff",
+          padding: "54px 68px",
           fontFamily: "Geist, sans-serif",
           boxSizing: "border-box",
-          color: "#1f2024",
+          color: "#09090b",
         }}
       >
         {/* Header: Monogram + Name (Geist 700) on Left, Separate Tag Pills on Right */}
@@ -71,7 +71,7 @@ export default async function Image({
             justifyContent: "space-between",
             alignItems: "center",
             paddingBottom: "24px",
-            borderBottom: "1px solid #e5e7eb",
+            borderBottom: "1px solid #e4e4e7",
           }}
         >
           <div
@@ -81,13 +81,13 @@ export default async function Image({
               gap: "14px",
             }}
           >
-            <img src={monogramSrc} width={32} height={32} style={{ width: 32, height: 32 }} />
+            <img src={monogramSrc} width={40} height={40} style={{ width: 40, height: 40 }} />
             <span
               style={{
                 fontFamily: "Geist",
-                fontSize: 22,
+                fontSize: 26,
                 fontWeight: 700,
-                color: "#1f2024",
+                color: "#09090b",
                 letterSpacing: "-0.05em",
               }}
             >
@@ -108,14 +108,14 @@ export default async function Image({
                 key={t}
                 style={{
                   fontFamily: "Geist",
-                  fontSize: 13,
+                  fontSize: 14,
                   fontWeight: 600,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
                   backgroundColor: "#e0f2fe",
                   color: "#0369a1",
                   border: "1px solid #bae6fd",
-                  padding: "6px 14px",
+                  padding: "7px 16px",
                   borderRadius: 9999,
                 }}
               >
@@ -131,14 +131,14 @@ export default async function Image({
             display: "flex",
             flexDirection: "column",
             gap: "16px",
-            maxWidth: "960px",
+            maxWidth: "980px",
             margin: "24px 0",
           }}
         >
           <div
             style={{
               fontFamily: "Geist",
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 600,
               color: "#6b7280",
               textTransform: "uppercase",
@@ -150,9 +150,9 @@ export default async function Image({
           <h1
             style={{
               fontFamily: "Sora",
-              fontSize: 46,
+              fontSize: 52,
               fontWeight: 800,
-              color: "#1f2024",
+              color: "#09090b",
               margin: 0,
               lineHeight: 1.12,
               letterSpacing: "-0.03em",
@@ -163,8 +163,8 @@ export default async function Image({
           <p
             style={{
               fontFamily: "Geist",
-              fontSize: 20,
-              color: "#52525b",
+              fontSize: 22,
+              color: "#4b5563",
               margin: 0,
               lineHeight: 1.45,
               fontWeight: 400,
@@ -182,15 +182,15 @@ export default async function Image({
             justifyContent: "space-between",
             alignItems: "center",
             paddingTop: "20px",
-            borderTop: "1px solid #e5e7eb",
+            borderTop: "1px solid #e4e4e7",
           }}
         >
           <span
             style={{
               fontFamily: "Geist",
-              fontSize: 15,
+              fontSize: 17,
               fontWeight: 500,
-              color: "#6b7280",
+              color: "#4b5563",
             }}
           >
             Omar Guillermo - Senior Product Designer
@@ -198,9 +198,9 @@ export default async function Image({
           <span
             style={{
               fontFamily: "Geist",
-              fontSize: 15,
-              fontWeight: 600,
-              color: "#1f2024",
+              fontSize: 17,
+              fontWeight: 700,
+              color: "#09090b",
               letterSpacing: "-0.01em",
             }}
           >

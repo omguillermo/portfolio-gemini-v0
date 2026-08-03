@@ -32,11 +32,20 @@ export const metadata: Metadata = {
     siteName: "Omar Guillermo Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Omar Guillermo | Senior Product Designer & Design System Builder",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Omar Guillermo | Senior Product Designer & Systems Architect",
     description: "Portfolio of Omar Guillermo, Senior Product Designer & Systems Architect. Designing high-impact digital products, scalable design systems & complex AI applications.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -52,11 +52,11 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#f7f8f9",
-          padding: "52px 64px",
+          backgroundColor: "#ffffff",
+          padding: "54px 68px",
           fontFamily: "Geist, sans-serif",
           boxSizing: "border-box",
-          color: "#1f2024",
+          color: "#09090b",
         }}
       >
         {/* Top Header: Monogram + Name (Geist 700) on Left, Open to Roles Pill on Right */}
@@ -67,7 +67,7 @@ export default async function Image() {
             justifyContent: "space-between",
             alignItems: "center",
             paddingBottom: "24px",
-            borderBottom: "1px solid #e5e7eb",
+            borderBottom: "1px solid #e4e4e7",
           }}
         >
           <div
@@ -77,13 +77,13 @@ export default async function Image() {
               gap: "14px",
             }}
           >
-            <img src={monogramSrc} width={32} height={32} style={{ width: 32, height: 32 }} />
+            <img src={monogramSrc} width={40} height={40} style={{ width: 40, height: 40 }} />
             <span
               style={{
                 fontFamily: "Geist",
-                fontSize: 22,
+                fontSize: 26,
                 fontWeight: 700,
-                color: "#1f2024",
+                color: "#09090b",
                 letterSpacing: "-0.05em",
               }}
             >
@@ -96,21 +96,21 @@ export default async function Image() {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              backgroundColor: "#ffffff",
+              backgroundColor: "#f4f4f5",
               border: "1px solid #e4e4e7",
-              padding: "7px 16px",
+              padding: "8px 18px",
               borderRadius: 9999,
             }}
           >
             <div
               style={{
-                width: 8,
-                height: 8,
-                borderRadius: 4,
+                width: 10,
+                height: 10,
+                borderRadius: 5,
                 backgroundColor: "#16a34a",
               }}
             />
-            <span style={{ fontFamily: "Geist", fontSize: 14, fontWeight: 600, color: "#16a34a" }}>
+            <span style={{ fontFamily: "Geist", fontSize: 15, fontWeight: 600, color: "#15803d" }}>
               Open to roles
             </span>
           </div>
@@ -123,8 +123,8 @@ export default async function Image() {
             alignItems: "center",
             justifyContent: "space-between",
             gap: "40px",
-            marginTop: "16px",
-            marginBottom: "16px",
+            marginTop: "20px",
+            marginBottom: "20px",
           }}
         >
           {/* Left Column: Avatar + Sora Headline + Geist Subtitle */}
@@ -137,15 +137,15 @@ export default async function Image() {
             }}
           >
             <div style={{ display: "flex", marginBottom: "18px" }}>
-              <img src={doodleSrc} width={72} height={72} style={{ width: 72, height: 72 }} />
+              <img src={doodleSrc} width={80} height={80} style={{ width: 80, height: 80 }} />
             </div>
 
             <h1
               style={{
                 fontFamily: "Sora",
-                fontSize: 44,
+                fontSize: 48,
                 fontWeight: 800,
-                color: "#1f2024",
+                color: "#09090b",
                 margin: 0,
                 lineHeight: 1.08,
                 letterSpacing: "-0.03em",
@@ -157,10 +157,10 @@ export default async function Image() {
             <p
               style={{
                 fontFamily: "Geist",
-                fontSize: 18,
-                color: "#6b7280",
+                fontSize: 20,
+                color: "#4b5563",
                 margin: "18px 0 0 0",
-                lineHeight: 1.5,
+                lineHeight: 1.45,
                 fontWeight: 400,
               }}
             >
@@ -173,53 +173,53 @@ export default async function Image() {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "430px",
-              backgroundColor: "#e7ebeb",
+              width: "440px",
+              backgroundColor: "#f3f4f6",
               borderRadius: "16px",
               border: "1px solid #d1d5db",
-              padding: "24px 26px",
-              fontSize: 13,
+              padding: "24px 28px",
+              fontSize: 15,
               fontFamily: "Geist Mono, monospace",
-              color: "#27272a",
+              color: "#1f2937",
               boxSizing: "border-box",
             }}
           >
             {/* Window Controls */}
-            <div style={{ display: "flex", gap: "6px", marginBottom: "18px" }}>
-              <div style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: "#d1d5db" }} />
-              <div style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: "#d1d5db" }} />
-              <div style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: "#d1d5db" }} />
+            <div style={{ display: "flex", gap: "7px", marginBottom: "20px" }}>
+              <div style={{ width: 11, height: 11, borderRadius: 6, backgroundColor: "#d1d5db" }} />
+              <div style={{ width: 11, height: 11, borderRadius: 6, backgroundColor: "#d1d5db" }} />
+              <div style={{ width: 11, height: 11, borderRadius: 6, backgroundColor: "#d1d5db" }} />
             </div>
 
-            <div style={{ display: "flex", color: "#374151", marginBottom: "16px", fontWeight: 700 }}>
+            <div style={{ display: "flex", color: "#111827", marginBottom: "18px", fontWeight: 700, fontSize: 16 }}>
               guest@omarguillermo.dev ~ % status
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: 13 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: 15 }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ color: "#6b7280", fontWeight: 500 }}>LOCATION</span>
-                <span style={{ color: "#1f2024", fontWeight: 600 }}>Mérida, MX</span>
+                <span style={{ color: "#111827", fontWeight: 600 }}>Mérida, MX</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ color: "#6b7280", fontWeight: 500 }}>STATUS</span>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  <div style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: "#16a34a" }} />
-                  <span style={{ color: "#16a34a", fontWeight: 600 }}>Open to roles</span>
+                  <div style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: "#16a34a" }} />
+                  <span style={{ color: "#15803d", fontWeight: 700 }}>Open to roles</span>
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ color: "#6b7280", fontWeight: 500 }}>VISA</span>
-                <span style={{ color: "#1f2024", fontWeight: 600 }}>TN Eligible</span>
+                <span style={{ color: "#111827", fontWeight: 600 }}>TN Eligible</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ color: "#6b7280", fontWeight: 500 }}>MOBILITY</span>
-                <span style={{ color: "#1f2024", fontWeight: 600 }}>Open to relocate</span>
+                <span style={{ color: "#111827", fontWeight: 600 }}>Open to relocate</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Footer Bar: Geist "Personal Portfolio" on Left, Geist 600 URL on Right */}
+        {/* Footer Bar: Crisp high-contrast Geist text */}
         <div
           style={{
             display: "flex",
@@ -227,13 +227,13 @@ export default async function Image() {
             justifyContent: "space-between",
             alignItems: "center",
             paddingTop: "20px",
-            borderTop: "1px solid #e5e7eb",
+            borderTop: "1px solid #e4e4e7",
           }}
         >
-          <span style={{ fontFamily: "Geist", fontSize: 15, fontWeight: 500, color: "#6b7280" }}>
+          <span style={{ fontFamily: "Geist", fontSize: 17, fontWeight: 500, color: "#4b5563" }}>
             Personal Portfolio
           </span>
-          <span style={{ fontFamily: "Geist", fontSize: 15, fontWeight: 600, color: "#1f2024", letterSpacing: "-0.01em" }}>
+          <span style={{ fontFamily: "Geist", fontSize: 17, fontWeight: 700, color: "#09090b", letterSpacing: "-0.01em" }}>
             omarguillermo.vercel.app
           </span>
         </div>
