@@ -22,8 +22,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Omar Guillermo | Senior Product Designer",
-  description: "Portfolio of Omar Guillermo, Senior Product Designer & Systems Architect.",
+  metadataBase: new URL("https://omarguillermo.vercel.app"),
+  title: "Omar Guillermo | Senior Product Designer & Systems Architect",
+  description: "Portfolio of Omar Guillermo, Senior Product Designer & Systems Architect. Designing high-impact digital products, scalable design systems & complex AI applications.",
+  openGraph: {
+    title: "Omar Guillermo | Senior Product Designer & Systems Architect",
+    description: "Portfolio of Omar Guillermo, Senior Product Designer & Systems Architect. Designing high-impact digital products, scalable design systems & complex AI applications.",
+    url: "https://omarguillermo.vercel.app",
+    siteName: "Omar Guillermo Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Omar Guillermo | Senior Product Designer & Systems Architect",
+    description: "Portfolio of Omar Guillermo, Senior Product Designer & Systems Architect. Designing high-impact digital products, scalable design systems & complex AI applications.",
+  },
 };
 
 export default function RootLayout({
