@@ -59,13 +59,7 @@ export default function Portfolio() {
         </header>
 
         {/* Highlighted Projects — Uncarded */}
-        <section className="mb-20">
-          <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
-              Highlighted Projects
-            </h2>
-          </Reveal>
-
+        <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {['stoki-ai', 'godaddy-shipping', 'questionpro-signup'].map((slug, idx) => {
               const project = projectsData[slug];
@@ -116,13 +110,7 @@ export default function Portfolio() {
         </section>
 
         {/* Technical Skills & Toolkit — Columns of Text without Tags */}
-        <section className="mb-20">
-          <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
-              Technical Skills & Toolkit
-            </h2>
-          </Reveal>
-
+        <section className="mb-24">
           <Reveal width="100%" delay={0.1} overflow="visible">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
               <div>
@@ -169,13 +157,7 @@ export default function Portfolio() {
         </section>
 
         {/* Testimonials — Uncarded, no item dividers */}
-        <section className="mb-20">
-          <Reveal width="100%" overflow="visible">
-            <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
-              Testimonials
-            </h2>
-          </Reveal>
-
+        <section className="mb-24">
           <Reveal width="100%" delay={0.1} overflow="visible">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
               {/* Testimonial 1 */}
