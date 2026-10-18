@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, ExternalLink } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
-import BrandSwitcher from './BrandSwitcher';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -110,7 +109,6 @@ export default function Navbar() {
               </div>
 
               <div className="flex items-center gap-1 md:gap-2">
-                <BrandSwitcher />
                 <ThemeSwitcher />
               </div>
             </div>
@@ -176,11 +174,7 @@ export default function Navbar() {
                 }
               })}
 
-              <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-6">
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-mono text-secondary uppercase text-xxs tracking-widest font-mono">Brand Logic</p>
-                  <BrandSwitcher />
-                </div>
+              <div className="pt-8 border-t border-border w-full flex flex-col items-center gap-4">
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-mono text-secondary uppercase text-xxs tracking-widest font-mono">Appearance</p>
                   <ThemeSwitcher />

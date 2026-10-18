@@ -22,7 +22,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen text-primary font-sans antialiased pb-0 selection:bg-selection-bg selection:text-selection-text">
-      <main className="max-w-4xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-24 md:pb-20 relative z-10">
+      <main className="max-w-5xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-24 md:pb-20 relative z-10">
 
         <Reveal width="100%">
           <h1 className="text-display font-bold tracking-tighter mt-8 mb-8 leading-tight">

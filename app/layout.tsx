@@ -70,9 +70,7 @@ export default function RootLayout({
                 try {
                   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                   document.documentElement.classList.add(theme);
-                  
-                  const brand = localStorage.getItem('brand-theme') || 'forest';
-                  document.documentElement.setAttribute('data-brand', brand);
+                  document.documentElement.setAttribute('data-brand', 'forest');
                 } catch (e) {}
               })();
             `,

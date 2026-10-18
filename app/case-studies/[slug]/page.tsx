@@ -437,23 +437,24 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
   const content = (
     <div className="min-h-screen text-primary font-sans antialiased pb-12 md:pb-20 selection:bg-selection-bg selection:text-selection-text">
       {/* Full-width Page Header */}
-      <div className="max-w-4xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8 border-b border-border/10">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8 border-b border-border/10">
         {/* Return link */}
         <Link href="/" className="inline-flex items-center gap-2 text-small font-mono text-secondary hover:text-brand transition-colors mt-8 mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to projects
         </Link>
         
-        {/* Project Tag Pills */}
-        <div className="mb-4 flex flex-wrap gap-2">
-          {project.tag.split(/[,•]/).map((t) => (
-            <span key={t.trim()} className="inline-flex items-center px-2.5 py-1 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.07] border-0 font-medium">
-              {t.trim()}
+        {/* Project Tags — Clean text */}
+        <div className="mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-mono font-mono text-xxs uppercase tracking-wider text-secondary">
+          {project.tag.split(/[,•]/).map((t, idx, arr) => (
+            <span key={t.trim()} className="inline-flex items-center gap-2.5">
+              <span>{t.trim()}</span>
+              {idx < arr.length - 1 && <span className="opacity-30">•</span>}
             </span>
           ))}
         </div>
 
-        <h1 className="text-display font-bold tracking-tighter mb-4 max-w-4xl">
+        <h1 className="text-display font-bold tracking-tighter mb-4 max-w-5xl">
           {project.title}
         </h1>
         <p className="text-heading text-secondary leading-relaxed font-light tracking-wide max-w-3xl">
@@ -472,7 +473,7 @@ export default function CaseStudy({ params }: { params: Promise<{ slug: string }
       </div>
 
       {/* Two-Column Layout Split */}
-      <div className="max-w-4xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12 pt-12">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12 pt-12">
         
         {/* Sticky Left Sidebar */}
         <aside className="w-full md:w-[220px] shrink-0 md:sticky md:top-28 h-fit space-y-8 z-30 pb-6 md:pb-0">

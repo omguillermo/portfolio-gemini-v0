@@ -78,17 +78,17 @@ export default function TestimonialsGrid() {
       </h2>
 
       {/* Testimonials 2-column Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
         {aboutTestimonials.map((item) => (
           <div
             key={item.id}
-            className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            className="flex flex-col justify-between space-y-4"
           >
             <p className="text-sm text-primary leading-relaxed font-light">
-              &quot;{item.quote}&quot;
+              &ldquo;{item.quote}&rdquo;
             </p>
 
-            <div className="pt-4 border-t border-border/10 space-y-0.5">
+            <div className="space-y-0.5">
               <h4 className="text-sm font-medium text-primary">{item.name}</h4>
               <p className="text-xs text-secondary font-normal">{item.role}, {item.company}</p>
             </div>

@@ -3,23 +3,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Forest Signal - Light Mode - Desaturated - Lighter canvas */
-  --background: #FAFBFB;
+  /* Clean Light Mode - Pure White Background - Green brand accent */
+  --background: #FFFFFF;
   --foreground: #1A1F1C;
   --brand: #1A9A5E;
-  --surface: #ffffff;
-  --border: #D1DED8;
-  --muted: #4A5450;
-  --tertiary: #8A9E98;
+  --surface: #FFFFFF;
+  --border: #E5E7EB;
+  --muted: #525854;
+  --tertiary: #8E9894;
   --error: #EF4444;
   --accent: #F59E0B;
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
 
-  /* Terminal Hue Variations */
+  /* Terminal Hue Variations (Untouched) */
   --terminal-surface: #F0F4F2;
   --terminal-header: #D1DED8;
-  --surface-inset: #F1F4F3;
+  --surface-inset: #F8F9FA;
 
   /* Radius Token */
   --radius: 1.5rem; /* 24px */
@@ -34,7 +34,7 @@
   --fs-xxs: 0.625rem;                           /* 10px - Micro badges & tags */
 
   /* Technical Grid Background Token */
-  --grid-color: rgba(74, 84, 80, 0.16);
+  --grid-color: rgba(74, 84, 80, 0.08);
 }
 
 @theme {
@@ -47,151 +47,46 @@
   line-height: 0.875rem;
 }
 
-/* Global Dark Mode Base (System Green) */
-.dark {
-  --background: #081613;
+/* Global Dark Mode Base - Doodle Black (#1A1F1C) Canvas */
+.dark,
+[data-brand='forest'].dark {
+  --background: #1A1F1C;
   --foreground: #F2F7F4;
   --brand: #1A9A5E;
-  --surface: #0E2822;
-  --border: #1B453A;
-  --muted: #8A9E98;
-  --tertiary: #4A5450;
+  --surface: #1A1F1C;
+  --border: #2D3530;
+  --muted: #8E9E96;
+  --tertiary: #525D57;
   --error: #F87171;
   --accent: #FBBF24;
   --selection-bg: #1A9A5E;
   --selection-text: #ffffff;
-  --grid-color: rgba(138, 158, 152, 0.12);
+  --grid-color: rgba(138, 158, 152, 0.08);
 
+  /* Terminal Hue Variations (Untouched) */
   --terminal-surface: #0E2822;
   --terminal-header: #19443A;
-  --surface-inset: #12332B;
+  --surface-inset: #222825;
 }
-
-/* Brand Themes - Full Environment Shifts */
-
-/* Forest (Explicit) */
-[data-brand='forest'].dark {
-  --brand: #1A9A5E !important;
-  --background: #081613 !important;
-  --foreground: #F2F7F4 !important;
-  --surface: #0E2822 !important;
-  --border: #1B453A !important;
-  --muted: #8A9E98 !important;
-  --grid-color: rgba(138, 158, 152, 0.12) !important;
-  --surface-inset: #12332B !important;
-  --terminal-surface: #0E2822 !important;
-  --terminal-header: #19443A !important;
-}
-
-/* Crimson - Warm Editorial */
-[data-brand='crimson'] {
-  --brand: #D92626;
-  --background: #FDFBFB;
-  --foreground: #1A1F1C;
-  --surface: #FFFFFF;
-  --border: #E8DEDE;
-  --muted: #544A4A;
-  --selection-bg: #D92626;
-  --grid-color: rgba(217, 38, 38, 0.18);
-
-  --terminal-surface: #F7F0F0;
-  --terminal-header: #E6D0D0;
-  --surface-inset: #F6EEEE;
-}
-
-[data-brand='crimson'].dark {
-  --brand: #E03636 !important;
-  --background: #140909 !important;
-  --foreground: #F7F2F2 !important;
-  --surface: #221212 !important;
-  --border: #3E2222 !important;
-  --muted: #A38C8C !important;
-  --selection-bg: #E03636 !important;
-  --grid-color: rgba(224, 54, 54, 0.22) !important;
-  --surface-inset: #2C1818 !important;
-  --terminal-surface: #221212 !important;
-  --terminal-header: #381E1E !important;
-}
-
-/* Electric Blue - Technical Cold */
-[data-brand='blue'] {
-  --brand: #2667D9;
-  --background: #FBFBFC;
-  --foreground: #1A1F1C;
-  --surface: #FFFFFF;
-  --border: #DEE2E8;
-  --muted: #4A4E54;
-  --selection-bg: #2667D9;
-  --grid-color: rgba(38, 103, 217, 0.18);
-
-  --terminal-surface: #F0F3F7;
-  --terminal-header: #D0DCEB;
-  --surface-inset: #F1F3F6;
-}
-
-[data-brand='blue'].dark {
-  --brand: #3B7BF0 !important;
-  --background: #080E17 !important;
-  --foreground: #F2F5F8 !important;
-  --surface: #101B2B !important;
-  --border: #1C314E !important;
-  --muted: #8FA2BE !important;
-  --selection-bg: #3B7BF0 !important;
-  --grid-color: rgba(59, 123, 240, 0.22) !important;
-  --surface-inset: #17283E !important;
-  --terminal-surface: #101B2B !important;
-  --terminal-header: #1E3352 !important;
-}
-
-/* Royal Purple - Deep & Royal */
-[data-brand='purple'] {
-  --brand: #8A26D9;
-  --background: #FCFBFD;
-  --foreground: #1C1A1F;
-  --surface: #FFFFFF;
-  --border: #E8DEEE;
-  --muted: #524A54;
-  --selection-bg: #8A26D9;
-  --grid-color: rgba(138, 38, 217, 0.18);
-
-  --terminal-surface: #F4F0F7;
-  --terminal-header: #DCD0EB;
-  --surface-inset: #F5F0FA;
-}
-
-[data-brand='purple'].dark {
-  --brand: #9D36F0 !important;
-  --background: #0F0816 !important;
-  --foreground: #F6F2F8 !important;
-  --surface: #1C1029 !important;
-  --border: #331D4A !important;
-  --muted: #A68FBE !important;
-  --selection-bg: #9D36F0 !important;
-  --grid-color: rgba(157, 54, 240, 0.22) !important;
-  --surface-inset: #261738 !important;
-  --terminal-surface: #1C1029 !important;
-  --terminal-header: #2F1B45 !important;
-}
-
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --background: #081613;
+    --background: #1A1F1C;
     --foreground: #F2F7F4;
     --brand: #1A9A5E;
-    --surface: #0E2822;
-    --border: #1B453A;
-    --muted: #8A9E98;
-    --tertiary: #4A5450;
+    --surface: #1A1F1C;
+    --border: #2D3530;
+    --muted: #8E9E96;
+    --tertiary: #525D57;
     --error: #F87171;
     --accent: #FBBF24;
     --selection-bg: #1A9A5E;
     --selection-text: #ffffff;
-    --grid-color: rgba(138, 158, 152, 0.12);
+    --grid-color: rgba(138, 158, 152, 0.08);
 
     --terminal-surface: #0E2822;
     --terminal-header: #19443A;
-    --surface-inset: #12332B;
+    --surface-inset: #222825;
   }
 }
 

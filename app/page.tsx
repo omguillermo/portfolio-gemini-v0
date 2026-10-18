@@ -1,20 +1,31 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import InteractiveDoodle from '@/components/InteractiveDoodle';
 import StatusTerminal from '@/components/StatusTerminal';
 import { projectsData } from '@/data/projects';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, Copy, Check } from 'lucide-react';
 
 export default function Portfolio() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('omguillermo90@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback if clipboard API is restricted
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
 
   return (
     <div className="min-h-screen text-primary font-sans antialiased selection:bg-selection-bg selection:text-selection-text">
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_0%_0%,var(--brand),transparent_50%)] opacity-[0.03] pointer-events-none" />
-
       <main className="max-w-5xl mx-auto px-6 pt-20 pb-12 md:px-12 md:pt-[88px] md:pb-20 relative z-10">
         {/* Hero — 2-column layout */}
         <header className="mt-10 mb-16">
@@ -47,6 +58,7 @@ export default function Portfolio() {
           </Reveal>
         </header>
 
+        {/* Highlighted Projects — Uncarded */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
@@ -54,7 +66,7 @@ export default function Portfolio() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {['stoki-ai', 'godaddy-shipping', 'questionpro-signup'].map((slug, idx) => {
               const project = projectsData[slug];
               if (!project) return null;
@@ -62,43 +74,37 @@ export default function Portfolio() {
               return (
                 <Reveal key={project.title} width="100%" delay={0.1 * (idx + 1)} overflow="visible" className="h-full flex flex-col items-stretch">
                   <Link href={`/case-studies/${slug}`} className="group w-full h-full flex flex-col">
-                    <div className="h-full flex flex-col p-4 pb-5 rounded-2xl bg-surface-inset border-0 transition-all duration-300 group-hover:brightness-[0.98] dark:group-hover:brightness-[1.03]">
-                      {/* Nested image frame */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-background border border-border/10">
+                    <div className="w-full h-full flex flex-col">
+                      {/* Clean Image Frame */}
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-surface-inset/50 border border-border/40 group-hover:border-border transition-colors duration-300">
                         <Image
                           src={project.thumbnail}
                           alt={project.title}
                           fill
                           sizes="(max-width: 768px) 100vw, 33vw"
                           loading={idx === 0 ? 'eager' : 'lazy'}
-                          className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                          className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
 
-                      {/* Content section */}
-                      <div className="pt-6 flex flex-col justify-between flex-grow gap-2">
-                        <div className="px-1">
+                      {/* Content Section below image */}
+                      <div className="pt-4 flex flex-col justify-between flex-grow gap-2">
+                        <div className="flex items-start justify-between gap-2">
                           <h3 className="text-base font-semibold tracking-tight text-primary leading-snug group-hover:text-brand transition-colors">
                             {project.card_headline}
                           </h3>
+                          <span className="text-secondary/60 group-hover:text-brand transition-colors duration-200 shrink-0 mt-0.5">
+                            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 -rotate-45" />
+                          </span>
                         </div>
 
-                        <div className="pt-2 flex items-center justify-between mt-auto px-1 relative">
-                          <div className="flex flex-wrap items-center gap-1.5 min-w-0 pr-7">
-                            {project.tag.split(/[,•]/).map((tagText, tIdx) => (
-                              <span
-                                key={tIdx}
-                                className="inline-flex items-center px-2 py-0.5 rounded-md text-mono font-mono text-xxs uppercase tracking-wider text-secondary bg-foreground/[0.08] border-0 font-medium whitespace-nowrap"
-                              >
-                                {tagText.trim()}
-                              </span>
-                            ))}
-                          </div>
-                          <span className="absolute bottom-0 right-1 flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0">
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                            </svg>
-                          </span>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-mono font-mono text-xxs text-secondary">
+                          {project.tag.split(/[,•]/).map((tagText, tIdx, arr) => (
+                            <span key={tIdx} className="inline-flex items-center gap-2">
+                              <span>{tagText.trim()}</span>
+                              {tIdx < arr.length - 1 && <span className="opacity-30">•</span>}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -109,7 +115,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Technical Skills & Toolkit */}
+        {/* Technical Skills & Toolkit — Columns of Text without Tags */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
@@ -118,22 +124,51 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="flex flex-wrap gap-2 max-w-4xl">
-              {[
-                'Design Systems', 'Design Tokens', 'Figma Variables', 'Storybook',
-                'React', 'Next.js', 'TailwindCSS', 'Framer Motion', 'TypeScript', 'HTML & CSS', 'Git & GitHub',
-                'UI/UX', 'B2B', 'eCommerce', 'Documentation', 'SaaS', 'Visual Design', 'Interaction Design',
-                'Usability Testing', 'A/B Testing', 'AI Workflows', 'Design Audits', 'User Research'
-              ].map(s => (
-                <span key={s} className="text-mono font-mono text-xs tracking-wider bg-foreground/[0.08] border-0 rounded-md px-3 py-1.5 text-secondary hover:bg-brand/10 hover:text-brand transition-all duration-300">
-                  {s}
-                </span>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
+              <div>
+                <h3 className="text-mono font-mono text-xs font-semibold text-primary uppercase tracking-wider mb-4">
+                  Systems & Design
+                </h3>
+                <ul className="space-y-2.5 text-sm text-secondary font-light">
+                  <li className="hover:text-primary transition-colors">Design Systems & Tokens</li>
+                  <li className="hover:text-primary transition-colors">Figma Variables</li>
+                  <li className="hover:text-primary transition-colors">UI/UX & Visual Design</li>
+                  <li className="hover:text-primary transition-colors">Interaction Design</li>
+                  <li className="hover:text-primary transition-colors">Documentation & Storybook</li>
+                  <li className="hover:text-primary transition-colors">Design Audits</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-mono font-mono text-xs font-semibold text-primary uppercase tracking-wider mb-4">
+                  Frontend & Code
+                </h3>
+                <ul className="space-y-2.5 text-sm text-secondary font-light">
+                  <li className="hover:text-primary transition-colors">React & Next.js</li>
+                  <li className="hover:text-primary transition-colors">TypeScript</li>
+                  <li className="hover:text-primary transition-colors">TailwindCSS</li>
+                  <li className="hover:text-primary transition-colors">Framer Motion</li>
+                  <li className="hover:text-primary transition-colors">HTML & CSS</li>
+                  <li className="hover:text-primary transition-colors">Git & GitHub</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-mono font-mono text-xs font-semibold text-primary uppercase tracking-wider mb-4">
+                  Strategy & Research
+                </h3>
+                <ul className="space-y-2.5 text-sm text-secondary font-light">
+                  <li className="hover:text-primary transition-colors">User Research & Usability</li>
+                  <li className="hover:text-primary transition-colors">A/B Testing</li>
+                  <li className="hover:text-primary transition-colors">AI Workflows</li>
+                  <li className="hover:text-primary transition-colors">B2B & Enterprise</li>
+                  <li className="hover:text-primary transition-colors">eCommerce & SaaS</li>
+                  <li className="hover:text-primary transition-colors">Product Strategy</li>
+                </ul>
+              </div>
             </div>
           </Reveal>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — Uncarded, no item dividers */}
         <section className="mb-20">
           <Reveal width="100%" overflow="visible">
             <h2 className="text-mono font-mono text-secondary font-medium tracking-wide mb-6 border-b border-border pb-3 text-xs">
@@ -142,46 +177,46 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal width="100%" delay={0.1} overflow="visible">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Card 1: Senior UX Manager (GoDaddy) */}
-              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+              {/* Testimonial 1 */}
+              <div className="flex flex-col justify-between space-y-4">
                 <p className="text-sm text-primary leading-relaxed font-light">
-                  &quot;Omar took full ownership of the Catalog, Inventory, Orders and Fulfillment space as lead designer E2E. Decisions were grounded in real data and edge cases got accounted for. He brought a level of care and craft that raised the bar for everyone around.&quot;
+                  &ldquo;Omar took full ownership of the Catalog, Inventory, Orders and Fulfillment space as lead designer E2E. Decisions were grounded in real data and edge cases got accounted for. He brought a level of care and craft that raised the bar for everyone around.&rdquo;
                 </p>
-                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                <div className="space-y-0.5">
                   <h4 className="text-sm font-medium text-primary">Adelina Green</h4>
                   <p className="text-xs text-secondary font-normal">Senior UX Manager, GoDaddy Commerce</p>
                 </div>
               </div>
 
-              {/* Card 2: Engineering Lead (GoDaddy) */}
-              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+              {/* Testimonial 2 */}
+              <div className="flex flex-col justify-between space-y-4">
                 <p className="text-sm text-primary leading-relaxed font-light">
-                  &quot;The frontend buy label experience is looking really good! Huge shoutout to Omar Guillermo for his outstanding design work, responsiveness, and frontend collaboration.&quot;
+                  &ldquo;The frontend buy label experience is looking really good! Huge shoutout to Omar Guillermo for his outstanding design work, responsiveness, and frontend collaboration.&rdquo;
                 </p>
-                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                <div className="space-y-0.5">
                   <h4 className="text-sm font-medium text-primary">John Newcomb</h4>
                   <p className="text-xs text-secondary font-normal">Engineering Lead, GoDaddy Commerce</p>
                 </div>
               </div>
 
-              {/* Card 3: Marketing Delivery Manager (QuestionPro) */}
-              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+              {/* Testimonial 3 */}
+              <div className="flex flex-col justify-between space-y-4">
                 <p className="text-sm text-primary leading-relaxed font-light">
-                  &quot;Omar has a highly creative, out-of-the-box mind. His profound knowledge in graphic design and openness to learn new things every day, paired with his integrity, makes him a valuable asset on any team.&quot;
+                  &ldquo;Omar has a highly creative, out-of-the-box mind. His profound knowledge in graphic design and openness to learn new things every day, paired with his integrity, makes him a valuable asset on any team.&rdquo;
                 </p>
-                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                <div className="space-y-0.5">
                   <h4 className="text-sm font-medium text-primary">Paulina Rodríguez</h4>
                   <p className="text-xs text-secondary font-normal">Marketing Delivery Manager, QuestionPro CX</p>
                 </div>
               </div>
 
-              {/* Card 4: UX Director (QuestionPro) */}
-              <div className="bg-surface-inset border-0 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+              {/* Testimonial 4 */}
+              <div className="flex flex-col justify-between space-y-4">
                 <p className="text-sm text-primary leading-relaxed font-light">
-                  &quot;Omar has been a diligent, intelligent and proficient designer. My favorite trait is how he's not one to shy away from a challenge, putting in the time and effort to learn whatever he needs to get things done.&quot;
+                  &ldquo;Omar has been a diligent, intelligent and proficient designer. My favorite trait is how he&apos;s not one to shy away from a challenge, putting in the time and effort to learn whatever he needs to get things done.&rdquo;
                 </p>
-                <div className="pt-4 border-t border-border/10 space-y-0.5">
+                <div className="space-y-0.5">
                   <h4 className="text-sm font-medium text-primary">Gerardo Vázquez</h4>
                   <p className="text-xs text-secondary font-normal">UX Director, QuestionPro</p>
                 </div>
@@ -190,7 +225,7 @@ export default function Portfolio() {
           </Reveal>
         </section>
 
-        {/* Closing CTA Strip */}
+        {/* Closing CTA Strip — Cleaned up with Copy Email, no top border */}
         <Reveal width="100%" overflow="visible">
           <div className="mt-20 mb-0 pt-12 pb-16">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
@@ -211,21 +246,33 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">
                 <Link
                   href="/about"
-                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white text-sm font-sans font-medium tracking-wide hover:bg-brand/90 transition-all duration-200"
+                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-foreground text-background text-sm font-sans font-medium tracking-wide hover:opacity-90 transition-all duration-200"
                 >
                   About me
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </Link>
-                <a
-                  href="https://www.linkedin.com/in/omar-guillermo/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit LinkedIn profile (opens in new tab)"
-                  className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border/50 text-secondary text-sm font-sans font-medium tracking-wide hover:border-brand/40 hover:text-brand transition-all duration-200"
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className={`group inline-flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-sans font-medium tracking-wide transition-all duration-200 cursor-pointer ${
+                    copied
+                      ? 'border-brand text-brand bg-brand/5'
+                      : 'border-border/60 text-secondary hover:border-brand/40 hover:text-brand'
+                  }`}
+                  aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
                 >
-                  LinkedIn
-                  <ExternalLink className="w-3.5 h-3.5 transition-colors duration-200" />
-                </a>
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 text-brand" />
+                      <span>Email copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 text-secondary group-hover:text-brand transition-colors" />
+                      <span>Copy email</span>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
           </div>
