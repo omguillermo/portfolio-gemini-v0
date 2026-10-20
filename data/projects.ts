@@ -54,21 +54,21 @@ export const projectsData: Record<string, ProjectData> = {
   'stoki-ai': {
     archive_title: "Stoki AI Assistant Redesign",
     title: "Stoki AI Assistant Redesign",
-    card_headline: "Redesigning StockApp's AI chat to help with catalog enrichment & sales reports for 900+ B2B users",
-    subtitle: "Redesigning an intrusive B2B AI assistant into a non-blocking, persistent workflow tool.",
+    card_headline: "Redesigning StockApp's AI chat for 900+ B2B users managing inventory",
+    subtitle: "Moving StockApp's AI assistant out of the way so B2B sellers and sales reps could work on their catalogs without losing context.",
     role: "Founding Designer",
     timeline: "August 2025 - March 2026",
     tag: "B2B, AI Chat, Wholesale",
-    metric: "$871K Facilitated",
+    metric: "Non-Blocking AI Workflow",
     thumbnail: "/projects/stockapp-ai/stockapp-cover-stoki-temp.png",
-    impact: "Facilitated over $871K in B2B orders by 900+ active users. Sales teams reported increased satisfaction and more frequent tool adoption after the frictionless redesign.",
+    impact: "StockApp's original AI assistant covered the product catalog and triggered a full-screen takeover on every reply. After our sales team flagged the friction, we redesigned it into a compact bottom tab and draggable popover so users could manage inventory and chat simultaneously.",
     constraint: "The AI assistant needed to remain highly visible and accessible from any page, while allowing non-blocking interaction so users could view underlying content.",
     teams_involved: "Co-Founders, Sales, Engineering",
     problem_hypothesis: {
-      problem: "The original AI chat interface blocked users from interacting with page content, obscuring critical inventory items. Navigating while chatting also caused new content to load invisibly behind the widget.\n\n![Original AI chat interface blocking interaction with page content.](/projects/stockapp-ai/stoki-ai-before-issue-block-042026.png)\n\n![Navigating while chatting caused new content to load invisibly behind the full page widget.](/projects/stockapp-ai/stoki-ai-before-issue-fptakeove-042026.png)",
-      hypothesis: "By shifting to a dynamic and draggable interface, we could remove friction, allowing users to reference underlying data while utilizing the AI's enrichment tools simultaneously."
+      problem: "During a team offsite in Miami in February, our sales team raised a major frustration: they hated where the AI chat lived. When browsing the catalog, a large floating input bar sat permanently at the bottom of the viewport, covering the last rows of inventory. Worse, starting a conversation triggered a full-page takeover. If a rep or seller needed to check SKU details or add products, they couldn't see their catalog and talk to Stoki at the same time.\n\n![Original AI chat interface blocking interaction with page content.](/projects/stockapp-ai/stoki-ai-before-issue-block-042026.png)\n\n![Navigating while chatting caused new content to load invisibly behind the full page widget.](/projects/stockapp-ai/stoki-ai-before-issue-fptakeove-042026.png)",
+      hypothesis: "If we reduced the default trigger to a minimal edge tab and moved active conversations into a movable, resizable popover, users could review their catalog with zero obstruction and only bring the AI into view when adding SKUs or running queries."
     },
-    design_rationale: "To solve the obstruction issue, I explored several iterations after doing research on industry standard patterns:",
+    design_rationale: "Working remotely while the team was at the offsite, I explored multiple layout patterns to get the assistant out of the way without burying it:",
     iterations: [
       {
         approach: "Viewport Reduction (Fixed Bottom)",
@@ -83,13 +83,13 @@ export const projectsData: Record<string, ProjectData> = {
         caption: "Exploration B: A standard sidebar approach that failed due to extreme data density requirements."
       }
     ],
-    system_solution: "I redesigned the entry point into a subtle, non-blocking folder tab anchored at the bottom center of the screen. When activated, the chat opens as a draggable floating window with dynamic width (640px to 1080px) that properly displays complex agent responses, like data tables, without taking over the screen.",
+    system_solution: "Engineering and I converged on the same core direction: anchoring the entry point as a small folder-style tab (Ask AI...) at the bottom center of the screen. I focused on fleshing out the states and interaction details around that pattern. When reviewing the catalog, the tab stays out of the way. Clicking it reveals the input bar, starter prompts, and a quick button to resume the last chat. Once a conversation starts, it opens in a floating popover that users can drag by the header, keeping the underlying catalog visible while they work.",
     edge_cases_handled: [
-      "Human-in-the-Loop Safeguards: For bulk inventory updates, the system presents a 'before and after' diff proposal that requires explicit user confirmation to prevent accidental database changes.",
-      "Dynamic UI Scaling: The floating window defaults to 640px but dynamically expands to 1080px to accommodate complex data tables without cutting off information.",
-      "Implicit Intent Handling: The agent prompts for confirmation if it detects product data pasted without a command, ensuring intentional actions only."
+      "**Adaptive Width & Fullscreen Toggle:** The popover stays compact (640px) for simple text and product replies, automatically widens up to 1080px when rendering data tables, and includes a header toggle to expand to fullscreen when needed.",
+      "**Draggable Popover Header:** Because B2B catalogs are dense, even a floating window can cover a row someone needs to read. Making the popover draggable from its top bar let users move the chat anywhere on screen while cross-checking SKUs.",
+      "**Quick Thread Recovery:** Added a one-click 'Resume' action and a 'Previous chats' dropdown right in the active bar so users could close the popover to inspect their catalog and jump right back into an ongoing task without losing context."
     ],
-    outcomes: "Facilitated over $871K in B2B orders by 900+ active users. Post-launch surveys showed a significant increase in tool adoption and user satisfaction after shifting to the frictionless floating trigger.",
+    outcomes: "This redesign shipped across a platform serving 900+ active users and over $871K in B2B order volume. Because the update went live shortly before StockApp wound down operations in March 2026, we didn't have the runway to track long-term adoption metrics. However, immediate validation came directly from our heaviest daily power users: our CEO and CTO shared on Slack that the sales team loved the update and found it much less blocking. When reviewing an existing catalog, the bottom tab stayed out of the way; when adding new SKUs, they could summon the popover and work with the AI while keeping their inventory context right behind it.",
     visual_highlights: [
       {
         "image_url": "/projects/stockapp-ai/stoki-ai-solution-tab-trigger-042026.png",
@@ -104,7 +104,7 @@ export const projectsData: Record<string, ProjectData> = {
         "caption": "The new popover experience wasn't intrusive and allowed dynamic width based on the response, with additional customization options."
       }
     ],
-    retrospective: "Designing for AI requires anticipating complex outputs and giving users total control over screen real estate. If given more time, I would expand discovery features and improve UI states for handling API errors during high-volume bulk updates."
+    retrospective: "AI interfaces in B2B tools shouldn't demand center stage when the user's real job is managing dense data. Even when engineering and design arrive at the same high-level pattern in parallel, sweating the state transitions, sizing rules, and recovery flows is what makes the UI hold up in daily use."
   },
   'godaddy-shipping': {
     archive_title: "Buy Shipping Label Experience",
